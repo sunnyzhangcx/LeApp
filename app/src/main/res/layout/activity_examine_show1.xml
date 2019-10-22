@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/examine_content1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.以下关于C语言描述错误的是（）"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+            </TextView>
+
+
+            <ListView
+                android:id="@+id/examine1_lv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            <!--
+            android:choiceMode="singleChoice"
+            -->
+
+
+
+            <!--<RadioGroup
+                android:id="@+id/choose_first"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+                <RadioButton
+                    android:id="@+id/rb_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一个C程序总是从main函数开始执行"
+                    android:textSize="18sp"
+                    android:layout_marginTop="5dp"/>
+                <RadioButton
+                    android:id="@+id/rb_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="每个语句和数据声明的最后一个必须有一个分号"
+                    android:textSize="18sp"
+                    android:layout_marginTop="5dp"/>
+                <RadioButton
+                    android:id="@+id/rb_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="C语言的注释符是以“/*”开始并以“*/”结束的"
+                    android:textSize="18sp"
+                    android:layout_marginTop="5dp"/>
+                <RadioButton
+                    android:id="@+id/rb_d"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="一个C程序可以包含多个main函数"
+                    android:textSize="18sp"
+                    android:layout_marginTop="5dp"/>
+
+            </RadioGroup>-->
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/examine_tip"
+            android:layout_margin="16dp"
+            android:src="@drawable/icon_tip"
+            app:backgroundTint="@color/gainsboro"
+            android:layout_gravity="end|bottom"/>
+
+    </FrameLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/examine_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1"
+            android:text="提交"/>
+        <Button
+            android:id="@+id/examine_abandon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="放弃"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.example.star.leapp.expandwidget.ExpandTextView
+        android:id="@+id/contentlv_item_tv"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        app:drawableHeight="12dp"
+        app:drawableWidth="14dp"
+        app:expandDrawable="@drawable/up"
+        app:maxLines="3"
+        app:shrinkDrawable="@drawable/down"
+        app:textColor="@android:color/black"
+        app:textSize="14sp"/>
+
+</LinearLayout>
