@@ -49,14 +49,6 @@ public class ExamineShowActivity1 extends AppCompatActivity implements View.OnCl
         final ListView mLvExamine = findViewById(R.id.examine1_lv);
         TextView mTvExamineContent = findViewById(R.id.examine_content1);
         mTvExamineContent.setText(test.getProblem());
-/*        RadioButton mRBChooseA = findViewById(R.id.rb_a);
-        RadioButton mRBChooseB = findViewById(R.id.rb_b);
-        RadioButton mRBChooseC = findViewById(R.id.rb_c);
-        RadioButton mRBChooseD = findViewById(R.id.rb_d);
-        mRBChooseA.setText(test.getResults(0).getAltertive());
-        mRBChooseB.setText(test.getResults(1).getAltertive());
-        mRBChooseC.setText(test.getResults(2).getAltertive());
-        mRBChooseD.setText(test.getResults(3).getAltertive());*/
         mBtnSubmit.setOnClickListener(this);
         mBtnAbandon.setOnClickListener(this);
 
@@ -84,8 +76,7 @@ public class ExamineShowActivity1 extends AppCompatActivity implements View.OnCl
 
     public RadioButton getRadioBtn(int pos,ListView listView){
         View itemView = listView.getChildAt(pos);
-        RadioButton radioButton = itemView.findViewById(R.id.rb_select_result);
-        return radioButton;
+        return itemView.findViewById(R.id.rb_select_result);
     }
 
     @Override
