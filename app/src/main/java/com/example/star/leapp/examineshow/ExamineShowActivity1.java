@@ -23,13 +23,6 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
 import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
-//这个是单选题展示界面，单选选项的个数不一定是四个，我之前确实用的radiogroup，现在改成了listview，
-//你运行一下，可以点击一下listview的那几个item，点击都会变粉，但是这个不是单选题嘛，我就不知道要怎么办了
-//我得get到它点击的哪一个item然后还得给它判断是不是正确选项
-
-
-
-
 //单选题界面
 public class ExamineShowActivity1 extends AppCompatActivity implements View.OnClickListener{
     int curItemPos = -1;
