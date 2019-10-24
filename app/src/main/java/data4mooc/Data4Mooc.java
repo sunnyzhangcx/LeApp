@@ -193,6 +193,31 @@ public final class Data4Mooc {
          */
         data4mooc.Data4Mooc.QandAOrBuilder getSetQAOrBuilder(
                 int index);
+
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        boolean hasLayout();
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        data4mooc.Data4Mooc.Layout getLayout();
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        data4mooc.Data4Mooc.LayoutOrBuilder getLayoutOrBuilder();
     }
     /**
      * Protobuf type {@code data4mooc.MoocData}
@@ -280,6 +305,19 @@ public final class Data4Mooc {
                                     input.readMessage(data4mooc.Data4Mooc.QandA.PARSER, extensionRegistry));
                             break;
                         }
+                        case 42: {
+                            data4mooc.Data4Mooc.Layout.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) != 0)) {
+                                subBuilder = layout_.toBuilder();
+                            }
+                            layout_ = input.readMessage(data4mooc.Data4Mooc.Layout.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(layout_);
+                                layout_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000001;
+                            break;
+                        }
                         default: {
                             if (!parseUnknownField(
                                     input, unknownFields, extensionRegistry, tag)) {
@@ -324,6 +362,7 @@ public final class Data4Mooc {
                             data4mooc.Data4Mooc.MoocData.class, data4mooc.Data4Mooc.MoocData.Builder.class);
         }
 
+        private int bitField0_;
         public static final int SETTNODE_FIELD_NUMBER = 1;
         private java.util.List<data4mooc.Data4Mooc.TNode> setTNode_;
         /**
@@ -544,6 +583,39 @@ public final class Data4Mooc {
             return setQA_.get(index);
         }
 
+        public static final int LAYOUT_FIELD_NUMBER = 5;
+        private data4mooc.Data4Mooc.Layout layout_;
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        public boolean hasLayout() {
+            return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        public data4mooc.Data4Mooc.Layout getLayout() {
+            return layout_ == null ? data4mooc.Data4Mooc.Layout.getDefaultInstance() : layout_;
+        }
+        /**
+         * <pre>
+         *	页面布局参数
+         * </pre>
+         *
+         * <code>optional .data4mooc.Layout layout = 5;</code>
+         */
+        public data4mooc.Data4Mooc.LayoutOrBuilder getLayoutOrBuilder() {
+            return layout_ == null ? data4mooc.Data4Mooc.Layout.getDefaultInstance() : layout_;
+        }
+
         private byte memoizedIsInitialized = -1;
         @java.lang.Override
         public final boolean isInitialized() {
@@ -575,6 +647,12 @@ public final class Data4Mooc {
                     return false;
                 }
             }
+            if (hasLayout()) {
+                if (!getLayout().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
             memoizedIsInitialized = 1;
             return true;
         }
@@ -593,6 +671,9 @@ public final class Data4Mooc {
             }
             for (int i = 0; i < setQA_.size(); i++) {
                 output.writeMessage(4, setQA_.get(i));
+            }
+            if (((bitField0_ & 0x00000001) != 0)) {
+                output.writeMessage(5, getLayout());
             }
             unknownFields.writeTo(output);
         }
@@ -619,6 +700,10 @@ public final class Data4Mooc {
                 size += com.google.protobuf.CodedOutputStream
                         .computeMessageSize(4, setQA_.get(i));
             }
+            if (((bitField0_ & 0x00000001) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(5, getLayout());
+            }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
             return size;
@@ -642,6 +727,11 @@ public final class Data4Mooc {
                     .equals(other.getSetTestList())) return false;
             if (!getSetQAList()
                     .equals(other.getSetQAList())) return false;
+            if (hasLayout() != other.hasLayout()) return false;
+            if (hasLayout()) {
+                if (!getLayout()
+                        .equals(other.getLayout())) return false;
+            }
             if (!unknownFields.equals(other.unknownFields)) return false;
             return true;
         }
@@ -668,6 +758,10 @@ public final class Data4Mooc {
             if (getSetQACount() > 0) {
                 hash = (37 * hash) + SETQA_FIELD_NUMBER;
                 hash = (53 * hash) + getSetQAList().hashCode();
+            }
+            if (hasLayout()) {
+                hash = (37 * hash) + LAYOUT_FIELD_NUMBER;
+                hash = (53 * hash) + getLayout().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
@@ -801,6 +895,7 @@ public final class Data4Mooc {
                     getSetGNodeFieldBuilder();
                     getSetTestFieldBuilder();
                     getSetQAFieldBuilder();
+                    getLayoutFieldBuilder();
                 }
             }
             @java.lang.Override
@@ -830,6 +925,12 @@ public final class Data4Mooc {
                 } else {
                     setQABuilder_.clear();
                 }
+                if (layoutBuilder_ == null) {
+                    layout_ = null;
+                } else {
+                    layoutBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000010);
                 return this;
             }
 
@@ -857,6 +958,7 @@ public final class Data4Mooc {
             public data4mooc.Data4Mooc.MoocData buildPartial() {
                 data4mooc.Data4Mooc.MoocData result = new data4mooc.Data4Mooc.MoocData(this);
                 int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
                 if (setTNodeBuilder_ == null) {
                     if (((bitField0_ & 0x00000001) != 0)) {
                         setTNode_ = java.util.Collections.unmodifiableList(setTNode_);
@@ -893,6 +995,15 @@ public final class Data4Mooc {
                 } else {
                     result.setQA_ = setQABuilder_.build();
                 }
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    if (layoutBuilder_ == null) {
+                        result.layout_ = layout_;
+                    } else {
+                        result.layout_ = layoutBuilder_.build();
+                    }
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.bitField0_ = to_bitField0_;
                 onBuilt();
                 return result;
             }
@@ -1045,6 +1156,9 @@ public final class Data4Mooc {
                         }
                     }
                 }
+                if (other.hasLayout()) {
+                    mergeLayout(other.getLayout());
+                }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
                 return this;
@@ -1069,6 +1183,11 @@ public final class Data4Mooc {
                 }
                 for (int i = 0; i < getSetQACount(); i++) {
                     if (!getSetQA(i).isInitialized()) {
+                        return false;
+                    }
+                }
+                if (hasLayout()) {
+                    if (!getLayout().isInitialized()) {
                         return false;
                     }
                 }
@@ -2341,6 +2460,160 @@ public final class Data4Mooc {
                     setQA_ = null;
                 }
                 return setQABuilder_;
+            }
+
+            private data4mooc.Data4Mooc.Layout layout_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Layout, data4mooc.Data4Mooc.Layout.Builder, data4mooc.Data4Mooc.LayoutOrBuilder> layoutBuilder_;
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public boolean hasLayout() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public data4mooc.Data4Mooc.Layout getLayout() {
+                if (layoutBuilder_ == null) {
+                    return layout_ == null ? data4mooc.Data4Mooc.Layout.getDefaultInstance() : layout_;
+                } else {
+                    return layoutBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public Builder setLayout(data4mooc.Data4Mooc.Layout value) {
+                if (layoutBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    layout_ = value;
+                    onChanged();
+                } else {
+                    layoutBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public Builder setLayout(
+                    data4mooc.Data4Mooc.Layout.Builder builderForValue) {
+                if (layoutBuilder_ == null) {
+                    layout_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    layoutBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public Builder mergeLayout(data4mooc.Data4Mooc.Layout value) {
+                if (layoutBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) &&
+                            layout_ != null &&
+                            layout_ != data4mooc.Data4Mooc.Layout.getDefaultInstance()) {
+                        layout_ =
+                                data4mooc.Data4Mooc.Layout.newBuilder(layout_).mergeFrom(value).buildPartial();
+                    } else {
+                        layout_ = value;
+                    }
+                    onChanged();
+                } else {
+                    layoutBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public Builder clearLayout() {
+                if (layoutBuilder_ == null) {
+                    layout_ = null;
+                    onChanged();
+                } else {
+                    layoutBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000010);
+                return this;
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public data4mooc.Data4Mooc.Layout.Builder getLayoutBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getLayoutFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            public data4mooc.Data4Mooc.LayoutOrBuilder getLayoutOrBuilder() {
+                if (layoutBuilder_ != null) {
+                    return layoutBuilder_.getMessageOrBuilder();
+                } else {
+                    return layout_ == null ?
+                            data4mooc.Data4Mooc.Layout.getDefaultInstance() : layout_;
+                }
+            }
+            /**
+             * <pre>
+             *	页面布局参数
+             * </pre>
+             *
+             * <code>optional .data4mooc.Layout layout = 5;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Layout, data4mooc.Data4Mooc.Layout.Builder, data4mooc.Data4Mooc.LayoutOrBuilder>
+            getLayoutFieldBuilder() {
+                if (layoutBuilder_ == null) {
+                    layoutBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Layout, data4mooc.Data4Mooc.Layout.Builder, data4mooc.Data4Mooc.LayoutOrBuilder>(
+                            getLayout(),
+                            getParentForChildren(),
+                            isClean());
+                    layout_ = null;
+                }
+                return layoutBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -8907,25 +9180,17 @@ public final class Data4Mooc {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <pre>
-         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-         * </pre>
-         *
          * <code>required int32 type = 1;</code>
          */
         boolean hasType();
         /**
-         * <pre>
-         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-         * </pre>
-         *
          * <code>required int32 type = 1;</code>
          */
         int getType();
 
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -8933,7 +9198,7 @@ public final class Data4Mooc {
         boolean hasContent();
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -8941,7 +9206,7 @@ public final class Data4Mooc {
         java.lang.String getContent();
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -9047,20 +9312,12 @@ public final class Data4Mooc {
         public static final int TYPE_FIELD_NUMBER = 1;
         private int type_;
         /**
-         * <pre>
-         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-         * </pre>
-         *
          * <code>required int32 type = 1;</code>
          */
         public boolean hasType() {
             return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <pre>
-         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-         * </pre>
-         *
          * <code>required int32 type = 1;</code>
          */
         public int getType() {
@@ -9071,7 +9328,7 @@ public final class Data4Mooc {
         private volatile java.lang.Object content_;
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -9081,7 +9338,7 @@ public final class Data4Mooc {
         }
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -9102,7 +9359,7 @@ public final class Data4Mooc {
         }
         /**
          * <pre>
-         *	索引值、文本或资源名
+         *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
          * </pre>
          *
          * <code>required string content = 2;</code>
@@ -9481,30 +9738,18 @@ public final class Data4Mooc {
 
             private int type_ ;
             /**
-             * <pre>
-             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-             * </pre>
-             *
              * <code>required int32 type = 1;</code>
              */
             public boolean hasType() {
                 return ((bitField0_ & 0x00000001) != 0);
             }
             /**
-             * <pre>
-             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-             * </pre>
-             *
              * <code>required int32 type = 1;</code>
              */
             public int getType() {
                 return type_;
             }
             /**
-             * <pre>
-             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-             * </pre>
-             *
              * <code>required int32 type = 1;</code>
              */
             public Builder setType(int value) {
@@ -9514,10 +9759,6 @@ public final class Data4Mooc {
                 return this;
             }
             /**
-             * <pre>
-             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
-             * </pre>
-             *
              * <code>required int32 type = 1;</code>
              */
             public Builder clearType() {
@@ -9530,7 +9771,7 @@ public final class Data4Mooc {
             private java.lang.Object content_ = "";
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9540,7 +9781,7 @@ public final class Data4Mooc {
             }
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9561,7 +9802,7 @@ public final class Data4Mooc {
             }
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9581,7 +9822,7 @@ public final class Data4Mooc {
             }
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9598,7 +9839,7 @@ public final class Data4Mooc {
             }
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9611,7 +9852,7 @@ public final class Data4Mooc {
             }
             /**
              * <pre>
-             *	索引值、文本或资源名
+             *	&gt;=0:知识点索引，-1:文本，-2:本地资源名，-3:外部资源URL
              * </pre>
              *
              * <code>required string content = 2;</code>
@@ -9711,36 +9952,10 @@ public final class Data4Mooc {
 
         /**
          * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        boolean hasProblem();
-        /**
-         * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        java.lang.String getProblem();
-        /**
-         * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        com.google.protobuf.ByteString
-        getProblemBytes();
-
-        /**
-         * <pre>
          *	类型：0未设置；
          * </pre>
          *
-         * <code>required int32 kind = 3;</code>
+         * <code>required int32 kind = 2;</code>
          */
         boolean hasKind();
         /**
@@ -9748,7 +9963,7 @@ public final class Data4Mooc {
          *	类型：0未设置；
          * </pre>
          *
-         * <code>required int32 kind = 3;</code>
+         * <code>required int32 kind = 2;</code>
          */
         int getKind();
 
@@ -9757,7 +9972,7 @@ public final class Data4Mooc {
          *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
          * </pre>
          *
-         * <code>required int32 type = 4;</code>
+         * <code>required int32 type = 3;</code>
          */
         boolean hasType();
         /**
@@ -9765,24 +9980,24 @@ public final class Data4Mooc {
          *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
          * </pre>
          *
-         * <code>required int32 type = 4;</code>
+         * <code>required int32 type = 3;</code>
          */
         int getType();
 
         /**
          * <pre>
-         *	难度1-10
+         *	1:单选题，2:多选题，3:填空题，4:问答题，
          * </pre>
          *
-         * <code>required int32 difficulty = 5;</code>
+         * <code>required int32 difficulty = 4;</code>
          */
         boolean hasDifficulty();
         /**
          * <pre>
-         *	难度1-10
+         *	1:单选题，2:多选题，3:填空题，4:问答题，
          * </pre>
          *
-         * <code>required int32 difficulty = 5;</code>
+         * <code>required int32 difficulty = 4;</code>
          */
         int getDifficulty();
 
@@ -9791,7 +10006,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         java.util.List<data4mooc.Data4Mooc.Item>
         getItemsList();
@@ -9800,7 +10015,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         data4mooc.Data4Mooc.Item getItems(int index);
         /**
@@ -9808,7 +10023,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         int getItemsCount();
         /**
@@ -9816,7 +10031,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         java.util.List<? extends data4mooc.Data4Mooc.ItemOrBuilder>
         getItemsOrBuilderList();
@@ -9825,7 +10040,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         data4mooc.Data4Mooc.ItemOrBuilder getItemsOrBuilder(
                 int index);
@@ -9835,7 +10050,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         java.util.List<data4mooc.Data4Mooc.Result>
         getResultsList();
@@ -9844,7 +10059,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         data4mooc.Data4Mooc.Result getResults(int index);
         /**
@@ -9852,7 +10067,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         int getResultsCount();
         /**
@@ -9860,7 +10075,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         java.util.List<? extends data4mooc.Data4Mooc.ResultOrBuilder>
         getResultsOrBuilderList();
@@ -9869,7 +10084,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         data4mooc.Data4Mooc.ResultOrBuilder getResultsOrBuilder(
                 int index);
@@ -9888,7 +10103,6 @@ public final class Data4Mooc {
         }
         private Test() {
             title_ = "";
-            problem_ = "";
             items_ = java.util.Collections.emptyList();
             results_ = java.util.Collections.emptyList();
         }
@@ -9930,40 +10144,34 @@ public final class Data4Mooc {
                             title_ = bs;
                             break;
                         }
-                        case 18: {
-                            com.google.protobuf.ByteString bs = input.readBytes();
+                        case 16: {
                             bitField0_ |= 0x00000002;
-                            problem_ = bs;
+                            kind_ = input.readInt32();
                             break;
                         }
                         case 24: {
                             bitField0_ |= 0x00000004;
-                            kind_ = input.readInt32();
+                            type_ = input.readInt32();
                             break;
                         }
                         case 32: {
                             bitField0_ |= 0x00000008;
-                            type_ = input.readInt32();
-                            break;
-                        }
-                        case 40: {
-                            bitField0_ |= 0x00000010;
                             difficulty_ = input.readInt32();
                             break;
                         }
-                        case 50: {
-                            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+                        case 42: {
+                            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
                                 items_ = new java.util.ArrayList<data4mooc.Data4Mooc.Item>();
-                                mutable_bitField0_ |= 0x00000020;
+                                mutable_bitField0_ |= 0x00000010;
                             }
                             items_.add(
                                     input.readMessage(data4mooc.Data4Mooc.Item.PARSER, extensionRegistry));
                             break;
                         }
-                        case 58: {
-                            if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+                        case 50: {
+                            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
                                 results_ = new java.util.ArrayList<data4mooc.Data4Mooc.Result>();
-                                mutable_bitField0_ |= 0x00000040;
+                                mutable_bitField0_ |= 0x00000020;
                             }
                             results_.add(
                                     input.readMessage(data4mooc.Data4Mooc.Result.PARSER, extensionRegistry));
@@ -9984,10 +10192,10 @@ public final class Data4Mooc {
                 throw new com.google.protobuf.InvalidProtocolBufferException(
                         e).setUnfinishedMessage(this);
             } finally {
-                if (((mutable_bitField0_ & 0x00000020) != 0)) {
+                if (((mutable_bitField0_ & 0x00000010) != 0)) {
                     items_ = java.util.Collections.unmodifiableList(items_);
                 }
-                if (((mutable_bitField0_ & 0x00000040) != 0)) {
+                if (((mutable_bitField0_ & 0x00000020) != 0)) {
                     results_ = java.util.Collections.unmodifiableList(results_);
                 }
                 this.unknownFields = unknownFields.build();
@@ -10062,137 +10270,83 @@ public final class Data4Mooc {
             }
         }
 
-        public static final int PROBLEM_FIELD_NUMBER = 2;
-        private volatile java.lang.Object problem_;
-        /**
-         * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        public boolean hasProblem() {
-            return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        public java.lang.String getProblem() {
-            java.lang.Object ref = problem_;
-            if (ref instanceof java.lang.String) {
-                return (java.lang.String) ref;
-            } else {
-                com.google.protobuf.ByteString bs =
-                        (com.google.protobuf.ByteString) ref;
-                java.lang.String s = bs.toStringUtf8();
-                if (bs.isValidUtf8()) {
-                    problem_ = s;
-                }
-                return s;
-            }
-        }
-        /**
-         * <pre>
-         *	问题陈述
-         * </pre>
-         *
-         * <code>required string problem = 2;</code>
-         */
-        public com.google.protobuf.ByteString
-        getProblemBytes() {
-            java.lang.Object ref = problem_;
-            if (ref instanceof java.lang.String) {
-                com.google.protobuf.ByteString b =
-                        com.google.protobuf.ByteString.copyFromUtf8(
-                                (java.lang.String) ref);
-                problem_ = b;
-                return b;
-            } else {
-                return (com.google.protobuf.ByteString) ref;
-            }
-        }
-
-        public static final int KIND_FIELD_NUMBER = 3;
+        public static final int KIND_FIELD_NUMBER = 2;
         private int kind_;
         /**
          * <pre>
          *	类型：0未设置；
          * </pre>
          *
-         * <code>required int32 kind = 3;</code>
+         * <code>required int32 kind = 2;</code>
          */
         public boolean hasKind() {
-            return ((bitField0_ & 0x00000004) != 0);
+            return ((bitField0_ & 0x00000002) != 0);
         }
         /**
          * <pre>
          *	类型：0未设置；
          * </pre>
          *
-         * <code>required int32 kind = 3;</code>
+         * <code>required int32 kind = 2;</code>
          */
         public int getKind() {
             return kind_;
         }
 
-        public static final int TYPE_FIELD_NUMBER = 4;
+        public static final int TYPE_FIELD_NUMBER = 3;
         private int type_;
         /**
          * <pre>
          *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
          * </pre>
          *
-         * <code>required int32 type = 4;</code>
+         * <code>required int32 type = 3;</code>
          */
         public boolean hasType() {
-            return ((bitField0_ & 0x00000008) != 0);
+            return ((bitField0_ & 0x00000004) != 0);
         }
         /**
          * <pre>
          *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
          * </pre>
          *
-         * <code>required int32 type = 4;</code>
+         * <code>required int32 type = 3;</code>
          */
         public int getType() {
             return type_;
         }
 
-        public static final int DIFFICULTY_FIELD_NUMBER = 5;
+        public static final int DIFFICULTY_FIELD_NUMBER = 4;
         private int difficulty_;
         /**
          * <pre>
-         *	难度1-10
+         *	1:单选题，2:多选题，3:填空题，4:问答题，
          * </pre>
          *
-         * <code>required int32 difficulty = 5;</code>
+         * <code>required int32 difficulty = 4;</code>
          */
         public boolean hasDifficulty() {
-            return ((bitField0_ & 0x00000010) != 0);
+            return ((bitField0_ & 0x00000008) != 0);
         }
         /**
          * <pre>
-         *	难度1-10
+         *	1:单选题，2:多选题，3:填空题，4:问答题，
          * </pre>
          *
-         * <code>required int32 difficulty = 5;</code>
+         * <code>required int32 difficulty = 4;</code>
          */
         public int getDifficulty() {
             return difficulty_;
         }
 
-        public static final int ITEMS_FIELD_NUMBER = 6;
+        public static final int ITEMS_FIELD_NUMBER = 5;
         private java.util.List<data4mooc.Data4Mooc.Item> items_;
         /**
          * <pre>
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         public java.util.List<data4mooc.Data4Mooc.Item> getItemsList() {
             return items_;
@@ -10202,7 +10356,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         public java.util.List<? extends data4mooc.Data4Mooc.ItemOrBuilder>
         getItemsOrBuilderList() {
@@ -10213,7 +10367,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         public int getItemsCount() {
             return items_.size();
@@ -10223,7 +10377,7 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         public data4mooc.Data4Mooc.Item getItems(int index) {
             return items_.get(index);
@@ -10233,21 +10387,21 @@ public final class Data4Mooc {
          *	问题陈述（多条内容）
          * </pre>
          *
-         * <code>repeated .data4mooc.Item items = 6;</code>
+         * <code>repeated .data4mooc.Item items = 5;</code>
          */
         public data4mooc.Data4Mooc.ItemOrBuilder getItemsOrBuilder(
                 int index) {
             return items_.get(index);
         }
 
-        public static final int RESULTS_FIELD_NUMBER = 7;
+        public static final int RESULTS_FIELD_NUMBER = 6;
         private java.util.List<data4mooc.Data4Mooc.Result> results_;
         /**
          * <pre>
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         public java.util.List<data4mooc.Data4Mooc.Result> getResultsList() {
             return results_;
@@ -10257,7 +10411,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         public java.util.List<? extends data4mooc.Data4Mooc.ResultOrBuilder>
         getResultsOrBuilderList() {
@@ -10268,7 +10422,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         public int getResultsCount() {
             return results_.size();
@@ -10278,7 +10432,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         public data4mooc.Data4Mooc.Result getResults(int index) {
             return results_.get(index);
@@ -10288,7 +10442,7 @@ public final class Data4Mooc {
          *	结果四元组的序列
          * </pre>
          *
-         * <code>repeated .data4mooc.Result results = 7;</code>
+         * <code>repeated .data4mooc.Result results = 6;</code>
          */
         public data4mooc.Data4Mooc.ResultOrBuilder getResultsOrBuilder(
                 int index) {
@@ -10303,10 +10457,6 @@ public final class Data4Mooc {
             if (isInitialized == 0) return false;
 
             if (!hasTitle()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasProblem()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -10345,22 +10495,19 @@ public final class Data4Mooc {
                 com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, problem_);
+                output.writeInt32(2, kind_);
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, kind_);
+                output.writeInt32(3, type_);
             }
             if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, type_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, difficulty_);
+                output.writeInt32(4, difficulty_);
             }
             for (int i = 0; i < items_.size(); i++) {
-                output.writeMessage(6, items_.get(i));
+                output.writeMessage(5, items_.get(i));
             }
             for (int i = 0; i < results_.size(); i++) {
-                output.writeMessage(7, results_.get(i));
+                output.writeMessage(6, results_.get(i));
             }
             unknownFields.writeTo(output);
         }
@@ -10375,27 +10522,24 @@ public final class Data4Mooc {
                 size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, problem_);
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(2, kind_);
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, kind_);
+                        .computeInt32Size(3, type_);
             }
             if (((bitField0_ & 0x00000008) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, type_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, difficulty_);
+                        .computeInt32Size(4, difficulty_);
             }
             for (int i = 0; i < items_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(6, items_.get(i));
+                        .computeMessageSize(5, items_.get(i));
             }
             for (int i = 0; i < results_.size(); i++) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeMessageSize(7, results_.get(i));
+                        .computeMessageSize(6, results_.get(i));
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -10416,11 +10560,6 @@ public final class Data4Mooc {
             if (hasTitle()) {
                 if (!getTitle()
                         .equals(other.getTitle())) return false;
-            }
-            if (hasProblem() != other.hasProblem()) return false;
-            if (hasProblem()) {
-                if (!getProblem()
-                        .equals(other.getProblem())) return false;
             }
             if (hasKind() != other.hasKind()) return false;
             if (hasKind()) {
@@ -10455,10 +10594,6 @@ public final class Data4Mooc {
             if (hasTitle()) {
                 hash = (37 * hash) + TITLE_FIELD_NUMBER;
                 hash = (53 * hash) + getTitle().hashCode();
-            }
-            if (hasProblem()) {
-                hash = (37 * hash) + PROBLEM_FIELD_NUMBER;
-                hash = (53 * hash) + getProblem().hashCode();
             }
             if (hasKind()) {
                 hash = (37 * hash) + KIND_FIELD_NUMBER;
@@ -10617,23 +10752,21 @@ public final class Data4Mooc {
                 super.clear();
                 title_ = "";
                 bitField0_ = (bitField0_ & ~0x00000001);
-                problem_ = "";
-                bitField0_ = (bitField0_ & ~0x00000002);
                 kind_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 type_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
+                bitField0_ = (bitField0_ & ~0x00000004);
                 difficulty_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000008);
                 if (itemsBuilder_ == null) {
                     items_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    bitField0_ = (bitField0_ & ~0x00000010);
                 } else {
                     itemsBuilder_.clear();
                 }
                 if (resultsBuilder_ == null) {
                     results_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    bitField0_ = (bitField0_ & ~0x00000020);
                 } else {
                     resultsBuilder_.clear();
                 }
@@ -10670,34 +10803,30 @@ public final class Data4Mooc {
                 }
                 result.title_ = title_;
                 if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.kind_ = kind_;
                     to_bitField0_ |= 0x00000002;
                 }
-                result.problem_ = problem_;
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.kind_ = kind_;
+                    result.type_ = type_;
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.type_ = type_;
+                    result.difficulty_ = difficulty_;
                     to_bitField0_ |= 0x00000008;
                 }
-                if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.difficulty_ = difficulty_;
-                    to_bitField0_ |= 0x00000010;
-                }
                 if (itemsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000020) != 0)) {
+                    if (((bitField0_ & 0x00000010) != 0)) {
                         items_ = java.util.Collections.unmodifiableList(items_);
-                        bitField0_ = (bitField0_ & ~0x00000020);
+                        bitField0_ = (bitField0_ & ~0x00000010);
                     }
                     result.items_ = items_;
                 } else {
                     result.items_ = itemsBuilder_.build();
                 }
                 if (resultsBuilder_ == null) {
-                    if (((bitField0_ & 0x00000040) != 0)) {
+                    if (((bitField0_ & 0x00000020) != 0)) {
                         results_ = java.util.Collections.unmodifiableList(results_);
-                        bitField0_ = (bitField0_ & ~0x00000040);
+                        bitField0_ = (bitField0_ & ~0x00000020);
                     }
                     result.results_ = results_;
                 } else {
@@ -10757,11 +10886,6 @@ public final class Data4Mooc {
                     title_ = other.title_;
                     onChanged();
                 }
-                if (other.hasProblem()) {
-                    bitField0_ |= 0x00000002;
-                    problem_ = other.problem_;
-                    onChanged();
-                }
                 if (other.hasKind()) {
                     setKind(other.getKind());
                 }
@@ -10775,7 +10899,7 @@ public final class Data4Mooc {
                     if (!other.items_.isEmpty()) {
                         if (items_.isEmpty()) {
                             items_ = other.items_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000010);
                         } else {
                             ensureItemsIsMutable();
                             items_.addAll(other.items_);
@@ -10788,7 +10912,7 @@ public final class Data4Mooc {
                             itemsBuilder_.dispose();
                             itemsBuilder_ = null;
                             items_ = other.items_;
-                            bitField0_ = (bitField0_ & ~0x00000020);
+                            bitField0_ = (bitField0_ & ~0x00000010);
                             itemsBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                                             getItemsFieldBuilder() : null;
@@ -10801,7 +10925,7 @@ public final class Data4Mooc {
                     if (!other.results_.isEmpty()) {
                         if (results_.isEmpty()) {
                             results_ = other.results_;
-                            bitField0_ = (bitField0_ & ~0x00000040);
+                            bitField0_ = (bitField0_ & ~0x00000020);
                         } else {
                             ensureResultsIsMutable();
                             results_.addAll(other.results_);
@@ -10814,7 +10938,7 @@ public final class Data4Mooc {
                             resultsBuilder_.dispose();
                             resultsBuilder_ = null;
                             results_ = other.results_;
-                            bitField0_ = (bitField0_ & ~0x00000040);
+                            bitField0_ = (bitField0_ & ~0x00000020);
                             resultsBuilder_ =
                                     com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                                             getResultsFieldBuilder() : null;
@@ -10831,9 +10955,6 @@ public final class Data4Mooc {
             @java.lang.Override
             public final boolean isInitialized() {
                 if (!hasTitle()) {
-                    return false;
-                }
-                if (!hasProblem()) {
                     return false;
                 }
                 if (!hasKind()) {
@@ -10978,123 +11099,23 @@ public final class Data4Mooc {
                 return this;
             }
 
-            private java.lang.Object problem_ = "";
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public boolean hasProblem() {
-                return ((bitField0_ & 0x00000002) != 0);
-            }
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public java.lang.String getProblem() {
-                java.lang.Object ref = problem_;
-                if (!(ref instanceof java.lang.String)) {
-                    com.google.protobuf.ByteString bs =
-                            (com.google.protobuf.ByteString) ref;
-                    java.lang.String s = bs.toStringUtf8();
-                    if (bs.isValidUtf8()) {
-                        problem_ = s;
-                    }
-                    return s;
-                } else {
-                    return (java.lang.String) ref;
-                }
-            }
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public com.google.protobuf.ByteString
-            getProblemBytes() {
-                java.lang.Object ref = problem_;
-                if (ref instanceof String) {
-                    com.google.protobuf.ByteString b =
-                            com.google.protobuf.ByteString.copyFromUtf8(
-                                    (java.lang.String) ref);
-                    problem_ = b;
-                    return b;
-                } else {
-                    return (com.google.protobuf.ByteString) ref;
-                }
-            }
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public Builder setProblem(
-                    java.lang.String value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                bitField0_ |= 0x00000002;
-                problem_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public Builder clearProblem() {
-                bitField0_ = (bitField0_ & ~0x00000002);
-                problem_ = getDefaultInstance().getProblem();
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	问题陈述
-             * </pre>
-             *
-             * <code>required string problem = 2;</code>
-             */
-            public Builder setProblemBytes(
-                    com.google.protobuf.ByteString value) {
-                if (value == null) {
-                    throw new NullPointerException();
-                }
-                bitField0_ |= 0x00000002;
-                problem_ = value;
-                onChanged();
-                return this;
-            }
-
             private int kind_ ;
             /**
              * <pre>
              *	类型：0未设置；
              * </pre>
              *
-             * <code>required int32 kind = 3;</code>
+             * <code>required int32 kind = 2;</code>
              */
             public boolean hasKind() {
-                return ((bitField0_ & 0x00000004) != 0);
+                return ((bitField0_ & 0x00000002) != 0);
             }
             /**
              * <pre>
              *	类型：0未设置；
              * </pre>
              *
-             * <code>required int32 kind = 3;</code>
+             * <code>required int32 kind = 2;</code>
              */
             public int getKind() {
                 return kind_;
@@ -11104,10 +11125,10 @@ public final class Data4Mooc {
              *	类型：0未设置；
              * </pre>
              *
-             * <code>required int32 kind = 3;</code>
+             * <code>required int32 kind = 2;</code>
              */
             public Builder setKind(int value) {
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000002;
                 kind_ = value;
                 onChanged();
                 return this;
@@ -11117,10 +11138,10 @@ public final class Data4Mooc {
              *	类型：0未设置；
              * </pre>
              *
-             * <code>required int32 kind = 3;</code>
+             * <code>required int32 kind = 2;</code>
              */
             public Builder clearKind() {
-                bitField0_ = (bitField0_ & ~0x00000004);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 kind_ = 0;
                 onChanged();
                 return this;
@@ -11132,17 +11153,17 @@ public final class Data4Mooc {
              *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
              * </pre>
              *
-             * <code>required int32 type = 4;</code>
+             * <code>required int32 type = 3;</code>
              */
             public boolean hasType() {
-                return ((bitField0_ & 0x00000008) != 0);
+                return ((bitField0_ & 0x00000004) != 0);
             }
             /**
              * <pre>
              *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
              * </pre>
              *
-             * <code>required int32 type = 4;</code>
+             * <code>required int32 type = 3;</code>
              */
             public int getType() {
                 return type_;
@@ -11152,10 +11173,10 @@ public final class Data4Mooc {
              *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
              * </pre>
              *
-             * <code>required int32 type = 4;</code>
+             * <code>required int32 type = 3;</code>
              */
             public Builder setType(int value) {
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000004;
                 type_ = value;
                 onChanged();
                 return this;
@@ -11165,10 +11186,10 @@ public final class Data4Mooc {
              *	1:概念题，2:设计题，3:计算题，4:应用题、5:分析题、6:归纳题
              * </pre>
              *
-             * <code>required int32 type = 4;</code>
+             * <code>required int32 type = 3;</code>
              */
             public Builder clearType() {
-                bitField0_ = (bitField0_ & ~0x00000008);
+                bitField0_ = (bitField0_ & ~0x00000004);
                 type_ = 0;
                 onChanged();
                 return this;
@@ -11177,46 +11198,46 @@ public final class Data4Mooc {
             private int difficulty_ ;
             /**
              * <pre>
-             *	难度1-10
+             *	1:单选题，2:多选题，3:填空题，4:问答题，
              * </pre>
              *
-             * <code>required int32 difficulty = 5;</code>
+             * <code>required int32 difficulty = 4;</code>
              */
             public boolean hasDifficulty() {
-                return ((bitField0_ & 0x00000010) != 0);
+                return ((bitField0_ & 0x00000008) != 0);
             }
             /**
              * <pre>
-             *	难度1-10
+             *	1:单选题，2:多选题，3:填空题，4:问答题，
              * </pre>
              *
-             * <code>required int32 difficulty = 5;</code>
+             * <code>required int32 difficulty = 4;</code>
              */
             public int getDifficulty() {
                 return difficulty_;
             }
             /**
              * <pre>
-             *	难度1-10
+             *	1:单选题，2:多选题，3:填空题，4:问答题，
              * </pre>
              *
-             * <code>required int32 difficulty = 5;</code>
+             * <code>required int32 difficulty = 4;</code>
              */
             public Builder setDifficulty(int value) {
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000008;
                 difficulty_ = value;
                 onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	难度1-10
+             *	1:单选题，2:多选题，3:填空题，4:问答题，
              * </pre>
              *
-             * <code>required int32 difficulty = 5;</code>
+             * <code>required int32 difficulty = 4;</code>
              */
             public Builder clearDifficulty() {
-                bitField0_ = (bitField0_ & ~0x00000010);
+                bitField0_ = (bitField0_ & ~0x00000008);
                 difficulty_ = 0;
                 onChanged();
                 return this;
@@ -11225,9 +11246,9 @@ public final class Data4Mooc {
             private java.util.List<data4mooc.Data4Mooc.Item> items_ =
                     java.util.Collections.emptyList();
             private void ensureItemsIsMutable() {
-                if (!((bitField0_ & 0x00000020) != 0)) {
+                if (!((bitField0_ & 0x00000010) != 0)) {
                     items_ = new java.util.ArrayList<data4mooc.Data4Mooc.Item>(items_);
-                    bitField0_ |= 0x00000020;
+                    bitField0_ |= 0x00000010;
                 }
             }
 
@@ -11239,7 +11260,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public java.util.List<data4mooc.Data4Mooc.Item> getItemsList() {
                 if (itemsBuilder_ == null) {
@@ -11253,7 +11274,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public int getItemsCount() {
                 if (itemsBuilder_ == null) {
@@ -11267,7 +11288,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public data4mooc.Data4Mooc.Item getItems(int index) {
                 if (itemsBuilder_ == null) {
@@ -11281,7 +11302,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder setItems(
                     int index, data4mooc.Data4Mooc.Item value) {
@@ -11302,7 +11323,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder setItems(
                     int index, data4mooc.Data4Mooc.Item.Builder builderForValue) {
@@ -11320,7 +11341,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder addItems(data4mooc.Data4Mooc.Item value) {
                 if (itemsBuilder_ == null) {
@@ -11340,7 +11361,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder addItems(
                     int index, data4mooc.Data4Mooc.Item value) {
@@ -11361,7 +11382,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder addItems(
                     data4mooc.Data4Mooc.Item.Builder builderForValue) {
@@ -11379,7 +11400,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder addItems(
                     int index, data4mooc.Data4Mooc.Item.Builder builderForValue) {
@@ -11397,7 +11418,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder addAllItems(
                     java.lang.Iterable<? extends data4mooc.Data4Mooc.Item> values) {
@@ -11416,12 +11437,12 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder clearItems() {
                 if (itemsBuilder_ == null) {
                     items_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000020);
+                    bitField0_ = (bitField0_ & ~0x00000010);
                     onChanged();
                 } else {
                     itemsBuilder_.clear();
@@ -11433,7 +11454,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public Builder removeItems(int index) {
                 if (itemsBuilder_ == null) {
@@ -11450,7 +11471,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public data4mooc.Data4Mooc.Item.Builder getItemsBuilder(
                     int index) {
@@ -11461,7 +11482,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public data4mooc.Data4Mooc.ItemOrBuilder getItemsOrBuilder(
                     int index) {
@@ -11475,7 +11496,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public java.util.List<? extends data4mooc.Data4Mooc.ItemOrBuilder>
             getItemsOrBuilderList() {
@@ -11490,7 +11511,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public data4mooc.Data4Mooc.Item.Builder addItemsBuilder() {
                 return getItemsFieldBuilder().addBuilder(
@@ -11501,7 +11522,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public data4mooc.Data4Mooc.Item.Builder addItemsBuilder(
                     int index) {
@@ -11513,7 +11534,7 @@ public final class Data4Mooc {
              *	问题陈述（多条内容）
              * </pre>
              *
-             * <code>repeated .data4mooc.Item items = 6;</code>
+             * <code>repeated .data4mooc.Item items = 5;</code>
              */
             public java.util.List<data4mooc.Data4Mooc.Item.Builder>
             getItemsBuilderList() {
@@ -11526,7 +11547,7 @@ public final class Data4Mooc {
                     itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                             data4mooc.Data4Mooc.Item, data4mooc.Data4Mooc.Item.Builder, data4mooc.Data4Mooc.ItemOrBuilder>(
                             items_,
-                            ((bitField0_ & 0x00000020) != 0),
+                            ((bitField0_ & 0x00000010) != 0),
                             getParentForChildren(),
                             isClean());
                     items_ = null;
@@ -11537,9 +11558,9 @@ public final class Data4Mooc {
             private java.util.List<data4mooc.Data4Mooc.Result> results_ =
                     java.util.Collections.emptyList();
             private void ensureResultsIsMutable() {
-                if (!((bitField0_ & 0x00000040) != 0)) {
+                if (!((bitField0_ & 0x00000020) != 0)) {
                     results_ = new java.util.ArrayList<data4mooc.Data4Mooc.Result>(results_);
-                    bitField0_ |= 0x00000040;
+                    bitField0_ |= 0x00000020;
                 }
             }
 
@@ -11551,7 +11572,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public java.util.List<data4mooc.Data4Mooc.Result> getResultsList() {
                 if (resultsBuilder_ == null) {
@@ -11565,7 +11586,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public int getResultsCount() {
                 if (resultsBuilder_ == null) {
@@ -11579,7 +11600,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public data4mooc.Data4Mooc.Result getResults(int index) {
                 if (resultsBuilder_ == null) {
@@ -11593,7 +11614,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder setResults(
                     int index, data4mooc.Data4Mooc.Result value) {
@@ -11614,7 +11635,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder setResults(
                     int index, data4mooc.Data4Mooc.Result.Builder builderForValue) {
@@ -11632,7 +11653,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder addResults(data4mooc.Data4Mooc.Result value) {
                 if (resultsBuilder_ == null) {
@@ -11652,7 +11673,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder addResults(
                     int index, data4mooc.Data4Mooc.Result value) {
@@ -11673,7 +11694,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder addResults(
                     data4mooc.Data4Mooc.Result.Builder builderForValue) {
@@ -11691,7 +11712,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder addResults(
                     int index, data4mooc.Data4Mooc.Result.Builder builderForValue) {
@@ -11709,7 +11730,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder addAllResults(
                     java.lang.Iterable<? extends data4mooc.Data4Mooc.Result> values) {
@@ -11728,12 +11749,12 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder clearResults() {
                 if (resultsBuilder_ == null) {
                     results_ = java.util.Collections.emptyList();
-                    bitField0_ = (bitField0_ & ~0x00000040);
+                    bitField0_ = (bitField0_ & ~0x00000020);
                     onChanged();
                 } else {
                     resultsBuilder_.clear();
@@ -11745,7 +11766,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public Builder removeResults(int index) {
                 if (resultsBuilder_ == null) {
@@ -11762,7 +11783,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public data4mooc.Data4Mooc.Result.Builder getResultsBuilder(
                     int index) {
@@ -11773,7 +11794,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public data4mooc.Data4Mooc.ResultOrBuilder getResultsOrBuilder(
                     int index) {
@@ -11787,7 +11808,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public java.util.List<? extends data4mooc.Data4Mooc.ResultOrBuilder>
             getResultsOrBuilderList() {
@@ -11802,7 +11823,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public data4mooc.Data4Mooc.Result.Builder addResultsBuilder() {
                 return getResultsFieldBuilder().addBuilder(
@@ -11813,7 +11834,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public data4mooc.Data4Mooc.Result.Builder addResultsBuilder(
                     int index) {
@@ -11825,7 +11846,7 @@ public final class Data4Mooc {
              *	结果四元组的序列
              * </pre>
              *
-             * <code>repeated .data4mooc.Result results = 7;</code>
+             * <code>repeated .data4mooc.Result results = 6;</code>
              */
             public java.util.List<data4mooc.Data4Mooc.Result.Builder>
             getResultsBuilderList() {
@@ -11838,7 +11859,7 @@ public final class Data4Mooc {
                     resultsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
                             data4mooc.Data4Mooc.Result, data4mooc.Data4Mooc.Result.Builder, data4mooc.Data4Mooc.ResultOrBuilder>(
                             results_,
-                            ((bitField0_ & 0x00000040) != 0),
+                            ((bitField0_ & 0x00000020) != 0),
                             getParentForChildren(),
                             isClean());
                     results_ = null;
@@ -14175,211 +14196,230 @@ public final class Data4Mooc {
 
     }
 
-    public interface PageLayoutOrBuilder extends
-            // @@protoc_insertion_point(interface_extends:data4mooc.PageLayout)
+    public interface LayoutOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:data4mooc.Layout)
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>required int32 homeMode = 1;</code>
+         * <code>required .data4mooc.Basic basic = 1;</code>
+         */
+        boolean hasBasic();
+        /**
+         * <code>required .data4mooc.Basic basic = 1;</code>
+         */
+        data4mooc.Data4Mooc.Basic getBasic();
+        /**
+         * <code>required .data4mooc.Basic basic = 1;</code>
+         */
+        data4mooc.Data4Mooc.BasicOrBuilder getBasicOrBuilder();
+
+        /**
+         * <code>required int32 homeMode = 2;</code>
          */
         boolean hasHomeMode();
         /**
-         * <code>required int32 homeMode = 1;</code>
+         * <code>required int32 homeMode = 2;</code>
          */
         int getHomeMode();
 
         /**
-         * <code>required int32 homeIndex = 2;</code>
+         * <code>required int32 homeIndex = 3;</code>
          */
         boolean hasHomeIndex();
         /**
-         * <code>required int32 homeIndex = 2;</code>
+         * <code>required int32 homeIndex = 3;</code>
          */
         int getHomeIndex();
 
         /**
-         * <code>required int32 homeFont = 3;</code>
+         * <pre>
+         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+         * </pre>
+         *
+         * <code>required .data4mooc.Font homeFont = 4;</code>
          */
         boolean hasHomeFont();
         /**
-         * <code>required int32 homeFont = 3;</code>
+         * <pre>
+         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+         * </pre>
+         *
+         * <code>required .data4mooc.Font homeFont = 4;</code>
          */
-        int getHomeFont();
-
-        /**
-         * <code>required int32 homeColor = 4;</code>
-         */
-        boolean hasHomeColor();
-        /**
-         * <code>required int32 homeColor = 4;</code>
-         */
-        int getHomeColor();
-
-        /**
-         * <code>required int32 homeSize = 5;</code>
-         */
-        boolean hasHomeSize();
-        /**
-         * <code>required int32 homeSize = 5;</code>
-         */
-        int getHomeSize();
-
+        data4mooc.Data4Mooc.Font getHomeFont();
         /**
          * <pre>
          *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-         *	目录名字体、颜色和大小
          * </pre>
          *
-         * <code>required int32 exampleMode = 6;</code>
+         * <code>required .data4mooc.Font homeFont = 4;</code>
+         */
+        data4mooc.Data4Mooc.FontOrBuilder getHomeFontOrBuilder();
+
+        /**
+         * <code>required int32 exampleMode = 5;</code>
          */
         boolean hasExampleMode();
         /**
-         * <pre>
-         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-         *	目录名字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 exampleMode = 6;</code>
+         * <code>required int32 exampleMode = 5;</code>
          */
         int getExampleMode();
 
         /**
-         * <code>required int32 exampleFont = 7;</code>
+         * <pre>
+         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
          */
         boolean hasExampleFont();
         /**
-         * <code>required int32 exampleFont = 7;</code>
+         * <pre>
+         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
          */
-        int getExampleFont();
-
-        /**
-         * <code>required int32 exampleColor = 8;</code>
-         */
-        boolean hasExampleColor();
-        /**
-         * <code>required int32 exampleColor = 8;</code>
-         */
-        int getExampleColor();
-
-        /**
-         * <code>required int32 exampleSize = 9;</code>
-         */
-        boolean hasExampleSize();
-        /**
-         * <code>required int32 exampleSize = 9;</code>
-         */
-        int getExampleSize();
-
+        data4mooc.Data4Mooc.Font getExampleFont();
         /**
          * <pre>
          *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
          * </pre>
          *
-         * <code>required int32 examineMode = 10;</code>
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
          */
-        boolean hasExamineMode();
-        /**
-         * <pre>
-         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 examineMode = 10;</code>
-         */
-        int getExamineMode();
+        data4mooc.Data4Mooc.FontOrBuilder getExampleFontOrBuilder();
 
         /**
-         * <code>required int32 examineFont = 11;</code>
+         * <code>required int32 testMode = 7;</code>
          */
-        boolean hasExamineFont();
+        boolean hasTestMode();
         /**
-         * <code>required int32 examineFont = 11;</code>
+         * <code>required int32 testMode = 7;</code>
          */
-        int getExamineFont();
-
-        /**
-         * <code>required int32 examineColor = 12;</code>
-         */
-        boolean hasExamineColor();
-        /**
-         * <code>required int32 examineColor = 12;</code>
-         */
-        int getExamineColor();
-
-        /**
-         * <code>required int32 examineSize = 13;</code>
-         */
-        boolean hasExamineSize();
-        /**
-         * <code>required int32 examineSize = 13;</code>
-         */
-        int getExamineSize();
+        int getTestMode();
 
         /**
          * <pre>
          *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
          * </pre>
          *
-         * <code>required int32 qandaMode = 14;</code>
+         * <code>required .data4mooc.Font testFont = 8;</code>
+         */
+        boolean hasTestFont();
+        /**
+         * <pre>
+         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font testFont = 8;</code>
+         */
+        data4mooc.Data4Mooc.Font getTestFont();
+        /**
+         * <pre>
+         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font testFont = 8;</code>
+         */
+        data4mooc.Data4Mooc.FontOrBuilder getTestFontOrBuilder();
+
+        /**
+         * <code>required int32 qandaMode = 9;</code>
          */
         boolean hasQandaMode();
         /**
-         * <pre>
-         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 qandaMode = 14;</code>
+         * <code>required int32 qandaMode = 9;</code>
          */
         int getQandaMode();
 
         /**
-         * <code>required int32 qandaFont = 15;</code>
+         * <pre>
+         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
          */
         boolean hasQandaFont();
         /**
-         * <code>required int32 qandaFont = 15;</code>
+         * <pre>
+         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
          */
-        int getQandaFont();
-
-        /**
-         * <code>required int32 qandaColor = 16;</code>
-         */
-        boolean hasQandaColor();
-        /**
-         * <code>required int32 qandaColor = 16;</code>
-         */
-        int getQandaColor();
-
-        /**
-         * <code>required int32 qandaSize = 17;</code>
-         */
-        boolean hasQandaSize();
-        /**
-         * <code>required int32 qandaSize = 17;</code>
-         */
-        int getQandaSize();
-
+        data4mooc.Data4Mooc.Font getQandaFont();
         /**
          * <pre>
          *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
          * </pre>
          *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
+         */
+        data4mooc.Data4Mooc.FontOrBuilder getQandaFontOrBuilder();
+
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        boolean hasLayoutTopic();
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        data4mooc.Data4Mooc.TopicLayout getLayoutTopic();
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        data4mooc.Data4Mooc.TopicLayoutOrBuilder getLayoutTopicOrBuilder();
+
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        boolean hasLayoutExample();
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        data4mooc.Data4Mooc.ExampleLayout getLayoutExample();
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        data4mooc.Data4Mooc.ExampleLayoutOrBuilder getLayoutExampleOrBuilder();
+
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        boolean hasLayoutTest();
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        data4mooc.Data4Mooc.TestLayout getLayoutTest();
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        data4mooc.Data4Mooc.TestLayoutOrBuilder getLayoutTestOrBuilder();
+
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        boolean hasLayoutQA();
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        data4mooc.Data4Mooc.QALayout getLayoutQA();
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        data4mooc.Data4Mooc.QALayoutOrBuilder getLayoutQAOrBuilder();
+
+        /**
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         java.util.List<java.lang.Integer> getTopicLayoutList();
         /**
-         * <pre>
-         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         int getTopicLayoutCount();
         /**
-         * <pre>
-         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         int getTopicLayout(int index);
 
@@ -14388,7 +14428,7 @@ public final class Data4Mooc {
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         java.util.List<java.lang.Integer> getExampleLayoutList();
         /**
@@ -14396,7 +14436,7 @@ public final class Data4Mooc {
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         int getExampleLayoutCount();
         /**
@@ -14404,7 +14444,7 @@ public final class Data4Mooc {
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         int getExampleLayout(int index);
     }
@@ -14413,18 +14453,18 @@ public final class Data4Mooc {
      *	各种页面布局
      * </pre>
      *
-     * Protobuf type {@code data4mooc.PageLayout}
+     * Protobuf type {@code data4mooc.Layout}
      */
-    public  static final class PageLayout extends
+    public  static final class Layout extends
             com.google.protobuf.GeneratedMessageV3 implements
-            // @@protoc_insertion_point(message_implements:data4mooc.PageLayout)
-            PageLayoutOrBuilder {
+            // @@protoc_insertion_point(message_implements:data4mooc.Layout)
+            LayoutOrBuilder {
         private static final long serialVersionUID = 0L;
-        // Use PageLayout.newBuilder() to construct.
-        private PageLayout(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        // Use Layout.newBuilder() to construct.
+        private Layout(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
             super(builder);
         }
-        private PageLayout() {
+        private Layout() {
             topicLayout_ = emptyIntList();
             exampleLayout_ = emptyIntList();
         }
@@ -14433,7 +14473,7 @@ public final class Data4Mooc {
         @SuppressWarnings({"unused"})
         protected java.lang.Object newInstance(
                 UnusedPrivateParameter unused) {
-            return new PageLayout();
+            return new Layout();
         }
 
         @java.lang.Override
@@ -14441,7 +14481,7 @@ public final class Data4Mooc {
         getUnknownFields() {
             return this.unknownFields;
         }
-        private PageLayout(
+        private Layout(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
@@ -14460,105 +14500,162 @@ public final class Data4Mooc {
                         case 0:
                             done = true;
                             break;
-                        case 8: {
+                        case 10: {
+                            data4mooc.Data4Mooc.Basic.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) != 0)) {
+                                subBuilder = basic_.toBuilder();
+                            }
+                            basic_ = input.readMessage(data4mooc.Data4Mooc.Basic.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(basic_);
+                                basic_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000001;
-                            homeMode_ = input.readInt32();
                             break;
                         }
                         case 16: {
                             bitField0_ |= 0x00000002;
-                            homeIndex_ = input.readInt32();
+                            homeMode_ = input.readInt32();
                             break;
                         }
                         case 24: {
                             bitField0_ |= 0x00000004;
-                            homeFont_ = input.readInt32();
+                            homeIndex_ = input.readInt32();
                             break;
                         }
-                        case 32: {
+                        case 34: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000008) != 0)) {
+                                subBuilder = homeFont_.toBuilder();
+                            }
+                            homeFont_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(homeFont_);
+                                homeFont_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000008;
-                            homeColor_ = input.readInt32();
                             break;
                         }
                         case 40: {
                             bitField0_ |= 0x00000010;
-                            homeSize_ = input.readInt32();
+                            exampleMode_ = input.readInt32();
                             break;
                         }
-                        case 48: {
+                        case 50: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000020) != 0)) {
+                                subBuilder = exampleFont_.toBuilder();
+                            }
+                            exampleFont_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(exampleFont_);
+                                exampleFont_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000020;
-                            exampleMode_ = input.readInt32();
                             break;
                         }
                         case 56: {
                             bitField0_ |= 0x00000040;
-                            exampleFont_ = input.readInt32();
+                            testMode_ = input.readInt32();
                             break;
                         }
-                        case 64: {
+                        case 66: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000080) != 0)) {
+                                subBuilder = testFont_.toBuilder();
+                            }
+                            testFont_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(testFont_);
+                                testFont_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000080;
-                            exampleColor_ = input.readInt32();
                             break;
                         }
                         case 72: {
                             bitField0_ |= 0x00000100;
-                            exampleSize_ = input.readInt32();
-                            break;
-                        }
-                        case 80: {
-                            bitField0_ |= 0x00000200;
-                            examineMode_ = input.readInt32();
-                            break;
-                        }
-                        case 88: {
-                            bitField0_ |= 0x00000400;
-                            examineFont_ = input.readInt32();
-                            break;
-                        }
-                        case 96: {
-                            bitField0_ |= 0x00000800;
-                            examineColor_ = input.readInt32();
-                            break;
-                        }
-                        case 104: {
-                            bitField0_ |= 0x00001000;
-                            examineSize_ = input.readInt32();
-                            break;
-                        }
-                        case 112: {
-                            bitField0_ |= 0x00002000;
                             qandaMode_ = input.readInt32();
                             break;
                         }
+                        case 82: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000200) != 0)) {
+                                subBuilder = qandaFont_.toBuilder();
+                            }
+                            qandaFont_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(qandaFont_);
+                                qandaFont_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000200;
+                            break;
+                        }
+                        case 90: {
+                            data4mooc.Data4Mooc.TopicLayout.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000400) != 0)) {
+                                subBuilder = layoutTopic_.toBuilder();
+                            }
+                            layoutTopic_ = input.readMessage(data4mooc.Data4Mooc.TopicLayout.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(layoutTopic_);
+                                layoutTopic_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000400;
+                            break;
+                        }
+                        case 98: {
+                            data4mooc.Data4Mooc.ExampleLayout.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000800) != 0)) {
+                                subBuilder = layoutExample_.toBuilder();
+                            }
+                            layoutExample_ = input.readMessage(data4mooc.Data4Mooc.ExampleLayout.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(layoutExample_);
+                                layoutExample_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000800;
+                            break;
+                        }
+                        case 106: {
+                            data4mooc.Data4Mooc.TestLayout.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00001000) != 0)) {
+                                subBuilder = layoutTest_.toBuilder();
+                            }
+                            layoutTest_ = input.readMessage(data4mooc.Data4Mooc.TestLayout.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(layoutTest_);
+                                layoutTest_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00001000;
+                            break;
+                        }
+                        case 114: {
+                            data4mooc.Data4Mooc.QALayout.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00002000) != 0)) {
+                                subBuilder = layoutQA_.toBuilder();
+                            }
+                            layoutQA_ = input.readMessage(data4mooc.Data4Mooc.QALayout.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(layoutQA_);
+                                layoutQA_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00002000;
+                            break;
+                        }
                         case 120: {
-                            bitField0_ |= 0x00004000;
-                            qandaFont_ = input.readInt32();
-                            break;
-                        }
-                        case 128: {
-                            bitField0_ |= 0x00008000;
-                            qandaColor_ = input.readInt32();
-                            break;
-                        }
-                        case 136: {
-                            bitField0_ |= 0x00010000;
-                            qandaSize_ = input.readInt32();
-                            break;
-                        }
-                        case 144: {
-                            if (!((mutable_bitField0_ & 0x00020000) != 0)) {
+                            if (!((mutable_bitField0_ & 0x00004000) != 0)) {
                                 topicLayout_ = newIntList();
-                                mutable_bitField0_ |= 0x00020000;
+                                mutable_bitField0_ |= 0x00004000;
                             }
                             topicLayout_.addInt(input.readInt32());
                             break;
                         }
-                        case 146: {
+                        case 122: {
                             int length = input.readRawVarint32();
                             int limit = input.pushLimit(length);
-                            if (!((mutable_bitField0_ & 0x00020000) != 0) && input.getBytesUntilLimit() > 0) {
+                            if (!((mutable_bitField0_ & 0x00004000) != 0) && input.getBytesUntilLimit() > 0) {
                                 topicLayout_ = newIntList();
-                                mutable_bitField0_ |= 0x00020000;
+                                mutable_bitField0_ |= 0x00004000;
                             }
                             while (input.getBytesUntilLimit() > 0) {
                                 topicLayout_.addInt(input.readInt32());
@@ -14566,20 +14663,20 @@ public final class Data4Mooc {
                             input.popLimit(limit);
                             break;
                         }
-                        case 152: {
-                            if (!((mutable_bitField0_ & 0x00040000) != 0)) {
+                        case 128: {
+                            if (!((mutable_bitField0_ & 0x00008000) != 0)) {
                                 exampleLayout_ = newIntList();
-                                mutable_bitField0_ |= 0x00040000;
+                                mutable_bitField0_ |= 0x00008000;
                             }
                             exampleLayout_.addInt(input.readInt32());
                             break;
                         }
-                        case 154: {
+                        case 130: {
                             int length = input.readRawVarint32();
                             int limit = input.pushLimit(length);
-                            if (!((mutable_bitField0_ & 0x00040000) != 0) && input.getBytesUntilLimit() > 0) {
+                            if (!((mutable_bitField0_ & 0x00008000) != 0) && input.getBytesUntilLimit() > 0) {
                                 exampleLayout_ = newIntList();
-                                mutable_bitField0_ |= 0x00040000;
+                                mutable_bitField0_ |= 0x00008000;
                             }
                             while (input.getBytesUntilLimit() > 0) {
                                 exampleLayout_.addInt(input.readInt32());
@@ -14602,10 +14699,10 @@ public final class Data4Mooc {
                 throw new com.google.protobuf.InvalidProtocolBufferException(
                         e).setUnfinishedMessage(this);
             } finally {
-                if (((mutable_bitField0_ & 0x00020000) != 0)) {
+                if (((mutable_bitField0_ & 0x00004000) != 0)) {
                     topicLayout_.makeImmutable(); // C
                 }
-                if (((mutable_bitField0_ & 0x00040000) != 0)) {
+                if (((mutable_bitField0_ & 0x00008000) != 0)) {
                     exampleLayout_.makeImmutable(); // C
                 }
                 this.unknownFields = unknownFields.build();
@@ -14614,341 +14711,360 @@ public final class Data4Mooc {
         }
         public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-            return data4mooc.Data4Mooc.internal_static_data4mooc_PageLayout_descriptor;
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Layout_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-            return data4mooc.Data4Mooc.internal_static_data4mooc_PageLayout_fieldAccessorTable
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Layout_fieldAccessorTable
                     .ensureFieldAccessorsInitialized(
-                            data4mooc.Data4Mooc.PageLayout.class, data4mooc.Data4Mooc.PageLayout.Builder.class);
+                            data4mooc.Data4Mooc.Layout.class, data4mooc.Data4Mooc.Layout.Builder.class);
         }
 
         private int bitField0_;
-        public static final int HOMEMODE_FIELD_NUMBER = 1;
-        private int homeMode_;
+        public static final int BASIC_FIELD_NUMBER = 1;
+        private data4mooc.Data4Mooc.Basic basic_;
         /**
-         * <code>required int32 homeMode = 1;</code>
+         * <code>required .data4mooc.Basic basic = 1;</code>
          */
-        public boolean hasHomeMode() {
+        public boolean hasBasic() {
             return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 homeMode = 1;</code>
+         * <code>required .data4mooc.Basic basic = 1;</code>
+         */
+        public data4mooc.Data4Mooc.Basic getBasic() {
+            return basic_ == null ? data4mooc.Data4Mooc.Basic.getDefaultInstance() : basic_;
+        }
+        /**
+         * <code>required .data4mooc.Basic basic = 1;</code>
+         */
+        public data4mooc.Data4Mooc.BasicOrBuilder getBasicOrBuilder() {
+            return basic_ == null ? data4mooc.Data4Mooc.Basic.getDefaultInstance() : basic_;
+        }
+
+        public static final int HOMEMODE_FIELD_NUMBER = 2;
+        private int homeMode_;
+        /**
+         * <code>required int32 homeMode = 2;</code>
+         */
+        public boolean hasHomeMode() {
+            return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>required int32 homeMode = 2;</code>
          */
         public int getHomeMode() {
             return homeMode_;
         }
 
-        public static final int HOMEINDEX_FIELD_NUMBER = 2;
+        public static final int HOMEINDEX_FIELD_NUMBER = 3;
         private int homeIndex_;
         /**
-         * <code>required int32 homeIndex = 2;</code>
+         * <code>required int32 homeIndex = 3;</code>
          */
         public boolean hasHomeIndex() {
-            return ((bitField0_ & 0x00000002) != 0);
+            return ((bitField0_ & 0x00000004) != 0);
         }
         /**
-         * <code>required int32 homeIndex = 2;</code>
+         * <code>required int32 homeIndex = 3;</code>
          */
         public int getHomeIndex() {
             return homeIndex_;
         }
 
-        public static final int HOMEFONT_FIELD_NUMBER = 3;
-        private int homeFont_;
+        public static final int HOMEFONT_FIELD_NUMBER = 4;
+        private data4mooc.Data4Mooc.Font homeFont_;
         /**
-         * <code>required int32 homeFont = 3;</code>
+         * <pre>
+         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+         * </pre>
+         *
+         * <code>required .data4mooc.Font homeFont = 4;</code>
          */
         public boolean hasHomeFont() {
-            return ((bitField0_ & 0x00000004) != 0);
-        }
-        /**
-         * <code>required int32 homeFont = 3;</code>
-         */
-        public int getHomeFont() {
-            return homeFont_;
-        }
-
-        public static final int HOMECOLOR_FIELD_NUMBER = 4;
-        private int homeColor_;
-        /**
-         * <code>required int32 homeColor = 4;</code>
-         */
-        public boolean hasHomeColor() {
             return ((bitField0_ & 0x00000008) != 0);
         }
         /**
-         * <code>required int32 homeColor = 4;</code>
+         * <pre>
+         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+         * </pre>
+         *
+         * <code>required .data4mooc.Font homeFont = 4;</code>
          */
-        public int getHomeColor() {
-            return homeColor_;
+        public data4mooc.Data4Mooc.Font getHomeFont() {
+            return homeFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : homeFont_;
+        }
+        /**
+         * <pre>
+         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+         * </pre>
+         *
+         * <code>required .data4mooc.Font homeFont = 4;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getHomeFontOrBuilder() {
+            return homeFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : homeFont_;
         }
 
-        public static final int HOMESIZE_FIELD_NUMBER = 5;
-        private int homeSize_;
+        public static final int EXAMPLEMODE_FIELD_NUMBER = 5;
+        private int exampleMode_;
         /**
-         * <code>required int32 homeSize = 5;</code>
+         * <code>required int32 exampleMode = 5;</code>
          */
-        public boolean hasHomeSize() {
+        public boolean hasExampleMode() {
             return ((bitField0_ & 0x00000010) != 0);
         }
         /**
-         * <code>required int32 homeSize = 5;</code>
-         */
-        public int getHomeSize() {
-            return homeSize_;
-        }
-
-        public static final int EXAMPLEMODE_FIELD_NUMBER = 6;
-        private int exampleMode_;
-        /**
-         * <pre>
-         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-         *	目录名字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 exampleMode = 6;</code>
-         */
-        public boolean hasExampleMode() {
-            return ((bitField0_ & 0x00000020) != 0);
-        }
-        /**
-         * <pre>
-         *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-         *	目录名字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 exampleMode = 6;</code>
+         * <code>required int32 exampleMode = 5;</code>
          */
         public int getExampleMode() {
             return exampleMode_;
         }
 
-        public static final int EXAMPLEFONT_FIELD_NUMBER = 7;
-        private int exampleFont_;
+        public static final int EXAMPLEFONT_FIELD_NUMBER = 6;
+        private data4mooc.Data4Mooc.Font exampleFont_;
         /**
-         * <code>required int32 exampleFont = 7;</code>
+         * <pre>
+         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
          */
         public boolean hasExampleFont() {
+            return ((bitField0_ & 0x00000020) != 0);
+        }
+        /**
+         * <pre>
+         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
+         */
+        public data4mooc.Data4Mooc.Font getExampleFont() {
+            return exampleFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : exampleFont_;
+        }
+        /**
+         * <pre>
+         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font exampleFont = 6;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getExampleFontOrBuilder() {
+            return exampleFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : exampleFont_;
+        }
+
+        public static final int TESTMODE_FIELD_NUMBER = 7;
+        private int testMode_;
+        /**
+         * <code>required int32 testMode = 7;</code>
+         */
+        public boolean hasTestMode() {
             return ((bitField0_ & 0x00000040) != 0);
         }
         /**
-         * <code>required int32 exampleFont = 7;</code>
+         * <code>required int32 testMode = 7;</code>
          */
-        public int getExampleFont() {
-            return exampleFont_;
+        public int getTestMode() {
+            return testMode_;
         }
 
-        public static final int EXAMPLECOLOR_FIELD_NUMBER = 8;
-        private int exampleColor_;
+        public static final int TESTFONT_FIELD_NUMBER = 8;
+        private data4mooc.Data4Mooc.Font testFont_;
         /**
-         * <code>required int32 exampleColor = 8;</code>
+         * <pre>
+         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font testFont = 8;</code>
          */
-        public boolean hasExampleColor() {
+        public boolean hasTestFont() {
             return ((bitField0_ & 0x00000080) != 0);
         }
         /**
-         * <code>required int32 exampleColor = 8;</code>
+         * <pre>
+         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font testFont = 8;</code>
          */
-        public int getExampleColor() {
-            return exampleColor_;
+        public data4mooc.Data4Mooc.Font getTestFont() {
+            return testFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : testFont_;
+        }
+        /**
+         * <pre>
+         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font testFont = 8;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getTestFontOrBuilder() {
+            return testFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : testFont_;
         }
 
-        public static final int EXAMPLESIZE_FIELD_NUMBER = 9;
-        private int exampleSize_;
+        public static final int QANDAMODE_FIELD_NUMBER = 9;
+        private int qandaMode_;
         /**
-         * <code>required int32 exampleSize = 9;</code>
+         * <code>required int32 qandaMode = 9;</code>
          */
-        public boolean hasExampleSize() {
+        public boolean hasQandaMode() {
             return ((bitField0_ & 0x00000100) != 0);
         }
         /**
-         * <code>required int32 exampleSize = 9;</code>
-         */
-        public int getExampleSize() {
-            return exampleSize_;
-        }
-
-        public static final int EXAMINEMODE_FIELD_NUMBER = 10;
-        private int examineMode_;
-        /**
-         * <pre>
-         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 examineMode = 10;</code>
-         */
-        public boolean hasExamineMode() {
-            return ((bitField0_ & 0x00000200) != 0);
-        }
-        /**
-         * <pre>
-         *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 examineMode = 10;</code>
-         */
-        public int getExamineMode() {
-            return examineMode_;
-        }
-
-        public static final int EXAMINEFONT_FIELD_NUMBER = 11;
-        private int examineFont_;
-        /**
-         * <code>required int32 examineFont = 11;</code>
-         */
-        public boolean hasExamineFont() {
-            return ((bitField0_ & 0x00000400) != 0);
-        }
-        /**
-         * <code>required int32 examineFont = 11;</code>
-         */
-        public int getExamineFont() {
-            return examineFont_;
-        }
-
-        public static final int EXAMINECOLOR_FIELD_NUMBER = 12;
-        private int examineColor_;
-        /**
-         * <code>required int32 examineColor = 12;</code>
-         */
-        public boolean hasExamineColor() {
-            return ((bitField0_ & 0x00000800) != 0);
-        }
-        /**
-         * <code>required int32 examineColor = 12;</code>
-         */
-        public int getExamineColor() {
-            return examineColor_;
-        }
-
-        public static final int EXAMINESIZE_FIELD_NUMBER = 13;
-        private int examineSize_;
-        /**
-         * <code>required int32 examineSize = 13;</code>
-         */
-        public boolean hasExamineSize() {
-            return ((bitField0_ & 0x00001000) != 0);
-        }
-        /**
-         * <code>required int32 examineSize = 13;</code>
-         */
-        public int getExamineSize() {
-            return examineSize_;
-        }
-
-        public static final int QANDAMODE_FIELD_NUMBER = 14;
-        private int qandaMode_;
-        /**
-         * <pre>
-         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 qandaMode = 14;</code>
-         */
-        public boolean hasQandaMode() {
-            return ((bitField0_ & 0x00002000) != 0);
-        }
-        /**
-         * <pre>
-         *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>required int32 qandaMode = 14;</code>
+         * <code>required int32 qandaMode = 9;</code>
          */
         public int getQandaMode() {
             return qandaMode_;
         }
 
-        public static final int QANDAFONT_FIELD_NUMBER = 15;
-        private int qandaFont_;
-        /**
-         * <code>required int32 qandaFont = 15;</code>
-         */
-        public boolean hasQandaFont() {
-            return ((bitField0_ & 0x00004000) != 0);
-        }
-        /**
-         * <code>required int32 qandaFont = 15;</code>
-         */
-        public int getQandaFont() {
-            return qandaFont_;
-        }
-
-        public static final int QANDACOLOR_FIELD_NUMBER = 16;
-        private int qandaColor_;
-        /**
-         * <code>required int32 qandaColor = 16;</code>
-         */
-        public boolean hasQandaColor() {
-            return ((bitField0_ & 0x00008000) != 0);
-        }
-        /**
-         * <code>required int32 qandaColor = 16;</code>
-         */
-        public int getQandaColor() {
-            return qandaColor_;
-        }
-
-        public static final int QANDASIZE_FIELD_NUMBER = 17;
-        private int qandaSize_;
-        /**
-         * <code>required int32 qandaSize = 17;</code>
-         */
-        public boolean hasQandaSize() {
-            return ((bitField0_ & 0x00010000) != 0);
-        }
-        /**
-         * <code>required int32 qandaSize = 17;</code>
-         */
-        public int getQandaSize() {
-            return qandaSize_;
-        }
-
-        public static final int TOPICLAYOUT_FIELD_NUMBER = 18;
-        private com.google.protobuf.Internal.IntList topicLayout_;
+        public static final int QANDAFONT_FIELD_NUMBER = 10;
+        private data4mooc.Data4Mooc.Font qandaFont_;
         /**
          * <pre>
          *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
          * </pre>
          *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
+         */
+        public boolean hasQandaFont() {
+            return ((bitField0_ & 0x00000200) != 0);
+        }
+        /**
+         * <pre>
+         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
+         */
+        public data4mooc.Data4Mooc.Font getQandaFont() {
+            return qandaFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : qandaFont_;
+        }
+        /**
+         * <pre>
+         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+         * </pre>
+         *
+         * <code>required .data4mooc.Font qandaFont = 10;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getQandaFontOrBuilder() {
+            return qandaFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : qandaFont_;
+        }
+
+        public static final int LAYOUTTOPIC_FIELD_NUMBER = 11;
+        private data4mooc.Data4Mooc.TopicLayout layoutTopic_;
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        public boolean hasLayoutTopic() {
+            return ((bitField0_ & 0x00000400) != 0);
+        }
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        public data4mooc.Data4Mooc.TopicLayout getLayoutTopic() {
+            return layoutTopic_ == null ? data4mooc.Data4Mooc.TopicLayout.getDefaultInstance() : layoutTopic_;
+        }
+        /**
+         * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+         */
+        public data4mooc.Data4Mooc.TopicLayoutOrBuilder getLayoutTopicOrBuilder() {
+            return layoutTopic_ == null ? data4mooc.Data4Mooc.TopicLayout.getDefaultInstance() : layoutTopic_;
+        }
+
+        public static final int LAYOUTEXAMPLE_FIELD_NUMBER = 12;
+        private data4mooc.Data4Mooc.ExampleLayout layoutExample_;
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        public boolean hasLayoutExample() {
+            return ((bitField0_ & 0x00000800) != 0);
+        }
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        public data4mooc.Data4Mooc.ExampleLayout getLayoutExample() {
+            return layoutExample_ == null ? data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance() : layoutExample_;
+        }
+        /**
+         * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+         */
+        public data4mooc.Data4Mooc.ExampleLayoutOrBuilder getLayoutExampleOrBuilder() {
+            return layoutExample_ == null ? data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance() : layoutExample_;
+        }
+
+        public static final int LAYOUTTEST_FIELD_NUMBER = 13;
+        private data4mooc.Data4Mooc.TestLayout layoutTest_;
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        public boolean hasLayoutTest() {
+            return ((bitField0_ & 0x00001000) != 0);
+        }
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        public data4mooc.Data4Mooc.TestLayout getLayoutTest() {
+            return layoutTest_ == null ? data4mooc.Data4Mooc.TestLayout.getDefaultInstance() : layoutTest_;
+        }
+        /**
+         * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+         */
+        public data4mooc.Data4Mooc.TestLayoutOrBuilder getLayoutTestOrBuilder() {
+            return layoutTest_ == null ? data4mooc.Data4Mooc.TestLayout.getDefaultInstance() : layoutTest_;
+        }
+
+        public static final int LAYOUTQA_FIELD_NUMBER = 14;
+        private data4mooc.Data4Mooc.QALayout layoutQA_;
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        public boolean hasLayoutQA() {
+            return ((bitField0_ & 0x00002000) != 0);
+        }
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        public data4mooc.Data4Mooc.QALayout getLayoutQA() {
+            return layoutQA_ == null ? data4mooc.Data4Mooc.QALayout.getDefaultInstance() : layoutQA_;
+        }
+        /**
+         * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+         */
+        public data4mooc.Data4Mooc.QALayoutOrBuilder getLayoutQAOrBuilder() {
+            return layoutQA_ == null ? data4mooc.Data4Mooc.QALayout.getDefaultInstance() : layoutQA_;
+        }
+
+        public static final int TOPICLAYOUT_FIELD_NUMBER = 15;
+        private com.google.protobuf.Internal.IntList topicLayout_;
+        /**
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         public java.util.List<java.lang.Integer>
         getTopicLayoutList() {
             return topicLayout_;
         }
         /**
-         * <pre>
-         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         public int getTopicLayoutCount() {
             return topicLayout_.size();
         }
         /**
-         * <pre>
-         *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-         * </pre>
-         *
-         * <code>repeated int32 topicLayout = 18;</code>
+         * <code>repeated int32 topicLayout = 15;</code>
          */
         public int getTopicLayout(int index) {
             return topicLayout_.getInt(index);
         }
 
-        public static final int EXAMPLELAYOUT_FIELD_NUMBER = 19;
+        public static final int EXAMPLELAYOUT_FIELD_NUMBER = 16;
         private com.google.protobuf.Internal.IntList exampleLayout_;
         /**
          * <pre>
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         public java.util.List<java.lang.Integer>
         getExampleLayoutList() {
@@ -14959,7 +15075,7 @@ public final class Data4Mooc {
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         public int getExampleLayoutCount() {
             return exampleLayout_.size();
@@ -14969,7 +15085,7 @@ public final class Data4Mooc {
          *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
          * </pre>
          *
-         * <code>repeated int32 exampleLayout = 19;</code>
+         * <code>repeated int32 exampleLayout = 16;</code>
          */
         public int getExampleLayout(int index) {
             return exampleLayout_.getInt(index);
@@ -14982,6 +15098,10 @@ public final class Data4Mooc {
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
+            if (!hasBasic()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
             if (!hasHomeMode()) {
                 memoizedIsInitialized = 0;
                 return false;
@@ -14994,14 +15114,6 @@ public final class Data4Mooc {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasHomeColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasHomeSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
             if (!hasExampleMode()) {
                 memoizedIsInitialized = 0;
                 return false;
@@ -15010,27 +15122,11 @@ public final class Data4Mooc {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasExampleColor()) {
+            if (!hasTestMode()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasExampleSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasExamineMode()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasExamineFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasExamineColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasExamineSize()) {
+            if (!hasTestFont()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -15042,11 +15138,55 @@ public final class Data4Mooc {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQandaColor()) {
+            if (!hasLayoutTopic()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQandaSize()) {
+            if (!hasLayoutExample()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasLayoutTest()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasLayoutQA()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getBasic().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getHomeFont().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getExampleFont().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getTestFont().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getQandaFont().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getLayoutTopic().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getLayoutExample().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getLayoutTest().isInitialized()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!getLayoutQA().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -15058,61 +15198,52 @@ public final class Data4Mooc {
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
             if (((bitField0_ & 0x00000001) != 0)) {
-                output.writeInt32(1, homeMode_);
+                output.writeMessage(1, getBasic());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                output.writeInt32(2, homeIndex_);
+                output.writeInt32(2, homeMode_);
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, homeFont_);
+                output.writeInt32(3, homeIndex_);
             }
             if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, homeColor_);
+                output.writeMessage(4, getHomeFont());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, homeSize_);
+                output.writeInt32(5, exampleMode_);
             }
             if (((bitField0_ & 0x00000020) != 0)) {
-                output.writeInt32(6, exampleMode_);
+                output.writeMessage(6, getExampleFont());
             }
             if (((bitField0_ & 0x00000040) != 0)) {
-                output.writeInt32(7, exampleFont_);
+                output.writeInt32(7, testMode_);
             }
             if (((bitField0_ & 0x00000080) != 0)) {
-                output.writeInt32(8, exampleColor_);
+                output.writeMessage(8, getTestFont());
             }
             if (((bitField0_ & 0x00000100) != 0)) {
-                output.writeInt32(9, exampleSize_);
+                output.writeInt32(9, qandaMode_);
             }
             if (((bitField0_ & 0x00000200) != 0)) {
-                output.writeInt32(10, examineMode_);
+                output.writeMessage(10, getQandaFont());
             }
             if (((bitField0_ & 0x00000400) != 0)) {
-                output.writeInt32(11, examineFont_);
+                output.writeMessage(11, getLayoutTopic());
             }
             if (((bitField0_ & 0x00000800) != 0)) {
-                output.writeInt32(12, examineColor_);
+                output.writeMessage(12, getLayoutExample());
             }
             if (((bitField0_ & 0x00001000) != 0)) {
-                output.writeInt32(13, examineSize_);
+                output.writeMessage(13, getLayoutTest());
             }
             if (((bitField0_ & 0x00002000) != 0)) {
-                output.writeInt32(14, qandaMode_);
-            }
-            if (((bitField0_ & 0x00004000) != 0)) {
-                output.writeInt32(15, qandaFont_);
-            }
-            if (((bitField0_ & 0x00008000) != 0)) {
-                output.writeInt32(16, qandaColor_);
-            }
-            if (((bitField0_ & 0x00010000) != 0)) {
-                output.writeInt32(17, qandaSize_);
+                output.writeMessage(14, getLayoutQA());
             }
             for (int i = 0; i < topicLayout_.size(); i++) {
-                output.writeInt32(18, topicLayout_.getInt(i));
+                output.writeInt32(15, topicLayout_.getInt(i));
             }
             for (int i = 0; i < exampleLayout_.size(); i++) {
-                output.writeInt32(19, exampleLayout_.getInt(i));
+                output.writeInt32(16, exampleLayout_.getInt(i));
             }
             unknownFields.writeTo(output);
         }
@@ -15125,71 +15256,59 @@ public final class Data4Mooc {
             size = 0;
             if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(1, homeMode_);
+                        .computeMessageSize(1, getBasic());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(2, homeIndex_);
+                        .computeInt32Size(2, homeMode_);
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, homeFont_);
+                        .computeInt32Size(3, homeIndex_);
             }
             if (((bitField0_ & 0x00000008) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, homeColor_);
+                        .computeMessageSize(4, getHomeFont());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, homeSize_);
+                        .computeInt32Size(5, exampleMode_);
             }
             if (((bitField0_ & 0x00000020) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, exampleMode_);
+                        .computeMessageSize(6, getExampleFont());
             }
             if (((bitField0_ & 0x00000040) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(7, exampleFont_);
+                        .computeInt32Size(7, testMode_);
             }
             if (((bitField0_ & 0x00000080) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(8, exampleColor_);
+                        .computeMessageSize(8, getTestFont());
             }
             if (((bitField0_ & 0x00000100) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(9, exampleSize_);
+                        .computeInt32Size(9, qandaMode_);
             }
             if (((bitField0_ & 0x00000200) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(10, examineMode_);
+                        .computeMessageSize(10, getQandaFont());
             }
             if (((bitField0_ & 0x00000400) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(11, examineFont_);
+                        .computeMessageSize(11, getLayoutTopic());
             }
             if (((bitField0_ & 0x00000800) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(12, examineColor_);
+                        .computeMessageSize(12, getLayoutExample());
             }
             if (((bitField0_ & 0x00001000) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(13, examineSize_);
+                        .computeMessageSize(13, getLayoutTest());
             }
             if (((bitField0_ & 0x00002000) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(14, qandaMode_);
-            }
-            if (((bitField0_ & 0x00004000) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(15, qandaFont_);
-            }
-            if (((bitField0_ & 0x00008000) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(16, qandaColor_);
-            }
-            if (((bitField0_ & 0x00010000) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(17, qandaSize_);
+                        .computeMessageSize(14, getLayoutQA());
             }
             {
                 int dataSize = 0;
@@ -15198,7 +15317,7 @@ public final class Data4Mooc {
                             .computeInt32SizeNoTag(topicLayout_.getInt(i));
                 }
                 size += dataSize;
-                size += 2 * getTopicLayoutList().size();
+                size += 1 * getTopicLayoutList().size();
             }
             {
                 int dataSize = 0;
@@ -15219,11 +15338,16 @@ public final class Data4Mooc {
             if (obj == this) {
                 return true;
             }
-            if (!(obj instanceof data4mooc.Data4Mooc.PageLayout)) {
+            if (!(obj instanceof data4mooc.Data4Mooc.Layout)) {
                 return super.equals(obj);
             }
-            data4mooc.Data4Mooc.PageLayout other = (data4mooc.Data4Mooc.PageLayout) obj;
+            data4mooc.Data4Mooc.Layout other = (data4mooc.Data4Mooc.Layout) obj;
 
+            if (hasBasic() != other.hasBasic()) return false;
+            if (hasBasic()) {
+                if (!getBasic()
+                        .equals(other.getBasic())) return false;
+            }
             if (hasHomeMode() != other.hasHomeMode()) return false;
             if (hasHomeMode()) {
                 if (getHomeMode()
@@ -15236,18 +15360,8 @@ public final class Data4Mooc {
             }
             if (hasHomeFont() != other.hasHomeFont()) return false;
             if (hasHomeFont()) {
-                if (getHomeFont()
-                        != other.getHomeFont()) return false;
-            }
-            if (hasHomeColor() != other.hasHomeColor()) return false;
-            if (hasHomeColor()) {
-                if (getHomeColor()
-                        != other.getHomeColor()) return false;
-            }
-            if (hasHomeSize() != other.hasHomeSize()) return false;
-            if (hasHomeSize()) {
-                if (getHomeSize()
-                        != other.getHomeSize()) return false;
+                if (!getHomeFont()
+                        .equals(other.getHomeFont())) return false;
             }
             if (hasExampleMode() != other.hasExampleMode()) return false;
             if (hasExampleMode()) {
@@ -15256,38 +15370,18 @@ public final class Data4Mooc {
             }
             if (hasExampleFont() != other.hasExampleFont()) return false;
             if (hasExampleFont()) {
-                if (getExampleFont()
-                        != other.getExampleFont()) return false;
+                if (!getExampleFont()
+                        .equals(other.getExampleFont())) return false;
             }
-            if (hasExampleColor() != other.hasExampleColor()) return false;
-            if (hasExampleColor()) {
-                if (getExampleColor()
-                        != other.getExampleColor()) return false;
+            if (hasTestMode() != other.hasTestMode()) return false;
+            if (hasTestMode()) {
+                if (getTestMode()
+                        != other.getTestMode()) return false;
             }
-            if (hasExampleSize() != other.hasExampleSize()) return false;
-            if (hasExampleSize()) {
-                if (getExampleSize()
-                        != other.getExampleSize()) return false;
-            }
-            if (hasExamineMode() != other.hasExamineMode()) return false;
-            if (hasExamineMode()) {
-                if (getExamineMode()
-                        != other.getExamineMode()) return false;
-            }
-            if (hasExamineFont() != other.hasExamineFont()) return false;
-            if (hasExamineFont()) {
-                if (getExamineFont()
-                        != other.getExamineFont()) return false;
-            }
-            if (hasExamineColor() != other.hasExamineColor()) return false;
-            if (hasExamineColor()) {
-                if (getExamineColor()
-                        != other.getExamineColor()) return false;
-            }
-            if (hasExamineSize() != other.hasExamineSize()) return false;
-            if (hasExamineSize()) {
-                if (getExamineSize()
-                        != other.getExamineSize()) return false;
+            if (hasTestFont() != other.hasTestFont()) return false;
+            if (hasTestFont()) {
+                if (!getTestFont()
+                        .equals(other.getTestFont())) return false;
             }
             if (hasQandaMode() != other.hasQandaMode()) return false;
             if (hasQandaMode()) {
@@ -15296,18 +15390,28 @@ public final class Data4Mooc {
             }
             if (hasQandaFont() != other.hasQandaFont()) return false;
             if (hasQandaFont()) {
-                if (getQandaFont()
-                        != other.getQandaFont()) return false;
+                if (!getQandaFont()
+                        .equals(other.getQandaFont())) return false;
             }
-            if (hasQandaColor() != other.hasQandaColor()) return false;
-            if (hasQandaColor()) {
-                if (getQandaColor()
-                        != other.getQandaColor()) return false;
+            if (hasLayoutTopic() != other.hasLayoutTopic()) return false;
+            if (hasLayoutTopic()) {
+                if (!getLayoutTopic()
+                        .equals(other.getLayoutTopic())) return false;
             }
-            if (hasQandaSize() != other.hasQandaSize()) return false;
-            if (hasQandaSize()) {
-                if (getQandaSize()
-                        != other.getQandaSize()) return false;
+            if (hasLayoutExample() != other.hasLayoutExample()) return false;
+            if (hasLayoutExample()) {
+                if (!getLayoutExample()
+                        .equals(other.getLayoutExample())) return false;
+            }
+            if (hasLayoutTest() != other.hasLayoutTest()) return false;
+            if (hasLayoutTest()) {
+                if (!getLayoutTest()
+                        .equals(other.getLayoutTest())) return false;
+            }
+            if (hasLayoutQA() != other.hasLayoutQA()) return false;
+            if (hasLayoutQA()) {
+                if (!getLayoutQA()
+                        .equals(other.getLayoutQA())) return false;
             }
             if (!getTopicLayoutList()
                     .equals(other.getTopicLayoutList())) return false;
@@ -15324,6 +15428,10 @@ public final class Data4Mooc {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasBasic()) {
+                hash = (37 * hash) + BASIC_FIELD_NUMBER;
+                hash = (53 * hash) + getBasic().hashCode();
+            }
             if (hasHomeMode()) {
                 hash = (37 * hash) + HOMEMODE_FIELD_NUMBER;
                 hash = (53 * hash) + getHomeMode();
@@ -15334,15 +15442,7 @@ public final class Data4Mooc {
             }
             if (hasHomeFont()) {
                 hash = (37 * hash) + HOMEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getHomeFont();
-            }
-            if (hasHomeColor()) {
-                hash = (37 * hash) + HOMECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getHomeColor();
-            }
-            if (hasHomeSize()) {
-                hash = (37 * hash) + HOMESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getHomeSize();
+                hash = (53 * hash) + getHomeFont().hashCode();
             }
             if (hasExampleMode()) {
                 hash = (37 * hash) + EXAMPLEMODE_FIELD_NUMBER;
@@ -15350,31 +15450,15 @@ public final class Data4Mooc {
             }
             if (hasExampleFont()) {
                 hash = (37 * hash) + EXAMPLEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getExampleFont();
+                hash = (53 * hash) + getExampleFont().hashCode();
             }
-            if (hasExampleColor()) {
-                hash = (37 * hash) + EXAMPLECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getExampleColor();
+            if (hasTestMode()) {
+                hash = (37 * hash) + TESTMODE_FIELD_NUMBER;
+                hash = (53 * hash) + getTestMode();
             }
-            if (hasExampleSize()) {
-                hash = (37 * hash) + EXAMPLESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getExampleSize();
-            }
-            if (hasExamineMode()) {
-                hash = (37 * hash) + EXAMINEMODE_FIELD_NUMBER;
-                hash = (53 * hash) + getExamineMode();
-            }
-            if (hasExamineFont()) {
-                hash = (37 * hash) + EXAMINEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getExamineFont();
-            }
-            if (hasExamineColor()) {
-                hash = (37 * hash) + EXAMINECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getExamineColor();
-            }
-            if (hasExamineSize()) {
-                hash = (37 * hash) + EXAMINESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getExamineSize();
+            if (hasTestFont()) {
+                hash = (37 * hash) + TESTFONT_FIELD_NUMBER;
+                hash = (53 * hash) + getTestFont().hashCode();
             }
             if (hasQandaMode()) {
                 hash = (37 * hash) + QANDAMODE_FIELD_NUMBER;
@@ -15382,15 +15466,23 @@ public final class Data4Mooc {
             }
             if (hasQandaFont()) {
                 hash = (37 * hash) + QANDAFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getQandaFont();
+                hash = (53 * hash) + getQandaFont().hashCode();
             }
-            if (hasQandaColor()) {
-                hash = (37 * hash) + QANDACOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getQandaColor();
+            if (hasLayoutTopic()) {
+                hash = (37 * hash) + LAYOUTTOPIC_FIELD_NUMBER;
+                hash = (53 * hash) + getLayoutTopic().hashCode();
             }
-            if (hasQandaSize()) {
-                hash = (37 * hash) + QANDASIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getQandaSize();
+            if (hasLayoutExample()) {
+                hash = (37 * hash) + LAYOUTEXAMPLE_FIELD_NUMBER;
+                hash = (53 * hash) + getLayoutExample().hashCode();
+            }
+            if (hasLayoutTest()) {
+                hash = (37 * hash) + LAYOUTTEST_FIELD_NUMBER;
+                hash = (53 * hash) + getLayoutTest().hashCode();
+            }
+            if (hasLayoutQA()) {
+                hash = (37 * hash) + LAYOUTQA_FIELD_NUMBER;
+                hash = (53 * hash) + getLayoutQA().hashCode();
             }
             if (getTopicLayoutCount() > 0) {
                 hash = (37 * hash) + TOPICLAYOUT_FIELD_NUMBER;
@@ -15405,69 +15497,69 @@ public final class Data4Mooc {
             return hash;
         }
 
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 java.nio.ByteBuffer data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 java.nio.ByteBuffer data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 com.google.protobuf.ByteString data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 com.google.protobuf.ByteString data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(byte[] data)
+        public static data4mooc.Data4Mooc.Layout parseFrom(byte[] data)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 byte[] data,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws com.google.protobuf.InvalidProtocolBufferException {
             return PARSER.parseFrom(data, extensionRegistry);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(java.io.InputStream input)
+        public static data4mooc.Data4Mooc.Layout parseFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input, extensionRegistry);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseDelimitedFrom(java.io.InputStream input)
+        public static data4mooc.Data4Mooc.Layout parseDelimitedFrom(java.io.InputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseDelimitedFrom(
+        public static data4mooc.Data4Mooc.Layout parseDelimitedFrom(
                 java.io.InputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 com.google.protobuf.CodedInputStream input)
                 throws java.io.IOException {
             return com.google.protobuf.GeneratedMessageV3
                     .parseWithIOException(PARSER, input);
         }
-        public static data4mooc.Data4Mooc.PageLayout parseFrom(
+        public static data4mooc.Data4Mooc.Layout parseFrom(
                 com.google.protobuf.CodedInputStream input,
                 com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                 throws java.io.IOException {
@@ -15480,7 +15572,7 @@ public final class Data4Mooc {
         public static Builder newBuilder() {
             return DEFAULT_INSTANCE.toBuilder();
         }
-        public static Builder newBuilder(data4mooc.Data4Mooc.PageLayout prototype) {
+        public static Builder newBuilder(data4mooc.Data4Mooc.Layout prototype) {
             return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
         }
         @java.lang.Override
@@ -15500,26 +15592,26 @@ public final class Data4Mooc {
          *	各种页面布局
          * </pre>
          *
-         * Protobuf type {@code data4mooc.PageLayout}
+         * Protobuf type {@code data4mooc.Layout}
          */
         public static final class Builder extends
                 com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-                // @@protoc_insertion_point(builder_implements:data4mooc.PageLayout)
-                data4mooc.Data4Mooc.PageLayoutOrBuilder {
+                // @@protoc_insertion_point(builder_implements:data4mooc.Layout)
+                data4mooc.Data4Mooc.LayoutOrBuilder {
             public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-                return data4mooc.Data4Mooc.internal_static_data4mooc_PageLayout_descriptor;
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Layout_descriptor;
             }
 
             @java.lang.Override
             protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-                return data4mooc.Data4Mooc.internal_static_data4mooc_PageLayout_fieldAccessorTable
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Layout_fieldAccessorTable
                         .ensureFieldAccessorsInitialized(
-                                data4mooc.Data4Mooc.PageLayout.class, data4mooc.Data4Mooc.PageLayout.Builder.class);
+                                data4mooc.Data4Mooc.Layout.class, data4mooc.Data4Mooc.Layout.Builder.class);
             }
 
-            // Construct using data4mooc.Data4Mooc.PageLayout.newBuilder()
+            // Construct using data4mooc.Data4Mooc.Layout.newBuilder()
             private Builder() {
                 maybeForceBuilderInitialization();
             }
@@ -15532,66 +15624,105 @@ public final class Data4Mooc {
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
+                    getBasicFieldBuilder();
+                    getHomeFontFieldBuilder();
+                    getExampleFontFieldBuilder();
+                    getTestFontFieldBuilder();
+                    getQandaFontFieldBuilder();
+                    getLayoutTopicFieldBuilder();
+                    getLayoutExampleFieldBuilder();
+                    getLayoutTestFieldBuilder();
+                    getLayoutQAFieldBuilder();
                 }
             }
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                homeMode_ = 0;
+                if (basicBuilder_ == null) {
+                    basic_ = null;
+                } else {
+                    basicBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                homeIndex_ = 0;
+                homeMode_ = 0;
                 bitField0_ = (bitField0_ & ~0x00000002);
-                homeFont_ = 0;
+                homeIndex_ = 0;
                 bitField0_ = (bitField0_ & ~0x00000004);
-                homeColor_ = 0;
+                if (homeFontBuilder_ == null) {
+                    homeFont_ = null;
+                } else {
+                    homeFontBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                homeSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
                 exampleMode_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000010);
+                if (exampleFontBuilder_ == null) {
+                    exampleFont_ = null;
+                } else {
+                    exampleFontBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000020);
-                exampleFont_ = 0;
+                testMode_ = 0;
                 bitField0_ = (bitField0_ & ~0x00000040);
-                exampleColor_ = 0;
+                if (testFontBuilder_ == null) {
+                    testFont_ = null;
+                } else {
+                    testFontBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000080);
-                exampleSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000100);
-                examineMode_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000200);
-                examineFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000400);
-                examineColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000800);
-                examineSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00001000);
                 qandaMode_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000100);
+                if (qandaFontBuilder_ == null) {
+                    qandaFont_ = null;
+                } else {
+                    qandaFontBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000200);
+                if (layoutTopicBuilder_ == null) {
+                    layoutTopic_ = null;
+                } else {
+                    layoutTopicBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000400);
+                if (layoutExampleBuilder_ == null) {
+                    layoutExample_ = null;
+                } else {
+                    layoutExampleBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000800);
+                if (layoutTestBuilder_ == null) {
+                    layoutTest_ = null;
+                } else {
+                    layoutTestBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00001000);
+                if (layoutQABuilder_ == null) {
+                    layoutQA_ = null;
+                } else {
+                    layoutQABuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00002000);
-                qandaFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00004000);
-                qandaColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00008000);
-                qandaSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00010000);
                 topicLayout_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00020000);
+                bitField0_ = (bitField0_ & ~0x00004000);
                 exampleLayout_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00040000);
+                bitField0_ = (bitField0_ & ~0x00008000);
                 return this;
             }
 
             @java.lang.Override
             public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-                return data4mooc.Data4Mooc.internal_static_data4mooc_PageLayout_descriptor;
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Layout_descriptor;
             }
 
             @java.lang.Override
-            public data4mooc.Data4Mooc.PageLayout getDefaultInstanceForType() {
-                return data4mooc.Data4Mooc.PageLayout.getDefaultInstance();
+            public data4mooc.Data4Mooc.Layout getDefaultInstanceForType() {
+                return data4mooc.Data4Mooc.Layout.getDefaultInstance();
             }
 
             @java.lang.Override
-            public data4mooc.Data4Mooc.PageLayout build() {
-                data4mooc.Data4Mooc.PageLayout result = buildPartial();
+            public data4mooc.Data4Mooc.Layout build() {
+                data4mooc.Data4Mooc.Layout result = buildPartial();
                 if (!result.isInitialized()) {
                     throw newUninitializedMessageException(result);
                 }
@@ -15599,86 +15730,110 @@ public final class Data4Mooc {
             }
 
             @java.lang.Override
-            public data4mooc.Data4Mooc.PageLayout buildPartial() {
-                data4mooc.Data4Mooc.PageLayout result = new data4mooc.Data4Mooc.PageLayout(this);
+            public data4mooc.Data4Mooc.Layout buildPartial() {
+                data4mooc.Data4Mooc.Layout result = new data4mooc.Data4Mooc.Layout(this);
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
-                    result.homeMode_ = homeMode_;
+                    if (basicBuilder_ == null) {
+                        result.basic_ = basic_;
+                    } else {
+                        result.basic_ = basicBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    result.homeIndex_ = homeIndex_;
+                    result.homeMode_ = homeMode_;
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.homeFont_ = homeFont_;
+                    result.homeIndex_ = homeIndex_;
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.homeColor_ = homeColor_;
+                    if (homeFontBuilder_ == null) {
+                        result.homeFont_ = homeFont_;
+                    } else {
+                        result.homeFont_ = homeFontBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.homeSize_ = homeSize_;
+                    result.exampleMode_ = exampleMode_;
                     to_bitField0_ |= 0x00000010;
                 }
                 if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.exampleMode_ = exampleMode_;
+                    if (exampleFontBuilder_ == null) {
+                        result.exampleFont_ = exampleFont_;
+                    } else {
+                        result.exampleFont_ = exampleFontBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000020;
                 }
                 if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.exampleFont_ = exampleFont_;
+                    result.testMode_ = testMode_;
                     to_bitField0_ |= 0x00000040;
                 }
                 if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.exampleColor_ = exampleColor_;
+                    if (testFontBuilder_ == null) {
+                        result.testFont_ = testFont_;
+                    } else {
+                        result.testFont_ = testFontBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000080;
                 }
                 if (((from_bitField0_ & 0x00000100) != 0)) {
-                    result.exampleSize_ = exampleSize_;
+                    result.qandaMode_ = qandaMode_;
                     to_bitField0_ |= 0x00000100;
                 }
                 if (((from_bitField0_ & 0x00000200) != 0)) {
-                    result.examineMode_ = examineMode_;
+                    if (qandaFontBuilder_ == null) {
+                        result.qandaFont_ = qandaFont_;
+                    } else {
+                        result.qandaFont_ = qandaFontBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000200;
                 }
                 if (((from_bitField0_ & 0x00000400) != 0)) {
-                    result.examineFont_ = examineFont_;
+                    if (layoutTopicBuilder_ == null) {
+                        result.layoutTopic_ = layoutTopic_;
+                    } else {
+                        result.layoutTopic_ = layoutTopicBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000400;
                 }
                 if (((from_bitField0_ & 0x00000800) != 0)) {
-                    result.examineColor_ = examineColor_;
+                    if (layoutExampleBuilder_ == null) {
+                        result.layoutExample_ = layoutExample_;
+                    } else {
+                        result.layoutExample_ = layoutExampleBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000800;
                 }
                 if (((from_bitField0_ & 0x00001000) != 0)) {
-                    result.examineSize_ = examineSize_;
+                    if (layoutTestBuilder_ == null) {
+                        result.layoutTest_ = layoutTest_;
+                    } else {
+                        result.layoutTest_ = layoutTestBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00001000;
                 }
                 if (((from_bitField0_ & 0x00002000) != 0)) {
-                    result.qandaMode_ = qandaMode_;
+                    if (layoutQABuilder_ == null) {
+                        result.layoutQA_ = layoutQA_;
+                    } else {
+                        result.layoutQA_ = layoutQABuilder_.build();
+                    }
                     to_bitField0_ |= 0x00002000;
                 }
-                if (((from_bitField0_ & 0x00004000) != 0)) {
-                    result.qandaFont_ = qandaFont_;
-                    to_bitField0_ |= 0x00004000;
-                }
-                if (((from_bitField0_ & 0x00008000) != 0)) {
-                    result.qandaColor_ = qandaColor_;
-                    to_bitField0_ |= 0x00008000;
-                }
-                if (((from_bitField0_ & 0x00010000) != 0)) {
-                    result.qandaSize_ = qandaSize_;
-                    to_bitField0_ |= 0x00010000;
-                }
-                if (((bitField0_ & 0x00020000) != 0)) {
+                if (((bitField0_ & 0x00004000) != 0)) {
                     topicLayout_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00020000);
+                    bitField0_ = (bitField0_ & ~0x00004000);
                 }
                 result.topicLayout_ = topicLayout_;
-                if (((bitField0_ & 0x00040000) != 0)) {
+                if (((bitField0_ & 0x00008000) != 0)) {
                     exampleLayout_.makeImmutable();
-                    bitField0_ = (bitField0_ & ~0x00040000);
+                    bitField0_ = (bitField0_ & ~0x00008000);
                 }
                 result.exampleLayout_ = exampleLayout_;
                 result.bitField0_ = to_bitField0_;
@@ -15720,16 +15875,19 @@ public final class Data4Mooc {
             }
             @java.lang.Override
             public Builder mergeFrom(com.google.protobuf.Message other) {
-                if (other instanceof data4mooc.Data4Mooc.PageLayout) {
-                    return mergeFrom((data4mooc.Data4Mooc.PageLayout)other);
+                if (other instanceof data4mooc.Data4Mooc.Layout) {
+                    return mergeFrom((data4mooc.Data4Mooc.Layout)other);
                 } else {
                     super.mergeFrom(other);
                     return this;
                 }
             }
 
-            public Builder mergeFrom(data4mooc.Data4Mooc.PageLayout other) {
-                if (other == data4mooc.Data4Mooc.PageLayout.getDefaultInstance()) return this;
+            public Builder mergeFrom(data4mooc.Data4Mooc.Layout other) {
+                if (other == data4mooc.Data4Mooc.Layout.getDefaultInstance()) return this;
+                if (other.hasBasic()) {
+                    mergeBasic(other.getBasic());
+                }
                 if (other.hasHomeMode()) {
                     setHomeMode(other.getHomeMode());
                 }
@@ -15737,54 +15895,42 @@ public final class Data4Mooc {
                     setHomeIndex(other.getHomeIndex());
                 }
                 if (other.hasHomeFont()) {
-                    setHomeFont(other.getHomeFont());
-                }
-                if (other.hasHomeColor()) {
-                    setHomeColor(other.getHomeColor());
-                }
-                if (other.hasHomeSize()) {
-                    setHomeSize(other.getHomeSize());
+                    mergeHomeFont(other.getHomeFont());
                 }
                 if (other.hasExampleMode()) {
                     setExampleMode(other.getExampleMode());
                 }
                 if (other.hasExampleFont()) {
-                    setExampleFont(other.getExampleFont());
+                    mergeExampleFont(other.getExampleFont());
                 }
-                if (other.hasExampleColor()) {
-                    setExampleColor(other.getExampleColor());
+                if (other.hasTestMode()) {
+                    setTestMode(other.getTestMode());
                 }
-                if (other.hasExampleSize()) {
-                    setExampleSize(other.getExampleSize());
-                }
-                if (other.hasExamineMode()) {
-                    setExamineMode(other.getExamineMode());
-                }
-                if (other.hasExamineFont()) {
-                    setExamineFont(other.getExamineFont());
-                }
-                if (other.hasExamineColor()) {
-                    setExamineColor(other.getExamineColor());
-                }
-                if (other.hasExamineSize()) {
-                    setExamineSize(other.getExamineSize());
+                if (other.hasTestFont()) {
+                    mergeTestFont(other.getTestFont());
                 }
                 if (other.hasQandaMode()) {
                     setQandaMode(other.getQandaMode());
                 }
                 if (other.hasQandaFont()) {
-                    setQandaFont(other.getQandaFont());
+                    mergeQandaFont(other.getQandaFont());
                 }
-                if (other.hasQandaColor()) {
-                    setQandaColor(other.getQandaColor());
+                if (other.hasLayoutTopic()) {
+                    mergeLayoutTopic(other.getLayoutTopic());
                 }
-                if (other.hasQandaSize()) {
-                    setQandaSize(other.getQandaSize());
+                if (other.hasLayoutExample()) {
+                    mergeLayoutExample(other.getLayoutExample());
+                }
+                if (other.hasLayoutTest()) {
+                    mergeLayoutTest(other.getLayoutTest());
+                }
+                if (other.hasLayoutQA()) {
+                    mergeLayoutQA(other.getLayoutQA());
                 }
                 if (!other.topicLayout_.isEmpty()) {
                     if (topicLayout_.isEmpty()) {
                         topicLayout_ = other.topicLayout_;
-                        bitField0_ = (bitField0_ & ~0x00020000);
+                        bitField0_ = (bitField0_ & ~0x00004000);
                     } else {
                         ensureTopicLayoutIsMutable();
                         topicLayout_.addAll(other.topicLayout_);
@@ -15794,7 +15940,7 @@ public final class Data4Mooc {
                 if (!other.exampleLayout_.isEmpty()) {
                     if (exampleLayout_.isEmpty()) {
                         exampleLayout_ = other.exampleLayout_;
-                        bitField0_ = (bitField0_ & ~0x00040000);
+                        bitField0_ = (bitField0_ & ~0x00008000);
                     } else {
                         ensureExampleLayoutIsMutable();
                         exampleLayout_.addAll(other.exampleLayout_);
@@ -15808,6 +15954,9 @@ public final class Data4Mooc {
 
             @java.lang.Override
             public final boolean isInitialized() {
+                if (!hasBasic()) {
+                    return false;
+                }
                 if (!hasHomeMode()) {
                     return false;
                 }
@@ -15817,34 +15966,16 @@ public final class Data4Mooc {
                 if (!hasHomeFont()) {
                     return false;
                 }
-                if (!hasHomeColor()) {
-                    return false;
-                }
-                if (!hasHomeSize()) {
-                    return false;
-                }
                 if (!hasExampleMode()) {
                     return false;
                 }
                 if (!hasExampleFont()) {
                     return false;
                 }
-                if (!hasExampleColor()) {
+                if (!hasTestMode()) {
                     return false;
                 }
-                if (!hasExampleSize()) {
-                    return false;
-                }
-                if (!hasExamineMode()) {
-                    return false;
-                }
-                if (!hasExamineFont()) {
-                    return false;
-                }
-                if (!hasExamineColor()) {
-                    return false;
-                }
-                if (!hasExamineSize()) {
+                if (!hasTestFont()) {
                     return false;
                 }
                 if (!hasQandaMode()) {
@@ -15853,10 +15984,43 @@ public final class Data4Mooc {
                 if (!hasQandaFont()) {
                     return false;
                 }
-                if (!hasQandaColor()) {
+                if (!hasLayoutTopic()) {
                     return false;
                 }
-                if (!hasQandaSize()) {
+                if (!hasLayoutExample()) {
+                    return false;
+                }
+                if (!hasLayoutTest()) {
+                    return false;
+                }
+                if (!hasLayoutQA()) {
+                    return false;
+                }
+                if (!getBasic().isInitialized()) {
+                    return false;
+                }
+                if (!getHomeFont().isInitialized()) {
+                    return false;
+                }
+                if (!getExampleFont().isInitialized()) {
+                    return false;
+                }
+                if (!getTestFont().isInitialized()) {
+                    return false;
+                }
+                if (!getQandaFont().isInitialized()) {
+                    return false;
+                }
+                if (!getLayoutTopic().isInitialized()) {
+                    return false;
+                }
+                if (!getLayoutExample().isInitialized()) {
+                    return false;
+                }
+                if (!getLayoutTest().isInitialized()) {
+                    return false;
+                }
+                if (!getLayoutQA().isInitialized()) {
                     return false;
                 }
                 return true;
@@ -15867,11 +16031,11 @@ public final class Data4Mooc {
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws java.io.IOException {
-                data4mooc.Data4Mooc.PageLayout parsedMessage = null;
+                data4mooc.Data4Mooc.Layout parsedMessage = null;
                 try {
                     parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
                 } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-                    parsedMessage = (data4mooc.Data4Mooc.PageLayout) e.getUnfinishedMessage();
+                    parsedMessage = (data4mooc.Data4Mooc.Layout) e.getUnfinishedMessage();
                     throw e.unwrapIOException();
                 } finally {
                     if (parsedMessage != null) {
@@ -15882,33 +16046,151 @@ public final class Data4Mooc {
             }
             private int bitField0_;
 
-            private int homeMode_ ;
+            private data4mooc.Data4Mooc.Basic basic_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Basic, data4mooc.Data4Mooc.Basic.Builder, data4mooc.Data4Mooc.BasicOrBuilder> basicBuilder_;
             /**
-             * <code>required int32 homeMode = 1;</code>
+             * <code>required .data4mooc.Basic basic = 1;</code>
              */
-            public boolean hasHomeMode() {
+            public boolean hasBasic() {
                 return ((bitField0_ & 0x00000001) != 0);
             }
             /**
-             * <code>required int32 homeMode = 1;</code>
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public data4mooc.Data4Mooc.Basic getBasic() {
+                if (basicBuilder_ == null) {
+                    return basic_ == null ? data4mooc.Data4Mooc.Basic.getDefaultInstance() : basic_;
+                } else {
+                    return basicBuilder_.getMessage();
+                }
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public Builder setBasic(data4mooc.Data4Mooc.Basic value) {
+                if (basicBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    basic_ = value;
+                    onChanged();
+                } else {
+                    basicBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public Builder setBasic(
+                    data4mooc.Data4Mooc.Basic.Builder builderForValue) {
+                if (basicBuilder_ == null) {
+                    basic_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    basicBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public Builder mergeBasic(data4mooc.Data4Mooc.Basic value) {
+                if (basicBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) &&
+                            basic_ != null &&
+                            basic_ != data4mooc.Data4Mooc.Basic.getDefaultInstance()) {
+                        basic_ =
+                                data4mooc.Data4Mooc.Basic.newBuilder(basic_).mergeFrom(value).buildPartial();
+                    } else {
+                        basic_ = value;
+                    }
+                    onChanged();
+                } else {
+                    basicBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public Builder clearBasic() {
+                if (basicBuilder_ == null) {
+                    basic_ = null;
+                    onChanged();
+                } else {
+                    basicBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public data4mooc.Data4Mooc.Basic.Builder getBasicBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getBasicFieldBuilder().getBuilder();
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            public data4mooc.Data4Mooc.BasicOrBuilder getBasicOrBuilder() {
+                if (basicBuilder_ != null) {
+                    return basicBuilder_.getMessageOrBuilder();
+                } else {
+                    return basic_ == null ?
+                            data4mooc.Data4Mooc.Basic.getDefaultInstance() : basic_;
+                }
+            }
+            /**
+             * <code>required .data4mooc.Basic basic = 1;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Basic, data4mooc.Data4Mooc.Basic.Builder, data4mooc.Data4Mooc.BasicOrBuilder>
+            getBasicFieldBuilder() {
+                if (basicBuilder_ == null) {
+                    basicBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Basic, data4mooc.Data4Mooc.Basic.Builder, data4mooc.Data4Mooc.BasicOrBuilder>(
+                            getBasic(),
+                            getParentForChildren(),
+                            isClean());
+                    basic_ = null;
+                }
+                return basicBuilder_;
+            }
+
+            private int homeMode_ ;
+            /**
+             * <code>required int32 homeMode = 2;</code>
+             */
+            public boolean hasHomeMode() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+            /**
+             * <code>required int32 homeMode = 2;</code>
              */
             public int getHomeMode() {
                 return homeMode_;
             }
             /**
-             * <code>required int32 homeMode = 1;</code>
+             * <code>required int32 homeMode = 2;</code>
              */
             public Builder setHomeMode(int value) {
-                bitField0_ |= 0x00000001;
+                bitField0_ |= 0x00000002;
                 homeMode_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required int32 homeMode = 1;</code>
+             * <code>required int32 homeMode = 2;</code>
              */
             public Builder clearHomeMode() {
-                bitField0_ = (bitField0_ & ~0x00000001);
+                bitField0_ = (bitField0_ & ~0x00000002);
                 homeMode_ = 0;
                 onChanged();
                 return this;
@@ -15916,573 +16198,619 @@ public final class Data4Mooc {
 
             private int homeIndex_ ;
             /**
-             * <code>required int32 homeIndex = 2;</code>
+             * <code>required int32 homeIndex = 3;</code>
              */
             public boolean hasHomeIndex() {
-                return ((bitField0_ & 0x00000002) != 0);
+                return ((bitField0_ & 0x00000004) != 0);
             }
             /**
-             * <code>required int32 homeIndex = 2;</code>
+             * <code>required int32 homeIndex = 3;</code>
              */
             public int getHomeIndex() {
                 return homeIndex_;
             }
             /**
-             * <code>required int32 homeIndex = 2;</code>
+             * <code>required int32 homeIndex = 3;</code>
              */
             public Builder setHomeIndex(int value) {
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000004;
                 homeIndex_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required int32 homeIndex = 2;</code>
+             * <code>required int32 homeIndex = 3;</code>
              */
             public Builder clearHomeIndex() {
-                bitField0_ = (bitField0_ & ~0x00000002);
+                bitField0_ = (bitField0_ & ~0x00000004);
                 homeIndex_ = 0;
                 onChanged();
                 return this;
             }
 
-            private int homeFont_ ;
+            private data4mooc.Data4Mooc.Font homeFont_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> homeFontBuilder_;
             /**
-             * <code>required int32 homeFont = 3;</code>
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
              */
             public boolean hasHomeFont() {
-                return ((bitField0_ & 0x00000004) != 0);
-            }
-            /**
-             * <code>required int32 homeFont = 3;</code>
-             */
-            public int getHomeFont() {
-                return homeFont_;
-            }
-            /**
-             * <code>required int32 homeFont = 3;</code>
-             */
-            public Builder setHomeFont(int value) {
-                bitField0_ |= 0x00000004;
-                homeFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 homeFont = 3;</code>
-             */
-            public Builder clearHomeFont() {
-                bitField0_ = (bitField0_ & ~0x00000004);
-                homeFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int homeColor_ ;
-            /**
-             * <code>required int32 homeColor = 4;</code>
-             */
-            public boolean hasHomeColor() {
                 return ((bitField0_ & 0x00000008) != 0);
             }
             /**
-             * <code>required int32 homeColor = 4;</code>
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
              */
-            public int getHomeColor() {
-                return homeColor_;
+            public data4mooc.Data4Mooc.Font getHomeFont() {
+                if (homeFontBuilder_ == null) {
+                    return homeFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : homeFont_;
+                } else {
+                    return homeFontBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 homeColor = 4;</code>
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
              */
-            public Builder setHomeColor(int value) {
+            public Builder setHomeFont(data4mooc.Data4Mooc.Font value) {
+                if (homeFontBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    homeFont_ = value;
+                    onChanged();
+                } else {
+                    homeFontBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000008;
-                homeColor_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 homeColor = 4;</code>
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
              */
-            public Builder clearHomeColor() {
+            public Builder setHomeFont(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (homeFontBuilder_ == null) {
+                    homeFont_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    homeFontBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
+             */
+            public Builder mergeHomeFont(data4mooc.Data4Mooc.Font value) {
+                if (homeFontBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) &&
+                            homeFont_ != null &&
+                            homeFont_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        homeFont_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(homeFont_).mergeFrom(value).buildPartial();
+                    } else {
+                        homeFont_ = value;
+                    }
+                    onChanged();
+                } else {
+                    homeFontBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
+             */
+            public Builder clearHomeFont() {
+                if (homeFontBuilder_ == null) {
+                    homeFont_ = null;
+                    onChanged();
+                } else {
+                    homeFontBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                homeColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int homeSize_ ;
-            /**
-             * <code>required int32 homeSize = 5;</code>
-             */
-            public boolean hasHomeSize() {
-                return ((bitField0_ & 0x00000010) != 0);
-            }
-            /**
-             * <code>required int32 homeSize = 5;</code>
-             */
-            public int getHomeSize() {
-                return homeSize_;
-            }
-            /**
-             * <code>required int32 homeSize = 5;</code>
-             */
-            public Builder setHomeSize(int value) {
-                bitField0_ |= 0x00000010;
-                homeSize_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 homeSize = 5;</code>
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
              */
-            public Builder clearHomeSize() {
-                bitField0_ = (bitField0_ & ~0x00000010);
-                homeSize_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getHomeFontBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
-                return this;
+                return getHomeFontFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getHomeFontOrBuilder() {
+                if (homeFontBuilder_ != null) {
+                    return homeFontBuilder_.getMessageOrBuilder();
+                } else {
+                    return homeFont_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : homeFont_;
+                }
+            }
+            /**
+             * <pre>
+             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
+             * </pre>
+             *
+             * <code>required .data4mooc.Font homeFont = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getHomeFontFieldBuilder() {
+                if (homeFontBuilder_ == null) {
+                    homeFontBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getHomeFont(),
+                            getParentForChildren(),
+                            isClean());
+                    homeFont_ = null;
+                }
+                return homeFontBuilder_;
             }
 
             private int exampleMode_ ;
             /**
-             * <pre>
-             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-             *	目录名字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 exampleMode = 6;</code>
+             * <code>required int32 exampleMode = 5;</code>
              */
             public boolean hasExampleMode() {
-                return ((bitField0_ & 0x00000020) != 0);
+                return ((bitField0_ & 0x00000010) != 0);
             }
             /**
-             * <pre>
-             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-             *	目录名字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 exampleMode = 6;</code>
+             * <code>required int32 exampleMode = 5;</code>
              */
             public int getExampleMode() {
                 return exampleMode_;
             }
             /**
-             * <pre>
-             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-             *	目录名字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 exampleMode = 6;</code>
+             * <code>required int32 exampleMode = 5;</code>
              */
             public Builder setExampleMode(int value) {
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000010;
                 exampleMode_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <pre>
-             *	目录页的样式编号（1:树形，2:切换卡）、排序方式编号
-             *	目录名字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 exampleMode = 6;</code>
+             * <code>required int32 exampleMode = 5;</code>
              */
             public Builder clearExampleMode() {
-                bitField0_ = (bitField0_ & ~0x00000020);
+                bitField0_ = (bitField0_ & ~0x00000010);
                 exampleMode_ = 0;
                 onChanged();
                 return this;
             }
 
-            private int exampleFont_ ;
+            private data4mooc.Data4Mooc.Font exampleFont_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> exampleFontBuilder_;
             /**
-             * <code>required int32 exampleFont = 7;</code>
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
              */
             public boolean hasExampleFont() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public data4mooc.Data4Mooc.Font getExampleFont() {
+                if (exampleFontBuilder_ == null) {
+                    return exampleFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : exampleFont_;
+                } else {
+                    return exampleFontBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public Builder setExampleFont(data4mooc.Data4Mooc.Font value) {
+                if (exampleFontBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    exampleFont_ = value;
+                    onChanged();
+                } else {
+                    exampleFontBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public Builder setExampleFont(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (exampleFontBuilder_ == null) {
+                    exampleFont_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    exampleFontBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public Builder mergeExampleFont(data4mooc.Data4Mooc.Font value) {
+                if (exampleFontBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) != 0) &&
+                            exampleFont_ != null &&
+                            exampleFont_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        exampleFont_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(exampleFont_).mergeFrom(value).buildPartial();
+                    } else {
+                        exampleFont_ = value;
+                    }
+                    onChanged();
+                } else {
+                    exampleFontBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public Builder clearExampleFont() {
+                if (exampleFontBuilder_ == null) {
+                    exampleFont_ = null;
+                    onChanged();
+                } else {
+                    exampleFontBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000020);
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getExampleFontBuilder() {
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return getExampleFontFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getExampleFontOrBuilder() {
+                if (exampleFontBuilder_ != null) {
+                    return exampleFontBuilder_.getMessageOrBuilder();
+                } else {
+                    return exampleFont_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : exampleFont_;
+                }
+            }
+            /**
+             * <pre>
+             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font exampleFont = 6;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getExampleFontFieldBuilder() {
+                if (exampleFontBuilder_ == null) {
+                    exampleFontBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getExampleFont(),
+                            getParentForChildren(),
+                            isClean());
+                    exampleFont_ = null;
+                }
+                return exampleFontBuilder_;
+            }
+
+            private int testMode_ ;
+            /**
+             * <code>required int32 testMode = 7;</code>
+             */
+            public boolean hasTestMode() {
                 return ((bitField0_ & 0x00000040) != 0);
             }
             /**
-             * <code>required int32 exampleFont = 7;</code>
+             * <code>required int32 testMode = 7;</code>
              */
-            public int getExampleFont() {
-                return exampleFont_;
+            public int getTestMode() {
+                return testMode_;
             }
             /**
-             * <code>required int32 exampleFont = 7;</code>
+             * <code>required int32 testMode = 7;</code>
              */
-            public Builder setExampleFont(int value) {
+            public Builder setTestMode(int value) {
                 bitField0_ |= 0x00000040;
-                exampleFont_ = value;
+                testMode_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required int32 exampleFont = 7;</code>
+             * <code>required int32 testMode = 7;</code>
              */
-            public Builder clearExampleFont() {
+            public Builder clearTestMode() {
                 bitField0_ = (bitField0_ & ~0x00000040);
-                exampleFont_ = 0;
+                testMode_ = 0;
                 onChanged();
                 return this;
             }
 
-            private int exampleColor_ ;
+            private data4mooc.Data4Mooc.Font testFont_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> testFontBuilder_;
             /**
-             * <code>required int32 exampleColor = 8;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public boolean hasExampleColor() {
+            public boolean hasTestFont() {
                 return ((bitField0_ & 0x00000080) != 0);
             }
             /**
-             * <code>required int32 exampleColor = 8;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public int getExampleColor() {
-                return exampleColor_;
+            public data4mooc.Data4Mooc.Font getTestFont() {
+                if (testFontBuilder_ == null) {
+                    return testFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : testFont_;
+                } else {
+                    return testFontBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 exampleColor = 8;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public Builder setExampleColor(int value) {
+            public Builder setTestFont(data4mooc.Data4Mooc.Font value) {
+                if (testFontBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    testFont_ = value;
+                    onChanged();
+                } else {
+                    testFontBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000080;
-                exampleColor_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 exampleColor = 8;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public Builder clearExampleColor() {
+            public Builder setTestFont(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (testFontBuilder_ == null) {
+                    testFont_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    testFontBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000080;
+                return this;
+            }
+            /**
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
+             */
+            public Builder mergeTestFont(data4mooc.Data4Mooc.Font value) {
+                if (testFontBuilder_ == null) {
+                    if (((bitField0_ & 0x00000080) != 0) &&
+                            testFont_ != null &&
+                            testFont_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        testFont_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(testFont_).mergeFrom(value).buildPartial();
+                    } else {
+                        testFont_ = value;
+                    }
+                    onChanged();
+                } else {
+                    testFontBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000080;
+                return this;
+            }
+            /**
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
+             */
+            public Builder clearTestFont() {
+                if (testFontBuilder_ == null) {
+                    testFont_ = null;
+                    onChanged();
+                } else {
+                    testFontBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000080);
-                exampleColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int exampleSize_ ;
-            /**
-             * <code>required int32 exampleSize = 9;</code>
-             */
-            public boolean hasExampleSize() {
-                return ((bitField0_ & 0x00000100) != 0);
-            }
-            /**
-             * <code>required int32 exampleSize = 9;</code>
-             */
-            public int getExampleSize() {
-                return exampleSize_;
-            }
-            /**
-             * <code>required int32 exampleSize = 9;</code>
-             */
-            public Builder setExampleSize(int value) {
-                bitField0_ |= 0x00000100;
-                exampleSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 exampleSize = 9;</code>
-             */
-            public Builder clearExampleSize() {
-                bitField0_ = (bitField0_ & ~0x00000100);
-                exampleSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int examineMode_ ;
-            /**
-             * <pre>
-             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 examineMode = 10;</code>
-             */
-            public boolean hasExamineMode() {
-                return ((bitField0_ & 0x00000200) != 0);
-            }
-            /**
-             * <pre>
-             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 examineMode = 10;</code>
-             */
-            public int getExamineMode() {
-                return examineMode_;
-            }
-            /**
-             * <pre>
-             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 examineMode = 10;</code>
-             */
-            public Builder setExamineMode(int value) {
-                bitField0_ |= 0x00000200;
-                examineMode_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	案例库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
              * </pre>
              *
-             * <code>required int32 examineMode = 10;</code>
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public Builder clearExamineMode() {
-                bitField0_ = (bitField0_ & ~0x00000200);
-                examineMode_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getTestFontBuilder() {
+                bitField0_ |= 0x00000080;
                 onChanged();
-                return this;
-            }
-
-            private int examineFont_ ;
-            /**
-             * <code>required int32 examineFont = 11;</code>
-             */
-            public boolean hasExamineFont() {
-                return ((bitField0_ & 0x00000400) != 0);
+                return getTestFontFieldBuilder().getBuilder();
             }
             /**
-             * <code>required int32 examineFont = 11;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public int getExamineFont() {
-                return examineFont_;
+            public data4mooc.Data4Mooc.FontOrBuilder getTestFontOrBuilder() {
+                if (testFontBuilder_ != null) {
+                    return testFontBuilder_.getMessageOrBuilder();
+                } else {
+                    return testFont_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : testFont_;
+                }
             }
             /**
-             * <code>required int32 examineFont = 11;</code>
+             * <pre>
+             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font testFont = 8;</code>
              */
-            public Builder setExamineFont(int value) {
-                bitField0_ |= 0x00000400;
-                examineFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 examineFont = 11;</code>
-             */
-            public Builder clearExamineFont() {
-                bitField0_ = (bitField0_ & ~0x00000400);
-                examineFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int examineColor_ ;
-            /**
-             * <code>required int32 examineColor = 12;</code>
-             */
-            public boolean hasExamineColor() {
-                return ((bitField0_ & 0x00000800) != 0);
-            }
-            /**
-             * <code>required int32 examineColor = 12;</code>
-             */
-            public int getExamineColor() {
-                return examineColor_;
-            }
-            /**
-             * <code>required int32 examineColor = 12;</code>
-             */
-            public Builder setExamineColor(int value) {
-                bitField0_ |= 0x00000800;
-                examineColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 examineColor = 12;</code>
-             */
-            public Builder clearExamineColor() {
-                bitField0_ = (bitField0_ & ~0x00000800);
-                examineColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int examineSize_ ;
-            /**
-             * <code>required int32 examineSize = 13;</code>
-             */
-            public boolean hasExamineSize() {
-                return ((bitField0_ & 0x00001000) != 0);
-            }
-            /**
-             * <code>required int32 examineSize = 13;</code>
-             */
-            public int getExamineSize() {
-                return examineSize_;
-            }
-            /**
-             * <code>required int32 examineSize = 13;</code>
-             */
-            public Builder setExamineSize(int value) {
-                bitField0_ |= 0x00001000;
-                examineSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 examineSize = 13;</code>
-             */
-            public Builder clearExamineSize() {
-                bitField0_ = (bitField0_ & ~0x00001000);
-                examineSize_ = 0;
-                onChanged();
-                return this;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getTestFontFieldBuilder() {
+                if (testFontBuilder_ == null) {
+                    testFontBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getTestFont(),
+                            getParentForChildren(),
+                            isClean());
+                    testFont_ = null;
+                }
+                return testFontBuilder_;
             }
 
             private int qandaMode_ ;
             /**
-             * <pre>
-             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 qandaMode = 14;</code>
+             * <code>required int32 qandaMode = 9;</code>
              */
             public boolean hasQandaMode() {
-                return ((bitField0_ & 0x00002000) != 0);
+                return ((bitField0_ & 0x00000100) != 0);
             }
             /**
-             * <pre>
-             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 qandaMode = 14;</code>
+             * <code>required int32 qandaMode = 9;</code>
              */
             public int getQandaMode() {
                 return qandaMode_;
             }
             /**
-             * <pre>
-             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 qandaMode = 14;</code>
+             * <code>required int32 qandaMode = 9;</code>
              */
             public Builder setQandaMode(int value) {
-                bitField0_ |= 0x00002000;
+                bitField0_ |= 0x00000100;
                 qandaMode_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <pre>
-             *	测试题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>required int32 qandaMode = 14;</code>
+             * <code>required int32 qandaMode = 9;</code>
              */
             public Builder clearQandaMode() {
-                bitField0_ = (bitField0_ & ~0x00002000);
+                bitField0_ = (bitField0_ & ~0x00000100);
                 qandaMode_ = 0;
                 onChanged();
                 return this;
             }
 
-            private int qandaFont_ ;
+            private data4mooc.Data4Mooc.Font qandaFont_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> qandaFontBuilder_;
             /**
-             * <code>required int32 qandaFont = 15;</code>
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
              */
             public boolean hasQandaFont() {
-                return ((bitField0_ & 0x00004000) != 0);
+                return ((bitField0_ & 0x00000200) != 0);
             }
             /**
-             * <code>required int32 qandaFont = 15;</code>
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
              */
-            public int getQandaFont() {
-                return qandaFont_;
-            }
-            /**
-             * <code>required int32 qandaFont = 15;</code>
-             */
-            public Builder setQandaFont(int value) {
-                bitField0_ |= 0x00004000;
-                qandaFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 qandaFont = 15;</code>
-             */
-            public Builder clearQandaFont() {
-                bitField0_ = (bitField0_ & ~0x00004000);
-                qandaFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int qandaColor_ ;
-            /**
-             * <code>required int32 qandaColor = 16;</code>
-             */
-            public boolean hasQandaColor() {
-                return ((bitField0_ & 0x00008000) != 0);
-            }
-            /**
-             * <code>required int32 qandaColor = 16;</code>
-             */
-            public int getQandaColor() {
-                return qandaColor_;
-            }
-            /**
-             * <code>required int32 qandaColor = 16;</code>
-             */
-            public Builder setQandaColor(int value) {
-                bitField0_ |= 0x00008000;
-                qandaColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 qandaColor = 16;</code>
-             */
-            public Builder clearQandaColor() {
-                bitField0_ = (bitField0_ & ~0x00008000);
-                qandaColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int qandaSize_ ;
-            /**
-             * <code>required int32 qandaSize = 17;</code>
-             */
-            public boolean hasQandaSize() {
-                return ((bitField0_ & 0x00010000) != 0);
-            }
-            /**
-             * <code>required int32 qandaSize = 17;</code>
-             */
-            public int getQandaSize() {
-                return qandaSize_;
-            }
-            /**
-             * <code>required int32 qandaSize = 17;</code>
-             */
-            public Builder setQandaSize(int value) {
-                bitField0_ |= 0x00010000;
-                qandaSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 qandaSize = 17;</code>
-             */
-            public Builder clearQandaSize() {
-                bitField0_ = (bitField0_ & ~0x00010000);
-                qandaSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private com.google.protobuf.Internal.IntList topicLayout_ = emptyIntList();
-            private void ensureTopicLayoutIsMutable() {
-                if (!((bitField0_ & 0x00020000) != 0)) {
-                    topicLayout_ = mutableCopy(topicLayout_);
-                    bitField0_ |= 0x00020000;
+            public data4mooc.Data4Mooc.Font getQandaFont() {
+                if (qandaFontBuilder_ == null) {
+                    return qandaFont_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : qandaFont_;
+                } else {
+                    return qandaFontBuilder_.getMessage();
                 }
             }
             /**
@@ -16490,39 +16818,629 @@ public final class Data4Mooc {
              *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
              * </pre>
              *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
              */
-            public java.util.List<java.lang.Integer>
-            getTopicLayoutList() {
-                return ((bitField0_ & 0x00020000) != 0) ?
-                        java.util.Collections.unmodifiableList(topicLayout_) : topicLayout_;
+            public Builder setQandaFont(data4mooc.Data4Mooc.Font value) {
+                if (qandaFontBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    qandaFont_ = value;
+                    onChanged();
+                } else {
+                    qandaFontBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000200;
+                return this;
             }
             /**
              * <pre>
              *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
              * </pre>
              *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            public Builder setQandaFont(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (qandaFontBuilder_ == null) {
+                    qandaFont_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    qandaFontBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000200;
+                return this;
+            }
+            /**
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            public Builder mergeQandaFont(data4mooc.Data4Mooc.Font value) {
+                if (qandaFontBuilder_ == null) {
+                    if (((bitField0_ & 0x00000200) != 0) &&
+                            qandaFont_ != null &&
+                            qandaFont_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        qandaFont_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(qandaFont_).mergeFrom(value).buildPartial();
+                    } else {
+                        qandaFont_ = value;
+                    }
+                    onChanged();
+                } else {
+                    qandaFontBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000200;
+                return this;
+            }
+            /**
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            public Builder clearQandaFont() {
+                if (qandaFontBuilder_ == null) {
+                    qandaFont_ = null;
+                    onChanged();
+                } else {
+                    qandaFontBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000200);
+                return this;
+            }
+            /**
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getQandaFontBuilder() {
+                bitField0_ |= 0x00000200;
+                onChanged();
+                return getQandaFontFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getQandaFontOrBuilder() {
+                if (qandaFontBuilder_ != null) {
+                    return qandaFontBuilder_.getMessageOrBuilder();
+                } else {
+                    return qandaFont_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : qandaFont_;
+                }
+            }
+            /**
+             * <pre>
+             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
+             * </pre>
+             *
+             * <code>required .data4mooc.Font qandaFont = 10;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getQandaFontFieldBuilder() {
+                if (qandaFontBuilder_ == null) {
+                    qandaFontBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getQandaFont(),
+                            getParentForChildren(),
+                            isClean());
+                    qandaFont_ = null;
+                }
+                return qandaFontBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.TopicLayout layoutTopic_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.TopicLayout, data4mooc.Data4Mooc.TopicLayout.Builder, data4mooc.Data4Mooc.TopicLayoutOrBuilder> layoutTopicBuilder_;
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public boolean hasLayoutTopic() {
+                return ((bitField0_ & 0x00000400) != 0);
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public data4mooc.Data4Mooc.TopicLayout getLayoutTopic() {
+                if (layoutTopicBuilder_ == null) {
+                    return layoutTopic_ == null ? data4mooc.Data4Mooc.TopicLayout.getDefaultInstance() : layoutTopic_;
+                } else {
+                    return layoutTopicBuilder_.getMessage();
+                }
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public Builder setLayoutTopic(data4mooc.Data4Mooc.TopicLayout value) {
+                if (layoutTopicBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    layoutTopic_ = value;
+                    onChanged();
+                } else {
+                    layoutTopicBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000400;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public Builder setLayoutTopic(
+                    data4mooc.Data4Mooc.TopicLayout.Builder builderForValue) {
+                if (layoutTopicBuilder_ == null) {
+                    layoutTopic_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    layoutTopicBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000400;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public Builder mergeLayoutTopic(data4mooc.Data4Mooc.TopicLayout value) {
+                if (layoutTopicBuilder_ == null) {
+                    if (((bitField0_ & 0x00000400) != 0) &&
+                            layoutTopic_ != null &&
+                            layoutTopic_ != data4mooc.Data4Mooc.TopicLayout.getDefaultInstance()) {
+                        layoutTopic_ =
+                                data4mooc.Data4Mooc.TopicLayout.newBuilder(layoutTopic_).mergeFrom(value).buildPartial();
+                    } else {
+                        layoutTopic_ = value;
+                    }
+                    onChanged();
+                } else {
+                    layoutTopicBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000400;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public Builder clearLayoutTopic() {
+                if (layoutTopicBuilder_ == null) {
+                    layoutTopic_ = null;
+                    onChanged();
+                } else {
+                    layoutTopicBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000400);
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public data4mooc.Data4Mooc.TopicLayout.Builder getLayoutTopicBuilder() {
+                bitField0_ |= 0x00000400;
+                onChanged();
+                return getLayoutTopicFieldBuilder().getBuilder();
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            public data4mooc.Data4Mooc.TopicLayoutOrBuilder getLayoutTopicOrBuilder() {
+                if (layoutTopicBuilder_ != null) {
+                    return layoutTopicBuilder_.getMessageOrBuilder();
+                } else {
+                    return layoutTopic_ == null ?
+                            data4mooc.Data4Mooc.TopicLayout.getDefaultInstance() : layoutTopic_;
+                }
+            }
+            /**
+             * <code>required .data4mooc.TopicLayout layoutTopic = 11;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.TopicLayout, data4mooc.Data4Mooc.TopicLayout.Builder, data4mooc.Data4Mooc.TopicLayoutOrBuilder>
+            getLayoutTopicFieldBuilder() {
+                if (layoutTopicBuilder_ == null) {
+                    layoutTopicBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.TopicLayout, data4mooc.Data4Mooc.TopicLayout.Builder, data4mooc.Data4Mooc.TopicLayoutOrBuilder>(
+                            getLayoutTopic(),
+                            getParentForChildren(),
+                            isClean());
+                    layoutTopic_ = null;
+                }
+                return layoutTopicBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.ExampleLayout layoutExample_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.ExampleLayout, data4mooc.Data4Mooc.ExampleLayout.Builder, data4mooc.Data4Mooc.ExampleLayoutOrBuilder> layoutExampleBuilder_;
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public boolean hasLayoutExample() {
+                return ((bitField0_ & 0x00000800) != 0);
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public data4mooc.Data4Mooc.ExampleLayout getLayoutExample() {
+                if (layoutExampleBuilder_ == null) {
+                    return layoutExample_ == null ? data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance() : layoutExample_;
+                } else {
+                    return layoutExampleBuilder_.getMessage();
+                }
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public Builder setLayoutExample(data4mooc.Data4Mooc.ExampleLayout value) {
+                if (layoutExampleBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    layoutExample_ = value;
+                    onChanged();
+                } else {
+                    layoutExampleBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000800;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public Builder setLayoutExample(
+                    data4mooc.Data4Mooc.ExampleLayout.Builder builderForValue) {
+                if (layoutExampleBuilder_ == null) {
+                    layoutExample_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    layoutExampleBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000800;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public Builder mergeLayoutExample(data4mooc.Data4Mooc.ExampleLayout value) {
+                if (layoutExampleBuilder_ == null) {
+                    if (((bitField0_ & 0x00000800) != 0) &&
+                            layoutExample_ != null &&
+                            layoutExample_ != data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance()) {
+                        layoutExample_ =
+                                data4mooc.Data4Mooc.ExampleLayout.newBuilder(layoutExample_).mergeFrom(value).buildPartial();
+                    } else {
+                        layoutExample_ = value;
+                    }
+                    onChanged();
+                } else {
+                    layoutExampleBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000800;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public Builder clearLayoutExample() {
+                if (layoutExampleBuilder_ == null) {
+                    layoutExample_ = null;
+                    onChanged();
+                } else {
+                    layoutExampleBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000800);
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public data4mooc.Data4Mooc.ExampleLayout.Builder getLayoutExampleBuilder() {
+                bitField0_ |= 0x00000800;
+                onChanged();
+                return getLayoutExampleFieldBuilder().getBuilder();
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            public data4mooc.Data4Mooc.ExampleLayoutOrBuilder getLayoutExampleOrBuilder() {
+                if (layoutExampleBuilder_ != null) {
+                    return layoutExampleBuilder_.getMessageOrBuilder();
+                } else {
+                    return layoutExample_ == null ?
+                            data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance() : layoutExample_;
+                }
+            }
+            /**
+             * <code>required .data4mooc.ExampleLayout layoutExample = 12;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.ExampleLayout, data4mooc.Data4Mooc.ExampleLayout.Builder, data4mooc.Data4Mooc.ExampleLayoutOrBuilder>
+            getLayoutExampleFieldBuilder() {
+                if (layoutExampleBuilder_ == null) {
+                    layoutExampleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.ExampleLayout, data4mooc.Data4Mooc.ExampleLayout.Builder, data4mooc.Data4Mooc.ExampleLayoutOrBuilder>(
+                            getLayoutExample(),
+                            getParentForChildren(),
+                            isClean());
+                    layoutExample_ = null;
+                }
+                return layoutExampleBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.TestLayout layoutTest_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.TestLayout, data4mooc.Data4Mooc.TestLayout.Builder, data4mooc.Data4Mooc.TestLayoutOrBuilder> layoutTestBuilder_;
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public boolean hasLayoutTest() {
+                return ((bitField0_ & 0x00001000) != 0);
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public data4mooc.Data4Mooc.TestLayout getLayoutTest() {
+                if (layoutTestBuilder_ == null) {
+                    return layoutTest_ == null ? data4mooc.Data4Mooc.TestLayout.getDefaultInstance() : layoutTest_;
+                } else {
+                    return layoutTestBuilder_.getMessage();
+                }
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public Builder setLayoutTest(data4mooc.Data4Mooc.TestLayout value) {
+                if (layoutTestBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    layoutTest_ = value;
+                    onChanged();
+                } else {
+                    layoutTestBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00001000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public Builder setLayoutTest(
+                    data4mooc.Data4Mooc.TestLayout.Builder builderForValue) {
+                if (layoutTestBuilder_ == null) {
+                    layoutTest_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    layoutTestBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00001000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public Builder mergeLayoutTest(data4mooc.Data4Mooc.TestLayout value) {
+                if (layoutTestBuilder_ == null) {
+                    if (((bitField0_ & 0x00001000) != 0) &&
+                            layoutTest_ != null &&
+                            layoutTest_ != data4mooc.Data4Mooc.TestLayout.getDefaultInstance()) {
+                        layoutTest_ =
+                                data4mooc.Data4Mooc.TestLayout.newBuilder(layoutTest_).mergeFrom(value).buildPartial();
+                    } else {
+                        layoutTest_ = value;
+                    }
+                    onChanged();
+                } else {
+                    layoutTestBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00001000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public Builder clearLayoutTest() {
+                if (layoutTestBuilder_ == null) {
+                    layoutTest_ = null;
+                    onChanged();
+                } else {
+                    layoutTestBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00001000);
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public data4mooc.Data4Mooc.TestLayout.Builder getLayoutTestBuilder() {
+                bitField0_ |= 0x00001000;
+                onChanged();
+                return getLayoutTestFieldBuilder().getBuilder();
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            public data4mooc.Data4Mooc.TestLayoutOrBuilder getLayoutTestOrBuilder() {
+                if (layoutTestBuilder_ != null) {
+                    return layoutTestBuilder_.getMessageOrBuilder();
+                } else {
+                    return layoutTest_ == null ?
+                            data4mooc.Data4Mooc.TestLayout.getDefaultInstance() : layoutTest_;
+                }
+            }
+            /**
+             * <code>required .data4mooc.TestLayout layoutTest = 13;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.TestLayout, data4mooc.Data4Mooc.TestLayout.Builder, data4mooc.Data4Mooc.TestLayoutOrBuilder>
+            getLayoutTestFieldBuilder() {
+                if (layoutTestBuilder_ == null) {
+                    layoutTestBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.TestLayout, data4mooc.Data4Mooc.TestLayout.Builder, data4mooc.Data4Mooc.TestLayoutOrBuilder>(
+                            getLayoutTest(),
+                            getParentForChildren(),
+                            isClean());
+                    layoutTest_ = null;
+                }
+                return layoutTestBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.QALayout layoutQA_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.QALayout, data4mooc.Data4Mooc.QALayout.Builder, data4mooc.Data4Mooc.QALayoutOrBuilder> layoutQABuilder_;
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public boolean hasLayoutQA() {
+                return ((bitField0_ & 0x00002000) != 0);
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public data4mooc.Data4Mooc.QALayout getLayoutQA() {
+                if (layoutQABuilder_ == null) {
+                    return layoutQA_ == null ? data4mooc.Data4Mooc.QALayout.getDefaultInstance() : layoutQA_;
+                } else {
+                    return layoutQABuilder_.getMessage();
+                }
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public Builder setLayoutQA(data4mooc.Data4Mooc.QALayout value) {
+                if (layoutQABuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    layoutQA_ = value;
+                    onChanged();
+                } else {
+                    layoutQABuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00002000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public Builder setLayoutQA(
+                    data4mooc.Data4Mooc.QALayout.Builder builderForValue) {
+                if (layoutQABuilder_ == null) {
+                    layoutQA_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    layoutQABuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00002000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public Builder mergeLayoutQA(data4mooc.Data4Mooc.QALayout value) {
+                if (layoutQABuilder_ == null) {
+                    if (((bitField0_ & 0x00002000) != 0) &&
+                            layoutQA_ != null &&
+                            layoutQA_ != data4mooc.Data4Mooc.QALayout.getDefaultInstance()) {
+                        layoutQA_ =
+                                data4mooc.Data4Mooc.QALayout.newBuilder(layoutQA_).mergeFrom(value).buildPartial();
+                    } else {
+                        layoutQA_ = value;
+                    }
+                    onChanged();
+                } else {
+                    layoutQABuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00002000;
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public Builder clearLayoutQA() {
+                if (layoutQABuilder_ == null) {
+                    layoutQA_ = null;
+                    onChanged();
+                } else {
+                    layoutQABuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00002000);
+                return this;
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public data4mooc.Data4Mooc.QALayout.Builder getLayoutQABuilder() {
+                bitField0_ |= 0x00002000;
+                onChanged();
+                return getLayoutQAFieldBuilder().getBuilder();
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            public data4mooc.Data4Mooc.QALayoutOrBuilder getLayoutQAOrBuilder() {
+                if (layoutQABuilder_ != null) {
+                    return layoutQABuilder_.getMessageOrBuilder();
+                } else {
+                    return layoutQA_ == null ?
+                            data4mooc.Data4Mooc.QALayout.getDefaultInstance() : layoutQA_;
+                }
+            }
+            /**
+             * <code>required .data4mooc.QALayout layoutQA = 14;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.QALayout, data4mooc.Data4Mooc.QALayout.Builder, data4mooc.Data4Mooc.QALayoutOrBuilder>
+            getLayoutQAFieldBuilder() {
+                if (layoutQABuilder_ == null) {
+                    layoutQABuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.QALayout, data4mooc.Data4Mooc.QALayout.Builder, data4mooc.Data4Mooc.QALayoutOrBuilder>(
+                            getLayoutQA(),
+                            getParentForChildren(),
+                            isClean());
+                    layoutQA_ = null;
+                }
+                return layoutQABuilder_;
+            }
+
+            private com.google.protobuf.Internal.IntList topicLayout_ = emptyIntList();
+            private void ensureTopicLayoutIsMutable() {
+                if (!((bitField0_ & 0x00004000) != 0)) {
+                    topicLayout_ = mutableCopy(topicLayout_);
+                    bitField0_ |= 0x00004000;
+                }
+            }
+            /**
+             * <code>repeated int32 topicLayout = 15;</code>
+             */
+            public java.util.List<java.lang.Integer>
+            getTopicLayoutList() {
+                return ((bitField0_ & 0x00004000) != 0) ?
+                        java.util.Collections.unmodifiableList(topicLayout_) : topicLayout_;
+            }
+            /**
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public int getTopicLayoutCount() {
                 return topicLayout_.size();
             }
             /**
-             * <pre>
-             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public int getTopicLayout(int index) {
                 return topicLayout_.getInt(index);
             }
             /**
-             * <pre>
-             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public Builder setTopicLayout(
                     int index, int value) {
@@ -16532,11 +17450,7 @@ public final class Data4Mooc {
                 return this;
             }
             /**
-             * <pre>
-             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public Builder addTopicLayout(int value) {
                 ensureTopicLayoutIsMutable();
@@ -16545,11 +17459,7 @@ public final class Data4Mooc {
                 return this;
             }
             /**
-             * <pre>
-             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public Builder addAllTopicLayout(
                     java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -16560,24 +17470,20 @@ public final class Data4Mooc {
                 return this;
             }
             /**
-             * <pre>
-             *	常见问题库页的列表样式编号（1:线性，2:网格）、名称字体、颜色和大小
-             * </pre>
-             *
-             * <code>repeated int32 topicLayout = 18;</code>
+             * <code>repeated int32 topicLayout = 15;</code>
              */
             public Builder clearTopicLayout() {
                 topicLayout_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00020000);
+                bitField0_ = (bitField0_ & ~0x00004000);
                 onChanged();
                 return this;
             }
 
             private com.google.protobuf.Internal.IntList exampleLayout_ = emptyIntList();
             private void ensureExampleLayoutIsMutable() {
-                if (!((bitField0_ & 0x00040000) != 0)) {
+                if (!((bitField0_ & 0x00008000) != 0)) {
                     exampleLayout_ = mutableCopy(exampleLayout_);
-                    bitField0_ |= 0x00040000;
+                    bitField0_ |= 0x00008000;
                 }
             }
             /**
@@ -16585,11 +17491,11 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public java.util.List<java.lang.Integer>
             getExampleLayoutList() {
-                return ((bitField0_ & 0x00040000) != 0) ?
+                return ((bitField0_ & 0x00008000) != 0) ?
                         java.util.Collections.unmodifiableList(exampleLayout_) : exampleLayout_;
             }
             /**
@@ -16597,7 +17503,7 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public int getExampleLayoutCount() {
                 return exampleLayout_.size();
@@ -16607,7 +17513,7 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public int getExampleLayout(int index) {
                 return exampleLayout_.getInt(index);
@@ -16617,7 +17523,7 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public Builder setExampleLayout(
                     int index, int value) {
@@ -16631,7 +17537,7 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public Builder addExampleLayout(int value) {
                 ensureExampleLayoutIsMutable();
@@ -16644,7 +17550,7 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public Builder addAllExampleLayout(
                     java.lang.Iterable<? extends java.lang.Integer> values) {
@@ -16659,11 +17565,11 @@ public final class Data4Mooc {
              *各个知识点的页面样式(1:线性，2:切换卡，3:翻页)
              * </pre>
              *
-             * <code>repeated int32 exampleLayout = 19;</code>
+             * <code>repeated int32 exampleLayout = 16;</code>
              */
             public Builder clearExampleLayout() {
                 exampleLayout_ = emptyIntList();
-                bitField0_ = (bitField0_ & ~0x00040000);
+                bitField0_ = (bitField0_ & ~0x00008000);
                 onChanged();
                 return this;
             }
@@ -16680,41 +17586,1785 @@ public final class Data4Mooc {
             }
 
 
-            // @@protoc_insertion_point(builder_scope:data4mooc.PageLayout)
+            // @@protoc_insertion_point(builder_scope:data4mooc.Layout)
         }
 
-        // @@protoc_insertion_point(class_scope:data4mooc.PageLayout)
-        private static final data4mooc.Data4Mooc.PageLayout DEFAULT_INSTANCE;
+        // @@protoc_insertion_point(class_scope:data4mooc.Layout)
+        private static final data4mooc.Data4Mooc.Layout DEFAULT_INSTANCE;
         static {
-            DEFAULT_INSTANCE = new data4mooc.Data4Mooc.PageLayout();
+            DEFAULT_INSTANCE = new data4mooc.Data4Mooc.Layout();
         }
 
-        public static data4mooc.Data4Mooc.PageLayout getDefaultInstance() {
+        public static data4mooc.Data4Mooc.Layout getDefaultInstance() {
             return DEFAULT_INSTANCE;
         }
 
-        @java.lang.Deprecated public static final com.google.protobuf.Parser<PageLayout>
-                PARSER = new com.google.protobuf.AbstractParser<PageLayout>() {
+        @java.lang.Deprecated public static final com.google.protobuf.Parser<Layout>
+                PARSER = new com.google.protobuf.AbstractParser<Layout>() {
             @java.lang.Override
-            public PageLayout parsePartialFrom(
+            public Layout parsePartialFrom(
                     com.google.protobuf.CodedInputStream input,
                     com.google.protobuf.ExtensionRegistryLite extensionRegistry)
                     throws com.google.protobuf.InvalidProtocolBufferException {
-                return new PageLayout(input, extensionRegistry);
+                return new Layout(input, extensionRegistry);
             }
         };
 
-        public static com.google.protobuf.Parser<PageLayout> parser() {
+        public static com.google.protobuf.Parser<Layout> parser() {
             return PARSER;
         }
 
         @java.lang.Override
-        public com.google.protobuf.Parser<PageLayout> getParserForType() {
+        public com.google.protobuf.Parser<Layout> getParserForType() {
             return PARSER;
         }
 
         @java.lang.Override
-        public data4mooc.Data4Mooc.PageLayout getDefaultInstanceForType() {
+        public data4mooc.Data4Mooc.Layout getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+    }
+
+    public interface BasicOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:data4mooc.Basic)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        boolean hasTitle();
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        java.lang.String getTitle();
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        com.google.protobuf.ByteString
+        getTitleBytes();
+
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        boolean hasVersion();
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        java.lang.String getVersion();
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        com.google.protobuf.ByteString
+        getVersionBytes();
+
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        boolean hasIntro();
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        java.lang.String getIntro();
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        com.google.protobuf.ByteString
+        getIntroBytes();
+
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        boolean hasDate();
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        java.lang.String getDate();
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        com.google.protobuf.ByteString
+        getDateBytes();
+
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        boolean hasAuthor();
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        java.lang.String getAuthor();
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        com.google.protobuf.ByteString
+        getAuthorBytes();
+
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        boolean hasAddress();
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        java.lang.String getAddress();
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        com.google.protobuf.ByteString
+        getAddressBytes();
+    }
+    /**
+     * Protobuf type {@code data4mooc.Basic}
+     */
+    public  static final class Basic extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:data4mooc.Basic)
+            BasicOrBuilder {
+        private static final long serialVersionUID = 0L;
+        // Use Basic.newBuilder() to construct.
+        private Basic(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private Basic() {
+            title_ = "";
+            version_ = "";
+            intro_ = "";
+            date_ = "";
+            author_ = "";
+            address_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new Basic();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+        private Basic(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000001;
+                            title_ = bs;
+                            break;
+                        }
+                        case 18: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000002;
+                            version_ = bs;
+                            break;
+                        }
+                        case 26: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000004;
+                            intro_ = bs;
+                            break;
+                        }
+                        case 34: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000008;
+                            date_ = bs;
+                            break;
+                        }
+                        case 42: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000010;
+                            author_ = bs;
+                            break;
+                        }
+                        case 50: {
+                            com.google.protobuf.ByteString bs = input.readBytes();
+                            bitField0_ |= 0x00000020;
+                            address_ = bs;
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownField(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Basic_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Basic_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            data4mooc.Data4Mooc.Basic.class, data4mooc.Data4Mooc.Basic.Builder.class);
+        }
+
+        private int bitField0_;
+        public static final int TITLE_FIELD_NUMBER = 1;
+        private volatile java.lang.Object title_;
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        public boolean hasTitle() {
+            return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        public java.lang.String getTitle() {
+            java.lang.Object ref = title_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    title_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	软件名称
+         * </pre>
+         *
+         * <code>required string title = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+        getTitleBytes() {
+            java.lang.Object ref = title_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                title_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int VERSION_FIELD_NUMBER = 2;
+        private volatile java.lang.Object version_;
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        public boolean hasVersion() {
+            return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        public java.lang.String getVersion() {
+            java.lang.Object ref = version_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    version_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	版本号
+         * </pre>
+         *
+         * <code>required string version = 2;</code>
+         */
+        public com.google.protobuf.ByteString
+        getVersionBytes() {
+            java.lang.Object ref = version_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                version_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int INTRO_FIELD_NUMBER = 3;
+        private volatile java.lang.Object intro_;
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        public boolean hasIntro() {
+            return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        public java.lang.String getIntro() {
+            java.lang.Object ref = intro_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    intro_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	简介
+         * </pre>
+         *
+         * <code>required string intro = 3;</code>
+         */
+        public com.google.protobuf.ByteString
+        getIntroBytes() {
+            java.lang.Object ref = intro_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                intro_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int DATE_FIELD_NUMBER = 4;
+        private volatile java.lang.Object date_;
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        public boolean hasDate() {
+            return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        public java.lang.String getDate() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    date_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	制作日期
+         * </pre>
+         *
+         * <code>required string date = 4;</code>
+         */
+        public com.google.protobuf.ByteString
+        getDateBytes() {
+            java.lang.Object ref = date_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                date_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int AUTHOR_FIELD_NUMBER = 5;
+        private volatile java.lang.Object author_;
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        public boolean hasAuthor() {
+            return ((bitField0_ & 0x00000010) != 0);
+        }
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        public java.lang.String getAuthor() {
+            java.lang.Object ref = author_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    author_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	作者
+         * </pre>
+         *
+         * <code>required string author = 5;</code>
+         */
+        public com.google.protobuf.ByteString
+        getAuthorBytes() {
+            java.lang.Object ref = author_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                author_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        public static final int ADDRESS_FIELD_NUMBER = 6;
+        private volatile java.lang.Object address_;
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        public boolean hasAddress() {
+            return ((bitField0_ & 0x00000020) != 0);
+        }
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        public java.lang.String getAddress() {
+            java.lang.Object ref = address_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                if (bs.isValidUtf8()) {
+                    address_ = s;
+                }
+                return s;
+            }
+        }
+        /**
+         * <pre>
+         *	手机，邮箱或微信号
+         * </pre>
+         *
+         * <code>required string address = 6;</code>
+         */
+        public com.google.protobuf.ByteString
+        getAddressBytes() {
+            java.lang.Object ref = address_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                address_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            if (!hasTitle()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasVersion()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasIntro()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasDate()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasAuthor()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasAddress()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (((bitField0_ & 0x00000001) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, version_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, intro_);
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, date_);
+            }
+            if (((bitField0_ & 0x00000010) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 5, author_);
+            }
+            if (((bitField0_ & 0x00000020) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 6, address_);
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, version_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, intro_);
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, date_);
+            }
+            if (((bitField0_ & 0x00000010) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, author_);
+            }
+            if (((bitField0_ & 0x00000020) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, address_);
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof data4mooc.Data4Mooc.Basic)) {
+                return super.equals(obj);
+            }
+            data4mooc.Data4Mooc.Basic other = (data4mooc.Data4Mooc.Basic) obj;
+
+            if (hasTitle() != other.hasTitle()) return false;
+            if (hasTitle()) {
+                if (!getTitle()
+                        .equals(other.getTitle())) return false;
+            }
+            if (hasVersion() != other.hasVersion()) return false;
+            if (hasVersion()) {
+                if (!getVersion()
+                        .equals(other.getVersion())) return false;
+            }
+            if (hasIntro() != other.hasIntro()) return false;
+            if (hasIntro()) {
+                if (!getIntro()
+                        .equals(other.getIntro())) return false;
+            }
+            if (hasDate() != other.hasDate()) return false;
+            if (hasDate()) {
+                if (!getDate()
+                        .equals(other.getDate())) return false;
+            }
+            if (hasAuthor() != other.hasAuthor()) return false;
+            if (hasAuthor()) {
+                if (!getAuthor()
+                        .equals(other.getAuthor())) return false;
+            }
+            if (hasAddress() != other.hasAddress()) return false;
+            if (hasAddress()) {
+                if (!getAddress()
+                        .equals(other.getAddress())) return false;
+            }
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasTitle()) {
+                hash = (37 * hash) + TITLE_FIELD_NUMBER;
+                hash = (53 * hash) + getTitle().hashCode();
+            }
+            if (hasVersion()) {
+                hash = (37 * hash) + VERSION_FIELD_NUMBER;
+                hash = (53 * hash) + getVersion().hashCode();
+            }
+            if (hasIntro()) {
+                hash = (37 * hash) + INTRO_FIELD_NUMBER;
+                hash = (53 * hash) + getIntro().hashCode();
+            }
+            if (hasDate()) {
+                hash = (37 * hash) + DATE_FIELD_NUMBER;
+                hash = (53 * hash) + getDate().hashCode();
+            }
+            if (hasAuthor()) {
+                hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
+                hash = (53 * hash) + getAuthor().hashCode();
+            }
+            if (hasAddress()) {
+                hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+                hash = (53 * hash) + getAddress().hashCode();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Basic parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Basic parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Basic parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(data4mooc.Data4Mooc.Basic prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+        /**
+         * Protobuf type {@code data4mooc.Basic}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:data4mooc.Basic)
+                data4mooc.Data4Mooc.BasicOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Basic_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Basic_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                data4mooc.Data4Mooc.Basic.class, data4mooc.Data4Mooc.Basic.Builder.class);
+            }
+
+            // Construct using data4mooc.Data4Mooc.Basic.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                }
+            }
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                title_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                version_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                intro_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                date_ = "";
+                bitField0_ = (bitField0_ & ~0x00000008);
+                author_ = "";
+                bitField0_ = (bitField0_ & ~0x00000010);
+                address_ = "";
+                bitField0_ = (bitField0_ & ~0x00000020);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Basic_descriptor;
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Basic getDefaultInstanceForType() {
+                return data4mooc.Data4Mooc.Basic.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Basic build() {
+                data4mooc.Data4Mooc.Basic result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Basic buildPartial() {
+                data4mooc.Data4Mooc.Basic result = new data4mooc.Data4Mooc.Basic(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.title_ = title_;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.version_ = version_;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.intro_ = intro_;
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.date_ = date_;
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    to_bitField0_ |= 0x00000010;
+                }
+                result.author_ = author_;
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.address_ = address_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof data4mooc.Data4Mooc.Basic) {
+                    return mergeFrom((data4mooc.Data4Mooc.Basic)other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(data4mooc.Data4Mooc.Basic other) {
+                if (other == data4mooc.Data4Mooc.Basic.getDefaultInstance()) return this;
+                if (other.hasTitle()) {
+                    bitField0_ |= 0x00000001;
+                    title_ = other.title_;
+                    onChanged();
+                }
+                if (other.hasVersion()) {
+                    bitField0_ |= 0x00000002;
+                    version_ = other.version_;
+                    onChanged();
+                }
+                if (other.hasIntro()) {
+                    bitField0_ |= 0x00000004;
+                    intro_ = other.intro_;
+                    onChanged();
+                }
+                if (other.hasDate()) {
+                    bitField0_ |= 0x00000008;
+                    date_ = other.date_;
+                    onChanged();
+                }
+                if (other.hasAuthor()) {
+                    bitField0_ |= 0x00000010;
+                    author_ = other.author_;
+                    onChanged();
+                }
+                if (other.hasAddress()) {
+                    bitField0_ |= 0x00000020;
+                    address_ = other.address_;
+                    onChanged();
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                if (!hasTitle()) {
+                    return false;
+                }
+                if (!hasVersion()) {
+                    return false;
+                }
+                if (!hasIntro()) {
+                    return false;
+                }
+                if (!hasDate()) {
+                    return false;
+                }
+                if (!hasAuthor()) {
+                    return false;
+                }
+                if (!hasAddress()) {
+                    return false;
+                }
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                data4mooc.Data4Mooc.Basic parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (data4mooc.Data4Mooc.Basic) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+            private int bitField0_;
+
+            private java.lang.Object title_ = "";
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public boolean hasTitle() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public java.lang.String getTitle() {
+                java.lang.Object ref = title_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        title_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public com.google.protobuf.ByteString
+            getTitleBytes() {
+                java.lang.Object ref = title_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    title_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public Builder setTitle(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                title_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public Builder clearTitle() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                title_ = getDefaultInstance().getTitle();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	软件名称
+             * </pre>
+             *
+             * <code>required string title = 1;</code>
+             */
+            public Builder setTitleBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                title_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object version_ = "";
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public boolean hasVersion() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public java.lang.String getVersion() {
+                java.lang.Object ref = version_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        version_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public com.google.protobuf.ByteString
+            getVersionBytes() {
+                java.lang.Object ref = version_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    version_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public Builder setVersion(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                version_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public Builder clearVersion() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                version_ = getDefaultInstance().getVersion();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	版本号
+             * </pre>
+             *
+             * <code>required string version = 2;</code>
+             */
+            public Builder setVersionBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                version_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object intro_ = "";
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public boolean hasIntro() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public java.lang.String getIntro() {
+                java.lang.Object ref = intro_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        intro_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public com.google.protobuf.ByteString
+            getIntroBytes() {
+                java.lang.Object ref = intro_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    intro_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public Builder setIntro(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                intro_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public Builder clearIntro() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                intro_ = getDefaultInstance().getIntro();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	简介
+             * </pre>
+             *
+             * <code>required string intro = 3;</code>
+             */
+            public Builder setIntroBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                intro_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object date_ = "";
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public boolean hasDate() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public java.lang.String getDate() {
+                java.lang.Object ref = date_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        date_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public com.google.protobuf.ByteString
+            getDateBytes() {
+                java.lang.Object ref = date_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    date_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public Builder setDate(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000008;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public Builder clearDate() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                date_ = getDefaultInstance().getDate();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	制作日期
+             * </pre>
+             *
+             * <code>required string date = 4;</code>
+             */
+            public Builder setDateBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000008;
+                date_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object author_ = "";
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public boolean hasAuthor() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public java.lang.String getAuthor() {
+                java.lang.Object ref = author_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        author_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public com.google.protobuf.ByteString
+            getAuthorBytes() {
+                java.lang.Object ref = author_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    author_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public Builder setAuthor(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                author_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public Builder clearAuthor() {
+                bitField0_ = (bitField0_ & ~0x00000010);
+                author_ = getDefaultInstance().getAuthor();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	作者
+             * </pre>
+             *
+             * <code>required string author = 5;</code>
+             */
+            public Builder setAuthorBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000010;
+                author_ = value;
+                onChanged();
+                return this;
+            }
+
+            private java.lang.Object address_ = "";
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public boolean hasAddress() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public java.lang.String getAddress() {
+                java.lang.Object ref = address_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    if (bs.isValidUtf8()) {
+                        address_ = s;
+                    }
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public com.google.protobuf.ByteString
+            getAddressBytes() {
+                java.lang.Object ref = address_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    address_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public Builder setAddress(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000020;
+                address_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public Builder clearAddress() {
+                bitField0_ = (bitField0_ & ~0x00000020);
+                address_ = getDefaultInstance().getAddress();
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	手机，邮箱或微信号
+             * </pre>
+             *
+             * <code>required string address = 6;</code>
+             */
+            public Builder setAddressBytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000020;
+                address_ = value;
+                onChanged();
+                return this;
+            }
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:data4mooc.Basic)
+        }
+
+        // @@protoc_insertion_point(class_scope:data4mooc.Basic)
+        private static final data4mooc.Data4Mooc.Basic DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new data4mooc.Data4Mooc.Basic();
+        }
+
+        public static data4mooc.Data4Mooc.Basic getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        @java.lang.Deprecated public static final com.google.protobuf.Parser<Basic>
+                PARSER = new com.google.protobuf.AbstractParser<Basic>() {
+            @java.lang.Override
+            public Basic parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Basic(input, extensionRegistry);
+            }
+        };
+
+        public static com.google.protobuf.Parser<Basic> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Basic> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public data4mooc.Data4Mooc.Basic getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -16729,7 +19379,7 @@ public final class Data4Mooc {
          *	序号样式
          * </pre>
          *
-         * <code>required int32 indexMode = 1;</code>
+         * <code>optional int32 indexMode = 1;</code>
          */
         boolean hasIndexMode();
         /**
@@ -16737,149 +19387,109 @@ public final class Data4Mooc {
          *	序号样式
          * </pre>
          *
-         * <code>required int32 indexMode = 1;</code>
+         * <code>optional int32 indexMode = 1;</code>
          */
         int getIndexMode();
 
         /**
-         * <code>required int32 nameFont = 2;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        boolean hasNameFont();
+        boolean hasName();
         /**
-         * <code>required int32 nameFont = 2;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        int getNameFont();
-
+        data4mooc.Data4Mooc.Font getName();
         /**
-         * <code>required int32 nameColor = 3;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        boolean hasNameColor();
-        /**
-         * <code>required int32 nameColor = 3;</code>
-         */
-        int getNameColor();
+        data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder();
 
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 4;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        boolean hasNameSize();
+        boolean hasSection();
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 4;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        int getNameSize();
-
+        data4mooc.Data4Mooc.Font getSection();
         /**
-         * <code>required int32 secFont = 5;</code>
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        boolean hasSecFont();
-        /**
-         * <code>required int32 secFont = 5;</code>
-         */
-        int getSecFont();
-
-        /**
-         * <code>required int32 secColor = 6;</code>
-         */
-        boolean hasSecColor();
-        /**
-         * <code>required int32 secColor = 6;</code>
-         */
-        int getSecColor();
+        data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder();
 
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	正文的字体
          * </pre>
          *
-         * <code>required int32 secSize = 7;</code>
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        boolean hasSecSize();
+        boolean hasText();
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	正文的字体
          * </pre>
          *
-         * <code>required int32 secSize = 7;</code>
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        int getSecSize();
-
+        data4mooc.Data4Mooc.Font getText();
         /**
-         * <code>required int32 textFont = 8;</code>
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        boolean hasTextFont();
-        /**
-         * <code>required int32 textFont = 8;</code>
-         */
-        int getTextFont();
-
-        /**
-         * <code>required int32 textColor = 9;</code>
-         */
-        boolean hasTextColor();
-        /**
-         * <code>required int32 textColor = 9;</code>
-         */
-        int getTextColor();
+        data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder();
 
         /**
          * <pre>
-         *	正文的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 textSize = 10;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        boolean hasTextSize();
+        boolean hasResource();
         /**
          * <pre>
-         *	正文的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 textSize = 10;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        int getTextSize();
-
-        /**
-         * <code>required int32 resFont = 11;</code>
-         */
-        boolean hasResFont();
-        /**
-         * <code>required int32 resFont = 11;</code>
-         */
-        int getResFont();
-
-        /**
-         * <code>required int32 resColor = 12;</code>
-         */
-        boolean hasResColor();
-        /**
-         * <code>required int32 resColor = 12;</code>
-         */
-        int getResColor();
-
+        data4mooc.Data4Mooc.Font getResource();
         /**
          * <pre>
-         *	资源名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 resSize = 13;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        boolean hasResSize();
-        /**
-         * <pre>
-         *	资源名的字体和大小
-         * </pre>
-         *
-         * <code>required int32 resSize = 13;</code>
-         */
-        int getResSize();
+        data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder();
     }
     /**
      * <pre>
@@ -16936,64 +19546,56 @@ public final class Data4Mooc {
                             indexMode_ = input.readInt32();
                             break;
                         }
-                        case 16: {
+                        case 18: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) != 0)) {
+                                subBuilder = name_.toBuilder();
+                            }
+                            name_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(name_);
+                                name_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000002;
-                            nameFont_ = input.readInt32();
                             break;
                         }
-                        case 24: {
+                        case 26: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) != 0)) {
+                                subBuilder = section_.toBuilder();
+                            }
+                            section_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(section_);
+                                section_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000004;
-                            nameColor_ = input.readInt32();
                             break;
                         }
-                        case 32: {
+                        case 34: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000008) != 0)) {
+                                subBuilder = text_.toBuilder();
+                            }
+                            text_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(text_);
+                                text_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000008;
-                            nameSize_ = input.readInt32();
                             break;
                         }
-                        case 40: {
+                        case 42: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000010) != 0)) {
+                                subBuilder = resource_.toBuilder();
+                            }
+                            resource_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(resource_);
+                                resource_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000010;
-                            secFont_ = input.readInt32();
-                            break;
-                        }
-                        case 48: {
-                            bitField0_ |= 0x00000020;
-                            secColor_ = input.readInt32();
-                            break;
-                        }
-                        case 56: {
-                            bitField0_ |= 0x00000040;
-                            secSize_ = input.readInt32();
-                            break;
-                        }
-                        case 64: {
-                            bitField0_ |= 0x00000080;
-                            textFont_ = input.readInt32();
-                            break;
-                        }
-                        case 72: {
-                            bitField0_ |= 0x00000100;
-                            textColor_ = input.readInt32();
-                            break;
-                        }
-                        case 80: {
-                            bitField0_ |= 0x00000200;
-                            textSize_ = input.readInt32();
-                            break;
-                        }
-                        case 88: {
-                            bitField0_ |= 0x00000400;
-                            resFont_ = input.readInt32();
-                            break;
-                        }
-                        case 96: {
-                            bitField0_ |= 0x00000800;
-                            resColor_ = input.readInt32();
-                            break;
-                        }
-                        case 104: {
-                            bitField0_ |= 0x00001000;
-                            resSize_ = input.readInt32();
                             break;
                         }
                         default: {
@@ -17036,7 +19638,7 @@ public final class Data4Mooc {
          *	序号样式
          * </pre>
          *
-         * <code>required int32 indexMode = 1;</code>
+         * <code>optional int32 indexMode = 1;</code>
          */
         public boolean hasIndexMode() {
             return ((bitField0_ & 0x00000001) != 0);
@@ -17046,222 +19648,142 @@ public final class Data4Mooc {
          *	序号样式
          * </pre>
          *
-         * <code>required int32 indexMode = 1;</code>
+         * <code>optional int32 indexMode = 1;</code>
          */
         public int getIndexMode() {
             return indexMode_;
         }
 
-        public static final int NAMEFONT_FIELD_NUMBER = 2;
-        private int nameFont_;
+        public static final int NAME_FIELD_NUMBER = 2;
+        private data4mooc.Data4Mooc.Font name_;
         /**
-         * <code>required int32 nameFont = 2;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        public boolean hasNameFont() {
+        public boolean hasName() {
             return ((bitField0_ & 0x00000002) != 0);
         }
         /**
-         * <code>required int32 nameFont = 2;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        public int getNameFont() {
-            return nameFont_;
+        public data4mooc.Data4Mooc.Font getName() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+        }
+        /**
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
         }
 
-        public static final int NAMECOLOR_FIELD_NUMBER = 3;
-        private int nameColor_;
+        public static final int SECTION_FIELD_NUMBER = 3;
+        private data4mooc.Data4Mooc.Font section_;
         /**
-         * <code>required int32 nameColor = 3;</code>
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        public boolean hasNameColor() {
+        public boolean hasSection() {
             return ((bitField0_ & 0x00000004) != 0);
         }
         /**
-         * <code>required int32 nameColor = 3;</code>
-         */
-        public int getNameColor() {
-            return nameColor_;
-        }
-
-        public static final int NAMESIZE_FIELD_NUMBER = 4;
-        private int nameSize_;
-        /**
          * <pre>
-         *	案例名称字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 4;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        public boolean hasNameSize() {
+        public data4mooc.Data4Mooc.Font getSection() {
+            return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+        }
+        /**
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder() {
+            return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+        }
+
+        public static final int TEXT_FIELD_NUMBER = 4;
+        private data4mooc.Data4Mooc.Font text_;
+        /**
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
+         */
+        public boolean hasText() {
             return ((bitField0_ & 0x00000008) != 0);
         }
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	正文的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 4;</code>
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        public int getNameSize() {
-            return nameSize_;
+        public data4mooc.Data4Mooc.Font getText() {
+            return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+        }
+        /**
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder() {
+            return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
         }
 
-        public static final int SECFONT_FIELD_NUMBER = 5;
-        private int secFont_;
+        public static final int RESOURCE_FIELD_NUMBER = 5;
+        private data4mooc.Data4Mooc.Font resource_;
         /**
-         * <code>required int32 secFont = 5;</code>
+         * <pre>
+         *	资源名的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public boolean hasSecFont() {
+        public boolean hasResource() {
             return ((bitField0_ & 0x00000010) != 0);
         }
         /**
-         * <code>required int32 secFont = 5;</code>
-         */
-        public int getSecFont() {
-            return secFont_;
-        }
-
-        public static final int SECCOLOR_FIELD_NUMBER = 6;
-        private int secColor_;
-        /**
-         * <code>required int32 secColor = 6;</code>
-         */
-        public boolean hasSecColor() {
-            return ((bitField0_ & 0x00000020) != 0);
-        }
-        /**
-         * <code>required int32 secColor = 6;</code>
-         */
-        public int getSecColor() {
-            return secColor_;
-        }
-
-        public static final int SECSIZE_FIELD_NUMBER = 7;
-        private int secSize_;
-        /**
          * <pre>
-         *	小节名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 secSize = 7;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public boolean hasSecSize() {
-            return ((bitField0_ & 0x00000040) != 0);
+        public data4mooc.Data4Mooc.Font getResource() {
+            return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
         }
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 secSize = 7;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public int getSecSize() {
-            return secSize_;
-        }
-
-        public static final int TEXTFONT_FIELD_NUMBER = 8;
-        private int textFont_;
-        /**
-         * <code>required int32 textFont = 8;</code>
-         */
-        public boolean hasTextFont() {
-            return ((bitField0_ & 0x00000080) != 0);
-        }
-        /**
-         * <code>required int32 textFont = 8;</code>
-         */
-        public int getTextFont() {
-            return textFont_;
-        }
-
-        public static final int TEXTCOLOR_FIELD_NUMBER = 9;
-        private int textColor_;
-        /**
-         * <code>required int32 textColor = 9;</code>
-         */
-        public boolean hasTextColor() {
-            return ((bitField0_ & 0x00000100) != 0);
-        }
-        /**
-         * <code>required int32 textColor = 9;</code>
-         */
-        public int getTextColor() {
-            return textColor_;
-        }
-
-        public static final int TEXTSIZE_FIELD_NUMBER = 10;
-        private int textSize_;
-        /**
-         * <pre>
-         *	正文的字体和大小
-         * </pre>
-         *
-         * <code>required int32 textSize = 10;</code>
-         */
-        public boolean hasTextSize() {
-            return ((bitField0_ & 0x00000200) != 0);
-        }
-        /**
-         * <pre>
-         *	正文的字体和大小
-         * </pre>
-         *
-         * <code>required int32 textSize = 10;</code>
-         */
-        public int getTextSize() {
-            return textSize_;
-        }
-
-        public static final int RESFONT_FIELD_NUMBER = 11;
-        private int resFont_;
-        /**
-         * <code>required int32 resFont = 11;</code>
-         */
-        public boolean hasResFont() {
-            return ((bitField0_ & 0x00000400) != 0);
-        }
-        /**
-         * <code>required int32 resFont = 11;</code>
-         */
-        public int getResFont() {
-            return resFont_;
-        }
-
-        public static final int RESCOLOR_FIELD_NUMBER = 12;
-        private int resColor_;
-        /**
-         * <code>required int32 resColor = 12;</code>
-         */
-        public boolean hasResColor() {
-            return ((bitField0_ & 0x00000800) != 0);
-        }
-        /**
-         * <code>required int32 resColor = 12;</code>
-         */
-        public int getResColor() {
-            return resColor_;
-        }
-
-        public static final int RESSIZE_FIELD_NUMBER = 13;
-        private int resSize_;
-        /**
-         * <pre>
-         *	资源名的字体和大小
-         * </pre>
-         *
-         * <code>required int32 resSize = 13;</code>
-         */
-        public boolean hasResSize() {
-            return ((bitField0_ & 0x00001000) != 0);
-        }
-        /**
-         * <pre>
-         *	资源名的字体和大小
-         * </pre>
-         *
-         * <code>required int32 resSize = 13;</code>
-         */
-        public int getResSize() {
-            return resSize_;
+        public data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder() {
+            return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -17271,55 +19793,35 @@ public final class Data4Mooc {
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
-            if (!hasIndexMode()) {
+            if (!hasName()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameFont()) {
+            if (!hasSection()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameColor()) {
+            if (!hasText()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameSize()) {
+            if (!hasResource()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecFont()) {
+            if (!getName().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecColor()) {
+            if (!getSection().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecSize()) {
+            if (!getText().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasTextFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasTextColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasTextSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResSize()) {
+            if (!getResource().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -17334,40 +19836,16 @@ public final class Data4Mooc {
                 output.writeInt32(1, indexMode_);
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                output.writeInt32(2, nameFont_);
+                output.writeMessage(2, getName());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, nameColor_);
+                output.writeMessage(3, getSection());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, nameSize_);
+                output.writeMessage(4, getText());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, secFont_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                output.writeInt32(6, secColor_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                output.writeInt32(7, secSize_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                output.writeInt32(8, textFont_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                output.writeInt32(9, textColor_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                output.writeInt32(10, textSize_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                output.writeInt32(11, resFont_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                output.writeInt32(12, resColor_);
-            }
-            if (((bitField0_ & 0x00001000) != 0)) {
-                output.writeInt32(13, resSize_);
+                output.writeMessage(5, getResource());
             }
             unknownFields.writeTo(output);
         }
@@ -17384,51 +19862,19 @@ public final class Data4Mooc {
             }
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(2, nameFont_);
+                        .computeMessageSize(2, getName());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, nameColor_);
+                        .computeMessageSize(3, getSection());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, nameSize_);
+                        .computeMessageSize(4, getText());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, secFont_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, secColor_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(7, secSize_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(8, textFont_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(9, textColor_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(10, textSize_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(11, resFont_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(12, resColor_);
-            }
-            if (((bitField0_ & 0x00001000) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(13, resSize_);
+                        .computeMessageSize(5, getResource());
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -17450,65 +19896,25 @@ public final class Data4Mooc {
                 if (getIndexMode()
                         != other.getIndexMode()) return false;
             }
-            if (hasNameFont() != other.hasNameFont()) return false;
-            if (hasNameFont()) {
-                if (getNameFont()
-                        != other.getNameFont()) return false;
+            if (hasName() != other.hasName()) return false;
+            if (hasName()) {
+                if (!getName()
+                        .equals(other.getName())) return false;
             }
-            if (hasNameColor() != other.hasNameColor()) return false;
-            if (hasNameColor()) {
-                if (getNameColor()
-                        != other.getNameColor()) return false;
+            if (hasSection() != other.hasSection()) return false;
+            if (hasSection()) {
+                if (!getSection()
+                        .equals(other.getSection())) return false;
             }
-            if (hasNameSize() != other.hasNameSize()) return false;
-            if (hasNameSize()) {
-                if (getNameSize()
-                        != other.getNameSize()) return false;
+            if (hasText() != other.hasText()) return false;
+            if (hasText()) {
+                if (!getText()
+                        .equals(other.getText())) return false;
             }
-            if (hasSecFont() != other.hasSecFont()) return false;
-            if (hasSecFont()) {
-                if (getSecFont()
-                        != other.getSecFont()) return false;
-            }
-            if (hasSecColor() != other.hasSecColor()) return false;
-            if (hasSecColor()) {
-                if (getSecColor()
-                        != other.getSecColor()) return false;
-            }
-            if (hasSecSize() != other.hasSecSize()) return false;
-            if (hasSecSize()) {
-                if (getSecSize()
-                        != other.getSecSize()) return false;
-            }
-            if (hasTextFont() != other.hasTextFont()) return false;
-            if (hasTextFont()) {
-                if (getTextFont()
-                        != other.getTextFont()) return false;
-            }
-            if (hasTextColor() != other.hasTextColor()) return false;
-            if (hasTextColor()) {
-                if (getTextColor()
-                        != other.getTextColor()) return false;
-            }
-            if (hasTextSize() != other.hasTextSize()) return false;
-            if (hasTextSize()) {
-                if (getTextSize()
-                        != other.getTextSize()) return false;
-            }
-            if (hasResFont() != other.hasResFont()) return false;
-            if (hasResFont()) {
-                if (getResFont()
-                        != other.getResFont()) return false;
-            }
-            if (hasResColor() != other.hasResColor()) return false;
-            if (hasResColor()) {
-                if (getResColor()
-                        != other.getResColor()) return false;
-            }
-            if (hasResSize() != other.hasResSize()) return false;
-            if (hasResSize()) {
-                if (getResSize()
-                        != other.getResSize()) return false;
+            if (hasResource() != other.hasResource()) return false;
+            if (hasResource()) {
+                if (!getResource()
+                        .equals(other.getResource())) return false;
             }
             if (!unknownFields.equals(other.unknownFields)) return false;
             return true;
@@ -17525,53 +19931,21 @@ public final class Data4Mooc {
                 hash = (37 * hash) + INDEXMODE_FIELD_NUMBER;
                 hash = (53 * hash) + getIndexMode();
             }
-            if (hasNameFont()) {
-                hash = (37 * hash) + NAMEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getNameFont();
+            if (hasName()) {
+                hash = (37 * hash) + NAME_FIELD_NUMBER;
+                hash = (53 * hash) + getName().hashCode();
             }
-            if (hasNameColor()) {
-                hash = (37 * hash) + NAMECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getNameColor();
+            if (hasSection()) {
+                hash = (37 * hash) + SECTION_FIELD_NUMBER;
+                hash = (53 * hash) + getSection().hashCode();
             }
-            if (hasNameSize()) {
-                hash = (37 * hash) + NAMESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getNameSize();
+            if (hasText()) {
+                hash = (37 * hash) + TEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getText().hashCode();
             }
-            if (hasSecFont()) {
-                hash = (37 * hash) + SECFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getSecFont();
-            }
-            if (hasSecColor()) {
-                hash = (37 * hash) + SECCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getSecColor();
-            }
-            if (hasSecSize()) {
-                hash = (37 * hash) + SECSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getSecSize();
-            }
-            if (hasTextFont()) {
-                hash = (37 * hash) + TEXTFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getTextFont();
-            }
-            if (hasTextColor()) {
-                hash = (37 * hash) + TEXTCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getTextColor();
-            }
-            if (hasTextSize()) {
-                hash = (37 * hash) + TEXTSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getTextSize();
-            }
-            if (hasResFont()) {
-                hash = (37 * hash) + RESFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getResFont();
-            }
-            if (hasResColor()) {
-                hash = (37 * hash) + RESCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getResColor();
-            }
-            if (hasResSize()) {
-                hash = (37 * hash) + RESSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getResSize();
+            if (hasResource()) {
+                hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
+                hash = (53 * hash) + getResource().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
@@ -17705,6 +20079,10 @@ public final class Data4Mooc {
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
+                    getNameFieldBuilder();
+                    getSectionFieldBuilder();
+                    getTextFieldBuilder();
+                    getResourceFieldBuilder();
                 }
             }
             @java.lang.Override
@@ -17712,30 +20090,30 @@ public final class Data4Mooc {
                 super.clear();
                 indexMode_ = 0;
                 bitField0_ = (bitField0_ & ~0x00000001);
-                nameFont_ = 0;
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                } else {
+                    nameBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000002);
-                nameColor_ = 0;
+                if (sectionBuilder_ == null) {
+                    section_ = null;
+                } else {
+                    sectionBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000004);
-                nameSize_ = 0;
+                if (textBuilder_ == null) {
+                    text_ = null;
+                } else {
+                    textBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                secFont_ = 0;
+                if (resourceBuilder_ == null) {
+                    resource_ = null;
+                } else {
+                    resourceBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000010);
-                secColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000020);
-                secSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000040);
-                textFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                textColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000100);
-                textSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000200);
-                resFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000400);
-                resColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000800);
-                resSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00001000);
                 return this;
             }
 
@@ -17769,52 +20147,36 @@ public final class Data4Mooc {
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    result.nameFont_ = nameFont_;
+                    if (nameBuilder_ == null) {
+                        result.name_ = name_;
+                    } else {
+                        result.name_ = nameBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.nameColor_ = nameColor_;
+                    if (sectionBuilder_ == null) {
+                        result.section_ = section_;
+                    } else {
+                        result.section_ = sectionBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.nameSize_ = nameSize_;
+                    if (textBuilder_ == null) {
+                        result.text_ = text_;
+                    } else {
+                        result.text_ = textBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.secFont_ = secFont_;
+                    if (resourceBuilder_ == null) {
+                        result.resource_ = resource_;
+                    } else {
+                        result.resource_ = resourceBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000010;
-                }
-                if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.secColor_ = secColor_;
-                    to_bitField0_ |= 0x00000020;
-                }
-                if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.secSize_ = secSize_;
-                    to_bitField0_ |= 0x00000040;
-                }
-                if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.textFont_ = textFont_;
-                    to_bitField0_ |= 0x00000080;
-                }
-                if (((from_bitField0_ & 0x00000100) != 0)) {
-                    result.textColor_ = textColor_;
-                    to_bitField0_ |= 0x00000100;
-                }
-                if (((from_bitField0_ & 0x00000200) != 0)) {
-                    result.textSize_ = textSize_;
-                    to_bitField0_ |= 0x00000200;
-                }
-                if (((from_bitField0_ & 0x00000400) != 0)) {
-                    result.resFont_ = resFont_;
-                    to_bitField0_ |= 0x00000400;
-                }
-                if (((from_bitField0_ & 0x00000800) != 0)) {
-                    result.resColor_ = resColor_;
-                    to_bitField0_ |= 0x00000800;
-                }
-                if (((from_bitField0_ & 0x00001000) != 0)) {
-                    result.resSize_ = resSize_;
-                    to_bitField0_ |= 0x00001000;
                 }
                 result.bitField0_ = to_bitField0_;
                 onBuilt();
@@ -17868,41 +20230,17 @@ public final class Data4Mooc {
                 if (other.hasIndexMode()) {
                     setIndexMode(other.getIndexMode());
                 }
-                if (other.hasNameFont()) {
-                    setNameFont(other.getNameFont());
+                if (other.hasName()) {
+                    mergeName(other.getName());
                 }
-                if (other.hasNameColor()) {
-                    setNameColor(other.getNameColor());
+                if (other.hasSection()) {
+                    mergeSection(other.getSection());
                 }
-                if (other.hasNameSize()) {
-                    setNameSize(other.getNameSize());
+                if (other.hasText()) {
+                    mergeText(other.getText());
                 }
-                if (other.hasSecFont()) {
-                    setSecFont(other.getSecFont());
-                }
-                if (other.hasSecColor()) {
-                    setSecColor(other.getSecColor());
-                }
-                if (other.hasSecSize()) {
-                    setSecSize(other.getSecSize());
-                }
-                if (other.hasTextFont()) {
-                    setTextFont(other.getTextFont());
-                }
-                if (other.hasTextColor()) {
-                    setTextColor(other.getTextColor());
-                }
-                if (other.hasTextSize()) {
-                    setTextSize(other.getTextSize());
-                }
-                if (other.hasResFont()) {
-                    setResFont(other.getResFont());
-                }
-                if (other.hasResColor()) {
-                    setResColor(other.getResColor());
-                }
-                if (other.hasResSize()) {
-                    setResSize(other.getResSize());
+                if (other.hasResource()) {
+                    mergeResource(other.getResource());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -17911,43 +20249,28 @@ public final class Data4Mooc {
 
             @java.lang.Override
             public final boolean isInitialized() {
-                if (!hasIndexMode()) {
+                if (!hasName()) {
                     return false;
                 }
-                if (!hasNameFont()) {
+                if (!hasSection()) {
                     return false;
                 }
-                if (!hasNameColor()) {
+                if (!hasText()) {
                     return false;
                 }
-                if (!hasNameSize()) {
+                if (!hasResource()) {
                     return false;
                 }
-                if (!hasSecFont()) {
+                if (!getName().isInitialized()) {
                     return false;
                 }
-                if (!hasSecColor()) {
+                if (!getSection().isInitialized()) {
                     return false;
                 }
-                if (!hasSecSize()) {
+                if (!getText().isInitialized()) {
                     return false;
                 }
-                if (!hasTextFont()) {
-                    return false;
-                }
-                if (!hasTextColor()) {
-                    return false;
-                }
-                if (!hasTextSize()) {
-                    return false;
-                }
-                if (!hasResFont()) {
-                    return false;
-                }
-                if (!hasResColor()) {
-                    return false;
-                }
-                if (!hasResSize()) {
+                if (!getResource().isInitialized()) {
                     return false;
                 }
                 return true;
@@ -17979,7 +20302,7 @@ public final class Data4Mooc {
              *	序号样式
              * </pre>
              *
-             * <code>required int32 indexMode = 1;</code>
+             * <code>optional int32 indexMode = 1;</code>
              */
             public boolean hasIndexMode() {
                 return ((bitField0_ & 0x00000001) != 0);
@@ -17989,7 +20312,7 @@ public final class Data4Mooc {
              *	序号样式
              * </pre>
              *
-             * <code>required int32 indexMode = 1;</code>
+             * <code>optional int32 indexMode = 1;</code>
              */
             public int getIndexMode() {
                 return indexMode_;
@@ -17999,7 +20322,7 @@ public final class Data4Mooc {
              *	序号样式
              * </pre>
              *
-             * <code>required int32 indexMode = 1;</code>
+             * <code>optional int32 indexMode = 1;</code>
              */
             public Builder setIndexMode(int value) {
                 bitField0_ |= 0x00000001;
@@ -18012,7 +20335,7 @@ public final class Data4Mooc {
              *	序号样式
              * </pre>
              *
-             * <code>required int32 indexMode = 1;</code>
+             * <code>optional int32 indexMode = 1;</code>
              */
             public Builder clearIndexMode() {
                 bitField0_ = (bitField0_ & ~0x00000001);
@@ -18021,452 +20344,620 @@ public final class Data4Mooc {
                 return this;
             }
 
-            private int nameFont_ ;
+            private data4mooc.Data4Mooc.Font name_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> nameBuilder_;
             /**
-             * <code>required int32 nameFont = 2;</code>
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public boolean hasNameFont() {
+            public boolean hasName() {
                 return ((bitField0_ & 0x00000002) != 0);
             }
             /**
-             * <code>required int32 nameFont = 2;</code>
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public int getNameFont() {
-                return nameFont_;
+            public data4mooc.Data4Mooc.Font getName() {
+                if (nameBuilder_ == null) {
+                    return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                } else {
+                    return nameBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 nameFont = 2;</code>
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public Builder setNameFont(int value) {
+            public Builder setName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    name_ = value;
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000002;
-                nameFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 nameFont = 2;</code>
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public Builder clearNameFont() {
-                bitField0_ = (bitField0_ & ~0x00000002);
-                nameFont_ = 0;
-                onChanged();
+            public Builder setName(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (nameBuilder_ == null) {
+                    name_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
                 return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder mergeName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) &&
+                            name_ != null &&
+                            name_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        name_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(name_).mergeFrom(value).buildPartial();
+                    } else {
+                        name_ = value;
+                    }
+                    onChanged();
+                } else {
+                    nameBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder clearName() {
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                    onChanged();
+                } else {
+                    nameBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getNameBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getNameFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+                if (nameBuilder_ != null) {
+                    return nameBuilder_.getMessageOrBuilder();
+                } else {
+                    return name_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                }
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getNameFieldBuilder() {
+                if (nameBuilder_ == null) {
+                    nameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getName(),
+                            getParentForChildren(),
+                            isClean());
+                    name_ = null;
+                }
+                return nameBuilder_;
             }
 
-            private int nameColor_ ;
+            private data4mooc.Data4Mooc.Font section_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> sectionBuilder_;
             /**
-             * <code>required int32 nameColor = 3;</code>
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
              */
-            public boolean hasNameColor() {
+            public boolean hasSection() {
                 return ((bitField0_ & 0x00000004) != 0);
             }
             /**
-             * <code>required int32 nameColor = 3;</code>
-             */
-            public int getNameColor() {
-                return nameColor_;
-            }
-            /**
-             * <code>required int32 nameColor = 3;</code>
-             */
-            public Builder setNameColor(int value) {
-                bitField0_ |= 0x00000004;
-                nameColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 nameColor = 3;</code>
-             */
-            public Builder clearNameColor() {
-                bitField0_ = (bitField0_ & ~0x00000004);
-                nameColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int nameSize_ ;
-            /**
              * <pre>
-             *	案例名称字体和大小
+             *	小标题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 4;</code>
+             * <code>required .data4mooc.Font section = 3;</code>
              */
-            public boolean hasNameSize() {
+            public data4mooc.Data4Mooc.Font getSection() {
+                if (sectionBuilder_ == null) {
+                    return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+                } else {
+                    return sectionBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder setSection(data4mooc.Data4Mooc.Font value) {
+                if (sectionBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    section_ = value;
+                    onChanged();
+                } else {
+                    sectionBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder setSection(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (sectionBuilder_ == null) {
+                    section_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    sectionBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder mergeSection(data4mooc.Data4Mooc.Font value) {
+                if (sectionBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) &&
+                            section_ != null &&
+                            section_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        section_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(section_).mergeFrom(value).buildPartial();
+                    } else {
+                        section_ = value;
+                    }
+                    onChanged();
+                } else {
+                    sectionBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder clearSection() {
+                if (sectionBuilder_ == null) {
+                    section_ = null;
+                    onChanged();
+                } else {
+                    sectionBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getSectionBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getSectionFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder() {
+                if (sectionBuilder_ != null) {
+                    return sectionBuilder_.getMessageOrBuilder();
+                } else {
+                    return section_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+                }
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getSectionFieldBuilder() {
+                if (sectionBuilder_ == null) {
+                    sectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getSection(),
+                            getParentForChildren(),
+                            isClean());
+                    section_ = null;
+                }
+                return sectionBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.Font text_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> textBuilder_;
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public boolean hasText() {
                 return ((bitField0_ & 0x00000008) != 0);
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	正文的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 4;</code>
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public int getNameSize() {
-                return nameSize_;
+            public data4mooc.Data4Mooc.Font getText() {
+                if (textBuilder_ == null) {
+                    return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+                } else {
+                    return textBuilder_.getMessage();
+                }
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	正文的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 4;</code>
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public Builder setNameSize(int value) {
+            public Builder setText(data4mooc.Data4Mooc.Font value) {
+                if (textBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    text_ = value;
+                    onChanged();
+                } else {
+                    textBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000008;
-                nameSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	正文的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 4;</code>
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public Builder clearNameSize() {
-                bitField0_ = (bitField0_ & ~0x00000008);
-                nameSize_ = 0;
-                onChanged();
+            public Builder setText(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (textBuilder_ == null) {
+                    text_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    textBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
                 return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public Builder mergeText(data4mooc.Data4Mooc.Font value) {
+                if (textBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) &&
+                            text_ != null &&
+                            text_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        text_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(text_).mergeFrom(value).buildPartial();
+                    } else {
+                        text_ = value;
+                    }
+                    onChanged();
+                } else {
+                    textBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public Builder clearText() {
+                if (textBuilder_ == null) {
+                    text_ = null;
+                    onChanged();
+                } else {
+                    textBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000008);
+                return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getTextBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getTextFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder() {
+                if (textBuilder_ != null) {
+                    return textBuilder_.getMessageOrBuilder();
+                } else {
+                    return text_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+                }
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getTextFieldBuilder() {
+                if (textBuilder_ == null) {
+                    textBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getText(),
+                            getParentForChildren(),
+                            isClean());
+                    text_ = null;
+                }
+                return textBuilder_;
             }
 
-            private int secFont_ ;
+            private data4mooc.Data4Mooc.Font resource_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> resourceBuilder_;
             /**
-             * <code>required int32 secFont = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public boolean hasSecFont() {
+            public boolean hasResource() {
                 return ((bitField0_ & 0x00000010) != 0);
             }
             /**
-             * <code>required int32 secFont = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public int getSecFont() {
-                return secFont_;
+            public data4mooc.Data4Mooc.Font getResource() {
+                if (resourceBuilder_ == null) {
+                    return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
+                } else {
+                    return resourceBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 secFont = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder setSecFont(int value) {
+            public Builder setResource(data4mooc.Data4Mooc.Font value) {
+                if (resourceBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    resource_ = value;
+                    onChanged();
+                } else {
+                    resourceBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000010;
-                secFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 secFont = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder clearSecFont() {
+            public Builder setResource(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (resourceBuilder_ == null) {
+                    resource_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    resourceBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
+             */
+            public Builder mergeResource(data4mooc.Data4Mooc.Font value) {
+                if (resourceBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) &&
+                            resource_ != null &&
+                            resource_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        resource_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(resource_).mergeFrom(value).buildPartial();
+                    } else {
+                        resource_ = value;
+                    }
+                    onChanged();
+                } else {
+                    resourceBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
+             */
+            public Builder clearResource() {
+                if (resourceBuilder_ == null) {
+                    resource_ = null;
+                    onChanged();
+                } else {
+                    resourceBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000010);
-                secFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int secColor_ ;
-            /**
-             * <code>required int32 secColor = 6;</code>
-             */
-            public boolean hasSecColor() {
-                return ((bitField0_ & 0x00000020) != 0);
-            }
-            /**
-             * <code>required int32 secColor = 6;</code>
-             */
-            public int getSecColor() {
-                return secColor_;
-            }
-            /**
-             * <code>required int32 secColor = 6;</code>
-             */
-            public Builder setSecColor(int value) {
-                bitField0_ |= 0x00000020;
-                secColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 secColor = 6;</code>
-             */
-            public Builder clearSecColor() {
-                bitField0_ = (bitField0_ & ~0x00000020);
-                secColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int secSize_ ;
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 7;</code>
-             */
-            public boolean hasSecSize() {
-                return ((bitField0_ & 0x00000040) != 0);
-            }
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 7;</code>
-             */
-            public int getSecSize() {
-                return secSize_;
-            }
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 7;</code>
-             */
-            public Builder setSecSize(int value) {
-                bitField0_ |= 0x00000040;
-                secSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	小节名的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 secSize = 7;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder clearSecSize() {
-                bitField0_ = (bitField0_ & ~0x00000040);
-                secSize_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000010;
                 onChanged();
-                return this;
-            }
-
-            private int textFont_ ;
-            /**
-             * <code>required int32 textFont = 8;</code>
-             */
-            public boolean hasTextFont() {
-                return ((bitField0_ & 0x00000080) != 0);
-            }
-            /**
-             * <code>required int32 textFont = 8;</code>
-             */
-            public int getTextFont() {
-                return textFont_;
-            }
-            /**
-             * <code>required int32 textFont = 8;</code>
-             */
-            public Builder setTextFont(int value) {
-                bitField0_ |= 0x00000080;
-                textFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 textFont = 8;</code>
-             */
-            public Builder clearTextFont() {
-                bitField0_ = (bitField0_ & ~0x00000080);
-                textFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int textColor_ ;
-            /**
-             * <code>required int32 textColor = 9;</code>
-             */
-            public boolean hasTextColor() {
-                return ((bitField0_ & 0x00000100) != 0);
-            }
-            /**
-             * <code>required int32 textColor = 9;</code>
-             */
-            public int getTextColor() {
-                return textColor_;
-            }
-            /**
-             * <code>required int32 textColor = 9;</code>
-             */
-            public Builder setTextColor(int value) {
-                bitField0_ |= 0x00000100;
-                textColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 textColor = 9;</code>
-             */
-            public Builder clearTextColor() {
-                bitField0_ = (bitField0_ & ~0x00000100);
-                textColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int textSize_ ;
-            /**
-             * <pre>
-             *	正文的字体和大小
-             * </pre>
-             *
-             * <code>required int32 textSize = 10;</code>
-             */
-            public boolean hasTextSize() {
-                return ((bitField0_ & 0x00000200) != 0);
+                return getResourceFieldBuilder().getBuilder();
             }
             /**
              * <pre>
-             *	正文的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 textSize = 10;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public int getTextSize() {
-                return textSize_;
+            public data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder() {
+                if (resourceBuilder_ != null) {
+                    return resourceBuilder_.getMessageOrBuilder();
+                } else {
+                    return resource_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
+                }
             }
             /**
              * <pre>
-             *	正文的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 textSize = 10;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder setTextSize(int value) {
-                bitField0_ |= 0x00000200;
-                textSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	正文的字体和大小
-             * </pre>
-             *
-             * <code>required int32 textSize = 10;</code>
-             */
-            public Builder clearTextSize() {
-                bitField0_ = (bitField0_ & ~0x00000200);
-                textSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resFont_ ;
-            /**
-             * <code>required int32 resFont = 11;</code>
-             */
-            public boolean hasResFont() {
-                return ((bitField0_ & 0x00000400) != 0);
-            }
-            /**
-             * <code>required int32 resFont = 11;</code>
-             */
-            public int getResFont() {
-                return resFont_;
-            }
-            /**
-             * <code>required int32 resFont = 11;</code>
-             */
-            public Builder setResFont(int value) {
-                bitField0_ |= 0x00000400;
-                resFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 resFont = 11;</code>
-             */
-            public Builder clearResFont() {
-                bitField0_ = (bitField0_ & ~0x00000400);
-                resFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resColor_ ;
-            /**
-             * <code>required int32 resColor = 12;</code>
-             */
-            public boolean hasResColor() {
-                return ((bitField0_ & 0x00000800) != 0);
-            }
-            /**
-             * <code>required int32 resColor = 12;</code>
-             */
-            public int getResColor() {
-                return resColor_;
-            }
-            /**
-             * <code>required int32 resColor = 12;</code>
-             */
-            public Builder setResColor(int value) {
-                bitField0_ |= 0x00000800;
-                resColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 resColor = 12;</code>
-             */
-            public Builder clearResColor() {
-                bitField0_ = (bitField0_ & ~0x00000800);
-                resColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resSize_ ;
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 13;</code>
-             */
-            public boolean hasResSize() {
-                return ((bitField0_ & 0x00001000) != 0);
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 13;</code>
-             */
-            public int getResSize() {
-                return resSize_;
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 13;</code>
-             */
-            public Builder setResSize(int value) {
-                bitField0_ |= 0x00001000;
-                resSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 13;</code>
-             */
-            public Builder clearResSize() {
-                bitField0_ = (bitField0_ & ~0x00001000);
-                resSize_ = 0;
-                onChanged();
-                return this;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getResourceFieldBuilder() {
+                if (resourceBuilder_ == null) {
+                    resourceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getResource(),
+                            getParentForChildren(),
+                            isClean());
+                    resource_ = null;
+                }
+                return resourceBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -18526,144 +21017,121 @@ public final class Data4Mooc {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	序号样式
+         * </pre>
+         *
+         * <code>optional int32 indexMode = 1;</code>
          */
-        boolean hasNameFont();
+        boolean hasIndexMode();
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	序号样式
+         * </pre>
+         *
+         * <code>optional int32 indexMode = 1;</code>
          */
-        int getNameFont();
-
-        /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        boolean hasNameColor();
-        /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        int getNameColor();
+        int getIndexMode();
 
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	案例名称字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        boolean hasNameSize();
+        boolean hasName();
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	案例名称字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        int getNameSize();
-
+        data4mooc.Data4Mooc.Font getName();
         /**
-         * <code>required int32 secFont = 4;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        boolean hasSecFont();
-        /**
-         * <code>required int32 secFont = 4;</code>
-         */
-        int getSecFont();
-
-        /**
-         * <code>required int32 secColor = 5;</code>
-         */
-        boolean hasSecColor();
-        /**
-         * <code>required int32 secColor = 5;</code>
-         */
-        int getSecColor();
+        data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder();
 
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 secSize = 6;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        boolean hasSecSize();
+        boolean hasSection();
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 secSize = 6;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        int getSecSize();
-
+        data4mooc.Data4Mooc.Font getSection();
         /**
-         * <code>required int32 textFont = 7;</code>
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        boolean hasTextFont();
-        /**
-         * <code>required int32 textFont = 7;</code>
-         */
-        int getTextFont();
-
-        /**
-         * <code>required int32 textColor = 8;</code>
-         */
-        boolean hasTextColor();
-        /**
-         * <code>required int32 textColor = 8;</code>
-         */
-        int getTextColor();
+        data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder();
 
         /**
          * <pre>
-         *	正文的字体和大小
+         *	正文的字体
          * </pre>
          *
-         * <code>required int32 textSize = 9;</code>
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        boolean hasTextSize();
+        boolean hasText();
         /**
          * <pre>
-         *	正文的字体和大小
+         *	正文的字体
          * </pre>
          *
-         * <code>required int32 textSize = 9;</code>
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        int getTextSize();
-
+        data4mooc.Data4Mooc.Font getText();
         /**
-         * <code>required int32 resFont = 10;</code>
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        boolean hasResFont();
-        /**
-         * <code>required int32 resFont = 10;</code>
-         */
-        int getResFont();
-
-        /**
-         * <code>required int32 resColor = 11;</code>
-         */
-        boolean hasResColor();
-        /**
-         * <code>required int32 resColor = 11;</code>
-         */
-        int getResColor();
+        data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder();
 
         /**
          * <pre>
-         *	资源名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 resSize = 12;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        boolean hasResSize();
+        boolean hasResource();
         /**
          * <pre>
-         *	资源名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 resSize = 12;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        int getResSize();
+        data4mooc.Data4Mooc.Font getResource();
+        /**
+         * <pre>
+         *	资源名的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font resource = 5;</code>
+         */
+        data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder();
     }
     /**
      * <pre>
@@ -18717,62 +21185,59 @@ public final class Data4Mooc {
                             break;
                         case 8: {
                             bitField0_ |= 0x00000001;
-                            nameFont_ = input.readInt32();
+                            indexMode_ = input.readInt32();
                             break;
                         }
-                        case 16: {
+                        case 18: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) != 0)) {
+                                subBuilder = name_.toBuilder();
+                            }
+                            name_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(name_);
+                                name_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000002;
-                            nameColor_ = input.readInt32();
                             break;
                         }
-                        case 24: {
+                        case 26: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) != 0)) {
+                                subBuilder = section_.toBuilder();
+                            }
+                            section_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(section_);
+                                section_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000004;
-                            nameSize_ = input.readInt32();
                             break;
                         }
-                        case 32: {
+                        case 34: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000008) != 0)) {
+                                subBuilder = text_.toBuilder();
+                            }
+                            text_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(text_);
+                                text_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000008;
-                            secFont_ = input.readInt32();
                             break;
                         }
-                        case 40: {
+                        case 42: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000010) != 0)) {
+                                subBuilder = resource_.toBuilder();
+                            }
+                            resource_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(resource_);
+                                resource_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000010;
-                            secColor_ = input.readInt32();
-                            break;
-                        }
-                        case 48: {
-                            bitField0_ |= 0x00000020;
-                            secSize_ = input.readInt32();
-                            break;
-                        }
-                        case 56: {
-                            bitField0_ |= 0x00000040;
-                            textFont_ = input.readInt32();
-                            break;
-                        }
-                        case 64: {
-                            bitField0_ |= 0x00000080;
-                            textColor_ = input.readInt32();
-                            break;
-                        }
-                        case 72: {
-                            bitField0_ |= 0x00000100;
-                            textSize_ = input.readInt32();
-                            break;
-                        }
-                        case 80: {
-                            bitField0_ |= 0x00000200;
-                            resFont_ = input.readInt32();
-                            break;
-                        }
-                        case 88: {
-                            bitField0_ |= 0x00000400;
-                            resColor_ = input.readInt32();
-                            break;
-                        }
-                        case 96: {
-                            bitField0_ |= 0x00000800;
-                            resSize_ = input.readInt32();
                             break;
                         }
                         default: {
@@ -18808,216 +21273,159 @@ public final class Data4Mooc {
         }
 
         private int bitField0_;
-        public static final int NAMEFONT_FIELD_NUMBER = 1;
-        private int nameFont_;
+        public static final int INDEXMODE_FIELD_NUMBER = 1;
+        private int indexMode_;
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	序号样式
+         * </pre>
+         *
+         * <code>optional int32 indexMode = 1;</code>
          */
-        public boolean hasNameFont() {
+        public boolean hasIndexMode() {
             return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	序号样式
+         * </pre>
+         *
+         * <code>optional int32 indexMode = 1;</code>
          */
-        public int getNameFont() {
-            return nameFont_;
+        public int getIndexMode() {
+            return indexMode_;
         }
 
-        public static final int NAMECOLOR_FIELD_NUMBER = 2;
-        private int nameColor_;
+        public static final int NAME_FIELD_NUMBER = 2;
+        private data4mooc.Data4Mooc.Font name_;
         /**
-         * <code>required int32 nameColor = 2;</code>
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        public boolean hasNameColor() {
+        public boolean hasName() {
             return ((bitField0_ & 0x00000002) != 0);
         }
         /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        public int getNameColor() {
-            return nameColor_;
-        }
-
-        public static final int NAMESIZE_FIELD_NUMBER = 3;
-        private int nameSize_;
-        /**
          * <pre>
-         *	案例名称字体和大小
+         *	案例名称字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font name = 2;</code>
          */
-        public boolean hasNameSize() {
+        public data4mooc.Data4Mooc.Font getName() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+        }
+        /**
+         * <pre>
+         *	案例名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 2;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+        }
+
+        public static final int SECTION_FIELD_NUMBER = 3;
+        private data4mooc.Data4Mooc.Font section_;
+        /**
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
+         */
+        public boolean hasSection() {
             return ((bitField0_ & 0x00000004) != 0);
         }
         /**
          * <pre>
-         *	案例名称字体和大小
+         *	小标题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font section = 3;</code>
          */
-        public int getNameSize() {
-            return nameSize_;
+        public data4mooc.Data4Mooc.Font getSection() {
+            return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+        }
+        /**
+         * <pre>
+         *	小标题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font section = 3;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder() {
+            return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
         }
 
-        public static final int SECFONT_FIELD_NUMBER = 4;
-        private int secFont_;
+        public static final int TEXT_FIELD_NUMBER = 4;
+        private data4mooc.Data4Mooc.Font text_;
         /**
-         * <code>required int32 secFont = 4;</code>
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        public boolean hasSecFont() {
+        public boolean hasText() {
             return ((bitField0_ & 0x00000008) != 0);
         }
         /**
-         * <code>required int32 secFont = 4;</code>
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
          */
-        public int getSecFont() {
-            return secFont_;
+        public data4mooc.Data4Mooc.Font getText() {
+            return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+        }
+        /**
+         * <pre>
+         *	正文的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font text = 4;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder() {
+            return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
         }
 
-        public static final int SECCOLOR_FIELD_NUMBER = 5;
-        private int secColor_;
+        public static final int RESOURCE_FIELD_NUMBER = 5;
+        private data4mooc.Data4Mooc.Font resource_;
         /**
-         * <code>required int32 secColor = 5;</code>
+         * <pre>
+         *	资源名的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public boolean hasSecColor() {
+        public boolean hasResource() {
             return ((bitField0_ & 0x00000010) != 0);
         }
         /**
-         * <code>required int32 secColor = 5;</code>
-         */
-        public int getSecColor() {
-            return secColor_;
-        }
-
-        public static final int SECSIZE_FIELD_NUMBER = 6;
-        private int secSize_;
-        /**
          * <pre>
-         *	小节名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 secSize = 6;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public boolean hasSecSize() {
-            return ((bitField0_ & 0x00000020) != 0);
+        public data4mooc.Data4Mooc.Font getResource() {
+            return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
         }
         /**
          * <pre>
-         *	小节名的字体和大小
+         *	资源名的字体
          * </pre>
          *
-         * <code>required int32 secSize = 6;</code>
+         * <code>required .data4mooc.Font resource = 5;</code>
          */
-        public int getSecSize() {
-            return secSize_;
-        }
-
-        public static final int TEXTFONT_FIELD_NUMBER = 7;
-        private int textFont_;
-        /**
-         * <code>required int32 textFont = 7;</code>
-         */
-        public boolean hasTextFont() {
-            return ((bitField0_ & 0x00000040) != 0);
-        }
-        /**
-         * <code>required int32 textFont = 7;</code>
-         */
-        public int getTextFont() {
-            return textFont_;
-        }
-
-        public static final int TEXTCOLOR_FIELD_NUMBER = 8;
-        private int textColor_;
-        /**
-         * <code>required int32 textColor = 8;</code>
-         */
-        public boolean hasTextColor() {
-            return ((bitField0_ & 0x00000080) != 0);
-        }
-        /**
-         * <code>required int32 textColor = 8;</code>
-         */
-        public int getTextColor() {
-            return textColor_;
-        }
-
-        public static final int TEXTSIZE_FIELD_NUMBER = 9;
-        private int textSize_;
-        /**
-         * <pre>
-         *	正文的字体和大小
-         * </pre>
-         *
-         * <code>required int32 textSize = 9;</code>
-         */
-        public boolean hasTextSize() {
-            return ((bitField0_ & 0x00000100) != 0);
-        }
-        /**
-         * <pre>
-         *	正文的字体和大小
-         * </pre>
-         *
-         * <code>required int32 textSize = 9;</code>
-         */
-        public int getTextSize() {
-            return textSize_;
-        }
-
-        public static final int RESFONT_FIELD_NUMBER = 10;
-        private int resFont_;
-        /**
-         * <code>required int32 resFont = 10;</code>
-         */
-        public boolean hasResFont() {
-            return ((bitField0_ & 0x00000200) != 0);
-        }
-        /**
-         * <code>required int32 resFont = 10;</code>
-         */
-        public int getResFont() {
-            return resFont_;
-        }
-
-        public static final int RESCOLOR_FIELD_NUMBER = 11;
-        private int resColor_;
-        /**
-         * <code>required int32 resColor = 11;</code>
-         */
-        public boolean hasResColor() {
-            return ((bitField0_ & 0x00000400) != 0);
-        }
-        /**
-         * <code>required int32 resColor = 11;</code>
-         */
-        public int getResColor() {
-            return resColor_;
-        }
-
-        public static final int RESSIZE_FIELD_NUMBER = 12;
-        private int resSize_;
-        /**
-         * <pre>
-         *	资源名的字体和大小
-         * </pre>
-         *
-         * <code>required int32 resSize = 12;</code>
-         */
-        public boolean hasResSize() {
-            return ((bitField0_ & 0x00000800) != 0);
-        }
-        /**
-         * <pre>
-         *	资源名的字体和大小
-         * </pre>
-         *
-         * <code>required int32 resSize = 12;</code>
-         */
-        public int getResSize() {
-            return resSize_;
+        public data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder() {
+            return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -19027,51 +21435,35 @@ public final class Data4Mooc {
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
-            if (!hasNameFont()) {
+            if (!hasName()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameColor()) {
+            if (!hasSection()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameSize()) {
+            if (!hasText()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecFont()) {
+            if (!hasResource()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecColor()) {
+            if (!getName().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasSecSize()) {
+            if (!getSection().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasTextFont()) {
+            if (!getText().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasTextColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasTextSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasResSize()) {
+            if (!getResource().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -19083,40 +21475,19 @@ public final class Data4Mooc {
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
             if (((bitField0_ & 0x00000001) != 0)) {
-                output.writeInt32(1, nameFont_);
+                output.writeInt32(1, indexMode_);
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                output.writeInt32(2, nameColor_);
+                output.writeMessage(2, getName());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, nameSize_);
+                output.writeMessage(3, getSection());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, secFont_);
+                output.writeMessage(4, getText());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, secColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                output.writeInt32(6, secSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                output.writeInt32(7, textFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                output.writeInt32(8, textColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                output.writeInt32(9, textSize_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                output.writeInt32(10, resFont_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                output.writeInt32(11, resColor_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                output.writeInt32(12, resSize_);
+                output.writeMessage(5, getResource());
             }
             unknownFields.writeTo(output);
         }
@@ -19129,51 +21500,23 @@ public final class Data4Mooc {
             size = 0;
             if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(1, nameFont_);
+                        .computeInt32Size(1, indexMode_);
             }
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(2, nameColor_);
+                        .computeMessageSize(2, getName());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, nameSize_);
+                        .computeMessageSize(3, getSection());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, secFont_);
+                        .computeMessageSize(4, getText());
             }
             if (((bitField0_ & 0x00000010) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, secColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, secSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(7, textFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(8, textColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(9, textSize_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(10, resFont_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(11, resColor_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(12, resSize_);
+                        .computeMessageSize(5, getResource());
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -19190,65 +21533,30 @@ public final class Data4Mooc {
             }
             data4mooc.Data4Mooc.ExampleLayout other = (data4mooc.Data4Mooc.ExampleLayout) obj;
 
-            if (hasNameFont() != other.hasNameFont()) return false;
-            if (hasNameFont()) {
-                if (getNameFont()
-                        != other.getNameFont()) return false;
+            if (hasIndexMode() != other.hasIndexMode()) return false;
+            if (hasIndexMode()) {
+                if (getIndexMode()
+                        != other.getIndexMode()) return false;
             }
-            if (hasNameColor() != other.hasNameColor()) return false;
-            if (hasNameColor()) {
-                if (getNameColor()
-                        != other.getNameColor()) return false;
+            if (hasName() != other.hasName()) return false;
+            if (hasName()) {
+                if (!getName()
+                        .equals(other.getName())) return false;
             }
-            if (hasNameSize() != other.hasNameSize()) return false;
-            if (hasNameSize()) {
-                if (getNameSize()
-                        != other.getNameSize()) return false;
+            if (hasSection() != other.hasSection()) return false;
+            if (hasSection()) {
+                if (!getSection()
+                        .equals(other.getSection())) return false;
             }
-            if (hasSecFont() != other.hasSecFont()) return false;
-            if (hasSecFont()) {
-                if (getSecFont()
-                        != other.getSecFont()) return false;
+            if (hasText() != other.hasText()) return false;
+            if (hasText()) {
+                if (!getText()
+                        .equals(other.getText())) return false;
             }
-            if (hasSecColor() != other.hasSecColor()) return false;
-            if (hasSecColor()) {
-                if (getSecColor()
-                        != other.getSecColor()) return false;
-            }
-            if (hasSecSize() != other.hasSecSize()) return false;
-            if (hasSecSize()) {
-                if (getSecSize()
-                        != other.getSecSize()) return false;
-            }
-            if (hasTextFont() != other.hasTextFont()) return false;
-            if (hasTextFont()) {
-                if (getTextFont()
-                        != other.getTextFont()) return false;
-            }
-            if (hasTextColor() != other.hasTextColor()) return false;
-            if (hasTextColor()) {
-                if (getTextColor()
-                        != other.getTextColor()) return false;
-            }
-            if (hasTextSize() != other.hasTextSize()) return false;
-            if (hasTextSize()) {
-                if (getTextSize()
-                        != other.getTextSize()) return false;
-            }
-            if (hasResFont() != other.hasResFont()) return false;
-            if (hasResFont()) {
-                if (getResFont()
-                        != other.getResFont()) return false;
-            }
-            if (hasResColor() != other.hasResColor()) return false;
-            if (hasResColor()) {
-                if (getResColor()
-                        != other.getResColor()) return false;
-            }
-            if (hasResSize() != other.hasResSize()) return false;
-            if (hasResSize()) {
-                if (getResSize()
-                        != other.getResSize()) return false;
+            if (hasResource() != other.hasResource()) return false;
+            if (hasResource()) {
+                if (!getResource()
+                        .equals(other.getResource())) return false;
             }
             if (!unknownFields.equals(other.unknownFields)) return false;
             return true;
@@ -19261,53 +21569,25 @@ public final class Data4Mooc {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
-            if (hasNameFont()) {
-                hash = (37 * hash) + NAMEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getNameFont();
+            if (hasIndexMode()) {
+                hash = (37 * hash) + INDEXMODE_FIELD_NUMBER;
+                hash = (53 * hash) + getIndexMode();
             }
-            if (hasNameColor()) {
-                hash = (37 * hash) + NAMECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getNameColor();
+            if (hasName()) {
+                hash = (37 * hash) + NAME_FIELD_NUMBER;
+                hash = (53 * hash) + getName().hashCode();
             }
-            if (hasNameSize()) {
-                hash = (37 * hash) + NAMESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getNameSize();
+            if (hasSection()) {
+                hash = (37 * hash) + SECTION_FIELD_NUMBER;
+                hash = (53 * hash) + getSection().hashCode();
             }
-            if (hasSecFont()) {
-                hash = (37 * hash) + SECFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getSecFont();
+            if (hasText()) {
+                hash = (37 * hash) + TEXT_FIELD_NUMBER;
+                hash = (53 * hash) + getText().hashCode();
             }
-            if (hasSecColor()) {
-                hash = (37 * hash) + SECCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getSecColor();
-            }
-            if (hasSecSize()) {
-                hash = (37 * hash) + SECSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getSecSize();
-            }
-            if (hasTextFont()) {
-                hash = (37 * hash) + TEXTFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getTextFont();
-            }
-            if (hasTextColor()) {
-                hash = (37 * hash) + TEXTCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getTextColor();
-            }
-            if (hasTextSize()) {
-                hash = (37 * hash) + TEXTSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getTextSize();
-            }
-            if (hasResFont()) {
-                hash = (37 * hash) + RESFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getResFont();
-            }
-            if (hasResColor()) {
-                hash = (37 * hash) + RESCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getResColor();
-            }
-            if (hasResSize()) {
-                hash = (37 * hash) + RESSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getResSize();
+            if (hasResource()) {
+                hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
+                hash = (53 * hash) + getResource().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
@@ -19441,35 +21721,41 @@ public final class Data4Mooc {
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
+                    getNameFieldBuilder();
+                    getSectionFieldBuilder();
+                    getTextFieldBuilder();
+                    getResourceFieldBuilder();
                 }
             }
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                nameFont_ = 0;
+                indexMode_ = 0;
                 bitField0_ = (bitField0_ & ~0x00000001);
-                nameColor_ = 0;
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                } else {
+                    nameBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000002);
-                nameSize_ = 0;
+                if (sectionBuilder_ == null) {
+                    section_ = null;
+                } else {
+                    sectionBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000004);
-                secFont_ = 0;
+                if (textBuilder_ == null) {
+                    text_ = null;
+                } else {
+                    textBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                secColor_ = 0;
+                if (resourceBuilder_ == null) {
+                    resource_ = null;
+                } else {
+                    resourceBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000010);
-                secSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000020);
-                textFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000040);
-                textColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                textSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000100);
-                resFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000200);
-                resColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000400);
-                resSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000800);
                 return this;
             }
 
@@ -19499,52 +21785,40 @@ public final class Data4Mooc {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
-                    result.nameFont_ = nameFont_;
+                    result.indexMode_ = indexMode_;
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    result.nameColor_ = nameColor_;
+                    if (nameBuilder_ == null) {
+                        result.name_ = name_;
+                    } else {
+                        result.name_ = nameBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.nameSize_ = nameSize_;
+                    if (sectionBuilder_ == null) {
+                        result.section_ = section_;
+                    } else {
+                        result.section_ = sectionBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.secFont_ = secFont_;
+                    if (textBuilder_ == null) {
+                        result.text_ = text_;
+                    } else {
+                        result.text_ = textBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000008;
                 }
                 if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.secColor_ = secColor_;
+                    if (resourceBuilder_ == null) {
+                        result.resource_ = resource_;
+                    } else {
+                        result.resource_ = resourceBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000010;
-                }
-                if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.secSize_ = secSize_;
-                    to_bitField0_ |= 0x00000020;
-                }
-                if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.textFont_ = textFont_;
-                    to_bitField0_ |= 0x00000040;
-                }
-                if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.textColor_ = textColor_;
-                    to_bitField0_ |= 0x00000080;
-                }
-                if (((from_bitField0_ & 0x00000100) != 0)) {
-                    result.textSize_ = textSize_;
-                    to_bitField0_ |= 0x00000100;
-                }
-                if (((from_bitField0_ & 0x00000200) != 0)) {
-                    result.resFont_ = resFont_;
-                    to_bitField0_ |= 0x00000200;
-                }
-                if (((from_bitField0_ & 0x00000400) != 0)) {
-                    result.resColor_ = resColor_;
-                    to_bitField0_ |= 0x00000400;
-                }
-                if (((from_bitField0_ & 0x00000800) != 0)) {
-                    result.resSize_ = resSize_;
-                    to_bitField0_ |= 0x00000800;
                 }
                 result.bitField0_ = to_bitField0_;
                 onBuilt();
@@ -19595,41 +21869,20 @@ public final class Data4Mooc {
 
             public Builder mergeFrom(data4mooc.Data4Mooc.ExampleLayout other) {
                 if (other == data4mooc.Data4Mooc.ExampleLayout.getDefaultInstance()) return this;
-                if (other.hasNameFont()) {
-                    setNameFont(other.getNameFont());
+                if (other.hasIndexMode()) {
+                    setIndexMode(other.getIndexMode());
                 }
-                if (other.hasNameColor()) {
-                    setNameColor(other.getNameColor());
+                if (other.hasName()) {
+                    mergeName(other.getName());
                 }
-                if (other.hasNameSize()) {
-                    setNameSize(other.getNameSize());
+                if (other.hasSection()) {
+                    mergeSection(other.getSection());
                 }
-                if (other.hasSecFont()) {
-                    setSecFont(other.getSecFont());
+                if (other.hasText()) {
+                    mergeText(other.getText());
                 }
-                if (other.hasSecColor()) {
-                    setSecColor(other.getSecColor());
-                }
-                if (other.hasSecSize()) {
-                    setSecSize(other.getSecSize());
-                }
-                if (other.hasTextFont()) {
-                    setTextFont(other.getTextFont());
-                }
-                if (other.hasTextColor()) {
-                    setTextColor(other.getTextColor());
-                }
-                if (other.hasTextSize()) {
-                    setTextSize(other.getTextSize());
-                }
-                if (other.hasResFont()) {
-                    setResFont(other.getResFont());
-                }
-                if (other.hasResColor()) {
-                    setResColor(other.getResColor());
-                }
-                if (other.hasResSize()) {
-                    setResSize(other.getResSize());
+                if (other.hasResource()) {
+                    mergeResource(other.getResource());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -19638,40 +21891,28 @@ public final class Data4Mooc {
 
             @java.lang.Override
             public final boolean isInitialized() {
-                if (!hasNameFont()) {
+                if (!hasName()) {
                     return false;
                 }
-                if (!hasNameColor()) {
+                if (!hasSection()) {
                     return false;
                 }
-                if (!hasNameSize()) {
+                if (!hasText()) {
                     return false;
                 }
-                if (!hasSecFont()) {
+                if (!hasResource()) {
                     return false;
                 }
-                if (!hasSecColor()) {
+                if (!getName().isInitialized()) {
                     return false;
                 }
-                if (!hasSecSize()) {
+                if (!getSection().isInitialized()) {
                     return false;
                 }
-                if (!hasTextFont()) {
+                if (!getText().isInitialized()) {
                     return false;
                 }
-                if (!hasTextColor()) {
-                    return false;
-                }
-                if (!hasTextSize()) {
-                    return false;
-                }
-                if (!hasResFont()) {
-                    return false;
-                }
-                if (!hasResColor()) {
-                    return false;
-                }
-                if (!hasResSize()) {
+                if (!getResource().isInitialized()) {
                     return false;
                 }
                 return true;
@@ -19697,452 +21938,668 @@ public final class Data4Mooc {
             }
             private int bitField0_;
 
-            private int nameFont_ ;
+            private int indexMode_ ;
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	序号样式
+             * </pre>
+             *
+             * <code>optional int32 indexMode = 1;</code>
              */
-            public boolean hasNameFont() {
+            public boolean hasIndexMode() {
                 return ((bitField0_ & 0x00000001) != 0);
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	序号样式
+             * </pre>
+             *
+             * <code>optional int32 indexMode = 1;</code>
              */
-            public int getNameFont() {
-                return nameFont_;
+            public int getIndexMode() {
+                return indexMode_;
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	序号样式
+             * </pre>
+             *
+             * <code>optional int32 indexMode = 1;</code>
              */
-            public Builder setNameFont(int value) {
+            public Builder setIndexMode(int value) {
                 bitField0_ |= 0x00000001;
-                nameFont_ = value;
+                indexMode_ = value;
                 onChanged();
                 return this;
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	序号样式
+             * </pre>
+             *
+             * <code>optional int32 indexMode = 1;</code>
              */
-            public Builder clearNameFont() {
+            public Builder clearIndexMode() {
                 bitField0_ = (bitField0_ & ~0x00000001);
-                nameFont_ = 0;
+                indexMode_ = 0;
                 onChanged();
                 return this;
             }
 
-            private int nameColor_ ;
+            private data4mooc.Data4Mooc.Font name_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> nameBuilder_;
             /**
-             * <code>required int32 nameColor = 2;</code>
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public boolean hasNameColor() {
+            public boolean hasName() {
                 return ((bitField0_ & 0x00000002) != 0);
             }
             /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public int getNameColor() {
-                return nameColor_;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder setNameColor(int value) {
-                bitField0_ |= 0x00000002;
-                nameColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder clearNameColor() {
-                bitField0_ = (bitField0_ & ~0x00000002);
-                nameColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int nameSize_ ;
-            /**
              * <pre>
-             *	案例名称字体和大小
+             *	案例名称字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font name = 2;</code>
              */
-            public boolean hasNameSize() {
+            public data4mooc.Data4Mooc.Font getName() {
+                if (nameBuilder_ == null) {
+                    return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                } else {
+                    return nameBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder setName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    name_ = value;
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder setName(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (nameBuilder_ == null) {
+                    name_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder mergeName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) &&
+                            name_ != null &&
+                            name_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        name_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(name_).mergeFrom(value).buildPartial();
+                    } else {
+                        name_ = value;
+                    }
+                    onChanged();
+                } else {
+                    nameBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public Builder clearName() {
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                    onChanged();
+                } else {
+                    nameBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getNameBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getNameFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+                if (nameBuilder_ != null) {
+                    return nameBuilder_.getMessageOrBuilder();
+                } else {
+                    return name_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                }
+            }
+            /**
+             * <pre>
+             *	案例名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getNameFieldBuilder() {
+                if (nameBuilder_ == null) {
+                    nameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getName(),
+                            getParentForChildren(),
+                            isClean());
+                    name_ = null;
+                }
+                return nameBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.Font section_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> sectionBuilder_;
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public boolean hasSection() {
                 return ((bitField0_ & 0x00000004) != 0);
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	小标题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font section = 3;</code>
              */
-            public int getNameSize() {
-                return nameSize_;
+            public data4mooc.Data4Mooc.Font getSection() {
+                if (sectionBuilder_ == null) {
+                    return section_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+                } else {
+                    return sectionBuilder_.getMessage();
+                }
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	小标题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font section = 3;</code>
              */
-            public Builder setNameSize(int value) {
+            public Builder setSection(data4mooc.Data4Mooc.Font value) {
+                if (sectionBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    section_ = value;
+                    onChanged();
+                } else {
+                    sectionBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000004;
-                nameSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	案例名称字体和大小
+             *	小标题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font section = 3;</code>
              */
-            public Builder clearNameSize() {
-                bitField0_ = (bitField0_ & ~0x00000004);
-                nameSize_ = 0;
-                onChanged();
+            public Builder setSection(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (sectionBuilder_ == null) {
+                    section_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    sectionBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
                 return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder mergeSection(data4mooc.Data4Mooc.Font value) {
+                if (sectionBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) &&
+                            section_ != null &&
+                            section_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        section_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(section_).mergeFrom(value).buildPartial();
+                    } else {
+                        section_ = value;
+                    }
+                    onChanged();
+                } else {
+                    sectionBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public Builder clearSection() {
+                if (sectionBuilder_ == null) {
+                    section_ = null;
+                    onChanged();
+                } else {
+                    sectionBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getSectionBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getSectionFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getSectionOrBuilder() {
+                if (sectionBuilder_ != null) {
+                    return sectionBuilder_.getMessageOrBuilder();
+                } else {
+                    return section_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : section_;
+                }
+            }
+            /**
+             * <pre>
+             *	小标题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font section = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getSectionFieldBuilder() {
+                if (sectionBuilder_ == null) {
+                    sectionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getSection(),
+                            getParentForChildren(),
+                            isClean());
+                    section_ = null;
+                }
+                return sectionBuilder_;
             }
 
-            private int secFont_ ;
+            private data4mooc.Data4Mooc.Font text_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> textBuilder_;
             /**
-             * <code>required int32 secFont = 4;</code>
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public boolean hasSecFont() {
+            public boolean hasText() {
                 return ((bitField0_ & 0x00000008) != 0);
             }
             /**
-             * <code>required int32 secFont = 4;</code>
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public int getSecFont() {
-                return secFont_;
+            public data4mooc.Data4Mooc.Font getText() {
+                if (textBuilder_ == null) {
+                    return text_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+                } else {
+                    return textBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 secFont = 4;</code>
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public Builder setSecFont(int value) {
+            public Builder setText(data4mooc.Data4Mooc.Font value) {
+                if (textBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    text_ = value;
+                    onChanged();
+                } else {
+                    textBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000008;
-                secFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 secFont = 4;</code>
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
              */
-            public Builder clearSecFont() {
-                bitField0_ = (bitField0_ & ~0x00000008);
-                secFont_ = 0;
-                onChanged();
+            public Builder setText(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (textBuilder_ == null) {
+                    text_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    textBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
                 return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public Builder mergeText(data4mooc.Data4Mooc.Font value) {
+                if (textBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) &&
+                            text_ != null &&
+                            text_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        text_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(text_).mergeFrom(value).buildPartial();
+                    } else {
+                        text_ = value;
+                    }
+                    onChanged();
+                } else {
+                    textBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public Builder clearText() {
+                if (textBuilder_ == null) {
+                    text_ = null;
+                    onChanged();
+                } else {
+                    textBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000008);
+                return this;
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getTextBuilder() {
+                bitField0_ |= 0x00000008;
+                onChanged();
+                return getTextFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getTextOrBuilder() {
+                if (textBuilder_ != null) {
+                    return textBuilder_.getMessageOrBuilder();
+                } else {
+                    return text_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : text_;
+                }
+            }
+            /**
+             * <pre>
+             *	正文的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font text = 4;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getTextFieldBuilder() {
+                if (textBuilder_ == null) {
+                    textBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getText(),
+                            getParentForChildren(),
+                            isClean());
+                    text_ = null;
+                }
+                return textBuilder_;
             }
 
-            private int secColor_ ;
+            private data4mooc.Data4Mooc.Font resource_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> resourceBuilder_;
             /**
-             * <code>required int32 secColor = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public boolean hasSecColor() {
+            public boolean hasResource() {
                 return ((bitField0_ & 0x00000010) != 0);
             }
             /**
-             * <code>required int32 secColor = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public int getSecColor() {
-                return secColor_;
+            public data4mooc.Data4Mooc.Font getResource() {
+                if (resourceBuilder_ == null) {
+                    return resource_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
+                } else {
+                    return resourceBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 secColor = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder setSecColor(int value) {
+            public Builder setResource(data4mooc.Data4Mooc.Font value) {
+                if (resourceBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    resource_ = value;
+                    onChanged();
+                } else {
+                    resourceBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000010;
-                secColor_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 secColor = 5;</code>
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder clearSecColor() {
+            public Builder setResource(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (resourceBuilder_ == null) {
+                    resource_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    resourceBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
+             */
+            public Builder mergeResource(data4mooc.Data4Mooc.Font value) {
+                if (resourceBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) &&
+                            resource_ != null &&
+                            resource_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        resource_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(resource_).mergeFrom(value).buildPartial();
+                    } else {
+                        resource_ = value;
+                    }
+                    onChanged();
+                } else {
+                    resourceBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+            /**
+             * <pre>
+             *	资源名的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font resource = 5;</code>
+             */
+            public Builder clearResource() {
+                if (resourceBuilder_ == null) {
+                    resource_ = null;
+                    onChanged();
+                } else {
+                    resourceBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000010);
-                secColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int secSize_ ;
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 6;</code>
-             */
-            public boolean hasSecSize() {
-                return ((bitField0_ & 0x00000020) != 0);
-            }
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 6;</code>
-             */
-            public int getSecSize() {
-                return secSize_;
-            }
-            /**
-             * <pre>
-             *	小节名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 secSize = 6;</code>
-             */
-            public Builder setSecSize(int value) {
-                bitField0_ |= 0x00000020;
-                secSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	小节名的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 secSize = 6;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder clearSecSize() {
-                bitField0_ = (bitField0_ & ~0x00000020);
-                secSize_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getResourceBuilder() {
+                bitField0_ |= 0x00000010;
                 onChanged();
-                return this;
-            }
-
-            private int textFont_ ;
-            /**
-             * <code>required int32 textFont = 7;</code>
-             */
-            public boolean hasTextFont() {
-                return ((bitField0_ & 0x00000040) != 0);
-            }
-            /**
-             * <code>required int32 textFont = 7;</code>
-             */
-            public int getTextFont() {
-                return textFont_;
-            }
-            /**
-             * <code>required int32 textFont = 7;</code>
-             */
-            public Builder setTextFont(int value) {
-                bitField0_ |= 0x00000040;
-                textFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 textFont = 7;</code>
-             */
-            public Builder clearTextFont() {
-                bitField0_ = (bitField0_ & ~0x00000040);
-                textFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int textColor_ ;
-            /**
-             * <code>required int32 textColor = 8;</code>
-             */
-            public boolean hasTextColor() {
-                return ((bitField0_ & 0x00000080) != 0);
-            }
-            /**
-             * <code>required int32 textColor = 8;</code>
-             */
-            public int getTextColor() {
-                return textColor_;
-            }
-            /**
-             * <code>required int32 textColor = 8;</code>
-             */
-            public Builder setTextColor(int value) {
-                bitField0_ |= 0x00000080;
-                textColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 textColor = 8;</code>
-             */
-            public Builder clearTextColor() {
-                bitField0_ = (bitField0_ & ~0x00000080);
-                textColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int textSize_ ;
-            /**
-             * <pre>
-             *	正文的字体和大小
-             * </pre>
-             *
-             * <code>required int32 textSize = 9;</code>
-             */
-            public boolean hasTextSize() {
-                return ((bitField0_ & 0x00000100) != 0);
+                return getResourceFieldBuilder().getBuilder();
             }
             /**
              * <pre>
-             *	正文的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 textSize = 9;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public int getTextSize() {
-                return textSize_;
+            public data4mooc.Data4Mooc.FontOrBuilder getResourceOrBuilder() {
+                if (resourceBuilder_ != null) {
+                    return resourceBuilder_.getMessageOrBuilder();
+                } else {
+                    return resource_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : resource_;
+                }
             }
             /**
              * <pre>
-             *	正文的字体和大小
+             *	资源名的字体
              * </pre>
              *
-             * <code>required int32 textSize = 9;</code>
+             * <code>required .data4mooc.Font resource = 5;</code>
              */
-            public Builder setTextSize(int value) {
-                bitField0_ |= 0x00000100;
-                textSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	正文的字体和大小
-             * </pre>
-             *
-             * <code>required int32 textSize = 9;</code>
-             */
-            public Builder clearTextSize() {
-                bitField0_ = (bitField0_ & ~0x00000100);
-                textSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resFont_ ;
-            /**
-             * <code>required int32 resFont = 10;</code>
-             */
-            public boolean hasResFont() {
-                return ((bitField0_ & 0x00000200) != 0);
-            }
-            /**
-             * <code>required int32 resFont = 10;</code>
-             */
-            public int getResFont() {
-                return resFont_;
-            }
-            /**
-             * <code>required int32 resFont = 10;</code>
-             */
-            public Builder setResFont(int value) {
-                bitField0_ |= 0x00000200;
-                resFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 resFont = 10;</code>
-             */
-            public Builder clearResFont() {
-                bitField0_ = (bitField0_ & ~0x00000200);
-                resFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resColor_ ;
-            /**
-             * <code>required int32 resColor = 11;</code>
-             */
-            public boolean hasResColor() {
-                return ((bitField0_ & 0x00000400) != 0);
-            }
-            /**
-             * <code>required int32 resColor = 11;</code>
-             */
-            public int getResColor() {
-                return resColor_;
-            }
-            /**
-             * <code>required int32 resColor = 11;</code>
-             */
-            public Builder setResColor(int value) {
-                bitField0_ |= 0x00000400;
-                resColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 resColor = 11;</code>
-             */
-            public Builder clearResColor() {
-                bitField0_ = (bitField0_ & ~0x00000400);
-                resColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int resSize_ ;
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 12;</code>
-             */
-            public boolean hasResSize() {
-                return ((bitField0_ & 0x00000800) != 0);
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 12;</code>
-             */
-            public int getResSize() {
-                return resSize_;
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 12;</code>
-             */
-            public Builder setResSize(int value) {
-                bitField0_ |= 0x00000800;
-                resSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	资源名的字体和大小
-             * </pre>
-             *
-             * <code>required int32 resSize = 12;</code>
-             */
-            public Builder clearResSize() {
-                bitField0_ = (bitField0_ & ~0x00000800);
-                resSize_ = 0;
-                onChanged();
-                return this;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getResourceFieldBuilder() {
+                if (resourceBuilder_ == null) {
+                    resourceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getResource(),
+                            getParentForChildren(),
+                            isClean());
+                    resource_ = null;
+                }
+                return resourceBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -20202,144 +22659,104 @@ public final class Data4Mooc {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
          */
-        boolean hasNameFont();
+        boolean hasName();
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
          */
-        int getNameFont();
-
+        data4mooc.Data4Mooc.Font getName();
         /**
-         * <code>required int32 nameColor = 2;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
          */
-        boolean hasNameColor();
-        /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        int getNameColor();
+        data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder();
 
         /**
          * <pre>
-         *	题目名称的字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        boolean hasNameSize();
+        boolean hasQuestion();
         /**
          * <pre>
-         *	题目名称的字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        int getNameSize();
-
+        data4mooc.Data4Mooc.Font getQuestion();
         /**
-         * <code>required int32 questionFont = 4;</code>
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        boolean hasQuestionFont();
-        /**
-         * <code>required int32 questionFont = 4;</code>
-         */
-        int getQuestionFont();
-
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        boolean hasQuestionColor();
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        int getQuestionColor();
+        data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder();
 
         /**
          * <pre>
-         *	问题陈述和答题要求的字体和大小
+         *	结果的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        boolean hasQuestionSize();
+        boolean hasAnswer();
         /**
          * <pre>
-         *	问题陈述和答题要求的字体和大小
+         *	结果的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        int getQuestionSize();
-
+        data4mooc.Data4Mooc.Font getAnswer();
         /**
-         * <code>required int32 answerFont = 7;</code>
+         * <pre>
+         *	结果的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        boolean hasAnswerFont();
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        int getAnswerFont();
-
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        boolean hasAnswerColor();
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        int getAnswerColor();
+        data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder();
 
         /**
          * <pre>
-         *	问题结果的字体和大小
+         *	注释的字体
          * </pre>
          *
-         * <code>required int32 answerSize = 9;</code>
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        boolean hasAnswerSize();
+        boolean hasComment();
         /**
          * <pre>
-         *	问题结果的字体和大小
+         *	注释的字体
          * </pre>
          *
-         * <code>required int32 answerSize = 9;</code>
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        int getAnswerSize();
-
-        /**
-         * <code>required int32 commentFont = 10;</code>
-         */
-        boolean hasCommentFont();
-        /**
-         * <code>required int32 commentFont = 10;</code>
-         */
-        int getCommentFont();
-
-        /**
-         * <code>required int32 commentColor = 11;</code>
-         */
-        boolean hasCommentColor();
-        /**
-         * <code>required int32 commentColor = 11;</code>
-         */
-        int getCommentColor();
-
+        data4mooc.Data4Mooc.Font getComment();
         /**
          * <pre>
-         *	结果解释的字体和大小
+         *	注释的字体
          * </pre>
          *
-         * <code>required int32 commentSize = 12;</code>
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        boolean hasCommentSize();
-        /**
-         * <pre>
-         *	结果解释的字体和大小
-         * </pre>
-         *
-         * <code>required int32 commentSize = 12;</code>
-         */
-        int getCommentSize();
+        data4mooc.Data4Mooc.FontOrBuilder getCommentOrBuilder();
     }
     /**
      * <pre>
@@ -20391,64 +22808,56 @@ public final class Data4Mooc {
                         case 0:
                             done = true;
                             break;
-                        case 8: {
+                        case 10: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) != 0)) {
+                                subBuilder = name_.toBuilder();
+                            }
+                            name_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(name_);
+                                name_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000001;
-                            nameFont_ = input.readInt32();
                             break;
                         }
-                        case 16: {
+                        case 18: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) != 0)) {
+                                subBuilder = question_.toBuilder();
+                            }
+                            question_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(question_);
+                                question_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000002;
-                            nameColor_ = input.readInt32();
                             break;
                         }
-                        case 24: {
+                        case 26: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) != 0)) {
+                                subBuilder = answer_.toBuilder();
+                            }
+                            answer_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(answer_);
+                                answer_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000004;
-                            nameSize_ = input.readInt32();
                             break;
                         }
-                        case 32: {
+                        case 34: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000008) != 0)) {
+                                subBuilder = comment_.toBuilder();
+                            }
+                            comment_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(comment_);
+                                comment_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000008;
-                            questionFont_ = input.readInt32();
-                            break;
-                        }
-                        case 40: {
-                            bitField0_ |= 0x00000010;
-                            questionColor_ = input.readInt32();
-                            break;
-                        }
-                        case 48: {
-                            bitField0_ |= 0x00000020;
-                            questionSize_ = input.readInt32();
-                            break;
-                        }
-                        case 56: {
-                            bitField0_ |= 0x00000040;
-                            answerFont_ = input.readInt32();
-                            break;
-                        }
-                        case 64: {
-                            bitField0_ |= 0x00000080;
-                            answerColor_ = input.readInt32();
-                            break;
-                        }
-                        case 72: {
-                            bitField0_ |= 0x00000100;
-                            answerSize_ = input.readInt32();
-                            break;
-                        }
-                        case 80: {
-                            bitField0_ |= 0x00000200;
-                            commentFont_ = input.readInt32();
-                            break;
-                        }
-                        case 88: {
-                            bitField0_ |= 0x00000400;
-                            commentColor_ = input.readInt32();
-                            break;
-                        }
-                        case 96: {
-                            bitField0_ |= 0x00000800;
-                            commentSize_ = input.readInt32();
                             break;
                         }
                         default: {
@@ -20484,216 +22893,136 @@ public final class Data4Mooc {
         }
 
         private int bitField0_;
-        public static final int NAMEFONT_FIELD_NUMBER = 1;
-        private int nameFont_;
+        public static final int NAME_FIELD_NUMBER = 1;
+        private data4mooc.Data4Mooc.Font name_;
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
          */
-        public boolean hasNameFont() {
+        public boolean hasName() {
             return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
          */
-        public int getNameFont() {
-            return nameFont_;
+        public data4mooc.Data4Mooc.Font getName() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+        }
+        /**
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font name = 1;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
         }
 
-        public static final int NAMECOLOR_FIELD_NUMBER = 2;
-        private int nameColor_;
+        public static final int QUESTION_FIELD_NUMBER = 2;
+        private data4mooc.Data4Mooc.Font question_;
         /**
-         * <code>required int32 nameColor = 2;</code>
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        public boolean hasNameColor() {
+        public boolean hasQuestion() {
             return ((bitField0_ & 0x00000002) != 0);
         }
         /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        public int getNameColor() {
-            return nameColor_;
-        }
-
-        public static final int NAMESIZE_FIELD_NUMBER = 3;
-        private int nameSize_;
-        /**
          * <pre>
-         *	题目名称的字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        public boolean hasNameSize() {
+        public data4mooc.Data4Mooc.Font getQuestion() {
+            return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+        }
+        /**
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder() {
+            return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+        }
+
+        public static final int ANSWER_FIELD_NUMBER = 3;
+        private data4mooc.Data4Mooc.Font answer_;
+        /**
+         * <pre>
+         *	结果的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font answer = 3;</code>
+         */
+        public boolean hasAnswer() {
             return ((bitField0_ & 0x00000004) != 0);
         }
         /**
          * <pre>
-         *	题目名称的字体和大小
+         *	结果的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        public int getNameSize() {
-            return nameSize_;
+        public data4mooc.Data4Mooc.Font getAnswer() {
+            return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
+        }
+        /**
+         * <pre>
+         *	结果的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font answer = 3;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder() {
+            return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
         }
 
-        public static final int QUESTIONFONT_FIELD_NUMBER = 4;
-        private int questionFont_;
+        public static final int COMMENT_FIELD_NUMBER = 4;
+        private data4mooc.Data4Mooc.Font comment_;
         /**
-         * <code>required int32 questionFont = 4;</code>
+         * <pre>
+         *	注释的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        public boolean hasQuestionFont() {
+        public boolean hasComment() {
             return ((bitField0_ & 0x00000008) != 0);
         }
         /**
-         * <code>required int32 questionFont = 4;</code>
-         */
-        public int getQuestionFont() {
-            return questionFont_;
-        }
-
-        public static final int QUESTIONCOLOR_FIELD_NUMBER = 5;
-        private int questionColor_;
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        public boolean hasQuestionColor() {
-            return ((bitField0_ & 0x00000010) != 0);
-        }
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        public int getQuestionColor() {
-            return questionColor_;
-        }
-
-        public static final int QUESTIONSIZE_FIELD_NUMBER = 6;
-        private int questionSize_;
-        /**
          * <pre>
-         *	问题陈述和答题要求的字体和大小
+         *	注释的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        public boolean hasQuestionSize() {
-            return ((bitField0_ & 0x00000020) != 0);
+        public data4mooc.Data4Mooc.Font getComment() {
+            return comment_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : comment_;
         }
         /**
          * <pre>
-         *	问题陈述和答题要求的字体和大小
+         *	注释的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font comment = 4;</code>
          */
-        public int getQuestionSize() {
-            return questionSize_;
-        }
-
-        public static final int ANSWERFONT_FIELD_NUMBER = 7;
-        private int answerFont_;
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        public boolean hasAnswerFont() {
-            return ((bitField0_ & 0x00000040) != 0);
-        }
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        public int getAnswerFont() {
-            return answerFont_;
-        }
-
-        public static final int ANSWERCOLOR_FIELD_NUMBER = 8;
-        private int answerColor_;
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        public boolean hasAnswerColor() {
-            return ((bitField0_ & 0x00000080) != 0);
-        }
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        public int getAnswerColor() {
-            return answerColor_;
-        }
-
-        public static final int ANSWERSIZE_FIELD_NUMBER = 9;
-        private int answerSize_;
-        /**
-         * <pre>
-         *	问题结果的字体和大小
-         * </pre>
-         *
-         * <code>required int32 answerSize = 9;</code>
-         */
-        public boolean hasAnswerSize() {
-            return ((bitField0_ & 0x00000100) != 0);
-        }
-        /**
-         * <pre>
-         *	问题结果的字体和大小
-         * </pre>
-         *
-         * <code>required int32 answerSize = 9;</code>
-         */
-        public int getAnswerSize() {
-            return answerSize_;
-        }
-
-        public static final int COMMENTFONT_FIELD_NUMBER = 10;
-        private int commentFont_;
-        /**
-         * <code>required int32 commentFont = 10;</code>
-         */
-        public boolean hasCommentFont() {
-            return ((bitField0_ & 0x00000200) != 0);
-        }
-        /**
-         * <code>required int32 commentFont = 10;</code>
-         */
-        public int getCommentFont() {
-            return commentFont_;
-        }
-
-        public static final int COMMENTCOLOR_FIELD_NUMBER = 11;
-        private int commentColor_;
-        /**
-         * <code>required int32 commentColor = 11;</code>
-         */
-        public boolean hasCommentColor() {
-            return ((bitField0_ & 0x00000400) != 0);
-        }
-        /**
-         * <code>required int32 commentColor = 11;</code>
-         */
-        public int getCommentColor() {
-            return commentColor_;
-        }
-
-        public static final int COMMENTSIZE_FIELD_NUMBER = 12;
-        private int commentSize_;
-        /**
-         * <pre>
-         *	结果解释的字体和大小
-         * </pre>
-         *
-         * <code>required int32 commentSize = 12;</code>
-         */
-        public boolean hasCommentSize() {
-            return ((bitField0_ & 0x00000800) != 0);
-        }
-        /**
-         * <pre>
-         *	结果解释的字体和大小
-         * </pre>
-         *
-         * <code>required int32 commentSize = 12;</code>
-         */
-        public int getCommentSize() {
-            return commentSize_;
+        public data4mooc.Data4Mooc.FontOrBuilder getCommentOrBuilder() {
+            return comment_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : comment_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -20703,51 +23032,35 @@ public final class Data4Mooc {
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
-            if (!hasNameFont()) {
+            if (!hasName()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameColor()) {
+            if (!hasQuestion()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameSize()) {
+            if (!hasAnswer()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQuestionFont()) {
+            if (!hasComment()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQuestionColor()) {
+            if (!getName().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQuestionSize()) {
+            if (!getQuestion().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasAnswerFont()) {
+            if (!getAnswer().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasAnswerColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasAnswerSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasCommentFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasCommentColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasCommentSize()) {
+            if (!getComment().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -20759,40 +23072,16 @@ public final class Data4Mooc {
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
             if (((bitField0_ & 0x00000001) != 0)) {
-                output.writeInt32(1, nameFont_);
+                output.writeMessage(1, getName());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                output.writeInt32(2, nameColor_);
+                output.writeMessage(2, getQuestion());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, nameSize_);
+                output.writeMessage(3, getAnswer());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, questionFont_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, questionColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                output.writeInt32(6, questionSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                output.writeInt32(7, answerFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                output.writeInt32(8, answerColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                output.writeInt32(9, answerSize_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                output.writeInt32(10, commentFont_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                output.writeInt32(11, commentColor_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                output.writeInt32(12, commentSize_);
+                output.writeMessage(4, getComment());
             }
             unknownFields.writeTo(output);
         }
@@ -20805,51 +23094,19 @@ public final class Data4Mooc {
             size = 0;
             if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(1, nameFont_);
+                        .computeMessageSize(1, getName());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(2, nameColor_);
+                        .computeMessageSize(2, getQuestion());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, nameSize_);
+                        .computeMessageSize(3, getAnswer());
             }
             if (((bitField0_ & 0x00000008) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, questionFont_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, questionColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, questionSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(7, answerFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(8, answerColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(9, answerSize_);
-            }
-            if (((bitField0_ & 0x00000200) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(10, commentFont_);
-            }
-            if (((bitField0_ & 0x00000400) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(11, commentColor_);
-            }
-            if (((bitField0_ & 0x00000800) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(12, commentSize_);
+                        .computeMessageSize(4, getComment());
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -20866,65 +23123,25 @@ public final class Data4Mooc {
             }
             data4mooc.Data4Mooc.TestLayout other = (data4mooc.Data4Mooc.TestLayout) obj;
 
-            if (hasNameFont() != other.hasNameFont()) return false;
-            if (hasNameFont()) {
-                if (getNameFont()
-                        != other.getNameFont()) return false;
+            if (hasName() != other.hasName()) return false;
+            if (hasName()) {
+                if (!getName()
+                        .equals(other.getName())) return false;
             }
-            if (hasNameColor() != other.hasNameColor()) return false;
-            if (hasNameColor()) {
-                if (getNameColor()
-                        != other.getNameColor()) return false;
+            if (hasQuestion() != other.hasQuestion()) return false;
+            if (hasQuestion()) {
+                if (!getQuestion()
+                        .equals(other.getQuestion())) return false;
             }
-            if (hasNameSize() != other.hasNameSize()) return false;
-            if (hasNameSize()) {
-                if (getNameSize()
-                        != other.getNameSize()) return false;
+            if (hasAnswer() != other.hasAnswer()) return false;
+            if (hasAnswer()) {
+                if (!getAnswer()
+                        .equals(other.getAnswer())) return false;
             }
-            if (hasQuestionFont() != other.hasQuestionFont()) return false;
-            if (hasQuestionFont()) {
-                if (getQuestionFont()
-                        != other.getQuestionFont()) return false;
-            }
-            if (hasQuestionColor() != other.hasQuestionColor()) return false;
-            if (hasQuestionColor()) {
-                if (getQuestionColor()
-                        != other.getQuestionColor()) return false;
-            }
-            if (hasQuestionSize() != other.hasQuestionSize()) return false;
-            if (hasQuestionSize()) {
-                if (getQuestionSize()
-                        != other.getQuestionSize()) return false;
-            }
-            if (hasAnswerFont() != other.hasAnswerFont()) return false;
-            if (hasAnswerFont()) {
-                if (getAnswerFont()
-                        != other.getAnswerFont()) return false;
-            }
-            if (hasAnswerColor() != other.hasAnswerColor()) return false;
-            if (hasAnswerColor()) {
-                if (getAnswerColor()
-                        != other.getAnswerColor()) return false;
-            }
-            if (hasAnswerSize() != other.hasAnswerSize()) return false;
-            if (hasAnswerSize()) {
-                if (getAnswerSize()
-                        != other.getAnswerSize()) return false;
-            }
-            if (hasCommentFont() != other.hasCommentFont()) return false;
-            if (hasCommentFont()) {
-                if (getCommentFont()
-                        != other.getCommentFont()) return false;
-            }
-            if (hasCommentColor() != other.hasCommentColor()) return false;
-            if (hasCommentColor()) {
-                if (getCommentColor()
-                        != other.getCommentColor()) return false;
-            }
-            if (hasCommentSize() != other.hasCommentSize()) return false;
-            if (hasCommentSize()) {
-                if (getCommentSize()
-                        != other.getCommentSize()) return false;
+            if (hasComment() != other.hasComment()) return false;
+            if (hasComment()) {
+                if (!getComment()
+                        .equals(other.getComment())) return false;
             }
             if (!unknownFields.equals(other.unknownFields)) return false;
             return true;
@@ -20937,53 +23154,21 @@ public final class Data4Mooc {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
-            if (hasNameFont()) {
-                hash = (37 * hash) + NAMEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getNameFont();
+            if (hasName()) {
+                hash = (37 * hash) + NAME_FIELD_NUMBER;
+                hash = (53 * hash) + getName().hashCode();
             }
-            if (hasNameColor()) {
-                hash = (37 * hash) + NAMECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getNameColor();
+            if (hasQuestion()) {
+                hash = (37 * hash) + QUESTION_FIELD_NUMBER;
+                hash = (53 * hash) + getQuestion().hashCode();
             }
-            if (hasNameSize()) {
-                hash = (37 * hash) + NAMESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getNameSize();
+            if (hasAnswer()) {
+                hash = (37 * hash) + ANSWER_FIELD_NUMBER;
+                hash = (53 * hash) + getAnswer().hashCode();
             }
-            if (hasQuestionFont()) {
-                hash = (37 * hash) + QUESTIONFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionFont();
-            }
-            if (hasQuestionColor()) {
-                hash = (37 * hash) + QUESTIONCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionColor();
-            }
-            if (hasQuestionSize()) {
-                hash = (37 * hash) + QUESTIONSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionSize();
-            }
-            if (hasAnswerFont()) {
-                hash = (37 * hash) + ANSWERFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerFont();
-            }
-            if (hasAnswerColor()) {
-                hash = (37 * hash) + ANSWERCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerColor();
-            }
-            if (hasAnswerSize()) {
-                hash = (37 * hash) + ANSWERSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerSize();
-            }
-            if (hasCommentFont()) {
-                hash = (37 * hash) + COMMENTFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getCommentFont();
-            }
-            if (hasCommentColor()) {
-                hash = (37 * hash) + COMMENTCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getCommentColor();
-            }
-            if (hasCommentSize()) {
-                hash = (37 * hash) + COMMENTSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getCommentSize();
+            if (hasComment()) {
+                hash = (37 * hash) + COMMENT_FIELD_NUMBER;
+                hash = (53 * hash) + getComment().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
@@ -21117,35 +23302,39 @@ public final class Data4Mooc {
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
+                    getNameFieldBuilder();
+                    getQuestionFieldBuilder();
+                    getAnswerFieldBuilder();
+                    getCommentFieldBuilder();
                 }
             }
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                nameFont_ = 0;
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                } else {
+                    nameBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                nameColor_ = 0;
+                if (questionBuilder_ == null) {
+                    question_ = null;
+                } else {
+                    questionBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000002);
-                nameSize_ = 0;
+                if (answerBuilder_ == null) {
+                    answer_ = null;
+                } else {
+                    answerBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000004);
-                questionFont_ = 0;
+                if (commentBuilder_ == null) {
+                    comment_ = null;
+                } else {
+                    commentBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                questionColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
-                questionSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000020);
-                answerFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000040);
-                answerColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                answerSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000100);
-                commentFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000200);
-                commentColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000400);
-                commentSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000800);
                 return this;
             }
 
@@ -21175,52 +23364,36 @@ public final class Data4Mooc {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
-                    result.nameFont_ = nameFont_;
+                    if (nameBuilder_ == null) {
+                        result.name_ = name_;
+                    } else {
+                        result.name_ = nameBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    result.nameColor_ = nameColor_;
+                    if (questionBuilder_ == null) {
+                        result.question_ = question_;
+                    } else {
+                        result.question_ = questionBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.nameSize_ = nameSize_;
+                    if (answerBuilder_ == null) {
+                        result.answer_ = answer_;
+                    } else {
+                        result.answer_ = answerBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000004;
                 }
                 if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.questionFont_ = questionFont_;
+                    if (commentBuilder_ == null) {
+                        result.comment_ = comment_;
+                    } else {
+                        result.comment_ = commentBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000008;
-                }
-                if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.questionColor_ = questionColor_;
-                    to_bitField0_ |= 0x00000010;
-                }
-                if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.questionSize_ = questionSize_;
-                    to_bitField0_ |= 0x00000020;
-                }
-                if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.answerFont_ = answerFont_;
-                    to_bitField0_ |= 0x00000040;
-                }
-                if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.answerColor_ = answerColor_;
-                    to_bitField0_ |= 0x00000080;
-                }
-                if (((from_bitField0_ & 0x00000100) != 0)) {
-                    result.answerSize_ = answerSize_;
-                    to_bitField0_ |= 0x00000100;
-                }
-                if (((from_bitField0_ & 0x00000200) != 0)) {
-                    result.commentFont_ = commentFont_;
-                    to_bitField0_ |= 0x00000200;
-                }
-                if (((from_bitField0_ & 0x00000400) != 0)) {
-                    result.commentColor_ = commentColor_;
-                    to_bitField0_ |= 0x00000400;
-                }
-                if (((from_bitField0_ & 0x00000800) != 0)) {
-                    result.commentSize_ = commentSize_;
-                    to_bitField0_ |= 0x00000800;
                 }
                 result.bitField0_ = to_bitField0_;
                 onBuilt();
@@ -21271,41 +23444,17 @@ public final class Data4Mooc {
 
             public Builder mergeFrom(data4mooc.Data4Mooc.TestLayout other) {
                 if (other == data4mooc.Data4Mooc.TestLayout.getDefaultInstance()) return this;
-                if (other.hasNameFont()) {
-                    setNameFont(other.getNameFont());
+                if (other.hasName()) {
+                    mergeName(other.getName());
                 }
-                if (other.hasNameColor()) {
-                    setNameColor(other.getNameColor());
+                if (other.hasQuestion()) {
+                    mergeQuestion(other.getQuestion());
                 }
-                if (other.hasNameSize()) {
-                    setNameSize(other.getNameSize());
+                if (other.hasAnswer()) {
+                    mergeAnswer(other.getAnswer());
                 }
-                if (other.hasQuestionFont()) {
-                    setQuestionFont(other.getQuestionFont());
-                }
-                if (other.hasQuestionColor()) {
-                    setQuestionColor(other.getQuestionColor());
-                }
-                if (other.hasQuestionSize()) {
-                    setQuestionSize(other.getQuestionSize());
-                }
-                if (other.hasAnswerFont()) {
-                    setAnswerFont(other.getAnswerFont());
-                }
-                if (other.hasAnswerColor()) {
-                    setAnswerColor(other.getAnswerColor());
-                }
-                if (other.hasAnswerSize()) {
-                    setAnswerSize(other.getAnswerSize());
-                }
-                if (other.hasCommentFont()) {
-                    setCommentFont(other.getCommentFont());
-                }
-                if (other.hasCommentColor()) {
-                    setCommentColor(other.getCommentColor());
-                }
-                if (other.hasCommentSize()) {
-                    setCommentSize(other.getCommentSize());
+                if (other.hasComment()) {
+                    mergeComment(other.getComment());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -21314,40 +23463,28 @@ public final class Data4Mooc {
 
             @java.lang.Override
             public final boolean isInitialized() {
-                if (!hasNameFont()) {
+                if (!hasName()) {
                     return false;
                 }
-                if (!hasNameColor()) {
+                if (!hasQuestion()) {
                     return false;
                 }
-                if (!hasNameSize()) {
+                if (!hasAnswer()) {
                     return false;
                 }
-                if (!hasQuestionFont()) {
+                if (!hasComment()) {
                     return false;
                 }
-                if (!hasQuestionColor()) {
+                if (!getName().isInitialized()) {
                     return false;
                 }
-                if (!hasQuestionSize()) {
+                if (!getQuestion().isInitialized()) {
                     return false;
                 }
-                if (!hasAnswerFont()) {
+                if (!getAnswer().isInitialized()) {
                     return false;
                 }
-                if (!hasAnswerColor()) {
-                    return false;
-                }
-                if (!hasAnswerSize()) {
-                    return false;
-                }
-                if (!hasCommentFont()) {
-                    return false;
-                }
-                if (!hasCommentColor()) {
-                    return false;
-                }
-                if (!hasCommentSize()) {
+                if (!getComment().isInitialized()) {
                     return false;
                 }
                 return true;
@@ -21373,452 +23510,620 @@ public final class Data4Mooc {
             }
             private int bitField0_;
 
-            private int nameFont_ ;
+            private data4mooc.Data4Mooc.Font name_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> nameBuilder_;
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
              */
-            public boolean hasNameFont() {
+            public boolean hasName() {
                 return ((bitField0_ & 0x00000001) != 0);
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
              */
-            public int getNameFont() {
-                return nameFont_;
+            public data4mooc.Data4Mooc.Font getName() {
+                if (nameBuilder_ == null) {
+                    return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                } else {
+                    return nameBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
              */
-            public Builder setNameFont(int value) {
+            public Builder setName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    name_ = value;
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000001;
-                nameFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
              */
-            public Builder clearNameFont() {
-                bitField0_ = (bitField0_ & ~0x00000001);
-                nameFont_ = 0;
-                onChanged();
+            public Builder setName(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (nameBuilder_ == null) {
+                    name_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
                 return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
+             */
+            public Builder mergeName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) &&
+                            name_ != null &&
+                            name_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        name_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(name_).mergeFrom(value).buildPartial();
+                    } else {
+                        name_ = value;
+                    }
+                    onChanged();
+                } else {
+                    nameBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
+             */
+            public Builder clearName() {
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                    onChanged();
+                } else {
+                    nameBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getNameBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getNameFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+                if (nameBuilder_ != null) {
+                    return nameBuilder_.getMessageOrBuilder();
+                } else {
+                    return name_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                }
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font name = 1;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getNameFieldBuilder() {
+                if (nameBuilder_ == null) {
+                    nameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getName(),
+                            getParentForChildren(),
+                            isClean());
+                    name_ = null;
+                }
+                return nameBuilder_;
             }
 
-            private int nameColor_ ;
+            private data4mooc.Data4Mooc.Font question_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> questionBuilder_;
             /**
-             * <code>required int32 nameColor = 2;</code>
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
              */
-            public boolean hasNameColor() {
+            public boolean hasQuestion() {
                 return ((bitField0_ & 0x00000002) != 0);
             }
             /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public int getNameColor() {
-                return nameColor_;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder setNameColor(int value) {
-                bitField0_ |= 0x00000002;
-                nameColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder clearNameColor() {
-                bitField0_ = (bitField0_ & ~0x00000002);
-                nameColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int nameSize_ ;
-            /**
              * <pre>
-             *	题目名称的字体和大小
+             *	问题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font question = 2;</code>
              */
-            public boolean hasNameSize() {
+            public data4mooc.Data4Mooc.Font getQuestion() {
+                if (questionBuilder_ == null) {
+                    return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+                } else {
+                    return questionBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder setQuestion(data4mooc.Data4Mooc.Font value) {
+                if (questionBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    question_ = value;
+                    onChanged();
+                } else {
+                    questionBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder setQuestion(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (questionBuilder_ == null) {
+                    question_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    questionBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder mergeQuestion(data4mooc.Data4Mooc.Font value) {
+                if (questionBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) &&
+                            question_ != null &&
+                            question_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        question_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(question_).mergeFrom(value).buildPartial();
+                    } else {
+                        question_ = value;
+                    }
+                    onChanged();
+                } else {
+                    questionBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder clearQuestion() {
+                if (questionBuilder_ == null) {
+                    question_ = null;
+                    onChanged();
+                } else {
+                    questionBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getQuestionBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getQuestionFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder() {
+                if (questionBuilder_ != null) {
+                    return questionBuilder_.getMessageOrBuilder();
+                } else {
+                    return question_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+                }
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getQuestionFieldBuilder() {
+                if (questionBuilder_ == null) {
+                    questionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getQuestion(),
+                            getParentForChildren(),
+                            isClean());
+                    question_ = null;
+                }
+                return questionBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.Font answer_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> answerBuilder_;
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public boolean hasAnswer() {
                 return ((bitField0_ & 0x00000004) != 0);
             }
             /**
              * <pre>
-             *	题目名称的字体和大小
+             *	结果的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public int getNameSize() {
-                return nameSize_;
+            public data4mooc.Data4Mooc.Font getAnswer() {
+                if (answerBuilder_ == null) {
+                    return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
+                } else {
+                    return answerBuilder_.getMessage();
+                }
             }
             /**
              * <pre>
-             *	题目名称的字体和大小
+             *	结果的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder setNameSize(int value) {
+            public Builder setAnswer(data4mooc.Data4Mooc.Font value) {
+                if (answerBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    answer_ = value;
+                    onChanged();
+                } else {
+                    answerBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000004;
-                nameSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	题目名称的字体和大小
+             *	结果的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder clearNameSize() {
-                bitField0_ = (bitField0_ & ~0x00000004);
-                nameSize_ = 0;
-                onChanged();
+            public Builder setAnswer(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (answerBuilder_ == null) {
+                    answer_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    answerBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
                 return this;
+            }
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public Builder mergeAnswer(data4mooc.Data4Mooc.Font value) {
+                if (answerBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) &&
+                            answer_ != null &&
+                            answer_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        answer_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(answer_).mergeFrom(value).buildPartial();
+                    } else {
+                        answer_ = value;
+                    }
+                    onChanged();
+                } else {
+                    answerBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public Builder clearAnswer() {
+                if (answerBuilder_ == null) {
+                    answer_ = null;
+                    onChanged();
+                } else {
+                    answerBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getAnswerBuilder() {
+                bitField0_ |= 0x00000004;
+                onChanged();
+                return getAnswerFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder() {
+                if (answerBuilder_ != null) {
+                    return answerBuilder_.getMessageOrBuilder();
+                } else {
+                    return answer_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
+                }
+            }
+            /**
+             * <pre>
+             *	结果的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getAnswerFieldBuilder() {
+                if (answerBuilder_ == null) {
+                    answerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getAnswer(),
+                            getParentForChildren(),
+                            isClean());
+                    answer_ = null;
+                }
+                return answerBuilder_;
             }
 
-            private int questionFont_ ;
+            private data4mooc.Data4Mooc.Font comment_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> commentBuilder_;
             /**
-             * <code>required int32 questionFont = 4;</code>
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public boolean hasQuestionFont() {
+            public boolean hasComment() {
                 return ((bitField0_ & 0x00000008) != 0);
             }
             /**
-             * <code>required int32 questionFont = 4;</code>
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public int getQuestionFont() {
-                return questionFont_;
+            public data4mooc.Data4Mooc.Font getComment() {
+                if (commentBuilder_ == null) {
+                    return comment_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : comment_;
+                } else {
+                    return commentBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 questionFont = 4;</code>
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public Builder setQuestionFont(int value) {
+            public Builder setComment(data4mooc.Data4Mooc.Font value) {
+                if (commentBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    comment_ = value;
+                    onChanged();
+                } else {
+                    commentBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000008;
-                questionFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 questionFont = 4;</code>
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public Builder clearQuestionFont() {
+            public Builder setComment(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (commentBuilder_ == null) {
+                    comment_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    commentBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
+             */
+            public Builder mergeComment(data4mooc.Data4Mooc.Font value) {
+                if (commentBuilder_ == null) {
+                    if (((bitField0_ & 0x00000008) != 0) &&
+                            comment_ != null &&
+                            comment_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        comment_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(comment_).mergeFrom(value).buildPartial();
+                    } else {
+                        comment_ = value;
+                    }
+                    onChanged();
+                } else {
+                    commentBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000008;
+                return this;
+            }
+            /**
+             * <pre>
+             *	注释的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font comment = 4;</code>
+             */
+            public Builder clearComment() {
+                if (commentBuilder_ == null) {
+                    comment_ = null;
+                    onChanged();
+                } else {
+                    commentBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000008);
-                questionFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int questionColor_ ;
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public boolean hasQuestionColor() {
-                return ((bitField0_ & 0x00000010) != 0);
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public int getQuestionColor() {
-                return questionColor_;
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public Builder setQuestionColor(int value) {
-                bitField0_ |= 0x00000010;
-                questionColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public Builder clearQuestionColor() {
-                bitField0_ = (bitField0_ & ~0x00000010);
-                questionColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int questionSize_ ;
-            /**
-             * <pre>
-             *	问题陈述和答题要求的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public boolean hasQuestionSize() {
-                return ((bitField0_ & 0x00000020) != 0);
-            }
-            /**
-             * <pre>
-             *	问题陈述和答题要求的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public int getQuestionSize() {
-                return questionSize_;
-            }
-            /**
-             * <pre>
-             *	问题陈述和答题要求的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public Builder setQuestionSize(int value) {
-                bitField0_ |= 0x00000020;
-                questionSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	问题陈述和答题要求的字体和大小
+             *	注释的字体
              * </pre>
              *
-             * <code>required int32 questionSize = 6;</code>
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public Builder clearQuestionSize() {
-                bitField0_ = (bitField0_ & ~0x00000020);
-                questionSize_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getCommentBuilder() {
+                bitField0_ |= 0x00000008;
                 onChanged();
-                return this;
-            }
-
-            private int answerFont_ ;
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public boolean hasAnswerFont() {
-                return ((bitField0_ & 0x00000040) != 0);
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public int getAnswerFont() {
-                return answerFont_;
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public Builder setAnswerFont(int value) {
-                bitField0_ |= 0x00000040;
-                answerFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public Builder clearAnswerFont() {
-                bitField0_ = (bitField0_ & ~0x00000040);
-                answerFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int answerColor_ ;
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public boolean hasAnswerColor() {
-                return ((bitField0_ & 0x00000080) != 0);
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public int getAnswerColor() {
-                return answerColor_;
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public Builder setAnswerColor(int value) {
-                bitField0_ |= 0x00000080;
-                answerColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public Builder clearAnswerColor() {
-                bitField0_ = (bitField0_ & ~0x00000080);
-                answerColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int answerSize_ ;
-            /**
-             * <pre>
-             *	问题结果的字体和大小
-             * </pre>
-             *
-             * <code>required int32 answerSize = 9;</code>
-             */
-            public boolean hasAnswerSize() {
-                return ((bitField0_ & 0x00000100) != 0);
+                return getCommentFieldBuilder().getBuilder();
             }
             /**
              * <pre>
-             *	问题结果的字体和大小
+             *	注释的字体
              * </pre>
              *
-             * <code>required int32 answerSize = 9;</code>
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public int getAnswerSize() {
-                return answerSize_;
+            public data4mooc.Data4Mooc.FontOrBuilder getCommentOrBuilder() {
+                if (commentBuilder_ != null) {
+                    return commentBuilder_.getMessageOrBuilder();
+                } else {
+                    return comment_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : comment_;
+                }
             }
             /**
              * <pre>
-             *	问题结果的字体和大小
+             *	注释的字体
              * </pre>
              *
-             * <code>required int32 answerSize = 9;</code>
+             * <code>required .data4mooc.Font comment = 4;</code>
              */
-            public Builder setAnswerSize(int value) {
-                bitField0_ |= 0x00000100;
-                answerSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	问题结果的字体和大小
-             * </pre>
-             *
-             * <code>required int32 answerSize = 9;</code>
-             */
-            public Builder clearAnswerSize() {
-                bitField0_ = (bitField0_ & ~0x00000100);
-                answerSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int commentFont_ ;
-            /**
-             * <code>required int32 commentFont = 10;</code>
-             */
-            public boolean hasCommentFont() {
-                return ((bitField0_ & 0x00000200) != 0);
-            }
-            /**
-             * <code>required int32 commentFont = 10;</code>
-             */
-            public int getCommentFont() {
-                return commentFont_;
-            }
-            /**
-             * <code>required int32 commentFont = 10;</code>
-             */
-            public Builder setCommentFont(int value) {
-                bitField0_ |= 0x00000200;
-                commentFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 commentFont = 10;</code>
-             */
-            public Builder clearCommentFont() {
-                bitField0_ = (bitField0_ & ~0x00000200);
-                commentFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int commentColor_ ;
-            /**
-             * <code>required int32 commentColor = 11;</code>
-             */
-            public boolean hasCommentColor() {
-                return ((bitField0_ & 0x00000400) != 0);
-            }
-            /**
-             * <code>required int32 commentColor = 11;</code>
-             */
-            public int getCommentColor() {
-                return commentColor_;
-            }
-            /**
-             * <code>required int32 commentColor = 11;</code>
-             */
-            public Builder setCommentColor(int value) {
-                bitField0_ |= 0x00000400;
-                commentColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 commentColor = 11;</code>
-             */
-            public Builder clearCommentColor() {
-                bitField0_ = (bitField0_ & ~0x00000400);
-                commentColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int commentSize_ ;
-            /**
-             * <pre>
-             *	结果解释的字体和大小
-             * </pre>
-             *
-             * <code>required int32 commentSize = 12;</code>
-             */
-            public boolean hasCommentSize() {
-                return ((bitField0_ & 0x00000800) != 0);
-            }
-            /**
-             * <pre>
-             *	结果解释的字体和大小
-             * </pre>
-             *
-             * <code>required int32 commentSize = 12;</code>
-             */
-            public int getCommentSize() {
-                return commentSize_;
-            }
-            /**
-             * <pre>
-             *	结果解释的字体和大小
-             * </pre>
-             *
-             * <code>required int32 commentSize = 12;</code>
-             */
-            public Builder setCommentSize(int value) {
-                bitField0_ |= 0x00000800;
-                commentSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	结果解释的字体和大小
-             * </pre>
-             *
-             * <code>required int32 commentSize = 12;</code>
-             */
-            public Builder clearCommentSize() {
-                bitField0_ = (bitField0_ & ~0x00000800);
-                commentSize_ = 0;
-                onChanged();
-                return this;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getCommentFieldBuilder() {
+                if (commentBuilder_ == null) {
+                    commentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getComment(),
+                            getParentForChildren(),
+                            isClean());
+                    comment_ = null;
+                }
+                return commentBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -21878,109 +24183,79 @@ public final class Data4Mooc {
             com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
          */
-        boolean hasNameFont();
+        boolean hasName();
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
          */
-        int getNameFont();
-
+        data4mooc.Data4Mooc.Font getName();
         /**
-         * <code>required int32 nameColor = 2;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
          */
-        boolean hasNameColor();
-        /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        int getNameColor();
+        data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder();
 
         /**
          * <pre>
-         *	名称字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        boolean hasNameSize();
+        boolean hasQuestion();
         /**
          * <pre>
-         *	名称字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        int getNameSize();
-
+        data4mooc.Data4Mooc.Font getQuestion();
         /**
-         * <code>required int32 questionFont = 4;</code>
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        boolean hasQuestionFont();
-        /**
-         * <code>required int32 questionFont = 4;</code>
-         */
-        int getQuestionFont();
-
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        boolean hasQuestionColor();
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        int getQuestionColor();
+        data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder();
 
         /**
          * <pre>
-         *	问题陈述的字体和大小
+         *	答案的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        boolean hasQuestionSize();
+        boolean hasAnswer();
         /**
          * <pre>
-         *	问题陈述的字体和大小
+         *	答案的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        int getQuestionSize();
-
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        boolean hasAnswerFont();
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        int getAnswerFont();
-
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        boolean hasAnswerColor();
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        int getAnswerColor();
-
+        data4mooc.Data4Mooc.Font getAnswer();
         /**
          * <pre>
-         *	问题解答的字体和大小
+         *	答案的字体
          * </pre>
          *
-         * <code>required int32 answerSize = 9;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        boolean hasAnswerSize();
-        /**
-         * <pre>
-         *	问题解答的字体和大小
-         * </pre>
-         *
-         * <code>required int32 answerSize = 9;</code>
-         */
-        int getAnswerSize();
+        data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder();
     }
     /**
      * <pre>
@@ -22032,49 +24307,43 @@ public final class Data4Mooc {
                         case 0:
                             done = true;
                             break;
-                        case 8: {
+                        case 10: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000001) != 0)) {
+                                subBuilder = name_.toBuilder();
+                            }
+                            name_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(name_);
+                                name_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000001;
-                            nameFont_ = input.readInt32();
                             break;
                         }
-                        case 16: {
+                        case 18: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000002) != 0)) {
+                                subBuilder = question_.toBuilder();
+                            }
+                            question_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(question_);
+                                question_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000002;
-                            nameColor_ = input.readInt32();
                             break;
                         }
-                        case 24: {
+                        case 26: {
+                            data4mooc.Data4Mooc.Font.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000004) != 0)) {
+                                subBuilder = answer_.toBuilder();
+                            }
+                            answer_ = input.readMessage(data4mooc.Data4Mooc.Font.PARSER, extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(answer_);
+                                answer_ = subBuilder.buildPartial();
+                            }
                             bitField0_ |= 0x00000004;
-                            nameSize_ = input.readInt32();
-                            break;
-                        }
-                        case 32: {
-                            bitField0_ |= 0x00000008;
-                            questionFont_ = input.readInt32();
-                            break;
-                        }
-                        case 40: {
-                            bitField0_ |= 0x00000010;
-                            questionColor_ = input.readInt32();
-                            break;
-                        }
-                        case 48: {
-                            bitField0_ |= 0x00000020;
-                            questionSize_ = input.readInt32();
-                            break;
-                        }
-                        case 56: {
-                            bitField0_ |= 0x00000040;
-                            answerFont_ = input.readInt32();
-                            break;
-                        }
-                        case 64: {
-                            bitField0_ |= 0x00000080;
-                            answerColor_ = input.readInt32();
-                            break;
-                        }
-                        case 72: {
-                            bitField0_ |= 0x00000100;
-                            answerSize_ = input.readInt32();
                             break;
                         }
                         default: {
@@ -22110,163 +24379,103 @@ public final class Data4Mooc {
         }
 
         private int bitField0_;
-        public static final int NAMEFONT_FIELD_NUMBER = 1;
-        private int nameFont_;
+        public static final int NAME_FIELD_NUMBER = 1;
+        private data4mooc.Data4Mooc.Font name_;
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
          */
-        public boolean hasNameFont() {
+        public boolean hasName() {
             return ((bitField0_ & 0x00000001) != 0);
         }
         /**
-         * <code>required int32 nameFont = 1;</code>
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
          */
-        public int getNameFont() {
-            return nameFont_;
+        public data4mooc.Data4Mooc.Font getName() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+        }
+        /**
+         * <pre>
+         *	题目名称字体
+         * </pre>
+         *
+         * <code>optional .data4mooc.Font name = 1;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+            return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
         }
 
-        public static final int NAMECOLOR_FIELD_NUMBER = 2;
-        private int nameColor_;
+        public static final int QUESTION_FIELD_NUMBER = 2;
+        private data4mooc.Data4Mooc.Font question_;
         /**
-         * <code>required int32 nameColor = 2;</code>
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        public boolean hasNameColor() {
+        public boolean hasQuestion() {
             return ((bitField0_ & 0x00000002) != 0);
         }
         /**
-         * <code>required int32 nameColor = 2;</code>
-         */
-        public int getNameColor() {
-            return nameColor_;
-        }
-
-        public static final int NAMESIZE_FIELD_NUMBER = 3;
-        private int nameSize_;
-        /**
          * <pre>
-         *	名称字体和大小
+         *	问题的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font question = 2;</code>
          */
-        public boolean hasNameSize() {
+        public data4mooc.Data4Mooc.Font getQuestion() {
+            return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+        }
+        /**
+         * <pre>
+         *	问题的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font question = 2;</code>
+         */
+        public data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder() {
+            return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+        }
+
+        public static final int ANSWER_FIELD_NUMBER = 3;
+        private data4mooc.Data4Mooc.Font answer_;
+        /**
+         * <pre>
+         *	答案的字体
+         * </pre>
+         *
+         * <code>required .data4mooc.Font answer = 3;</code>
+         */
+        public boolean hasAnswer() {
             return ((bitField0_ & 0x00000004) != 0);
         }
         /**
          * <pre>
-         *	名称字体和大小
+         *	答案的字体
          * </pre>
          *
-         * <code>required int32 nameSize = 3;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        public int getNameSize() {
-            return nameSize_;
-        }
-
-        public static final int QUESTIONFONT_FIELD_NUMBER = 4;
-        private int questionFont_;
-        /**
-         * <code>required int32 questionFont = 4;</code>
-         */
-        public boolean hasQuestionFont() {
-            return ((bitField0_ & 0x00000008) != 0);
-        }
-        /**
-         * <code>required int32 questionFont = 4;</code>
-         */
-        public int getQuestionFont() {
-            return questionFont_;
-        }
-
-        public static final int QUESTIONCOLOR_FIELD_NUMBER = 5;
-        private int questionColor_;
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        public boolean hasQuestionColor() {
-            return ((bitField0_ & 0x00000010) != 0);
-        }
-        /**
-         * <code>required int32 questionColor = 5;</code>
-         */
-        public int getQuestionColor() {
-            return questionColor_;
-        }
-
-        public static final int QUESTIONSIZE_FIELD_NUMBER = 6;
-        private int questionSize_;
-        /**
-         * <pre>
-         *	问题陈述的字体和大小
-         * </pre>
-         *
-         * <code>required int32 questionSize = 6;</code>
-         */
-        public boolean hasQuestionSize() {
-            return ((bitField0_ & 0x00000020) != 0);
+        public data4mooc.Data4Mooc.Font getAnswer() {
+            return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
         }
         /**
          * <pre>
-         *	问题陈述的字体和大小
+         *	答案的字体
          * </pre>
          *
-         * <code>required int32 questionSize = 6;</code>
+         * <code>required .data4mooc.Font answer = 3;</code>
          */
-        public int getQuestionSize() {
-            return questionSize_;
-        }
-
-        public static final int ANSWERFONT_FIELD_NUMBER = 7;
-        private int answerFont_;
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        public boolean hasAnswerFont() {
-            return ((bitField0_ & 0x00000040) != 0);
-        }
-        /**
-         * <code>required int32 answerFont = 7;</code>
-         */
-        public int getAnswerFont() {
-            return answerFont_;
-        }
-
-        public static final int ANSWERCOLOR_FIELD_NUMBER = 8;
-        private int answerColor_;
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        public boolean hasAnswerColor() {
-            return ((bitField0_ & 0x00000080) != 0);
-        }
-        /**
-         * <code>required int32 answerColor = 8;</code>
-         */
-        public int getAnswerColor() {
-            return answerColor_;
-        }
-
-        public static final int ANSWERSIZE_FIELD_NUMBER = 9;
-        private int answerSize_;
-        /**
-         * <pre>
-         *	问题解答的字体和大小
-         * </pre>
-         *
-         * <code>required int32 answerSize = 9;</code>
-         */
-        public boolean hasAnswerSize() {
-            return ((bitField0_ & 0x00000100) != 0);
-        }
-        /**
-         * <pre>
-         *	问题解答的字体和大小
-         * </pre>
-         *
-         * <code>required int32 answerSize = 9;</code>
-         */
-        public int getAnswerSize() {
-            return answerSize_;
+        public data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder() {
+            return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
         }
 
         private byte memoizedIsInitialized = -1;
@@ -22276,39 +24485,25 @@ public final class Data4Mooc {
             if (isInitialized == 1) return true;
             if (isInitialized == 0) return false;
 
-            if (!hasNameFont()) {
+            if (!hasQuestion()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameColor()) {
+            if (!hasAnswer()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasNameSize()) {
+            if (hasName()) {
+                if (!getName().isInitialized()) {
+                    memoizedIsInitialized = 0;
+                    return false;
+                }
+            }
+            if (!getQuestion().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
-            if (!hasQuestionFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasQuestionColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasQuestionSize()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasAnswerFont()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasAnswerColor()) {
-                memoizedIsInitialized = 0;
-                return false;
-            }
-            if (!hasAnswerSize()) {
+            if (!getAnswer().isInitialized()) {
                 memoizedIsInitialized = 0;
                 return false;
             }
@@ -22320,31 +24515,13 @@ public final class Data4Mooc {
         public void writeTo(com.google.protobuf.CodedOutputStream output)
                 throws java.io.IOException {
             if (((bitField0_ & 0x00000001) != 0)) {
-                output.writeInt32(1, nameFont_);
+                output.writeMessage(1, getName());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
-                output.writeInt32(2, nameColor_);
+                output.writeMessage(2, getQuestion());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
-                output.writeInt32(3, nameSize_);
-            }
-            if (((bitField0_ & 0x00000008) != 0)) {
-                output.writeInt32(4, questionFont_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                output.writeInt32(5, questionColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                output.writeInt32(6, questionSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                output.writeInt32(7, answerFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                output.writeInt32(8, answerColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                output.writeInt32(9, answerSize_);
+                output.writeMessage(3, getAnswer());
             }
             unknownFields.writeTo(output);
         }
@@ -22357,39 +24534,15 @@ public final class Data4Mooc {
             size = 0;
             if (((bitField0_ & 0x00000001) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(1, nameFont_);
+                        .computeMessageSize(1, getName());
             }
             if (((bitField0_ & 0x00000002) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(2, nameColor_);
+                        .computeMessageSize(2, getQuestion());
             }
             if (((bitField0_ & 0x00000004) != 0)) {
                 size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(3, nameSize_);
-            }
-            if (((bitField0_ & 0x00000008) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(4, questionFont_);
-            }
-            if (((bitField0_ & 0x00000010) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(5, questionColor_);
-            }
-            if (((bitField0_ & 0x00000020) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(6, questionSize_);
-            }
-            if (((bitField0_ & 0x00000040) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(7, answerFont_);
-            }
-            if (((bitField0_ & 0x00000080) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(8, answerColor_);
-            }
-            if (((bitField0_ & 0x00000100) != 0)) {
-                size += com.google.protobuf.CodedOutputStream
-                        .computeInt32Size(9, answerSize_);
+                        .computeMessageSize(3, getAnswer());
             }
             size += unknownFields.getSerializedSize();
             memoizedSize = size;
@@ -22406,50 +24559,20 @@ public final class Data4Mooc {
             }
             data4mooc.Data4Mooc.QALayout other = (data4mooc.Data4Mooc.QALayout) obj;
 
-            if (hasNameFont() != other.hasNameFont()) return false;
-            if (hasNameFont()) {
-                if (getNameFont()
-                        != other.getNameFont()) return false;
+            if (hasName() != other.hasName()) return false;
+            if (hasName()) {
+                if (!getName()
+                        .equals(other.getName())) return false;
             }
-            if (hasNameColor() != other.hasNameColor()) return false;
-            if (hasNameColor()) {
-                if (getNameColor()
-                        != other.getNameColor()) return false;
+            if (hasQuestion() != other.hasQuestion()) return false;
+            if (hasQuestion()) {
+                if (!getQuestion()
+                        .equals(other.getQuestion())) return false;
             }
-            if (hasNameSize() != other.hasNameSize()) return false;
-            if (hasNameSize()) {
-                if (getNameSize()
-                        != other.getNameSize()) return false;
-            }
-            if (hasQuestionFont() != other.hasQuestionFont()) return false;
-            if (hasQuestionFont()) {
-                if (getQuestionFont()
-                        != other.getQuestionFont()) return false;
-            }
-            if (hasQuestionColor() != other.hasQuestionColor()) return false;
-            if (hasQuestionColor()) {
-                if (getQuestionColor()
-                        != other.getQuestionColor()) return false;
-            }
-            if (hasQuestionSize() != other.hasQuestionSize()) return false;
-            if (hasQuestionSize()) {
-                if (getQuestionSize()
-                        != other.getQuestionSize()) return false;
-            }
-            if (hasAnswerFont() != other.hasAnswerFont()) return false;
-            if (hasAnswerFont()) {
-                if (getAnswerFont()
-                        != other.getAnswerFont()) return false;
-            }
-            if (hasAnswerColor() != other.hasAnswerColor()) return false;
-            if (hasAnswerColor()) {
-                if (getAnswerColor()
-                        != other.getAnswerColor()) return false;
-            }
-            if (hasAnswerSize() != other.hasAnswerSize()) return false;
-            if (hasAnswerSize()) {
-                if (getAnswerSize()
-                        != other.getAnswerSize()) return false;
+            if (hasAnswer() != other.hasAnswer()) return false;
+            if (hasAnswer()) {
+                if (!getAnswer()
+                        .equals(other.getAnswer())) return false;
             }
             if (!unknownFields.equals(other.unknownFields)) return false;
             return true;
@@ -22462,41 +24585,17 @@ public final class Data4Mooc {
             }
             int hash = 41;
             hash = (19 * hash) + getDescriptor().hashCode();
-            if (hasNameFont()) {
-                hash = (37 * hash) + NAMEFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getNameFont();
+            if (hasName()) {
+                hash = (37 * hash) + NAME_FIELD_NUMBER;
+                hash = (53 * hash) + getName().hashCode();
             }
-            if (hasNameColor()) {
-                hash = (37 * hash) + NAMECOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getNameColor();
+            if (hasQuestion()) {
+                hash = (37 * hash) + QUESTION_FIELD_NUMBER;
+                hash = (53 * hash) + getQuestion().hashCode();
             }
-            if (hasNameSize()) {
-                hash = (37 * hash) + NAMESIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getNameSize();
-            }
-            if (hasQuestionFont()) {
-                hash = (37 * hash) + QUESTIONFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionFont();
-            }
-            if (hasQuestionColor()) {
-                hash = (37 * hash) + QUESTIONCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionColor();
-            }
-            if (hasQuestionSize()) {
-                hash = (37 * hash) + QUESTIONSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getQuestionSize();
-            }
-            if (hasAnswerFont()) {
-                hash = (37 * hash) + ANSWERFONT_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerFont();
-            }
-            if (hasAnswerColor()) {
-                hash = (37 * hash) + ANSWERCOLOR_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerColor();
-            }
-            if (hasAnswerSize()) {
-                hash = (37 * hash) + ANSWERSIZE_FIELD_NUMBER;
-                hash = (53 * hash) + getAnswerSize();
+            if (hasAnswer()) {
+                hash = (37 * hash) + ANSWER_FIELD_NUMBER;
+                hash = (53 * hash) + getAnswer().hashCode();
             }
             hash = (29 * hash) + unknownFields.hashCode();
             memoizedHashCode = hash;
@@ -22630,29 +24729,32 @@ public final class Data4Mooc {
             private void maybeForceBuilderInitialization() {
                 if (com.google.protobuf.GeneratedMessageV3
                         .alwaysUseFieldBuilders) {
+                    getNameFieldBuilder();
+                    getQuestionFieldBuilder();
+                    getAnswerFieldBuilder();
                 }
             }
             @java.lang.Override
             public Builder clear() {
                 super.clear();
-                nameFont_ = 0;
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                } else {
+                    nameBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000001);
-                nameColor_ = 0;
+                if (questionBuilder_ == null) {
+                    question_ = null;
+                } else {
+                    questionBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000002);
-                nameSize_ = 0;
+                if (answerBuilder_ == null) {
+                    answer_ = null;
+                } else {
+                    answerBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000004);
-                questionFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000008);
-                questionColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000010);
-                questionSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000020);
-                answerFont_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000040);
-                answerColor_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000080);
-                answerSize_ = 0;
-                bitField0_ = (bitField0_ & ~0x00000100);
                 return this;
             }
 
@@ -22682,40 +24784,28 @@ public final class Data4Mooc {
                 int from_bitField0_ = bitField0_;
                 int to_bitField0_ = 0;
                 if (((from_bitField0_ & 0x00000001) != 0)) {
-                    result.nameFont_ = nameFont_;
+                    if (nameBuilder_ == null) {
+                        result.name_ = name_;
+                    } else {
+                        result.name_ = nameBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000001;
                 }
                 if (((from_bitField0_ & 0x00000002) != 0)) {
-                    result.nameColor_ = nameColor_;
+                    if (questionBuilder_ == null) {
+                        result.question_ = question_;
+                    } else {
+                        result.question_ = questionBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000002;
                 }
                 if (((from_bitField0_ & 0x00000004) != 0)) {
-                    result.nameSize_ = nameSize_;
+                    if (answerBuilder_ == null) {
+                        result.answer_ = answer_;
+                    } else {
+                        result.answer_ = answerBuilder_.build();
+                    }
                     to_bitField0_ |= 0x00000004;
-                }
-                if (((from_bitField0_ & 0x00000008) != 0)) {
-                    result.questionFont_ = questionFont_;
-                    to_bitField0_ |= 0x00000008;
-                }
-                if (((from_bitField0_ & 0x00000010) != 0)) {
-                    result.questionColor_ = questionColor_;
-                    to_bitField0_ |= 0x00000010;
-                }
-                if (((from_bitField0_ & 0x00000020) != 0)) {
-                    result.questionSize_ = questionSize_;
-                    to_bitField0_ |= 0x00000020;
-                }
-                if (((from_bitField0_ & 0x00000040) != 0)) {
-                    result.answerFont_ = answerFont_;
-                    to_bitField0_ |= 0x00000040;
-                }
-                if (((from_bitField0_ & 0x00000080) != 0)) {
-                    result.answerColor_ = answerColor_;
-                    to_bitField0_ |= 0x00000080;
-                }
-                if (((from_bitField0_ & 0x00000100) != 0)) {
-                    result.answerSize_ = answerSize_;
-                    to_bitField0_ |= 0x00000100;
                 }
                 result.bitField0_ = to_bitField0_;
                 onBuilt();
@@ -22766,32 +24856,14 @@ public final class Data4Mooc {
 
             public Builder mergeFrom(data4mooc.Data4Mooc.QALayout other) {
                 if (other == data4mooc.Data4Mooc.QALayout.getDefaultInstance()) return this;
-                if (other.hasNameFont()) {
-                    setNameFont(other.getNameFont());
+                if (other.hasName()) {
+                    mergeName(other.getName());
                 }
-                if (other.hasNameColor()) {
-                    setNameColor(other.getNameColor());
+                if (other.hasQuestion()) {
+                    mergeQuestion(other.getQuestion());
                 }
-                if (other.hasNameSize()) {
-                    setNameSize(other.getNameSize());
-                }
-                if (other.hasQuestionFont()) {
-                    setQuestionFont(other.getQuestionFont());
-                }
-                if (other.hasQuestionColor()) {
-                    setQuestionColor(other.getQuestionColor());
-                }
-                if (other.hasQuestionSize()) {
-                    setQuestionSize(other.getQuestionSize());
-                }
-                if (other.hasAnswerFont()) {
-                    setAnswerFont(other.getAnswerFont());
-                }
-                if (other.hasAnswerColor()) {
-                    setAnswerColor(other.getAnswerColor());
-                }
-                if (other.hasAnswerSize()) {
-                    setAnswerSize(other.getAnswerSize());
+                if (other.hasAnswer()) {
+                    mergeAnswer(other.getAnswer());
                 }
                 this.mergeUnknownFields(other.unknownFields);
                 onChanged();
@@ -22800,31 +24872,21 @@ public final class Data4Mooc {
 
             @java.lang.Override
             public final boolean isInitialized() {
-                if (!hasNameFont()) {
+                if (!hasQuestion()) {
                     return false;
                 }
-                if (!hasNameColor()) {
+                if (!hasAnswer()) {
                     return false;
                 }
-                if (!hasNameSize()) {
+                if (hasName()) {
+                    if (!getName().isInitialized()) {
+                        return false;
+                    }
+                }
+                if (!getQuestion().isInitialized()) {
                     return false;
                 }
-                if (!hasQuestionFont()) {
-                    return false;
-                }
-                if (!hasQuestionColor()) {
-                    return false;
-                }
-                if (!hasQuestionSize()) {
-                    return false;
-                }
-                if (!hasAnswerFont()) {
-                    return false;
-                }
-                if (!hasAnswerColor()) {
-                    return false;
-                }
-                if (!hasAnswerSize()) {
+                if (!getAnswer().isInitialized()) {
                     return false;
                 }
                 return true;
@@ -22850,340 +24912,466 @@ public final class Data4Mooc {
             }
             private int bitField0_;
 
-            private int nameFont_ ;
+            private data4mooc.Data4Mooc.Font name_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> nameBuilder_;
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
              */
-            public boolean hasNameFont() {
+            public boolean hasName() {
                 return ((bitField0_ & 0x00000001) != 0);
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
              */
-            public int getNameFont() {
-                return nameFont_;
+            public data4mooc.Data4Mooc.Font getName() {
+                if (nameBuilder_ == null) {
+                    return name_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                } else {
+                    return nameBuilder_.getMessage();
+                }
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
              */
-            public Builder setNameFont(int value) {
+            public Builder setName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    name_ = value;
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000001;
-                nameFont_ = value;
-                onChanged();
                 return this;
             }
             /**
-             * <code>required int32 nameFont = 1;</code>
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
              */
-            public Builder clearNameFont() {
-                bitField0_ = (bitField0_ & ~0x00000001);
-                nameFont_ = 0;
-                onChanged();
+            public Builder setName(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (nameBuilder_ == null) {
+                    name_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    nameBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000001;
                 return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
+             */
+            public Builder mergeName(data4mooc.Data4Mooc.Font value) {
+                if (nameBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0) &&
+                            name_ != null &&
+                            name_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        name_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(name_).mergeFrom(value).buildPartial();
+                    } else {
+                        name_ = value;
+                    }
+                    onChanged();
+                } else {
+                    nameBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000001;
+                return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
+             */
+            public Builder clearName() {
+                if (nameBuilder_ == null) {
+                    name_ = null;
+                    onChanged();
+                } else {
+                    nameBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getNameBuilder() {
+                bitField0_ |= 0x00000001;
+                onChanged();
+                return getNameFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getNameOrBuilder() {
+                if (nameBuilder_ != null) {
+                    return nameBuilder_.getMessageOrBuilder();
+                } else {
+                    return name_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : name_;
+                }
+            }
+            /**
+             * <pre>
+             *	题目名称字体
+             * </pre>
+             *
+             * <code>optional .data4mooc.Font name = 1;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getNameFieldBuilder() {
+                if (nameBuilder_ == null) {
+                    nameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getName(),
+                            getParentForChildren(),
+                            isClean());
+                    name_ = null;
+                }
+                return nameBuilder_;
             }
 
-            private int nameColor_ ;
+            private data4mooc.Data4Mooc.Font question_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> questionBuilder_;
             /**
-             * <code>required int32 nameColor = 2;</code>
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
              */
-            public boolean hasNameColor() {
+            public boolean hasQuestion() {
                 return ((bitField0_ & 0x00000002) != 0);
             }
             /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public int getNameColor() {
-                return nameColor_;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder setNameColor(int value) {
-                bitField0_ |= 0x00000002;
-                nameColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 nameColor = 2;</code>
-             */
-            public Builder clearNameColor() {
-                bitField0_ = (bitField0_ & ~0x00000002);
-                nameColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int nameSize_ ;
-            /**
              * <pre>
-             *	名称字体和大小
+             *	问题的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font question = 2;</code>
              */
-            public boolean hasNameSize() {
+            public data4mooc.Data4Mooc.Font getQuestion() {
+                if (questionBuilder_ == null) {
+                    return question_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+                } else {
+                    return questionBuilder_.getMessage();
+                }
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder setQuestion(data4mooc.Data4Mooc.Font value) {
+                if (questionBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    question_ = value;
+                    onChanged();
+                } else {
+                    questionBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder setQuestion(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (questionBuilder_ == null) {
+                    question_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    questionBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder mergeQuestion(data4mooc.Data4Mooc.Font value) {
+                if (questionBuilder_ == null) {
+                    if (((bitField0_ & 0x00000002) != 0) &&
+                            question_ != null &&
+                            question_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        question_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(question_).mergeFrom(value).buildPartial();
+                    } else {
+                        question_ = value;
+                    }
+                    onChanged();
+                } else {
+                    questionBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000002;
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public Builder clearQuestion() {
+                if (questionBuilder_ == null) {
+                    question_ = null;
+                    onChanged();
+                } else {
+                    questionBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000002);
+                return this;
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public data4mooc.Data4Mooc.Font.Builder getQuestionBuilder() {
+                bitField0_ |= 0x00000002;
+                onChanged();
+                return getQuestionFieldBuilder().getBuilder();
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            public data4mooc.Data4Mooc.FontOrBuilder getQuestionOrBuilder() {
+                if (questionBuilder_ != null) {
+                    return questionBuilder_.getMessageOrBuilder();
+                } else {
+                    return question_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : question_;
+                }
+            }
+            /**
+             * <pre>
+             *	问题的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font question = 2;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getQuestionFieldBuilder() {
+                if (questionBuilder_ == null) {
+                    questionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getQuestion(),
+                            getParentForChildren(),
+                            isClean());
+                    question_ = null;
+                }
+                return questionBuilder_;
+            }
+
+            private data4mooc.Data4Mooc.Font answer_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder> answerBuilder_;
+            /**
+             * <pre>
+             *	答案的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public boolean hasAnswer() {
                 return ((bitField0_ & 0x00000004) != 0);
             }
             /**
              * <pre>
-             *	名称字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public int getNameSize() {
-                return nameSize_;
+            public data4mooc.Data4Mooc.Font getAnswer() {
+                if (answerBuilder_ == null) {
+                    return answer_ == null ? data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
+                } else {
+                    return answerBuilder_.getMessage();
+                }
             }
             /**
              * <pre>
-             *	名称字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder setNameSize(int value) {
+            public Builder setAnswer(data4mooc.Data4Mooc.Font value) {
+                if (answerBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    answer_ = value;
+                    onChanged();
+                } else {
+                    answerBuilder_.setMessage(value);
+                }
                 bitField0_ |= 0x00000004;
-                nameSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	名称字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 nameSize = 3;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder clearNameSize() {
+            public Builder setAnswer(
+                    data4mooc.Data4Mooc.Font.Builder builderForValue) {
+                if (answerBuilder_ == null) {
+                    answer_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    answerBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	答案的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public Builder mergeAnswer(data4mooc.Data4Mooc.Font value) {
+                if (answerBuilder_ == null) {
+                    if (((bitField0_ & 0x00000004) != 0) &&
+                            answer_ != null &&
+                            answer_ != data4mooc.Data4Mooc.Font.getDefaultInstance()) {
+                        answer_ =
+                                data4mooc.Data4Mooc.Font.newBuilder(answer_).mergeFrom(value).buildPartial();
+                    } else {
+                        answer_ = value;
+                    }
+                    onChanged();
+                } else {
+                    answerBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000004;
+                return this;
+            }
+            /**
+             * <pre>
+             *	答案的字体
+             * </pre>
+             *
+             * <code>required .data4mooc.Font answer = 3;</code>
+             */
+            public Builder clearAnswer() {
+                if (answerBuilder_ == null) {
+                    answer_ = null;
+                    onChanged();
+                } else {
+                    answerBuilder_.clear();
+                }
                 bitField0_ = (bitField0_ & ~0x00000004);
-                nameSize_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int questionFont_ ;
-            /**
-             * <code>required int32 questionFont = 4;</code>
-             */
-            public boolean hasQuestionFont() {
-                return ((bitField0_ & 0x00000008) != 0);
-            }
-            /**
-             * <code>required int32 questionFont = 4;</code>
-             */
-            public int getQuestionFont() {
-                return questionFont_;
-            }
-            /**
-             * <code>required int32 questionFont = 4;</code>
-             */
-            public Builder setQuestionFont(int value) {
-                bitField0_ |= 0x00000008;
-                questionFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 questionFont = 4;</code>
-             */
-            public Builder clearQuestionFont() {
-                bitField0_ = (bitField0_ & ~0x00000008);
-                questionFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int questionColor_ ;
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public boolean hasQuestionColor() {
-                return ((bitField0_ & 0x00000010) != 0);
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public int getQuestionColor() {
-                return questionColor_;
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public Builder setQuestionColor(int value) {
-                bitField0_ |= 0x00000010;
-                questionColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 questionColor = 5;</code>
-             */
-            public Builder clearQuestionColor() {
-                bitField0_ = (bitField0_ & ~0x00000010);
-                questionColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int questionSize_ ;
-            /**
-             * <pre>
-             *	问题陈述的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public boolean hasQuestionSize() {
-                return ((bitField0_ & 0x00000020) != 0);
-            }
-            /**
-             * <pre>
-             *	问题陈述的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public int getQuestionSize() {
-                return questionSize_;
-            }
-            /**
-             * <pre>
-             *	问题陈述的字体和大小
-             * </pre>
-             *
-             * <code>required int32 questionSize = 6;</code>
-             */
-            public Builder setQuestionSize(int value) {
-                bitField0_ |= 0x00000020;
-                questionSize_ = value;
-                onChanged();
                 return this;
             }
             /**
              * <pre>
-             *	问题陈述的字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 questionSize = 6;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder clearQuestionSize() {
-                bitField0_ = (bitField0_ & ~0x00000020);
-                questionSize_ = 0;
+            public data4mooc.Data4Mooc.Font.Builder getAnswerBuilder() {
+                bitField0_ |= 0x00000004;
                 onChanged();
-                return this;
-            }
-
-            private int answerFont_ ;
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public boolean hasAnswerFont() {
-                return ((bitField0_ & 0x00000040) != 0);
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public int getAnswerFont() {
-                return answerFont_;
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public Builder setAnswerFont(int value) {
-                bitField0_ |= 0x00000040;
-                answerFont_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 answerFont = 7;</code>
-             */
-            public Builder clearAnswerFont() {
-                bitField0_ = (bitField0_ & ~0x00000040);
-                answerFont_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int answerColor_ ;
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public boolean hasAnswerColor() {
-                return ((bitField0_ & 0x00000080) != 0);
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public int getAnswerColor() {
-                return answerColor_;
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public Builder setAnswerColor(int value) {
-                bitField0_ |= 0x00000080;
-                answerColor_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <code>required int32 answerColor = 8;</code>
-             */
-            public Builder clearAnswerColor() {
-                bitField0_ = (bitField0_ & ~0x00000080);
-                answerColor_ = 0;
-                onChanged();
-                return this;
-            }
-
-            private int answerSize_ ;
-            /**
-             * <pre>
-             *	问题解答的字体和大小
-             * </pre>
-             *
-             * <code>required int32 answerSize = 9;</code>
-             */
-            public boolean hasAnswerSize() {
-                return ((bitField0_ & 0x00000100) != 0);
+                return getAnswerFieldBuilder().getBuilder();
             }
             /**
              * <pre>
-             *	问题解答的字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 answerSize = 9;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public int getAnswerSize() {
-                return answerSize_;
+            public data4mooc.Data4Mooc.FontOrBuilder getAnswerOrBuilder() {
+                if (answerBuilder_ != null) {
+                    return answerBuilder_.getMessageOrBuilder();
+                } else {
+                    return answer_ == null ?
+                            data4mooc.Data4Mooc.Font.getDefaultInstance() : answer_;
+                }
             }
             /**
              * <pre>
-             *	问题解答的字体和大小
+             *	答案的字体
              * </pre>
              *
-             * <code>required int32 answerSize = 9;</code>
+             * <code>required .data4mooc.Font answer = 3;</code>
              */
-            public Builder setAnswerSize(int value) {
-                bitField0_ |= 0x00000100;
-                answerSize_ = value;
-                onChanged();
-                return this;
-            }
-            /**
-             * <pre>
-             *	问题解答的字体和大小
-             * </pre>
-             *
-             * <code>required int32 answerSize = 9;</code>
-             */
-            public Builder clearAnswerSize() {
-                bitField0_ = (bitField0_ & ~0x00000100);
-                answerSize_ = 0;
-                onChanged();
-                return this;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>
+            getAnswerFieldBuilder() {
+                if (answerBuilder_ == null) {
+                    answerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            data4mooc.Data4Mooc.Font, data4mooc.Data4Mooc.Font.Builder, data4mooc.Data4Mooc.FontOrBuilder>(
+                            getAnswer(),
+                            getParentForChildren(),
+                            isClean());
+                    answer_ = null;
+                }
+                return answerBuilder_;
             }
             @java.lang.Override
             public final Builder setUnknownFields(
@@ -23233,6 +25421,813 @@ public final class Data4Mooc {
 
         @java.lang.Override
         public data4mooc.Data4Mooc.QALayout getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+    }
+
+    public interface FontOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:data4mooc.Font)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <pre>
+         *	字体种类序号
+         * </pre>
+         *
+         * <code>required int32 font = 1;</code>
+         */
+        boolean hasFont();
+        /**
+         * <pre>
+         *	字体种类序号
+         * </pre>
+         *
+         * <code>required int32 font = 1;</code>
+         */
+        int getFont();
+
+        /**
+         * <pre>
+         *	字体大小序号
+         * </pre>
+         *
+         * <code>required int32 size = 2;</code>
+         */
+        boolean hasSize();
+        /**
+         * <pre>
+         *	字体大小序号
+         * </pre>
+         *
+         * <code>required int32 size = 2;</code>
+         */
+        int getSize();
+
+        /**
+         * <pre>
+         *	文字颜色序号
+         * </pre>
+         *
+         * <code>required int32 color = 3;</code>
+         */
+        boolean hasColor();
+        /**
+         * <pre>
+         *	文字颜色序号
+         * </pre>
+         *
+         * <code>required int32 color = 3;</code>
+         */
+        int getColor();
+    }
+    /**
+     * <pre>
+     *	字体定制信息
+     * </pre>
+     *
+     * Protobuf type {@code data4mooc.Font}
+     */
+    public  static final class Font extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:data4mooc.Font)
+            FontOrBuilder {
+        private static final long serialVersionUID = 0L;
+        // Use Font.newBuilder() to construct.
+        private Font(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private Font() {
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new Font();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+        private Font(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            font_ = input.readInt32();
+                            break;
+                        }
+                        case 16: {
+                            bitField0_ |= 0x00000002;
+                            size_ = input.readInt32();
+                            break;
+                        }
+                        case 24: {
+                            bitField0_ |= 0x00000004;
+                            color_ = input.readInt32();
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownField(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Font_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return data4mooc.Data4Mooc.internal_static_data4mooc_Font_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            data4mooc.Data4Mooc.Font.class, data4mooc.Data4Mooc.Font.Builder.class);
+        }
+
+        private int bitField0_;
+        public static final int FONT_FIELD_NUMBER = 1;
+        private int font_;
+        /**
+         * <pre>
+         *	字体种类序号
+         * </pre>
+         *
+         * <code>required int32 font = 1;</code>
+         */
+        public boolean hasFont() {
+            return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <pre>
+         *	字体种类序号
+         * </pre>
+         *
+         * <code>required int32 font = 1;</code>
+         */
+        public int getFont() {
+            return font_;
+        }
+
+        public static final int SIZE_FIELD_NUMBER = 2;
+        private int size_;
+        /**
+         * <pre>
+         *	字体大小序号
+         * </pre>
+         *
+         * <code>required int32 size = 2;</code>
+         */
+        public boolean hasSize() {
+            return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <pre>
+         *	字体大小序号
+         * </pre>
+         *
+         * <code>required int32 size = 2;</code>
+         */
+        public int getSize() {
+            return size_;
+        }
+
+        public static final int COLOR_FIELD_NUMBER = 3;
+        private int color_;
+        /**
+         * <pre>
+         *	文字颜色序号
+         * </pre>
+         *
+         * <code>required int32 color = 3;</code>
+         */
+        public boolean hasColor() {
+            return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <pre>
+         *	文字颜色序号
+         * </pre>
+         *
+         * <code>required int32 color = 3;</code>
+         */
+        public int getColor() {
+            return color_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            if (!hasFont()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasSize()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            if (!hasColor()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            if (((bitField0_ & 0x00000001) != 0)) {
+                output.writeInt32(1, font_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                output.writeInt32(2, size_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                output.writeInt32(3, color_);
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(1, font_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(2, size_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeInt32Size(3, color_);
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof data4mooc.Data4Mooc.Font)) {
+                return super.equals(obj);
+            }
+            data4mooc.Data4Mooc.Font other = (data4mooc.Data4Mooc.Font) obj;
+
+            if (hasFont() != other.hasFont()) return false;
+            if (hasFont()) {
+                if (getFont()
+                        != other.getFont()) return false;
+            }
+            if (hasSize() != other.hasSize()) return false;
+            if (hasSize()) {
+                if (getSize()
+                        != other.getSize()) return false;
+            }
+            if (hasColor() != other.hasColor()) return false;
+            if (hasColor()) {
+                if (getColor()
+                        != other.getColor()) return false;
+            }
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasFont()) {
+                hash = (37 * hash) + FONT_FIELD_NUMBER;
+                hash = (53 * hash) + getFont();
+            }
+            if (hasSize()) {
+                hash = (37 * hash) + SIZE_FIELD_NUMBER;
+                hash = (53 * hash) + getSize();
+            }
+            if (hasColor()) {
+                hash = (37 * hash) + COLOR_FIELD_NUMBER;
+                hash = (53 * hash) + getColor();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Font parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Font parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+        public static data4mooc.Data4Mooc.Font parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(data4mooc.Data4Mooc.Font prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+        /**
+         * <pre>
+         *	字体定制信息
+         * </pre>
+         *
+         * Protobuf type {@code data4mooc.Font}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:data4mooc.Font)
+                data4mooc.Data4Mooc.FontOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Font_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Font_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                data4mooc.Data4Mooc.Font.class, data4mooc.Data4Mooc.Font.Builder.class);
+            }
+
+            // Construct using data4mooc.Data4Mooc.Font.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                }
+            }
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                font_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                size_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                color_ = 0;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return data4mooc.Data4Mooc.internal_static_data4mooc_Font_descriptor;
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Font getDefaultInstanceForType() {
+                return data4mooc.Data4Mooc.Font.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Font build() {
+                data4mooc.Data4Mooc.Font result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public data4mooc.Data4Mooc.Font buildPartial() {
+                data4mooc.Data4Mooc.Font result = new data4mooc.Data4Mooc.Font(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    result.font_ = font_;
+                    to_bitField0_ |= 0x00000001;
+                }
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    result.size_ = size_;
+                    to_bitField0_ |= 0x00000002;
+                }
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    result.color_ = color_;
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof data4mooc.Data4Mooc.Font) {
+                    return mergeFrom((data4mooc.Data4Mooc.Font)other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(data4mooc.Data4Mooc.Font other) {
+                if (other == data4mooc.Data4Mooc.Font.getDefaultInstance()) return this;
+                if (other.hasFont()) {
+                    setFont(other.getFont());
+                }
+                if (other.hasSize()) {
+                    setSize(other.getSize());
+                }
+                if (other.hasColor()) {
+                    setColor(other.getColor());
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                if (!hasFont()) {
+                    return false;
+                }
+                if (!hasSize()) {
+                    return false;
+                }
+                if (!hasColor()) {
+                    return false;
+                }
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                data4mooc.Data4Mooc.Font parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (data4mooc.Data4Mooc.Font) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+            private int bitField0_;
+
+            private int font_ ;
+            /**
+             * <pre>
+             *	字体种类序号
+             * </pre>
+             *
+             * <code>required int32 font = 1;</code>
+             */
+            public boolean hasFont() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+            /**
+             * <pre>
+             *	字体种类序号
+             * </pre>
+             *
+             * <code>required int32 font = 1;</code>
+             */
+            public int getFont() {
+                return font_;
+            }
+            /**
+             * <pre>
+             *	字体种类序号
+             * </pre>
+             *
+             * <code>required int32 font = 1;</code>
+             */
+            public Builder setFont(int value) {
+                bitField0_ |= 0x00000001;
+                font_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	字体种类序号
+             * </pre>
+             *
+             * <code>required int32 font = 1;</code>
+             */
+            public Builder clearFont() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                font_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int size_ ;
+            /**
+             * <pre>
+             *	字体大小序号
+             * </pre>
+             *
+             * <code>required int32 size = 2;</code>
+             */
+            public boolean hasSize() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+            /**
+             * <pre>
+             *	字体大小序号
+             * </pre>
+             *
+             * <code>required int32 size = 2;</code>
+             */
+            public int getSize() {
+                return size_;
+            }
+            /**
+             * <pre>
+             *	字体大小序号
+             * </pre>
+             *
+             * <code>required int32 size = 2;</code>
+             */
+            public Builder setSize(int value) {
+                bitField0_ |= 0x00000002;
+                size_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	字体大小序号
+             * </pre>
+             *
+             * <code>required int32 size = 2;</code>
+             */
+            public Builder clearSize() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                size_ = 0;
+                onChanged();
+                return this;
+            }
+
+            private int color_ ;
+            /**
+             * <pre>
+             *	文字颜色序号
+             * </pre>
+             *
+             * <code>required int32 color = 3;</code>
+             */
+            public boolean hasColor() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+            /**
+             * <pre>
+             *	文字颜色序号
+             * </pre>
+             *
+             * <code>required int32 color = 3;</code>
+             */
+            public int getColor() {
+                return color_;
+            }
+            /**
+             * <pre>
+             *	文字颜色序号
+             * </pre>
+             *
+             * <code>required int32 color = 3;</code>
+             */
+            public Builder setColor(int value) {
+                bitField0_ |= 0x00000004;
+                color_ = value;
+                onChanged();
+                return this;
+            }
+            /**
+             * <pre>
+             *	文字颜色序号
+             * </pre>
+             *
+             * <code>required int32 color = 3;</code>
+             */
+            public Builder clearColor() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                color_ = 0;
+                onChanged();
+                return this;
+            }
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:data4mooc.Font)
+        }
+
+        // @@protoc_insertion_point(class_scope:data4mooc.Font)
+        private static final data4mooc.Data4Mooc.Font DEFAULT_INSTANCE;
+        static {
+            DEFAULT_INSTANCE = new data4mooc.Data4Mooc.Font();
+        }
+
+        public static data4mooc.Data4Mooc.Font getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        @java.lang.Deprecated public static final com.google.protobuf.Parser<Font>
+                PARSER = new com.google.protobuf.AbstractParser<Font>() {
+            @java.lang.Override
+            public Font parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new Font(input, extensionRegistry);
+            }
+        };
+
+        public static com.google.protobuf.Parser<Font> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Font> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public data4mooc.Data4Mooc.Font getDefaultInstanceForType() {
             return DEFAULT_INSTANCE;
         }
 
@@ -23289,10 +26284,15 @@ public final class Data4Mooc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_data4mooc_QandA_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
-            internal_static_data4mooc_PageLayout_descriptor;
+            internal_static_data4mooc_Layout_descriptor;
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internal_static_data4mooc_PageLayout_fieldAccessorTable;
+            internal_static_data4mooc_Layout_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_data4mooc_Basic_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_data4mooc_Basic_fieldAccessorTable;
     private static final com.google.protobuf.Descriptors.Descriptor
             internal_static_data4mooc_TopicLayout_descriptor;
     private static final
@@ -23313,6 +26313,11 @@ public final class Data4Mooc {
     private static final
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_data4mooc_QALayout_fieldAccessorTable;
+    private static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_data4mooc_Font_descriptor;
+    private static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_data4mooc_Font_fieldAccessorTable;
 
     public static com.google.protobuf.Descriptors.FileDescriptor
     getDescriptor() {
@@ -23322,63 +26327,62 @@ public final class Data4Mooc {
             descriptor;
     static {
         java.lang.String[] descriptorData = {
-                "\n\017data4mooc.proto\022\tdata4mooc\"\225\001\n\010MoocDat" +
+                "\n\017data4mooc.proto\022\tdata4mooc\"\270\001\n\010MoocDat" +
                         "a\022\"\n\010setTNode\030\001 \003(\0132\020.data4mooc.TNode\022\"\n" +
                         "\010setGNode\030\002 \003(\0132\020.data4mooc.GNode\022 \n\007set" +
                         "Test\030\003 \003(\0132\017.data4mooc.Test\022\037\n\005setQA\030\004 \003" +
-                        "(\0132\020.data4mooc.QandA\"7\n\005TNode\022\037\n\005topic\030\001" +
-                        " \002(\0132\020.data4mooc.Topic\022\r\n\005child\030\002 \003(\005\":\n" +
-                        "\005GNode\022#\n\007example\030\001 \002(\0132\022.data4mooc.Exam" +
-                        "ple\022\014\n\004from\030\002 \003(\005\"\213\001\n\005Topic\022\r\n\005title\030\001 \002" +
-                        "(\t\022\r\n\005intro\030\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\014\n\004type" +
-                        "\030\004 \002(\005\022$\n\010sections\030\005 \003(\0132\022.data4mooc.Sec" +
-                        "tion\022\020\n\010examples\030\006 \003(\005\022\017\n\007weights\030\007 \003(\005\"" +
-                        "[\n\007Example\022\r\n\005title\030\001 \002(\t\022\r\n\005intro\030\002 \002(\t" +
-                        "\022\014\n\004type\030\003 \002(\005\022$\n\010sections\030\004 \003(\0132\022.data4" +
-                        "mooc.Section\"8\n\007Section\022\r\n\005title\030\001 \002(\t\022\036" +
-                        "\n\005items\030\002 \003(\0132\017.data4mooc.Item\"%\n\004Item\022\014" +
-                        "\n\004type\030\001 \002(\005\022\017\n\007content\030\002 \002(\t\"\232\001\n\004Test\022\r" +
-                        "\n\005title\030\001 \002(\t\022\017\n\007problem\030\002 \002(\t\022\014\n\004kind\030\003" +
-                        " \002(\005\022\014\n\004type\030\004 \002(\005\022\022\n\ndifficulty\030\005 \002(\005\022\036" +
-                        "\n\005items\030\006 \003(\0132\017.data4mooc.Item\022\"\n\007result" +
-                        "s\030\007 \003(\0132\021.data4mooc.Result\"K\n\006Result\022\021\n\t" +
-                        "altertive\030\001 \002(\t\022\016\n\006result\030\002 \002(\t\022\017\n\007comme" +
-                        "nt\030\003 \002(\t\022\r\n\005topic\030\004 \001(\005\"H\n\005QandA\022\n\n\002no\030\001" +
-                        " \002(\005\022\020\n\010question\030\002 \002(\t\022\016\n\006answer\030\003 \002(\t\022\021" +
-                        "\n\ttopicList\030\004 \003(\005\"\213\003\n\nPageLayout\022\020\n\010home" +
-                        "Mode\030\001 \002(\005\022\021\n\thomeIndex\030\002 \002(\005\022\020\n\010homeFon" +
-                        "t\030\003 \002(\005\022\021\n\thomeColor\030\004 \002(\005\022\020\n\010homeSize\030\005" +
-                        " \002(\005\022\023\n\013exampleMode\030\006 \002(\005\022\023\n\013exampleFont" +
-                        "\030\007 \002(\005\022\024\n\014exampleColor\030\010 \002(\005\022\023\n\013exampleS" +
-                        "ize\030\t \002(\005\022\023\n\013examineMode\030\n \002(\005\022\023\n\013examin" +
-                        "eFont\030\013 \002(\005\022\024\n\014examineColor\030\014 \002(\005\022\023\n\013exa" +
-                        "mineSize\030\r \002(\005\022\021\n\tqandaMode\030\016 \002(\005\022\021\n\tqan" +
-                        "daFont\030\017 \002(\005\022\022\n\nqandaColor\030\020 \002(\005\022\021\n\tqand" +
-                        "aSize\030\021 \002(\005\022\023\n\013topicLayout\030\022 \003(\005\022\025\n\rexam" +
-                        "pleLayout\030\023 \003(\005\"\366\001\n\013TopicLayout\022\021\n\tindex" +
-                        "Mode\030\001 \002(\005\022\020\n\010nameFont\030\002 \002(\005\022\021\n\tnameColo" +
-                        "r\030\003 \002(\005\022\020\n\010nameSize\030\004 \002(\005\022\017\n\007secFont\030\005 \002" +
-                        "(\005\022\020\n\010secColor\030\006 \002(\005\022\017\n\007secSize\030\007 \002(\005\022\020\n" +
-                        "\010textFont\030\010 \002(\005\022\021\n\ttextColor\030\t \002(\005\022\020\n\010te" +
-                        "xtSize\030\n \002(\005\022\017\n\007resFont\030\013 \002(\005\022\020\n\010resColo" +
-                        "r\030\014 \002(\005\022\017\n\007resSize\030\r \002(\005\"\345\001\n\rExampleLayo" +
-                        "ut\022\020\n\010nameFont\030\001 \002(\005\022\021\n\tnameColor\030\002 \002(\005\022" +
-                        "\020\n\010nameSize\030\003 \002(\005\022\017\n\007secFont\030\004 \002(\005\022\020\n\010se" +
-                        "cColor\030\005 \002(\005\022\017\n\007secSize\030\006 \002(\005\022\020\n\010textFon" +
-                        "t\030\007 \002(\005\022\021\n\ttextColor\030\010 \002(\005\022\020\n\010textSize\030\t" +
-                        " \002(\005\022\017\n\007resFont\030\n \002(\005\022\020\n\010resColor\030\013 \002(\005\022" +
-                        "\017\n\007resSize\030\014 \002(\005\"\203\002\n\nTestLayout\022\020\n\010nameF" +
-                        "ont\030\001 \002(\005\022\021\n\tnameColor\030\002 \002(\005\022\020\n\010nameSize" +
-                        "\030\003 \002(\005\022\024\n\014questionFont\030\004 \002(\005\022\025\n\rquestion" +
-                        "Color\030\005 \002(\005\022\024\n\014questionSize\030\006 \002(\005\022\022\n\nans" +
-                        "werFont\030\007 \002(\005\022\023\n\013answerColor\030\010 \002(\005\022\022\n\nan" +
-                        "swerSize\030\t \002(\005\022\023\n\013commentFont\030\n \002(\005\022\024\n\014c" +
-                        "ommentColor\030\013 \002(\005\022\023\n\013commentSize\030\014 \002(\005\"\301" +
-                        "\001\n\010QALayout\022\020\n\010nameFont\030\001 \002(\005\022\021\n\tnameCol" +
-                        "or\030\002 \002(\005\022\020\n\010nameSize\030\003 \002(\005\022\024\n\014questionFo" +
-                        "nt\030\004 \002(\005\022\025\n\rquestionColor\030\005 \002(\005\022\024\n\014quest" +
-                        "ionSize\030\006 \002(\005\022\022\n\nanswerFont\030\007 \002(\005\022\023\n\013ans" +
-                        "werColor\030\010 \002(\005\022\022\n\nanswerSize\030\t \002(\005"
+                        "(\0132\020.data4mooc.QandA\022!\n\006layout\030\005 \001(\0132\021.d" +
+                        "ata4mooc.Layout\"7\n\005TNode\022\037\n\005topic\030\001 \002(\0132" +
+                        "\020.data4mooc.Topic\022\r\n\005child\030\002 \003(\005\":\n\005GNod" +
+                        "e\022#\n\007example\030\001 \002(\0132\022.data4mooc.Example\022\014" +
+                        "\n\004from\030\002 \003(\005\"\213\001\n\005Topic\022\r\n\005title\030\001 \002(\t\022\r\n" +
+                        "\005intro\030\002 \002(\t\022\r\n\005level\030\003 \002(\005\022\014\n\004type\030\004 \002(" +
+                        "\005\022$\n\010sections\030\005 \003(\0132\022.data4mooc.Section\022" +
+                        "\020\n\010examples\030\006 \003(\005\022\017\n\007weights\030\007 \003(\005\"[\n\007Ex" +
+                        "ample\022\r\n\005title\030\001 \002(\t\022\r\n\005intro\030\002 \002(\t\022\014\n\004t" +
+                        "ype\030\003 \002(\005\022$\n\010sections\030\004 \003(\0132\022.data4mooc." +
+                        "Section\"8\n\007Section\022\r\n\005title\030\001 \002(\t\022\036\n\005ite" +
+                        "ms\030\002 \003(\0132\017.data4mooc.Item\"%\n\004Item\022\014\n\004typ" +
+                        "e\030\001 \002(\005\022\017\n\007content\030\002 \002(\t\"\211\001\n\004Test\022\r\n\005tit" +
+                        "le\030\001 \002(\t\022\014\n\004kind\030\002 \002(\005\022\014\n\004type\030\003 \002(\005\022\022\n\n" +
+                        "difficulty\030\004 \002(\005\022\036\n\005items\030\005 \003(\0132\017.data4m" +
+                        "ooc.Item\022\"\n\007results\030\006 \003(\0132\021.data4mooc.Re" +
+                        "sult\"K\n\006Result\022\021\n\taltertive\030\001 \002(\t\022\016\n\006res" +
+                        "ult\030\002 \002(\t\022\017\n\007comment\030\003 \002(\t\022\r\n\005topic\030\004 \001(" +
+                        "\005\"H\n\005QandA\022\n\n\002no\030\001 \002(\005\022\020\n\010question\030\002 \002(\t" +
+                        "\022\016\n\006answer\030\003 \002(\t\022\021\n\ttopicList\030\004 \003(\005\"\364\003\n\006" +
+                        "Layout\022\037\n\005basic\030\001 \002(\0132\020.data4mooc.Basic\022" +
+                        "\020\n\010homeMode\030\002 \002(\005\022\021\n\thomeIndex\030\003 \002(\005\022!\n\010" +
+                        "homeFont\030\004 \002(\0132\017.data4mooc.Font\022\023\n\013examp" +
+                        "leMode\030\005 \002(\005\022$\n\013exampleFont\030\006 \002(\0132\017.data" +
+                        "4mooc.Font\022\020\n\010testMode\030\007 \002(\005\022!\n\010testFont" +
+                        "\030\010 \002(\0132\017.data4mooc.Font\022\021\n\tqandaMode\030\t \002" +
+                        "(\005\022\"\n\tqandaFont\030\n \002(\0132\017.data4mooc.Font\022+" +
+                        "\n\013layoutTopic\030\013 \002(\0132\026.data4mooc.TopicLay" +
+                        "out\022/\n\rlayoutExample\030\014 \002(\0132\030.data4mooc.E" +
+                        "xampleLayout\022)\n\nlayoutTest\030\r \002(\0132\025.data4" +
+                        "mooc.TestLayout\022%\n\010layoutQA\030\016 \002(\0132\023.data" +
+                        "4mooc.QALayout\022\023\n\013topicLayout\030\017 \003(\005\022\025\n\re" +
+                        "xampleLayout\030\020 \003(\005\"e\n\005Basic\022\r\n\005title\030\001 \002" +
+                        "(\t\022\017\n\007version\030\002 \002(\t\022\r\n\005intro\030\003 \002(\t\022\014\n\004da" +
+                        "te\030\004 \002(\t\022\016\n\006author\030\005 \002(\t\022\017\n\007address\030\006 \002(" +
+                        "\t\"\243\001\n\013TopicLayout\022\021\n\tindexMode\030\001 \001(\005\022\035\n\004" +
+                        "name\030\002 \002(\0132\017.data4mooc.Font\022 \n\007section\030\003" +
+                        " \002(\0132\017.data4mooc.Font\022\035\n\004text\030\004 \002(\0132\017.da" +
+                        "ta4mooc.Font\022!\n\010resource\030\005 \002(\0132\017.data4mo" +
+                        "oc.Font\"\245\001\n\rExampleLayout\022\021\n\tindexMode\030\001" +
+                        " \001(\005\022\035\n\004name\030\002 \002(\0132\017.data4mooc.Font\022 \n\007s" +
+                        "ection\030\003 \002(\0132\017.data4mooc.Font\022\035\n\004text\030\004 " +
+                        "\002(\0132\017.data4mooc.Font\022!\n\010resource\030\005 \002(\0132\017" +
+                        ".data4mooc.Font\"\221\001\n\nTestLayout\022\035\n\004name\030\001" +
+                        " \002(\0132\017.data4mooc.Font\022!\n\010question\030\002 \002(\0132" +
+                        "\017.data4mooc.Font\022\037\n\006answer\030\003 \002(\0132\017.data4" +
+                        "mooc.Font\022 \n\007comment\030\004 \002(\0132\017.data4mooc.F" +
+                        "ont\"m\n\010QALayout\022\035\n\004name\030\001 \001(\0132\017.data4moo" +
+                        "c.Font\022!\n\010question\030\002 \002(\0132\017.data4mooc.Fon" +
+                        "t\022\037\n\006answer\030\003 \002(\0132\017.data4mooc.Font\"1\n\004Fo" +
+                        "nt\022\014\n\004font\030\001 \002(\005\022\014\n\004size\030\002 \002(\005\022\r\n\005color\030" +
+                        "\003 \002(\005"
         };
         descriptor = com.google.protobuf.Descriptors.FileDescriptor
                 .internalBuildGeneratedFileFrom(descriptorData,
@@ -23389,7 +26393,7 @@ public final class Data4Mooc {
         internal_static_data4mooc_MoocData_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_MoocData_descriptor,
-                new java.lang.String[] { "SetTNode", "SetGNode", "SetTest", "SetQA", });
+                new java.lang.String[] { "SetTNode", "SetGNode", "SetTest", "SetQA", "Layout", });
         internal_static_data4mooc_TNode_descriptor =
                 getDescriptor().getMessageTypes().get(1);
         internal_static_data4mooc_TNode_fieldAccessorTable = new
@@ -23431,7 +26435,7 @@ public final class Data4Mooc {
         internal_static_data4mooc_Test_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_Test_descriptor,
-                new java.lang.String[] { "Title", "Problem", "Kind", "Type", "Difficulty", "Items", "Results", });
+                new java.lang.String[] { "Title", "Kind", "Type", "Difficulty", "Items", "Results", });
         internal_static_data4mooc_Result_descriptor =
                 getDescriptor().getMessageTypes().get(8);
         internal_static_data4mooc_Result_fieldAccessorTable = new
@@ -23444,36 +26448,48 @@ public final class Data4Mooc {
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_QandA_descriptor,
                 new java.lang.String[] { "No", "Question", "Answer", "TopicList", });
-        internal_static_data4mooc_PageLayout_descriptor =
+        internal_static_data4mooc_Layout_descriptor =
                 getDescriptor().getMessageTypes().get(10);
-        internal_static_data4mooc_PageLayout_fieldAccessorTable = new
+        internal_static_data4mooc_Layout_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-                internal_static_data4mooc_PageLayout_descriptor,
-                new java.lang.String[] { "HomeMode", "HomeIndex", "HomeFont", "HomeColor", "HomeSize", "ExampleMode", "ExampleFont", "ExampleColor", "ExampleSize", "ExamineMode", "ExamineFont", "ExamineColor", "ExamineSize", "QandaMode", "QandaFont", "QandaColor", "QandaSize", "TopicLayout", "ExampleLayout", });
-        internal_static_data4mooc_TopicLayout_descriptor =
+                internal_static_data4mooc_Layout_descriptor,
+                new java.lang.String[] { "Basic", "HomeMode", "HomeIndex", "HomeFont", "ExampleMode", "ExampleFont", "TestMode", "TestFont", "QandaMode", "QandaFont", "LayoutTopic", "LayoutExample", "LayoutTest", "LayoutQA", "TopicLayout", "ExampleLayout", });
+        internal_static_data4mooc_Basic_descriptor =
                 getDescriptor().getMessageTypes().get(11);
+        internal_static_data4mooc_Basic_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_data4mooc_Basic_descriptor,
+                new java.lang.String[] { "Title", "Version", "Intro", "Date", "Author", "Address", });
+        internal_static_data4mooc_TopicLayout_descriptor =
+                getDescriptor().getMessageTypes().get(12);
         internal_static_data4mooc_TopicLayout_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_TopicLayout_descriptor,
-                new java.lang.String[] { "IndexMode", "NameFont", "NameColor", "NameSize", "SecFont", "SecColor", "SecSize", "TextFont", "TextColor", "TextSize", "ResFont", "ResColor", "ResSize", });
+                new java.lang.String[] { "IndexMode", "Name", "Section", "Text", "Resource", });
         internal_static_data4mooc_ExampleLayout_descriptor =
-                getDescriptor().getMessageTypes().get(12);
+                getDescriptor().getMessageTypes().get(13);
         internal_static_data4mooc_ExampleLayout_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_ExampleLayout_descriptor,
-                new java.lang.String[] { "NameFont", "NameColor", "NameSize", "SecFont", "SecColor", "SecSize", "TextFont", "TextColor", "TextSize", "ResFont", "ResColor", "ResSize", });
+                new java.lang.String[] { "IndexMode", "Name", "Section", "Text", "Resource", });
         internal_static_data4mooc_TestLayout_descriptor =
-                getDescriptor().getMessageTypes().get(13);
+                getDescriptor().getMessageTypes().get(14);
         internal_static_data4mooc_TestLayout_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_TestLayout_descriptor,
-                new java.lang.String[] { "NameFont", "NameColor", "NameSize", "QuestionFont", "QuestionColor", "QuestionSize", "AnswerFont", "AnswerColor", "AnswerSize", "CommentFont", "CommentColor", "CommentSize", });
+                new java.lang.String[] { "Name", "Question", "Answer", "Comment", });
         internal_static_data4mooc_QALayout_descriptor =
-                getDescriptor().getMessageTypes().get(14);
+                getDescriptor().getMessageTypes().get(15);
         internal_static_data4mooc_QALayout_fieldAccessorTable = new
                 com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
                 internal_static_data4mooc_QALayout_descriptor,
-                new java.lang.String[] { "NameFont", "NameColor", "NameSize", "QuestionFont", "QuestionColor", "QuestionSize", "AnswerFont", "AnswerColor", "AnswerSize", });
+                new java.lang.String[] { "Name", "Question", "Answer", });
+        internal_static_data4mooc_Font_descriptor =
+                getDescriptor().getMessageTypes().get(16);
+        internal_static_data4mooc_Font_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_data4mooc_Font_descriptor,
+                new java.lang.String[] { "Font", "Size", "Color", });
     }
 
     // @@protoc_insertion_point(outer_class_scope)
