@@ -8,7 +8,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import data4mooc.Data4Mooc;
 import data4mooc.MoocCreator;
@@ -137,4 +139,74 @@ public class LeappApplication extends Application {
 
         return AboutTopicList;
     }
+
+    //get单选题正确答案选项
+    public static int getSimpleChioceCurrentResult(Data4Mooc.Test test){
+        int result = -1;
+        List<Data4Mooc.Result> resultList = test.getResultsList();
+        for(int i = 0;i <resultList.size(); i ++){
+            if(resultList.get(i).getResult().equals("true")){
+                result = i;
+            }
+        }
+        return result;
+    }
+
+    //get多选题正确答案选项
+    public static Set<Integer> getMultipleChoiceCurrentResult(Data4Mooc.Test test){
+        Set<Integer> result = new HashSet<>();
+        List<Data4Mooc.Result> resultList = test.getResultsList();
+        for(int i = 0;i <resultList.size(); i ++){
+            if(resultList.get(i).getResult().equals("true")){
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
+    //比较多选题用户的选项和正确选项是否一样
+    public static boolean equalsMultipleChoice(Set<?> set1, Set<?> set2){
+        if(set1 == null || set2 ==null){//null就直接不比了
+            return false;
+        }
+        if(set1.size()!=set2.size()){//大小不同也不用比了
+            return false;
+        }
+        return set1.containsAll(set2);//最后比containsAll
+    }
+
+    //显示多选题正确选项的选项内容
+    public static String pirntMultipleChoiceAlternative(List<Integer> result, Data4Mooc.Test test){
+        List<String> printMultipleAlternative = new ArrayList<>();
+        String print = new String();
+        for(int i = 0; i < result.size(); i ++){
+            printMultipleAlternative.add(test.getResults(result.get(i)).getAltertive() + "\n");
+
+        }
+
+        for(int i = 0; i < printMultipleAlternative.size(); i ++){
+            print = print.concat(printMultipleAlternative.get(i));
+        }
+
+        return print;
+
+    }
+
+    //显示多选题正确选项的解释内容
+    public static String pirntMultipleChoiceComment(List<Integer> result, Data4Mooc.Test test){
+        List<String> printMultipleAlternative = new ArrayList<>();
+        String print = new String();
+        for(int i = 0; i < result.size(); i ++){
+            printMultipleAlternative.add(test.getResults(result.get(i)).getComment() + "\n");
+
+        }
+
+        for(int i = 0; i < printMultipleAlternative.size(); i ++){
+            print = print.concat(printMultipleAlternative.get(i));
+        }
+
+        return print;
+
+    }
+
 }

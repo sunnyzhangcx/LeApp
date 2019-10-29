@@ -17,7 +17,7 @@ public class MoocCreator {
      * @param topicList
      * @return
      */
-    public static QandA createQA(int no, String question, String answer, List<Integer> topicList) {
+    static QandA createQA(int no, String question, String answer, List<Integer> topicList) {
         QandA.Builder QABuilder = QandA.newBuilder();
         QABuilder.setNo(no);
         QABuilder.setQuestion(question);
@@ -25,33 +25,38 @@ public class MoocCreator {
         for (int topic : topicList) {
             QABuilder.addTopicList(topic);
         }
-        QandA qa = QABuilder.build();
-        return qa;
+        return QABuilder.build();
     }
 
-    public static Item createItem(int type, String content) {
+    static Item createItem(int type, String content) {
         Item.Builder ItemBuilder = Item.newBuilder();
         ItemBuilder.setType(type);
         ItemBuilder.setContent(content);
-        Item item = ItemBuilder.build();
-        return item;
+        return ItemBuilder.build();
     }
 
-    public static Result createResult(String altertive, String result, String comment, int topic) {
+    static Result createResult(String altertive, String result, String comment, int topic) {
         Result.Builder ResultBuilder = Result.newBuilder();
         ResultBuilder.setAltertive(altertive);
         ResultBuilder.setResult(result);
         ResultBuilder.setComment(comment);
         ResultBuilder.setTopic(topic);
-        Result result1 = ResultBuilder.build();
-        return result1;
+        return ResultBuilder.build();
 
     }
 
-    public static Test createTest(String title, String problem, int kind, int type, int difficulty, List<Item> items, List<Result> results) {
+    public static Result createResult(String altertive, String result, String comment) {
+        Result.Builder ResultBuilder = Result.newBuilder();
+        ResultBuilder.setAltertive(altertive);
+        ResultBuilder.setResult(result);
+        ResultBuilder.setComment(comment);
+        return ResultBuilder.build();
+
+    }
+
+    static Test createTest(String title, int kind, int type, int difficulty, List<Item> items, List<Result> results) {
         Test.Builder TestBuilder = Test.newBuilder();
         TestBuilder.setTitle(title);
-        TestBuilder.setProblem(problem);
         TestBuilder.setKind(kind);
         TestBuilder.setType(type);
         TestBuilder.setDifficulty(difficulty);
@@ -62,22 +67,20 @@ public class MoocCreator {
             TestBuilder.addResults(result);
         }
 
-        Test test = TestBuilder.build();
-        return test;
+        return TestBuilder.build();
     }
 
-    public static TNode createTNode(Topic topic, int[] child) {
+    static TNode createTNode(Topic topic, int[] child) {
         TNode.Builder TNodeBuilder = TNode.newBuilder();
         TNodeBuilder.setTopic(topic);
         for (int child1 : child) {
             TNodeBuilder.addChild(child1);
         }
 
-        TNode tNode = TNodeBuilder.build();
-        return tNode;
+        return TNodeBuilder.build();
     }
 
-    public static Topic createTopic(String title, String intro, int level, int type, List<Section> sections, List<Integer> examples, List<Integer> weights) {
+    static Topic createTopic(String title, String intro, int level, int type, List<Section> sections, List<Integer> examples, List<Integer> weights) {
         Topic.Builder TopicBuilder = Topic.newBuilder();
         TopicBuilder.setTitle(title);
         TopicBuilder.setIntro(intro);
@@ -93,22 +96,20 @@ public class MoocCreator {
             TopicBuilder.addWeights(weight);
         }
 
-        Topic topic = TopicBuilder.build();
-        return topic;
+        return TopicBuilder.build();
     }
 
-    public static Section createSection(String title, List<Item> items) {
+    static Section createSection(String title, List<Item> items) {
         Section.Builder SectionBuilder = Section.newBuilder();
         SectionBuilder.setTitle(title);
         for (Item item : items) {
             SectionBuilder.addItems(item);
         }
-        Section section = SectionBuilder.build();
-        return section;
+        return SectionBuilder.build();
     }
 
 
-    public static Example createExample(String title, String intro, int type, List<Section> sections) {
+    static Example createExample(String title, String intro, int type, List<Section> sections) {
         Example.Builder ExampleBuilder = Example.newBuilder();
         ExampleBuilder.setTitle(title);
         ExampleBuilder.setIntro(intro);
@@ -116,18 +117,16 @@ public class MoocCreator {
         for (Section section : sections) {
             ExampleBuilder.addSections(section);
         }
-        Example example = ExampleBuilder.build();
-        return example;
+        return ExampleBuilder.build();
     }
 
-    public static GNode createGNode(Example example, int[] from) {
+    static GNode createGNode(Example example, int[] from) {
         GNode.Builder GNodeBuilder = GNode.newBuilder();
         GNodeBuilder.setExample(example);
         for (int forms : from) {
             GNodeBuilder.addFrom(forms);
         }
-        GNode gNode = GNodeBuilder.build();
-        return gNode;
+        return GNodeBuilder.build();
     }
 /*    public static QandA creatQA(){
         QandA.Builder QABuilder = QandA.newBuilder();

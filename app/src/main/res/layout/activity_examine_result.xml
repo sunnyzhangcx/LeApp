@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="5dp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="555dp">
+        android:layout_height="555dp"
+        android:layout_margin="6dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +24,16 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+
                 android:text="判断是否正确......................................................................................................................................................................................................................"/>
+
+            <TextView
+                android:id="@+id/examine_result_standard_answer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="标准答案："
+                android:textSize="20dp"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/examine_result_standard_answer"
@@ -33,7 +44,16 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:padding="3dp"
                 android:text="给出标准答案............................................................................................................................................................................................"/>
+
+            <TextView
+                android:id="@+id/examine_result_user_answer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="您的答案："
+                android:textSize="20dp"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/examine_result_user_answer"
@@ -44,7 +64,16 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:padding="3dp"
                 android:text="给出用户的答案.................................................................................................................................................................................................."/>
+
+            <TextView
+                android:id="@+id/examine_result_explain_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="答案解析："
+                android:textSize="20dp"
+                android:layout_margin="5dp"/>
 
             <TextView
                 android:id="@+id/examine_result_explain"
@@ -55,6 +84,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:padding="3dp"
                 android:text="答案解释信息..................................................................................................................................................................."/>
 
         </LinearLayout>

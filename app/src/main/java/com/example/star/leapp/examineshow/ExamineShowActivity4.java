@@ -43,7 +43,7 @@ public class ExamineShowActivity4 extends AppCompatActivity implements View.OnCl
         Button mBtnAbandon = findViewById(R.id.examine_abandon);
         FloatingActionButton mBtnTip = findViewById(R.id.examine_tip);
         TextView mTvExamineContent = findViewById(R.id.examine_content4);
-        mTvExamineContent.setText(test.getProblem());
+        mTvExamineContent.setText(test.getTitle());
         TextView mEtInput = findViewById(R.id.et_input);
         //设置EditText的显示方式为多行文本输入
         mEtInput.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);

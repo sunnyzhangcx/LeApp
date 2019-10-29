@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -24,16 +23,18 @@ import static com.example.star.leapp.Application.LeappApplication.getTestList;
 import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 //单选题界面
-public class ExamineShowActivity1 extends AppCompatActivity implements View.OnClickListener{
+public class ExamineShowActivity1 extends AppCompatActivity{
+    int onePos = 1;
     int curItemPos = -1;
     Data4Mooc.Test test = null;
     Button mBtnSubmit = null,mBtnAbandon = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examine_show1);
         Intent intent = getIntent();
-        int pos = intent.getIntExtra("pos",0);
+        final int pos = intent.getIntExtra("pos",0);
         List<Data4Mooc.Test> testList = getTestList(moocDataList);
         test = testList.get(pos);
         mBtnSubmit = findViewById(R.id.examine_submit);
@@ -41,9 +42,7 @@ public class ExamineShowActivity1 extends AppCompatActivity implements View.OnCl
         FloatingActionButton mBtnTip = findViewById(R.id.examine_tip);
         final ListView mLvExamine = findViewById(R.id.examine1_lv);
         TextView mTvExamineContent = findViewById(R.id.examine_content1);
-        mTvExamineContent.setText(test.getProblem());
-        mBtnSubmit.setOnClickListener(this);
-        mBtnAbandon.setOnClickListener(this);
+        mTvExamineContent.setText(test.getTitle());
 
         mLvExamine.setAdapter(new Lv_Adapter_ExamineShow_SimpleChoiceTest(test,ExamineShowActivity1.this));
         mLvExamine.setItemsCanFocus(true);
@@ -65,6 +64,24 @@ public class ExamineShowActivity1 extends AppCompatActivity implements View.OnCl
                 Toast.makeText(ExamineShowActivity1.this,"click",Toast.LENGTH_SHORT).show();
             }
         });
+
+        mBtnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ExamineShowActivity1.this,ExamineResultActivity.class);
+                intent.putExtra("onePos",onePos);
+                intent.putExtra("testPos",pos);
+                intent.putExtra("resultPos",curItemPos);
+                startActivity(intent);
+            }
+        });
+
+        mBtnAbandon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public RadioButton getRadioBtn(int pos,ListView listView){
@@ -72,27 +89,5 @@ public class ExamineShowActivity1 extends AppCompatActivity implements View.OnCl
         return itemView.findViewById(R.id.rb_select_result);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.examine_submit:
-                Intent intent = new Intent(ExamineShowActivity1.this,ExamineResultActivity.class);
-                startActivity(intent);
-                //mBtnSubmit.setEnabled(false);
-/*                if(curItemPos!=-1)
-                    Toast.makeText(this,test.getResults(curItemPos).getAltertive(), Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(this,"no item selected", Toast.LENGTH_LONG).show();*/
-                break;
-            case R.id.examine_abandon:
-/*                Intent intent = new Intent(ExamineShowActivity1.this,MainActivity.class);
-                intent.putExtra("fragmentFlag",3);
-                startActivity(intent);*/
-                finish();
-                break;
-            default:
-                break;
-        }
-    }
 
 }
