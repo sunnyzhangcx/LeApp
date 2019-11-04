@@ -33,8 +33,7 @@ public class ExamineShowActivity1 extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examine_show1);
-        Intent intent = getIntent();
-        final int pos = intent.getIntExtra("pos",0);
+        final int pos = getIntent().getIntExtra("pos",0);
         List<Data4Mooc.Test> testList = getTestList(moocDataList);
         test = testList.get(pos);
         mBtnSubmit = findViewById(R.id.examine_submit);

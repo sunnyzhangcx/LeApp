@@ -38,8 +38,8 @@ import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 //多选题界面
 public class ExamineShowActivity2 extends AppCompatActivity {
-    Map<Integer,Integer> selectedMap = new HashMap<>();
-    int twoPos = 2;
+    private Map<Integer,Integer> selectedMap = new HashMap<>();
+    private int twoPos = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

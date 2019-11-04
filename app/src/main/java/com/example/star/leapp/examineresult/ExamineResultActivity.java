@@ -1,6 +1,6 @@
 package com.example.star.leapp.examineresult;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -19,11 +19,12 @@ import static com.example.star.leapp.Application.LeappApplication.getMoocDataLis
 import static com.example.star.leapp.Application.LeappApplication.getMultipleChoiceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getSimpleChioceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
+import static com.example.star.leapp.Application.LeappApplication.pirntChoiceComment;
 import static com.example.star.leapp.Application.LeappApplication.pirntMultipleChoiceAlternative;
-import static com.example.star.leapp.Application.LeappApplication.pirntMultipleChoiceComment;
 
 public class ExamineResultActivity extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,10 @@ public class ExamineResultActivity extends AppCompatActivity {
         TextView mTvResultExplainName =findViewById(R.id.examine_result_explain_name);
         TextView mTvResultExplain =findViewById(R.id.examine_result_explain);
 
-
-        Intent intent = getIntent();
-        final int onePos = intent.getIntExtra("onePos",0);
-        final int twoPos = intent.getIntExtra("twoPos",0);
-        final int testPos = intent.getIntExtra("testPos",0);
-        final int simpleChoiceResultPos = intent.getIntExtra("resultPos",0);
+        final int onePos = getIntent().getIntExtra("onePos",0);
+        final int twoPos = getIntent().getIntExtra("twoPos",0);
+        final int testPos = getIntent().getIntExtra("testPos",0);
+        final int simpleChoiceResultPos = getIntent().getIntExtra("resultPos",0);
         final ArrayList<Integer> multipleChoiceResult = getIntent().getIntegerArrayListExtra("multiplechoicepos");
 
         //更新案例库
@@ -51,31 +50,35 @@ public class ExamineResultActivity extends AppCompatActivity {
 
         if(onePos == 1){
             if(simpleChoiceResultPos == getSimpleChioceCurrentResult(test)){
-                mTvJudge.setText("       恭喜你答对了！");
+                mTvJudge.setText("       恭喜你答对了！\n");
                 mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
             }else if(simpleChoiceResultPos == -1){
-                mTvJudge.setText("您没有进行选择");
-                mTvUserAnswer.setText("您的答案：您没有进行选择！");
+                mTvJudge.setText("您没有进行选择！\n");
+                mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
             }
             else{
-                mTvJudge.setText("       答案错误，此选择题正确选项为第"+getSimpleChioceCurrentResult(test) +"个选项");
+                mTvJudge.setText("       答案错误，此选择题正确选项为第"+getSimpleChioceCurrentResult(test) +"个选项 \n");
                 mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
             }
             mTvStandardAnswer.setText(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() + "\n");
-            mTvResultExplain.setText(test.getResults(getSimpleChioceCurrentResult(test)).getComment());
+            mTvResultExplain.setText(pirntChoiceComment(test));
+
+            //显示知识点
+
         }else if(twoPos == 2){
             Set<Integer> multipleChoiceResultPos = new HashSet<>(multipleChoiceResult);
             if(equalsMultipleChoice(multipleChoiceResultPos, getMultipleChoiceCurrentResult(test))){
-                mTvJudge.setText("恭喜您的多选题答对了！");
+                mTvJudge.setText("恭喜您的多选题答对了！\n");
+                mTvUserAnswer.setText(pirntMultipleChoiceAlternative(multipleChoiceResult,test));
             }else if(multipleChoiceResultPos.size() == 0){
-                mTvJudge.setText("您的多选题没有进行选择！");
+                mTvJudge.setText("您的多选题没有进行选择！\n");
+                mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
             }else {
-                mTvJudge.setText("答案错误，此多选题正确选项为第"+getMultipleChoiceCurrentResult(test) + "个选项");
+                mTvJudge.setText("答案错误，此多选题正确选项为第"+getMultipleChoiceCurrentResult(test) + "个选项 \n");
+                mTvUserAnswer.setText(pirntMultipleChoiceAlternative(multipleChoiceResult,test));
             }
-
             mTvStandardAnswer.setText(pirntMultipleChoiceAlternative(new ArrayList<Integer>(getMultipleChoiceCurrentResult(test)),test));
-            mTvUserAnswer.setText(pirntMultipleChoiceAlternative(multipleChoiceResult,test));
-            mTvResultExplain.setText(pirntMultipleChoiceComment(new ArrayList<Integer>(getMultipleChoiceCurrentResult(test))  ,test));
+            mTvResultExplain.setText(pirntChoiceComment(test));
 
         }else if(test.getType() == 3){
 

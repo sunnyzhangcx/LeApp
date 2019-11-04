@@ -7,7 +7,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="555dp"
+        android:layout_height="wrap_content"
         android:layout_margin="6dp">
 
         <LinearLayout
@@ -87,14 +87,29 @@
                 android:padding="3dp"
                 android:text="答案解释信息..................................................................................................................................................................."/>
 
+            <TextView
+                android:id="@+id/examine_result_topic_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="知识点："
+                android:textSize="20dp"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/examine_result_topic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="知识点"
+                android:background="@drawable/bg_topic_show_content"
+                android:textSize="28sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:padding="3dp"/>
+
         </LinearLayout>
 
     </ScrollView>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="查看知识点"
-        android:layout_gravity="bottom"/>
 
 </LinearLayout>

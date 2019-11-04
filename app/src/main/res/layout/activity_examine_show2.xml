@@ -30,7 +30,8 @@
             <ListView
                 android:id="@+id/examine2_lv"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:divider="@null"/>
 <!--            <CheckBox
                 android:id="@+id/cb_1"
                 android:layout_width="wrap_content"

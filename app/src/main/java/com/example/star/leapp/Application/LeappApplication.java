@@ -21,7 +21,6 @@ public class LeappApplication extends Application {
     private static String qaFilepath = MoocWriter.FilePath;
     public static Data4Mooc.MoocData moocDataList = LeappApplication.getQueryMoocDataList(qaFilepath);
 
-
     public static Data4Mooc.MoocData getQueryMoocDataList(String fileName){
         File qaFile = new File(fileName);
         if(!qaFile.exists()||qaFile.length()==0){
@@ -192,21 +191,45 @@ public class LeappApplication extends Application {
 
     }
 
-    //显示多选题正确选项的解释内容
-    public static String pirntMultipleChoiceComment(List<Integer> result, Data4Mooc.Test test){
-        List<String> printMultipleAlternative = new ArrayList<>();
+    //显示测试题的解释内容
+    public static String pirntChoiceComment(Data4Mooc.Test test){
+        List<String> printComment = new ArrayList<>();
         String print = new String();
-        for(int i = 0; i < result.size(); i ++){
-            printMultipleAlternative.add(test.getResults(result.get(i)).getComment() + "\n");
+        for(int i = 0; i < test.getResultsList().size(); i ++){
+            printComment.add(test.getResults(i).getComment() + "\n");
 
         }
 
-        for(int i = 0; i < printMultipleAlternative.size(); i ++){
-            print = print.concat(printMultipleAlternative.get(i));
+        for(int i = 0; i < printComment.size(); i ++){
+            print = print.concat(printComment.get(i));
         }
 
         return print;
 
+    }
+
+    //显示测试题的相关知识点
+    public static String printChoiceTopic(Data4Mooc.Test test, Data4Mooc.Topic topic){
+        List<String> printTopic = new ArrayList<>();
+        String print = new String();
+        for(int i = 0; i <test.getResultsList().size(); i ++){
+            if(test.getResults(i).hasTopic()){
+                //printTopic.add(test.getResults(i).getTopic())
+            }
+
+        }
+
+        return print;
+    }
+
+    public static String printTestItem(Data4Mooc.Test test){
+        String print = new String();
+
+        for(int i = 0; i < test.getItemsCount(); i ++){
+            print = test.getItems(i).getContent();
+        }
+
+        return print;
     }
 
 }

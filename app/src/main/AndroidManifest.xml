@@ -24,7 +24,8 @@
         <activity android:name=".questionshow.QuestionShowActivity" />
         <activity android:name=".examineshow.ExamineShowActivity1" />
         <activity android:name=".examineshow.ExamineShowActivity2" />
-        <activity android:name=".examineshow.ExamineShowActivity3" />
+        <activity android:name=".examineshow.ExamineShowActivity3"
+            android:configChanges="orientation|keyboard|keyboardHidden"/>
         <activity android:name=".examineshow.ExamineShowActivity4" />
         <activity android:name=".homepage.progress.ProgressMainActivity" />
         <activity android:name=".examineresult.ExamineResultActivity"></activity>
