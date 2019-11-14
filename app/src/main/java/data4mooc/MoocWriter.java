@@ -111,6 +111,36 @@ public class MoocWriter {
         return true;
     }
 
+/*    //页面布局参数写入
+    public static boolean writeLayout(ArrayList<Data4Mooc.Layout> layouts, String filepath, boolean append){
+        File file = new File(filepath);
+        if(!file.exists()){
+            if(!file.getParentFile().exists()){
+                file.getParentFile().mkdirs();
+            }
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        Data4Mooc.MoocData.Builder moocDataBuilder = Data4Mooc.MoocData.newBuilder();
+        moocDataBuilder.
+        Data4Mooc.MoocData moocData = moocDataBuilder.build();
+        try  {
+            OutputStream os=new FileOutputStream(filepath,append);
+            moocData.writeTo(os);
+            os.close();
+        }catch  (FileNotFoundException e){
+            Log.e("error","file not exist!");
+            return  false;
+        } catch (IOException e) {
+            Log.e("error","write failed!");
+            return false;
+        }
+        return true;
+    }*/
+
     public static boolean writeGNodeList(ArrayList<Data4Mooc.GNode> GNodeList, String filepath, boolean append){
         File file = new File(filepath);
         if(!file.exists()){
@@ -144,7 +174,7 @@ public class MoocWriter {
 
     public static void writeMoocData(boolean append){
 
-        int[] child1 = {1,7,12};
+        int[] child1 = {0,1,7,12};
         int[] child2 = {2,3,4};
         int[] child3 = {8,9};
         int[] child4 = {13};
@@ -152,16 +182,17 @@ public class MoocWriter {
         int[] child6 = {10,11};
         int[] child0 = {};
 
-
         String fileName = FilePath;
         //添加数据
         ArrayList<Data4Mooc.QandA> qaList = new ArrayList<>();
         ArrayList<Data4Mooc.Test> testList = new ArrayList<>();
         ArrayList<Data4Mooc.Item> itemList = new ArrayList<>();
         ArrayList<Data4Mooc.Item> result3ItemList = new ArrayList<>();
+        ArrayList<Data4Mooc.Item> result4ItemList = new ArrayList<>();
         ArrayList<Data4Mooc.Result> resultList1 = new ArrayList<>();
         ArrayList<Data4Mooc.Result> resultList2 = new ArrayList<>();
         ArrayList<Data4Mooc.Result> resultList3 = new ArrayList<>();
+        ArrayList<Data4Mooc.Result> resultList4 = new ArrayList<>();
         ArrayList<Data4Mooc.TNode> tNodeArrayList = new ArrayList<>();
         ArrayList<Data4Mooc.Section> sectionArrayList = new ArrayList<>();
         ArrayList<Integer> examples = new ArrayList<>();
@@ -182,7 +213,7 @@ public class MoocWriter {
         resultList1.add(MoocCreator.createResult("A.候选项/填空序号-result1.1","false","解释-comment1.3.................................................................................................................................................................................................................................................................................000000000000000000000000000000000000000000000000000000000000000000000000000000000000000................................0000000000000000000000000000000000000000000000000000000000..........",1));
         resultList1.add(MoocCreator.createResult("B.候选项/填空序号-result2.1","true","解释-comment2.3................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000..................",1));
         resultList1.add(MoocCreator.createResult("C.候选项/填空序号-result3.1","false","解释-comment3.3...............................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000.......00000000000000000000000000....0000000000000000000000000000000000000000000000.............",1));
-        resultList1.add(MoocCreator.createResult("D.候选项/填空序号-result4.1","false","解释-comment4.3.......................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000000000000000000000000000000000000000000000..............00000000000000000000000000000000000000000000000000............",1));resultList1.add(MoocCreator.createResult("E.候选项/填空序号-result5.1","false","解释-comment5.3.....................................................................................................................................................................................................................................................................................................000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.............",1));
+        resultList1.add(MoocCreator.createResult("D.候选项/填空序号-result4.1","false","解释-comment4.3.......................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000000000000000000000000000000000000000000000..............00000000000000000000000000000000000000000000000000............",1));
 
         resultList2.add(MoocCreator.createResult("A.候选项/填空序号-result1.1","false","解释-comment1.3.................................................................................................................................................................................................................................................................................000000000000000000000000000000000000000000000000000000000000000000000000000000000000000................................0000000000000000000000000000000000000000000000000000000000.........."));
         resultList2.add(MoocCreator.createResult("B.候选项/填空序号-result2.1","true","解释-comment2.3................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000..................",1));
@@ -190,16 +221,29 @@ public class MoocWriter {
         resultList2.add(MoocCreator.createResult("D.候选项/填空序号-result4.1","true","解释-comment4.3.......................................................................................................................................................................................................................................................................................................0000000000000000000000000000000000000000000000000000000000000000000000000000000..............00000000000000000000000000000000000000000000000000............",1));
         resultList2.add(MoocCreator.createResult("E.候选项/填空序号-result5.1","false","解释-comment5.3.....................................................................................................................................................................................................................................................................................................000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.............",1));
 
-        resultList3.add(MoocCreator.createResult("①","大雪","纷纷扬扬的大雪",1));
-        resultList3.add(MoocCreator.createResult("②","白茫茫","天地间白茫茫的一片"));
-        resultList3.add(MoocCreator.createResult("③","铁路","不知道是铁路还是公路，瞎选的",1));
+        resultList3.add(MoocCreator.createResult("1.","a","大雪：纷纷扬扬的大雪",1));
+        resultList3.add(MoocCreator.createResult("2.","b","白茫茫：天地间白茫茫的一片"));
+        resultList3.add(MoocCreator.createResult("3.","c","铁路：不知道是铁路还是公路，瞎选的",1));
+        resultList3.add(MoocCreator.createResult("4.","a","大雪：纷纷扬扬的大雪",1));
+        resultList3.add(MoocCreator.createResult("5.","b","白茫茫：天地间白茫茫的一片"));
+        resultList3.add(MoocCreator.createResult("6.","c","铁路：不知道是铁路还是公路，瞎选的",1));
+        resultList3.add(MoocCreator.createResult("7.","a","大雪：纷纷扬扬的大雪",1));
+        resultList3.add(MoocCreator.createResult("8.","b","白茫茫：天地间白茫茫的一片"));
+        resultList3.add(MoocCreator.createResult("9.","c","铁路：不知道是铁路还是公路，瞎选的",1));
 
-        result3ItemList.add(MoocCreator.createItem(-1,"纷纷扬扬的____①____下了半尺多厚。天地间____②____的一片。我顺着____③____工地走了四十多公里，只听见各种机器的吼声，可是看不见人影，也看不见工点。一进灵官峡，我就心里发慌。"));
+        resultList4.add(MoocCreator.createResult("<1> 材料一、二分别体现了我国政府实施什么战略？两者的关系怎么样？","a","什么战略（两个）"));
+        resultList4.add(MoocCreator.createResult("<2> 结合<1>的结论，请你谈谈在社会主义现代化建设中我们为什么要高度重视提高人的素质？","b","两者的关系；两者的作用；" ));
+        resultList4.add(MoocCreator.createResult("<3> 结合<2>的结论，请你谈谈在社会主义现代化建设中我们为什么要高度重视提高人的素质？","b","两者的关系；两者的作用；" ));
+
+
+        result3ItemList.add(MoocCreator.createItem(-1,"纷纷扬扬的____<1>____下了半尺多厚。天地间____<2>____的一片。我顺着____<3>____工地走了四十多公里，只听见各种机器的吼声，可是看不见人影，也看不见工点。一进灵官峡，我就心里发慌。"));
+
+        result4ItemList.add(MoocCreator.createItem(-1,"材料一：“十五”期间，国家要推进科技进步与创新，提交可持续发展能力；加快教育发展，提高全民族素质，壮大人才队伍。\n 材料二“十五”期间，国家要控制人口增长，提高出生人口素质：节约、保护资源，实现持续利用；加强生态环境建设，保护和治理环境。"));
 
         testList.add(MoocCreator.createTest("1.单选测验标题-test1",0,1,0,itemList,resultList1));
         testList.add(MoocCreator.createTest("2.多选测验标题-test2",1,2,1,itemList,resultList2));
         testList.add(MoocCreator.createTest("3.填空测验标题-test3",2,3,2,result3ItemList,resultList3));
-        testList.add(MoocCreator.createTest("4.简答测验标题-test4",3,4,3,itemList,resultList2));
+        testList.add(MoocCreator.createTest("4.简答测验标题-test4",3,4,3,result4ItemList,resultList4));
 
         sectionArrayList.add(MoocCreator.createSection("Section1",itemList));
         sectionArrayList.add(MoocCreator.createSection("Section2",itemList));

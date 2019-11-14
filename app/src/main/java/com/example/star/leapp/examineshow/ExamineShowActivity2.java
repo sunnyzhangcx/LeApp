@@ -30,8 +30,6 @@ import java.util.Map;
 import java.util.Set;
 
 import data4mooc.Data4Mooc;
-import selectwidget.ReplaceSpan;
-import selectwidget.SpansManager;
 
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
 import static com.example.star.leapp.Application.LeappApplication.moocDataList;
@@ -76,9 +74,9 @@ public class ExamineShowActivity2 extends AppCompatActivity {
                     Intent intent = new Intent(ExamineShowActivity2.this,ExamineResultActivity.class);
                     Set<Integer> keySet = selectedMap.keySet();
                     ArrayList<Integer> multipleChoicePos = new ArrayList<>(keySet);
-                    intent.putIntegerArrayListExtra("multiplechoicepos", multipleChoicePos);
-                    intent.putExtra("testPos",pos);
-                    intent.putExtra("twoPos",twoPos);
+                    intent.putIntegerArrayListExtra("multiplechoicepos", multipleChoicePos);//用户给出的多选答案
+                    intent.putExtra("testPos",pos);//题目索引
+                    intent.putExtra("twoPos",twoPos);//代表多选题界面
                     startActivity(intent);
 
                     //Toast.makeText(ExamineShowActivity2.this,keySet.toString(), Toast.LENGTH_LONG).show();

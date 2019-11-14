@@ -1,5 +1,7 @@
 package data4mooc;
 
+import android.content.Intent;
+
 import java.util.List;
 
 import static data4mooc.Data4Mooc.*;
@@ -124,6 +126,123 @@ public class MoocCreator {
             GNodeBuilder.addFrom(forms);
         }
         return GNodeBuilder.build();
+    }
+
+    static Layout createLayout(Basic basic, int homeMode, int homeIndex, Font homeFont, int exampleMode, Font exampleFont, int testMode, Font testFont, int qandaMode,
+                               Font qandaFont, TopicLayout layoutTopic, ExampleLayout layoutExample, TestLayout layoutTest, QALayout layoutQA, List<Integer> topicLayout ,List<Integer> exampleLayout){
+        Layout.Builder LayoutBuilder = Layout.newBuilder();
+        LayoutBuilder.setBasic(basic);
+        LayoutBuilder.setHomeMode(homeMode);
+        LayoutBuilder.setHomeIndex(homeIndex);
+        LayoutBuilder.setHomeFont(homeFont);
+        LayoutBuilder.setExampleMode(exampleMode);
+        LayoutBuilder.setExampleFont(exampleFont);
+        LayoutBuilder.setTestMode(testMode);
+        LayoutBuilder.setTestFont(testFont);
+        LayoutBuilder.setQandaMode(qandaMode);
+        LayoutBuilder.setQandaFont(qandaFont);
+        LayoutBuilder.setLayoutTopic(layoutTopic);
+        LayoutBuilder.setLayoutExample(layoutExample);
+        LayoutBuilder.setLayoutTest(layoutTest);
+        LayoutBuilder.setLayoutQA(layoutQA);
+        for(Integer topicLayouts : topicLayout){
+            LayoutBuilder.addTopicLayout(topicLayouts);
+        }
+        for(Integer exampleLayouts : exampleLayout){
+            LayoutBuilder.addTopicLayout(exampleLayouts);
+        }
+
+        return LayoutBuilder.build();
+    }
+
+    static Basic createBasic(String title, String version, String intro, String date, String author, String address){
+        Basic.Builder BasicBuilder = Basic.newBuilder();
+        BasicBuilder.setTitle(title);
+        BasicBuilder.setVersion(version);
+        BasicBuilder.setIntro(intro);
+        BasicBuilder.setDate(date);
+        BasicBuilder.setAuthor(author);
+        BasicBuilder.setAddress(address);
+
+        return BasicBuilder.build();
+    }
+
+    static TopicLayout createTopicLayout(int indexMode, Font name, Font section, Font text, Font resource){
+        TopicLayout.Builder builder = TopicLayout.newBuilder();
+        builder.setIndexMode(indexMode);
+        builder.setName(name);
+        builder.setSection(section);
+        builder.setText(text);
+        builder.setResource(resource);
+
+        return builder.build();
+    }
+
+    static TopicLayout createTopicLayout(Font name, Font section, Font text, Font resource){
+        TopicLayout.Builder builder = TopicLayout.newBuilder();
+        builder.setName(name);
+        builder.setSection(section);
+        builder.setText(text);
+        builder.setResource(resource);
+
+        return builder.build();
+    }
+
+    static ExampleLayout createExampleLayout(int indexMode, Font name, Font section, Font text, Font resource){
+        ExampleLayout.Builder builder = ExampleLayout.newBuilder();
+        builder.setIndexMode(indexMode);
+        builder.setName(name);
+        builder.setSection(section);
+        builder.setText(text);
+        builder.setResource(resource);
+
+        return builder.build();
+    }
+
+    static ExampleLayout createExampleLayout(Font name, Font section, Font text, Font resource){
+        ExampleLayout.Builder builder = ExampleLayout.newBuilder();
+        builder.setName(name);
+        builder.setSection(section);
+        builder.setText(text);
+        builder.setResource(resource);
+
+        return builder.build();
+    }
+
+    static TestLayout createTestLayout(Font name, Font question, Font answer, Font comment){
+        TestLayout.Builder builder = TestLayout.newBuilder();
+        builder.setName(name);
+        builder.setQuestion(question);
+        builder.setAnswer(answer);
+        builder.setComment(comment);
+
+        return builder.build();
+    }
+
+    static QALayout createQALayout(Font name, Font question, Font answer){
+        QALayout.Builder builder = QALayout.newBuilder();
+        builder.setName(name);
+        builder.setQuestion(question);
+        builder.setAnswer(answer);
+
+        return builder.build();
+    }
+
+    static QALayout createQALayout(Font question, Font answer){
+        QALayout.Builder builder = QALayout.newBuilder();
+        builder.setQuestion(question);
+        builder.setAnswer(answer);
+
+        return builder.build();
+    }
+
+    static Font createFont(int font, int size, int color){
+        Font.Builder builder = Font.newBuilder();
+        builder.setFont(font);
+        builder.setSize(size);
+        builder.setColor(color);
+
+        return builder.build();
     }
 /*    public static QandA creatQA(){
         QandA.Builder QABuilder = QandA.newBuilder();

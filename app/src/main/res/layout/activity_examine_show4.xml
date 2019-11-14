@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="3dp">
+    android:visibility="visible"
+    android:scrollbars="none">
 
-
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="545dp"
+            android:padding="6dp">
 
 
             <LinearLayout
@@ -22,8 +25,7 @@
                 <TextView
                     android:id="@+id/examine_content4"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
                     android:text="1.以下关于C语言描述错误的是（）"
                     android:textSize="20sp"
                     android:layout_marginTop="10dp"
@@ -32,7 +34,25 @@
                     android:paddingTop="10dp"
                     android:background="@drawable/bg_topic_show_content">
                 </TextView>
-                <EditText
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="10dp">
+
+                    <ListView
+                        android:id="@+id/examine4_lv"
+                        android:divider="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="beforeDescendants"/>
+
+                </LinearLayout>
+
+                <!--<EditText
                     android:id="@+id/et_input"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -44,7 +64,7 @@
                     android:hint="Type someting here"
                     android:textColor="@android:color/holo_blue_light"
                     android:textSize="20sp"
-                    android:singleLine="true" />
+                    android:singleLine="true" />-->
             </LinearLayout>
 
 
@@ -52,38 +72,43 @@
 
 
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/examine_tip"
+                android:layout_margin="16dp"
+                android:src="@drawable/icon_tip"
+                app:backgroundTint="@color/gainsboro"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/examine_tip"
-            android:layout_margin="16dp"
-            android:src="@drawable/icon_tip"
-            app:backgroundTint="@color/gainsboro"
-            android:layout_gravity="end|bottom"/>
+            android:layout_below="@+id/rl"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal">
 
-    </FrameLayout>
+            <Button
+                android:id="@+id/examine_submit"
+                android:layout_width="0dp"
+
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="提交" />
+
+            <Button
+                android:id="@+id/examine_abandon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="放弃" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/examine_submit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="提交"/>
-        <Button
-            android:id="@+id/examine_abandon"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="放弃"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

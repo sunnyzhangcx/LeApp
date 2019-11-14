@@ -16,19 +16,19 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.star.leapp.Application.LeappApplication;
-import com.example.star.leapp.MainActivity;
 import com.example.star.leapp.R;
+import com.example.star.leapp.examineresult.ExamineResultActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import data4mooc.Data4Mooc;
-import selectwidget.ReplaceSpan;
-import selectwidget.SpansManager;
 
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
 import static com.example.star.leapp.Application.LeappApplication.moocDataList;
@@ -36,45 +36,41 @@ import static com.example.star.leapp.Application.LeappApplication.printTestItem;
 
 public class ExamineShowActivity3 extends AppCompatActivity {
 
-//问题就是 我现在在做填空题展示界面了，需求就是上面有几个要填的空，下面有几个空，我用listview里面套edittext实现的，但是不能再上面打字，键盘不显示，
-// 我就搜了一下谷歌页面的那个方法，还是没实现成功{
-
+    private int threePos = 3;
+    Lv_Adapter_ExamineShow_FillBlankTest adpter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examine_show3);
-        int pos = getIntent().getIntExtra("pos", 0);
+        final int pos = getIntent().getIntExtra("pos", 0);
         //Data4Mooc.Test test = LeappApplication.getMoocDataList().getSetTest(pos);
         List<Data4Mooc.Test> testList = getTestList(moocDataList);
         Data4Mooc.Test test = testList.get(pos);
         Button mBtnSubmit = findViewById(R.id.examine_submit);
         Button mBtnAbandon = findViewById(R.id.examine_abandon);
-        ListView mLvExamineInput = findViewById(R.id.examine3_lv);
+        final ListView mLvExamineInput = findViewById(R.id.examine3_lv);
         FloatingActionButton mBtnTip = findViewById(R.id.examine_tip);
         TextView mTvExamineContent = findViewById(R.id.examine_content3);
         mTvExamineContent.setText(printTestItem(test));
-        mLvExamineInput.setAdapter(new Lv_Adapter_ExamineShow_FillBlankTest(test, ExamineShowActivity3.this));
+        adpter = new Lv_Adapter_ExamineShow_FillBlankTest(test, ExamineShowActivity3.this);
+        mLvExamineInput.setAdapter(adpter);
         //点击事件先交给子控件（Edittext）处理,子控件处理不了再由Item自己处理
         mLvExamineInput.setDescendantFocusability(ViewGroup.FOCUS_AFTER_DESCENDANTS);
-
-
-
-
-/*        EditText mEtInput = findViewById(R.id.et_input);
-        //设置EditText的显示方式为多行文本输入
-        mEtInput.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        //文本显示的位置在EditText的最上方
-        mEtInput.setGravity(Gravity.TOP);
-        //改变默认的单行模式
-        mEtInput.setSingleLine(false);
-        //水平滚动设置为False
-        mEtInput.setHorizontallyScrolling(false);*/
 
         mBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ExamineShowActivity3.this, "toast", Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(ExamineShowActivity3.this,ExamineResultActivity.class);
+                ArrayList<String> ansList = mapToList(adpter.getContents());
+                //System.out.print(ansList);
+                intent.putStringArrayListExtra("fillblank",ansList);//用户给出的填空答案
+                intent.putExtra("testPos",pos);//题目索引
+                intent.putExtra("threePos",threePos);
+                startActivity(intent);
+                /*for(String ans:ansList){
+                    Toast.makeText(ExamineShowActivity3.this, "答案 "+ans, Toast.LENGTH_SHORT).show();
+                }*/
             }
         });
         mBtnAbandon.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +88,14 @@ public class ExamineShowActivity3 extends AppCompatActivity {
         });
 
 
+    }
+
+    private ArrayList<String> mapToList(HashMap<Integer,String> contents) {
+        ArrayList<String> contentList = new ArrayList<>();
+        for(Integer index:contents.keySet()){
+            contentList.add(index,contents.get(index));
+        }
+        return contentList;
     }
 
     @Override
@@ -131,6 +135,16 @@ public class ExamineShowActivity3 extends AppCompatActivity {
         // 如果焦点不是EditText则忽略
         return false;
     }
-
-
+/*
+    //获取用户自定义给出的填空题答案存入list中，若为空则显示空白
+    private ArrayList<String> getCustomAns(ListView etLv){
+        ArrayList<String> ansList = new ArrayList<>();
+        for (int i = 0; i < etLv.getChildCount(); i++) {
+            LinearLayout layout = (LinearLayout)etLv.getChildAt(i);
+            EditText et = layout.findViewById(R.id.fillblank_input_content);
+            ansList.add(et.getText().toString());
+        }
+        return ansList;
+    }
+    */
 }

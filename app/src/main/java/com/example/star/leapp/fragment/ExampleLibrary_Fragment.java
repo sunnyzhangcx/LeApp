@@ -45,15 +45,18 @@ public class ExampleLibrary_Fragment extends Fragment {
 
         mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRvMain.addItemDecoration(new MyDecoration());
-        mRvMain.setAdapter(new Relv_Adapter_ExampleList(gNodeList,getActivity(), new Relv_Adapter_ExampleList.OnItemClickListener() {
-            @Override
-            public void onClick(int pos) {
-                Intent intent = new Intent(getActivity(),ExampleShowActivity.class);
-                intent.putExtra("pos",pos);
-                startActivity(intent);
-                //Toast.makeText(getActivity(),"click..."+pos,Toast.LENGTH_SHORT).show();
-            }
-        }));
+        if(null!=gNodeList){
+            mRvMain.setAdapter(new Relv_Adapter_ExampleList(gNodeList,getActivity(), new Relv_Adapter_ExampleList.OnItemClickListener() {
+                @Override
+                public void onClick(int pos) {
+                    Intent intent = new Intent(getActivity(),ExampleShowActivity.class);
+                    intent.putExtra("pos",pos);
+                    startActivity(intent);
+                    //Toast.makeText(getActivity(),"click..."+pos,Toast.LENGTH_SHORT).show();
+                }
+            }));
+        }
+
 
 
     }

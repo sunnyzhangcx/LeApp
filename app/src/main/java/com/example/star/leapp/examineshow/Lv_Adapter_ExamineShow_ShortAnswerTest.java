@@ -16,14 +16,14 @@ import java.util.HashMap;
 
 import data4mooc.Data4Mooc;
 
-public class Lv_Adapter_ExamineShow_FillBlankTest extends BaseAdapter {
+public class Lv_Adapter_ExamineShow_ShortAnswerTest extends BaseAdapter {
 
     private LayoutInflater inflater;
     private Data4Mooc.Test test;
 
     private HashMap<Integer,String> contents = new HashMap<>();
 
-    public Lv_Adapter_ExamineShow_FillBlankTest(Data4Mooc.Test test, Context context){
+    public Lv_Adapter_ExamineShow_ShortAnswerTest(Data4Mooc.Test test, Context context){
         this.inflater = LayoutInflater.from(context);
         this.test = test;
         init();
@@ -53,13 +53,13 @@ public class Lv_Adapter_ExamineShow_FillBlankTest extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.layout_examine_test_result_fillblank_item,null);
+            convertView = inflater.inflate(R.layout.layout_examine_test_result_shortanswer_item,null);
             holder.textView = convertView.findViewById(R.id.tv_alternative_content);
-            holder.editText = convertView.findViewById(R.id.fillblank_input_content);
+            holder.editText = convertView.findViewById(R.id.shortanswer_input_content);
             holder.editText.setTag(position);
             holder.editText.addTextChangedListener(new MyTextWatcher(holder,contents));
             convertView.setTag(holder);
@@ -78,8 +78,8 @@ public class Lv_Adapter_ExamineShow_FillBlankTest extends BaseAdapter {
         HashMap<Integer, String> contents;
 
         public MyTextWatcher(ViewHolder holder1,HashMap<Integer,String> content){
-            mHolder = holder1;
             contents = content;
+            mHolder = holder1;
         }
 
         @Override

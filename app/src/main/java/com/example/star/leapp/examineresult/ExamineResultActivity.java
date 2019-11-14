@@ -14,13 +14,17 @@ import java.util.Set;
 
 import data4mooc.Data4Mooc;
 
+import static com.example.star.leapp.Application.LeappApplication.equalsFillBlankOrShortAnswer;
 import static com.example.star.leapp.Application.LeappApplication.equalsMultipleChoice;
+import static com.example.star.leapp.Application.LeappApplication.getFillBlankCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getMultipleChoiceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getSimpleChioceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
-import static com.example.star.leapp.Application.LeappApplication.pirntChoiceComment;
-import static com.example.star.leapp.Application.LeappApplication.pirntMultipleChoiceAlternative;
+import static com.example.star.leapp.Application.LeappApplication.pirntComment;
+import static com.example.star.leapp.Application.LeappApplication.printFillBlankResult;
+import static com.example.star.leapp.Application.LeappApplication.printMultipleChoiceAlternative;
+import static com.example.star.leapp.Application.LeappApplication.printShortAnswerResult;
 
 public class ExamineResultActivity extends AppCompatActivity {
 
@@ -39,9 +43,13 @@ public class ExamineResultActivity extends AppCompatActivity {
 
         final int onePos = getIntent().getIntExtra("onePos",0);
         final int twoPos = getIntent().getIntExtra("twoPos",0);
+        final int threePos = getIntent().getIntExtra("threePos",0);
+        final int fourPos = getIntent().getIntExtra("fourPos",0);
         final int testPos = getIntent().getIntExtra("testPos",0);
         final int simpleChoiceResultPos = getIntent().getIntExtra("resultPos",0);
         final ArrayList<Integer> multipleChoiceResult = getIntent().getIntegerArrayListExtra("multiplechoicepos");
+        final ArrayList<String> fillBlankResultUser = getIntent().getStringArrayListExtra("fillblank");
+        final ArrayList<String> shortAnswerResultUser = getIntent().getStringArrayListExtra("shortanswer");
 
         //更新案例库
         Data4Mooc.MoocData moocDataList = getMoocDataList();
@@ -60,8 +68,14 @@ public class ExamineResultActivity extends AppCompatActivity {
                 mTvJudge.setText("       答案错误，此选择题正确选项为第"+getSimpleChioceCurrentResult(test) +"个选项 \n");
                 mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
             }
-            mTvStandardAnswer.setText(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() + "\n");
-            mTvResultExplain.setText(pirntChoiceComment(test));
+            //报错未解决
+            if(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() == null){
+                mTvStandardAnswer.setText("没有内容！");
+            }else{
+                mTvStandardAnswer.setText(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() + "\n");
+            }
+
+            mTvResultExplain.setText(pirntComment(test));
 
             //显示知识点
 
@@ -69,20 +83,39 @@ public class ExamineResultActivity extends AppCompatActivity {
             Set<Integer> multipleChoiceResultPos = new HashSet<>(multipleChoiceResult);
             if(equalsMultipleChoice(multipleChoiceResultPos, getMultipleChoiceCurrentResult(test))){
                 mTvJudge.setText("恭喜您的多选题答对了！\n");
-                mTvUserAnswer.setText(pirntMultipleChoiceAlternative(multipleChoiceResult,test));
+                mTvUserAnswer.setText(printMultipleChoiceAlternative(multipleChoiceResult,test));
             }else if(multipleChoiceResultPos.size() == 0){
                 mTvJudge.setText("您的多选题没有进行选择！\n");
                 mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
             }else {
                 mTvJudge.setText("答案错误，此多选题正确选项为第"+getMultipleChoiceCurrentResult(test) + "个选项 \n");
-                mTvUserAnswer.setText(pirntMultipleChoiceAlternative(multipleChoiceResult,test));
+                mTvUserAnswer.setText(printMultipleChoiceAlternative(multipleChoiceResult,test));
             }
-            mTvStandardAnswer.setText(pirntMultipleChoiceAlternative(new ArrayList<Integer>(getMultipleChoiceCurrentResult(test)),test));
-            mTvResultExplain.setText(pirntChoiceComment(test));
+            mTvStandardAnswer.setText(printMultipleChoiceAlternative(new ArrayList<Integer>(getMultipleChoiceCurrentResult(test)),test));
+            mTvResultExplain.setText(pirntComment(test));
 
-        }else if(test.getType() == 3){
+        }else if(threePos == 3){
+            if(equalsFillBlankOrShortAnswer(getFillBlankCurrentResult(test),fillBlankResultUser)){
+                mTvJudge.setText("恭喜您的填空题全部答对！\n");
+            } else {
+                mTvJudge.setText("很遗憾，您的填空题答案有误。\n");
+            }
 
-        }else if(test.getType() == 4){
+            mTvUserAnswer.setText(printFillBlankResult(fillBlankResultUser));
+            mTvStandardAnswer.setText(printFillBlankResult(test));
+            mTvResultExplain.setText(pirntComment(test));
+
+
+        }else if(fourPos == 4){
+            if(equalsFillBlankOrShortAnswer(getFillBlankCurrentResult(test),shortAnswerResultUser)){
+                mTvJudge.setText("恭喜您的简答题全部答对！\n");
+            }else {
+                mTvJudge.setText("很遗憾，您的简答题答案有误。\n");
+            }
+
+            mTvUserAnswer.setText(printFillBlankResult(shortAnswerResultUser));
+            mTvStandardAnswer.setText(printShortAnswerResult(test));
+            mTvResultExplain.setText(pirntComment(test));
 
         }
 

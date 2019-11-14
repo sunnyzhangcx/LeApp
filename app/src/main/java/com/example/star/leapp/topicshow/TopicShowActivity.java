@@ -22,6 +22,7 @@ import java.util.List;
 
 import data4mooc.Data4Mooc;
 
+import static com.example.star.leapp.Application.LeappApplication.getFirstTopic;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
 import static com.example.star.leapp.Application.LeappApplication.getTNodeList;
@@ -44,26 +45,34 @@ public class TopicShowActivity extends AppCompatActivity {
         mRvContent.setLayoutManager(new LinearLayoutManager(TopicShowActivity.this));
         mRvContent.addItemDecoration(new MyDecoration());
 
-        Intent intent = getIntent();
-        final int groupPosition = intent.getIntExtra("groupPosition",0);
-        final int childPosition = intent.getIntExtra("childPosition",0);
-        final int thirdPos = intent.getIntExtra("ThirdPos",0);
-        final int BPos = intent.getIntExtra("BPos",0);
-        final int CPos = intent.getIntExtra("CPos",0);
-        final int tNodepos = intent.getIntExtra("tNodepos",0);
+        final int groupFirstPosition = getIntent().getIntExtra("groupFirstPosition",0);
+        final int groupPosition = getIntent().getIntExtra("groupPosition",0);
+        final int childPosition = getIntent().getIntExtra("childPosition",0);
+        final int thirdPos = getIntent().getIntExtra("ThirdPos",0);
+        final int APos = getIntent().getIntExtra("APos",0);
+        final int BPos = getIntent().getIntExtra("BPos",0);
+        final int CPos = getIntent().getIntExtra("CPos",0);
+        final int tNodepos = getIntent().getIntExtra("tNodepos",0);
         //更新案例库
         Data4Mooc.MoocData moocDataList = getMoocDataList();
         final List<Data4Mooc.TNode> tNodeList = getTNodeList(moocDataList);
-        final List<List<Data4Mooc.TNode>> secondTopicList = getSecondTopic(moocDataList);
-        final List<Data4Mooc.TNode> thirdTopicList = getThirdTopic(moocDataList,groupPosition,childPosition);
 
 
-        if(BPos == 1){
+
+        if(BPos == 1 || APos == 1){
+            final List<List<Data4Mooc.TNode>> secondTopicList = getSecondTopic(moocDataList);
             final Data4Mooc.Topic secondTopic = secondTopicList.get(groupPosition).get(childPosition).getTopic();
             mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(secondTopic,TopicShowActivity.this));
             mTvTopicName.setText(secondTopic.getTitle());
 
-        }else if(CPos == 1){
+        }else if(BPos == 2){
+            final List<Data4Mooc.TNode> firstTopicList = getFirstTopic(moocDataList);
+            final Data4Mooc.Topic firstTopic = firstTopicList.get(groupFirstPosition).getTopic();
+            mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(firstTopic,TopicShowActivity.this));
+            mTvTopicName.setText(firstTopic.getTitle());
+
+        } else if(CPos == 1){
+            final List<Data4Mooc.TNode> thirdTopicList = getThirdTopic(moocDataList,groupPosition,childPosition);
             final Data4Mooc.Topic thirdTopic  = thirdTopicList.get(thirdPos).getTopic();
             mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(thirdTopic,TopicShowActivity.this));
             mTvTopicName.setText(thirdTopic.getTitle());

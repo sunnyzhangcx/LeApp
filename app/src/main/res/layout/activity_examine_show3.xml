@@ -1,50 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="3dp">
+    android:visibility="visible"
+    android:scrollbars="none">
 
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/rl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="545dp"
             android:orientation="vertical"
-            android:layout_marginTop="20dp">
-
-            <TextView
-                android:id="@+id/examine_content3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="3.我是个__①__学生,我有一个梦想，我要成为像__②__，__③__一样的人."
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:paddingTop="10dp"
-                android:background="@drawable/bg_topic_show_content">
-            </TextView>
+            android:padding="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
 
-                <ListView
-                    android:id="@+id/examine3_lv"
-                    android:divider="@null"
+                <TextView
+                    android:id="@+id/examine_content3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:descendantFocusability="beforeDescendants"/>
+                    android:text="3.我是个__①__学生,我有一个梦想，我要成为像__②__，__③__一样的人."
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="10dp"
+                    android:background="@drawable/bg_topic_show_content">
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="10dp">
+
+                    <ListView
+                        android:id="@+id/examine3_lv"
+                        android:divider="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="beforeDescendants"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/examine_tip"
+                android:layout_margin="16dp"
+                android:src="@drawable/icon_tip"
+                app:backgroundTint="@color/gainsboro"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
 
 <!--            <EditText
                 android:id="@+id/et_input"
@@ -59,43 +80,40 @@
                 android:textColor="@android:color/holo_blue_light"
                 android:textSize="20sp"
                 android:singleLine="true" />-->
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/examine_submit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="提交"/>
+            <Button
+                android:id="@+id/examine_abandon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="放弃"/>
+
         </LinearLayout>
 
 
 
 
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/examine_tip"
-            android:layout_margin="16dp"
-            android:src="@drawable/icon_tip"
-            app:backgroundTint="@color/gainsboro"
-            android:layout_gravity="end|bottom"/>
-
-    </FrameLayout>
+    </RelativeLayout>
 
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/examine_submit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="提交"/>
-        <Button
-            android:id="@+id/examine_abandon"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="放弃"/>
 
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

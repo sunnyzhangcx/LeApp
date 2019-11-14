@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import data4mooc.Data4Mooc;
 
+import static android.view.ViewGroup.FOCUS_AFTER_DESCENDANTS;
 import static com.example.star.leapp.Application.LeappApplication.getFirstTopic;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
@@ -44,6 +46,11 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                /*Intent intent = new Intent(getActivity(),TopicShowActivity.class);
+                int Bpos = 2;//临时数值
+                intent.putExtra("BPos",Bpos);
+                intent.putExtra("groupFirstPosition",groupPosition);
+                startActivity(intent);*/
                 return false;
             }
         });
@@ -61,6 +68,7 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
                 }
                 int Bpos = 1;//临时数值
                 intent.putExtra("BPos",Bpos);
+                //Log.i("id-----",String.valueOf(v.getId()));
                 intent.putExtra("groupPosition",groupPosition);
                 intent.putExtra("childPosition",childPosition);
                 startActivity(intent);

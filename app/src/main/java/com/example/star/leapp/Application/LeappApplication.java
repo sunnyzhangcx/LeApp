@@ -51,27 +51,37 @@ public class LeappApplication extends Application {
 
     //获取常见问题列表
     public static List<Data4Mooc.QandA> getQandAList(Data4Mooc.MoocData moocDataList){
+        if(null==moocDataList)
+            return null;
         return moocDataList.getSetQAList();
     }
 
 
     //获取测试题列表
     public static List<Data4Mooc.Test> getTestList(Data4Mooc.MoocData moocDataList){
+        if(null==moocDataList)
+            return null;
         return moocDataList.getSetTestList();
     }
 
     //获取知识点列表
     public static List<Data4Mooc.TNode> getTNodeList(Data4Mooc.MoocData moocDataList){
+        if(null==moocDataList)
+            return null;
         return moocDataList.getSetTNodeList();
     }
 
     //获取案例列表
     public static List<Data4Mooc.GNode> getGNodeList(Data4Mooc.MoocData moocDataList){
+        if(null==moocDataList)
+            return null;
         return moocDataList.getSetGNodeList();
     }
 
     //获取一级知识点列表
     public static List<Data4Mooc.TNode> getFirstTopic(Data4Mooc.MoocData moocDataList) {
+        if(null==moocDataList)
+            return null;
         int length = moocDataList.getSetTNode(0).getChildCount();//一级知识点的个数
         List<Data4Mooc.TNode> FirstTopic = new ArrayList<>();
         Data4Mooc.TNode RootTNode = moocDataList.getSetTNode(0);//树根节点
@@ -80,7 +90,8 @@ public class LeappApplication extends Application {
             if (RootTNode.getChildList() == null){
                 return null;
             }
-            for (int i = 0;i<length;i++){
+            //之前是int i = 0 因为我自己写的测试数据 root的childlist不包含自己
+            for (int i = 1;i<length;i++){
                 int tNodeChild=RootTNode.getChild(i);
                 FirstTopic.add(moocDataList.getSetTNode(tNodeChild));
             }
@@ -94,6 +105,8 @@ public class LeappApplication extends Application {
 
     //获取二级知识点列表
     public static List<List<Data4Mooc.TNode>> getSecondTopic(Data4Mooc.MoocData moocDataList) {
+        if(null==moocDataList)
+            return null;
         List<List<Data4Mooc.TNode>> SecondTopic = new ArrayList<>();
         List<Data4Mooc.TNode> FirstTopic = getFirstTopic(moocDataList);
         int FirstTopicLength = FirstTopic.size();
@@ -116,6 +129,8 @@ public class LeappApplication extends Application {
 
     //获取三级知识点列表(当前的三级知识点列表 不是全部的)
     public static List<Data4Mooc.TNode> getThirdTopic(Data4Mooc.MoocData moocDataList,int groupPosition,int childPosition) {
+        if(null==moocDataList)
+            return null;
         List<Data4Mooc.TNode> ThirdTopic = new ArrayList<>();
         List<List<Data4Mooc.TNode>> SecondTopic = getSecondTopic(moocDataList);
 
@@ -163,6 +178,27 @@ public class LeappApplication extends Application {
         return result;
     }
 
+    //get填空题所有答案
+    public static ArrayList<String> getFillBlankCurrentResult(Data4Mooc.Test test){
+        ArrayList<String> result = new ArrayList<>();
+        List<Data4Mooc.Result> resultList = test.getResultsList();
+        for(int i = 0; i <resultList.size(); i ++){
+            result.add(test.getResults(i).getResult());
+        }
+        return result;
+    }
+
+    //比较填空题或简答题用户的答案和正确答案是否一样
+    public static boolean equalsFillBlankOrShortAnswer(ArrayList<String> list1,ArrayList<String> list2){
+        if(null != list1 && null != list2){
+            if(list1.containsAll(list2) && list2.containsAll(list1)){
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
+
     //比较多选题用户的选项和正确选项是否一样
     public static boolean equalsMultipleChoice(Set<?> set1, Set<?> set2){
         if(set1 == null || set2 ==null){//null就直接不比了
@@ -175,7 +211,7 @@ public class LeappApplication extends Application {
     }
 
     //显示多选题正确选项的选项内容
-    public static String pirntMultipleChoiceAlternative(List<Integer> result, Data4Mooc.Test test){
+    public static String printMultipleChoiceAlternative(List<Integer> result, Data4Mooc.Test test){
         List<String> printMultipleAlternative = new ArrayList<>();
         String print = new String();
         for(int i = 0; i < result.size(); i ++){
@@ -191,8 +227,47 @@ public class LeappApplication extends Application {
 
     }
 
+    //显示填空题用户答案的内容
+    public static String printFillBlankResult(ArrayList<String> result){
+        String print = new String();
+        for (int i = 0; i< result.size(); i ++){
+            int j = i+1;
+            print = print.concat(j + "." + result.get(i) + "\n");
+        }
+        return print;
+
+    }
+
+    //显示填空题正确答案的内容
+    public static String printFillBlankResult(Data4Mooc.Test test){
+        ArrayList<String> printFillBlank = new ArrayList<>();
+        String print = new String();
+
+        for (int i = 0; i < test.getResultsList().size() ; i ++){
+            printFillBlank.add(test.getResults(i).getAltertive());
+            printFillBlank.add(test.getResults(i).getResult() + "\n");
+        }
+        for (int i = 0; i< printFillBlank.size(); i ++){
+            print = print.concat(printFillBlank.get(i));
+        }
+        return print;
+
+    }
+
+    //显示简答题正确答案的内容
+    public static String printShortAnswerResult(Data4Mooc.Test test){
+        String print = new String();
+
+        for (int i = 0; i< test.getResultsList().size(); i ++){
+            int j = i + 1;
+            print = print.concat(j + "." + test.getResults(i).getResult() + "\n");
+        }
+        return print;
+
+    }
+
     //显示测试题的解释内容
-    public static String pirntChoiceComment(Data4Mooc.Test test){
+    public static String pirntComment(Data4Mooc.Test test){
         List<String> printComment = new ArrayList<>();
         String print = new String();
         for(int i = 0; i < test.getResultsList().size(); i ++){
@@ -222,6 +297,7 @@ public class LeappApplication extends Application {
         return print;
     }
 
+    //显示测验题的问题陈述（多条内容） 问题+图片+文本等形式
     public static String printTestItem(Data4Mooc.Test test){
         String print = new String();
 
