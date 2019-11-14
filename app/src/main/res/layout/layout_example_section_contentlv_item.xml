@@ -20,6 +20,6 @@
         app:maxLines="3"
         app:shrinkDrawable="@drawable/down"
         app:textColor="@android:color/black"
-        app:textSize="14sp"/>
+        app:textSize="20sp"/>
 
 </LinearLayout>
