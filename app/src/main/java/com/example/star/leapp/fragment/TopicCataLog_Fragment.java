@@ -1,14 +1,17 @@
 package com.example.star.leapp.fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.example.star.leapp.R;
 import com.example.star.leapp.topiccatalog.Exlv_Adapter_TopicCataLogList;
@@ -25,6 +28,7 @@ import static com.example.star.leapp.Application.LeappApplication.getMoocDataLis
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
 
 public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
+
 
     @Nullable
     @Override
@@ -46,11 +50,6 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                /*Intent intent = new Intent(getActivity(),TopicShowActivity.class);
-                int Bpos = 2;//临时数值
-                intent.putExtra("BPos",Bpos);
-                intent.putExtra("groupFirstPosition",groupPosition);
-                startActivity(intent);*/
                 return false;
             }
         });
@@ -63,15 +62,18 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
                 if(clickItem.getChildCount()!=0)
                 {
                     intent = new Intent(getActivity(),ThirdTopicActivity.class);
+                    int Bpos = 1;//临时数值
+                    intent.putExtra("BPos",Bpos);
+                    //Log.i("id-----",String.valueOf(v.getId()));
+                    intent.putExtra("groupPosition",groupPosition);
+                    intent.putExtra("childPosition",childPosition);
+                    startActivity(intent);
                 } else {
-                    intent = new Intent(getActivity(),TopicShowActivity.class);
+                    Toast toast = Toast.makeText(getContext(),"此项无下级知识点~",Toast.LENGTH_SHORT);
+                    toast.show();
+                    //intent = new Intent(getActivity(),TopicShowActivity.class);
                 }
-                int Bpos = 1;//临时数值
-                intent.putExtra("BPos",Bpos);
-                //Log.i("id-----",String.valueOf(v.getId()));
-                intent.putExtra("groupPosition",groupPosition);
-                intent.putExtra("childPosition",childPosition);
-                startActivity(intent);
+
                 return true;
             }
 

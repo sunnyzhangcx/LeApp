@@ -7,7 +7,7 @@
     android:padding="3dp">
 
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -32,46 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@null"/>
-<!--            <CheckBox
-                android:id="@+id/cb_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Android"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/tv_1"/>
-            <CheckBox
-                android:id="@+id/cb_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="iOS"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/cb_1"/>
-            <CheckBox
-                android:id="@+id/cb_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="H5"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/cb_2"/>
-            <CheckBox
-                android:id="@+id/cb_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/cb_3"/>
-            <CheckBox
-                android:id="@+id/cb_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他"
-                android:textSize="20sp"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/cb_4"/>-->
+
         </LinearLayout>
 
 
@@ -82,9 +43,12 @@
             android:layout_margin="16dp"
             android:src="@drawable/icon_tip"
             app:backgroundTint="@color/gainsboro"
-            android:layout_gravity="end|bottom"/>
+            android:layout_gravity="end|bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    </FrameLayout>
+    </RelativeLayout>
 
 
     <LinearLayout

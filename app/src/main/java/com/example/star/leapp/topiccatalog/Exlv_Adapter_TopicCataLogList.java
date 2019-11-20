@@ -96,13 +96,25 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
 
 
     @Override
-    public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         ItemHolder itemHolder = null;
         if (convertView == null) {
             //convertView = getActivity().getLayoutInflater().from(context).inflate(R.layout.layout_topiccatalog_childitem, null);
             convertView = LayoutInflater.from(context).inflate(R.layout.layout_topiccatalog_childitem, null);
             itemHolder = new ItemHolder();
             itemHolder.txt = convertView.findViewById(R.id.childTv);
+            itemHolder.btn = convertView.findViewById(R.id.topic_content);
+            itemHolder.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,TopicShowActivity.class);
+                    int APos = 1;
+                    intent.putExtra("APos",APos);
+                    intent.putExtra("groupPosition",groupPosition);
+                    intent.putExtra("childPosition",childPosition);
+                    context.startActivity(intent);
+                }
+            });
             convertView.setTag(itemHolder);
         } else {
             itemHolder = (ItemHolder) convertView.getTag();
@@ -128,4 +140,5 @@ class GroupHolder {
 
 class ItemHolder {
     public TextView txt;
+    public Button btn;
 }

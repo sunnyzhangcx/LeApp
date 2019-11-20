@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MoocWriter {
 
-    public static String FilePath = "/data/data/com.example.star.leapp/files/data.txt";
+    public static String FilePath = "/data/data/com.example.star.leapp/files/Readme.zxz";
 
 
     //Q&A常见问题写入
@@ -230,10 +230,18 @@ public class MoocWriter {
         resultList3.add(MoocCreator.createResult("7.","a","大雪：纷纷扬扬的大雪",1));
         resultList3.add(MoocCreator.createResult("8.","b","白茫茫：天地间白茫茫的一片"));
         resultList3.add(MoocCreator.createResult("9.","c","铁路：不知道是铁路还是公路，瞎选的",1));
+        resultList3.add(MoocCreator.createResult("10.","a","大雪：纷纷扬扬的大雪",1));
+        resultList3.add(MoocCreator.createResult("11.","b","白茫茫：天地间白茫茫的一片"));
+        resultList3.add(MoocCreator.createResult("12.","c","铁路：不知道是铁路还是公路，瞎选的",1));
+
+
+
 
         resultList4.add(MoocCreator.createResult("<1> 材料一、二分别体现了我国政府实施什么战略？两者的关系怎么样？","a","什么战略（两个）"));
         resultList4.add(MoocCreator.createResult("<2> 结合<1>的结论，请你谈谈在社会主义现代化建设中我们为什么要高度重视提高人的素质？","b","两者的关系；两者的作用；" ));
         resultList4.add(MoocCreator.createResult("<3> 结合<2>的结论，请你谈谈在社会主义现代化建设中我们为什么要高度重视提高人的素质？","b","两者的关系；两者的作用；" ));
+        resultList4.add(MoocCreator.createResult("<4> 材料一、二分别体现了我国政府实施什么战略？两者的关系怎么样？","a","什么战略（两个）"));
+        resultList4.add(MoocCreator.createResult("<5> 结合<1>的结论，请你谈谈在社会主义现代化建设中我们为什么要高度重视提高人的素质？","b","两者的关系；两者的作用；" ));
 
 
         result3ItemList.add(MoocCreator.createItem(-1,"纷纷扬扬的____<1>____下了半尺多厚。天地间____<2>____的一片。我顺着____<3>____工地走了四十多公里，只听见各种机器的吼声，可是看不见人影，也看不见工点。一进灵官峡，我就心里发慌。"));

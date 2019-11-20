@@ -57,27 +57,27 @@ public class ExamineResultActivity extends AppCompatActivity {
         Data4Mooc.Test test =testList.get(testPos);
 
         if(onePos == 1){
-            if(simpleChoiceResultPos == getSimpleChioceCurrentResult(test)){
-                mTvJudge.setText("       恭喜你答对了！\n");
-                mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
-            }else if(simpleChoiceResultPos == -1){
+            if(simpleChoiceResultPos == -1){
                 mTvJudge.setText("您没有进行选择！\n");
                 mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
-            }
-            else{
-                mTvJudge.setText("       答案错误，此选择题正确选项为第"+getSimpleChioceCurrentResult(test) +"个选项 \n");
-                mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
-            }
-            //报错未解决
-            if(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() == null){
-                mTvStandardAnswer.setText("没有内容！");
             }else{
-                mTvStandardAnswer.setText(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() + "\n");
+                //int result = getSimpleChioceCurrentResult(test);
+                if(simpleChoiceResultPos == getSimpleChioceCurrentResult(test)){
+                    mTvJudge.setText("恭喜你答对了！\n");
+                    mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
+                }else{
+                    mTvJudge.setText("       答案错误，此选择题正确选项为第"+(getSimpleChioceCurrentResult(test)+1) +"个选项 \n");
+                    mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
+                }
+                if(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() == null){
+                    mTvStandardAnswer.setText("没有内容！");
+                }else{
+                    mTvStandardAnswer.setText(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() + "\n");
+                }
+
+                mTvResultExplain.setText(pirntComment(test));
+                //显示知识点
             }
-
-            mTvResultExplain.setText(pirntComment(test));
-
-            //显示知识点
 
         }else if(twoPos == 2){
             Set<Integer> multipleChoiceResultPos = new HashSet<>(multipleChoiceResult);
@@ -95,6 +95,7 @@ public class ExamineResultActivity extends AppCompatActivity {
             mTvResultExplain.setText(pirntComment(test));
 
         }else if(threePos == 3){
+            //ArrayList<String> result = getFillBlankCurrentResult(test);
             if(equalsFillBlankOrShortAnswer(getFillBlankCurrentResult(test),fillBlankResultUser)){
                 mTvJudge.setText("恭喜您的填空题全部答对！\n");
             } else {

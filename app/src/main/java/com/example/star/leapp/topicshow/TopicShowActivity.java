@@ -57,8 +57,6 @@ public class TopicShowActivity extends AppCompatActivity {
         Data4Mooc.MoocData moocDataList = getMoocDataList();
         final List<Data4Mooc.TNode> tNodeList = getTNodeList(moocDataList);
 
-
-
         if(BPos == 1 || APos == 1){
             final List<List<Data4Mooc.TNode>> secondTopicList = getSecondTopic(moocDataList);
             final Data4Mooc.Topic secondTopic = secondTopicList.get(groupPosition).get(childPosition).getTopic();

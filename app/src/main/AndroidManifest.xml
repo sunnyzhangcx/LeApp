@@ -27,10 +27,10 @@
         <activity
             android:name=".examineshow.ExamineShowActivity3"
             android:configChanges="orientation|keyboard|keyboardHidden"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
         <activity
             android:name=".examineshow.ExamineShowActivity4"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
         <activity android:name=".homepage.progress.ProgressMainActivity" />
         <activity android:name=".examineresult.ExamineResultActivity" />
         <activity android:name=".topicshow.FirstTopicShowActivity"></activity>

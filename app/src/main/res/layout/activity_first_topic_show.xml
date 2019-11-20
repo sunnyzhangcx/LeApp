@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <RelativeLayout
+        android:layout_above="@+id/bottom_btns"
         android:layout_width="match_parent"
-        android:layout_height="550dp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <ScrollView
+
             android:layout_width="match_parent"
-            android:layout_height="550dp">
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
             <RelativeLayout
+                android:id="@+id/rl"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="match_parent"
+                android:padding="5dp">
 
                 <TextView
                     android:id="@+id/topic_name"
@@ -36,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
+
                 <TextView
                     android:id="@+id/second_topic_name"
                     android:layout_below="@id/topic_content"
@@ -50,33 +54,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/second_topic_name"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginBottom="60dp">
 
                 </android.support.v7.widget.RecyclerView>
 
-
-
             </RelativeLayout>
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/topic_feedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_margin="16dp"
-                android:src="@drawable/icon_feedback"
-                app:backgroundTint="@color/gainsboro" />
+        </ScrollView>
 
-        </RelativeLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/topic_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/icon_feedback"
+            app:backgroundTint="@color/gainsboro"
+            android:layout_alignParentEnd="true" />
 
+    </RelativeLayout>
 
-    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/bottom_btns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
         <Button
@@ -98,6 +102,4 @@
             android:layout_weight="1"
             android:text="常见问题"/>
     </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

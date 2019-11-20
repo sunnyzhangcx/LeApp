@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal">
 
     <TextView
         android:id="@+id/childTv"
@@ -11,8 +13,18 @@
         android:textAlignment="center"
         android:layout_height="40dp"
         android:focusable="false"
-        android:layout_centerHorizontal="true"
-        android:layout_width="match_parent" />
+        android:layout_width="0dp"
+        android:clickable="false"
+        android:layout_weight="10"/>
 
+    <Button
+        android:id="@+id/topic_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_height="30dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/arrow_right"
+        android:layout_marginRight="15dp"/>
 
-</RelativeLayout>
+</LinearLayout>

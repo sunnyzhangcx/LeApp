@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="3dp">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
@@ -26,55 +26,13 @@
                 android:layout_marginRight="10dp">
             </TextView>
 
-
             <ListView
                 android:id="@+id/examine1_lv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:divider="@null"
                 />
-            <!--
-            android:choiceMode="singleChoice"
-            -->
 
-
-
-            <!--<RadioGroup
-                android:id="@+id/choose_first"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp">
-                <RadioButton
-                    android:id="@+id/rb_a"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="一个C程序总是从main函数开始执行"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"/>
-                <RadioButton
-                    android:id="@+id/rb_b"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="每个语句和数据声明的最后一个必须有一个分号"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"/>
-                <RadioButton
-                    android:id="@+id/rb_c"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="C语言的注释符是以“/*”开始并以“*/”结束的"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"/>
-                <RadioButton
-                    android:id="@+id/rb_d"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="一个C程序可以包含多个main函数"
-                    android:textSize="18sp"
-                    android:layout_marginTop="5dp"/>
-
-            </RadioGroup>-->
 
         </LinearLayout>
 
@@ -85,9 +43,12 @@
             android:layout_margin="16dp"
             android:src="@drawable/icon_tip"
             app:backgroundTint="@color/gainsboro"
-            android:layout_gravity="end|bottom"/>
+            android:layout_gravity="end|bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    </FrameLayout>
+    </RelativeLayout>
 
 
 

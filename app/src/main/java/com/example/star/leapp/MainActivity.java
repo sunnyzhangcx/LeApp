@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 添加案例库测试数据，后期可以去掉
          */
-       MoocWriter.writeMoocData(true);
+       //MoocWriter.writeMoocData(true);
 
     }
 

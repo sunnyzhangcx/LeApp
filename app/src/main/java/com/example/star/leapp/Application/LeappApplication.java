@@ -159,7 +159,7 @@ public class LeappApplication extends Application {
         int result = -1;
         List<Data4Mooc.Result> resultList = test.getResultsList();
         for(int i = 0;i <resultList.size(); i ++){
-            if(resultList.get(i).getResult().equals("true")){
+            if(resultList.get(i).getResult().equals("0")){
                 result = i;
             }
         }
