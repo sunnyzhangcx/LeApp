@@ -22,6 +22,7 @@ import data4mooc.Data4Mooc;
 
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
 import static com.example.star.leapp.Application.LeappApplication.moocDataList;
+import static com.example.star.leapp.Application.LeappApplication.printTestItem;
 
 //单选题界面
 public class ExamineShowActivity1 extends AppCompatActivity{
@@ -42,7 +43,7 @@ public class ExamineShowActivity1 extends AppCompatActivity{
         FloatingActionButton mBtnTip = findViewById(R.id.examine_tip);
         final ListView mLvExamine = findViewById(R.id.examine1_lv);
         TextView mTvExamineContent = findViewById(R.id.examine_content1);
-        mTvExamineContent.setText(test.getTitle());
+        mTvExamineContent.setText(printTestItem(test));
 
         mLvExamine.setAdapter(new Lv_Adapter_ExamineShow_SimpleChoiceTest(test,ExamineShowActivity1.this));
         mLvExamine.setItemsCanFocus(true);

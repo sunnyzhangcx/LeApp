@@ -14,7 +14,6 @@ public class MoocWriter {
 
     public static String FilePath = "/data/data/com.example.star.leapp/files/Readme.zxz";
 
-
     //Q&A常见问题写入
     public static boolean writeqaList(ArrayList<Data4Mooc.QandA> qaList, String filepath, boolean append){
         File qaFile = new File(filepath);

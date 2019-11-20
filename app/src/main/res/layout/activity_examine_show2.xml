@@ -25,7 +25,9 @@
                 android:textSize="20sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/bg_topic_show_content"/>
 
             <ListView
                 android:id="@+id/examine2_lv"
