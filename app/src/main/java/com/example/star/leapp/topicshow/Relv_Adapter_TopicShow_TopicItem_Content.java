@@ -16,9 +16,9 @@ import data4mooc.Data4Mooc;
 
 public class Relv_Adapter_TopicShow_TopicItem_Content extends RecyclerView.Adapter<Relv_Adapter_TopicShow_TopicItem_Content.MyViewHolder> {
 
-    Data4Mooc.Section section;
-    Context mContext;
-    List<Data4Mooc.Item> contentList;
+    private Data4Mooc.Section section;
+    private Context mContext;
+    private List<Data4Mooc.Item> contentList;
 
     public Relv_Adapter_TopicShow_TopicItem_Content(Context mContext, Data4Mooc.Section section) {
         this.section = section;
@@ -30,8 +30,7 @@ public class Relv_Adapter_TopicShow_TopicItem_Content extends RecyclerView.Adapt
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_topic_section_contentlv_item,null);
-        MyViewHolder viewholder=new MyViewHolder(view);
-        return viewholder;
+        return new MyViewHolder(view);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.example.star.leapp.topicshow;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.star.leapp.R;
-import com.example.star.leapp.examinelibrary.Relv_Adapter_ExamineList;
-import com.example.star.leapp.topiccatalog.ThirdTopicActivity;
 
 import java.util.List;
 

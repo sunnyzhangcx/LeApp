@@ -19,7 +19,7 @@ public class Relv_Adapter_TopicShow_TopicSection extends RecyclerView.Adapter<Re
     private Data4Mooc.Topic cTopic;//当前三级知识点
 
 
-    public Relv_Adapter_TopicShow_TopicSection(Data4Mooc.Topic cTopic, Context context){
+    Relv_Adapter_TopicShow_TopicSection(Data4Mooc.Topic cTopic, Context context){
         this.mContext = context;
         this.cTopic = cTopic;
 
@@ -56,7 +56,7 @@ public class Relv_Adapter_TopicShow_TopicSection extends RecyclerView.Adapter<Re
 
     class LinearViewHolder extends RecyclerView.ViewHolder{
         private TextView textview;
-        public RecyclerView contentListView;
+        RecyclerView contentListView;
 
         public LinearViewHolder(@NonNull View itemView) {
             super(itemView);

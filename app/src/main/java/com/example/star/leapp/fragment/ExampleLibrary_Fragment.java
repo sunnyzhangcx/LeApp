@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import java.util.List;
 import data4mooc.Data4Mooc;
 
 import static com.example.star.leapp.Application.LeappApplication.getGNodeList;
+import static com.example.star.leapp.Application.LeappApplication.getLayout;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 
 public class ExampleLibrary_Fragment extends Fragment {
@@ -42,8 +44,13 @@ public class ExampleLibrary_Fragment extends Fragment {
         //更新案例库
         Data4Mooc.MoocData moocDataList = getMoocDataList();
         List<Data4Mooc.GNode> gNodeList = getGNodeList(moocDataList);
+        Data4Mooc.Layout layout = getLayout(moocDataList);
+        if(layout.getExampleMode() == 1){
+            mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }else if(layout.getExampleMode() == 2) {
+            mRvMain.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        }
 
-        mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRvMain.addItemDecoration(new MyDecoration());
         if(null!=gNodeList){
             mRvMain.setAdapter(new Relv_Adapter_ExampleList(gNodeList,getActivity(), new Relv_Adapter_ExampleList.OnItemClickListener() {
@@ -65,7 +72,7 @@ public class ExampleLibrary_Fragment extends Fragment {
         @Override
         public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
             super.getItemOffsets(outRect, view, parent, state);
-            outRect.set(0,0,0,getResources().getDimensionPixelOffset(R.dimen.divideHeight));
+            outRect.set(0,0,getResources().getDimensionPixelOffset(R.dimen.divideHeight),getResources().getDimensionPixelOffset(R.dimen.divideHeight));
         }
     }
 

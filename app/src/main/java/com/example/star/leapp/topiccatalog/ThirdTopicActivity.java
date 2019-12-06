@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.example.star.leapp.R;
 import com.example.star.leapp.topicshow.TopicShowActivity;
+import com.example.star.leapp.topicshow.TopicShowActivity_Page;
 
 import java.util.List;
 
@@ -41,6 +42,8 @@ public class ThirdTopicActivity extends AppCompatActivity {
             @Override
             public void onClick(int pos) {
                 Intent intent = new Intent(ThirdTopicActivity.this,TopicShowActivity.class);
+                //翻页的测试
+                //Intent intent = new Intent(ThirdTopicActivity.this,TopicShowActivity_Page.class);
                 int CPos = 1;//临时数值
                 intent.putExtra("CPos",CPos);
                 intent.putExtra("ThirdPos",pos);

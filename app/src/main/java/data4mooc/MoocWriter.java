@@ -1,5 +1,6 @@
 package data4mooc;
 
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
@@ -12,7 +13,8 @@ import java.util.List;
 
 public class MoocWriter {
 
-    public static String FilePath = "/data/data/com.example.star.leapp/files/Readme.zxz";
+    //public static String FilePath = Environment.getExternalStorageDirectory() + "/test4.txt";
+    public static String FilePath = "/data/data/com.example.star.leapp/files/data.txt";
 
     //Q&A常见问题写入
     public static boolean writeqaList(ArrayList<Data4Mooc.QandA> qaList, String filepath, boolean append){
@@ -110,8 +112,8 @@ public class MoocWriter {
         return true;
     }
 
-/*    //页面布局参数写入
-    public static boolean writeLayout(ArrayList<Data4Mooc.Layout> layouts, String filepath, boolean append){
+    //页面布局参数写入
+    public static boolean writeLayout(Data4Mooc.Layout layouts, String filepath, boolean append){
         File file = new File(filepath);
         if(!file.exists()){
             if(!file.getParentFile().exists()){
@@ -124,7 +126,7 @@ public class MoocWriter {
             }
         }
         Data4Mooc.MoocData.Builder moocDataBuilder = Data4Mooc.MoocData.newBuilder();
-        moocDataBuilder.
+        moocDataBuilder.setLayout(layouts);
         Data4Mooc.MoocData moocData = moocDataBuilder.build();
         try  {
             OutputStream os=new FileOutputStream(filepath,append);
@@ -138,9 +140,9 @@ public class MoocWriter {
             return false;
         }
         return true;
-    }*/
+    }
 
-    public static boolean writeGNodeList(ArrayList<Data4Mooc.GNode> GNodeList, String filepath, boolean append){
+    private static boolean writeGNodeList(ArrayList<Data4Mooc.GNode> GNodeList, String filepath, boolean append){
         File file = new File(filepath);
         if(!file.exists()){
             if(!file.getParentFile().exists()){
@@ -198,6 +200,7 @@ public class MoocWriter {
         ArrayList<Integer> weights = new ArrayList<>();
         ArrayList<Data4Mooc.GNode> gNodeArrayList = new ArrayList<>();
         List<Integer> topicList = new ArrayList<>();
+
         topicList.add(2);topicList.add(4);topicList.add(5);topicList.add(7);
         qaList.add(MoocCreator.createQA(1,"常见问题-test1","常见问题-answer1",topicList));
         qaList.add(MoocCreator.createQA(2,"常见问题-test2","常见问题-answer2",topicList));
@@ -232,8 +235,6 @@ public class MoocWriter {
         resultList3.add(MoocCreator.createResult("10.","a","大雪：纷纷扬扬的大雪",1));
         resultList3.add(MoocCreator.createResult("11.","b","白茫茫：天地间白茫茫的一片"));
         resultList3.add(MoocCreator.createResult("12.","c","铁路：不知道是铁路还是公路，瞎选的",1));
-
-
 
 
         resultList4.add(MoocCreator.createResult("<1> 材料一、二分别体现了我国政府实施什么战略？两者的关系怎么样？","a","什么战略（两个）"));
@@ -295,10 +296,22 @@ public class MoocWriter {
         gNodeArrayList.add(MoocCreator.createGNode(MoocCreator.createExample("Example6","intro6",6,sectionArrayList),from6));
 
 
+        Data4Mooc.Basic basic = MoocCreator.createBasic("LeApp","v1.0","在各个领域的教学培训中，手机教学APP软件具有广泛的需求。“自学者”移动教学APP制作系统为广大的教学培训人员提供了自主地开发这类手机软件的工具。","2019.02.21","Star","北京工业大学");
+        Data4Mooc.Font font = MoocCreator.createFont(1,2,3);
+        Data4Mooc.TopicLayout topicLayout = MoocCreator.createTopicLayout(1,font,font,font,font);
+        Data4Mooc.ExampleLayout exampleLayout = MoocCreator.createExampleLayout(1,font,font,font,font);
+        Data4Mooc.TestLayout testLayout = MoocCreator.createTestLayout(font,font,font,font);
+        Data4Mooc.QALayout qaLayout = MoocCreator.createQALayout(font,font,font);
+        List<Integer> Layout = new ArrayList<>(); Layout.add(1);Layout.add(2);Layout.add(3);//临时的
+        Data4Mooc.Layout layout = MoocCreator.createLayout(basic,1,1,font,1,font,2,font,2,font,topicLayout,exampleLayout,testLayout,qaLayout,Layout,Layout);
+
+
+
         MoocWriter.writeqaList(qaList,fileName,append);
         MoocWriter.writeTestList(testList,fileName,append);
         MoocWriter.writeTNodeList(tNodeArrayList,fileName,append);
         MoocWriter.writeGNodeList(gNodeArrayList,fileName,append);
+        MoocWriter.writeLayout(layout,fileName,append);
 
     }
 }

@@ -33,7 +33,8 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden|adjustPan" />
         <activity android:name=".homepage.progress.ProgressMainActivity" />
         <activity android:name=".examineresult.ExamineResultActivity" />
-        <activity android:name=".topicshow.FirstTopicShowActivity"></activity>
+        <activity android:name=".topicshow.FirstTopicShowActivity" />
+        <activity android:name=".topicshow.TopicShowActivity_Page"></activity>
     </application>
 
 </manifest>

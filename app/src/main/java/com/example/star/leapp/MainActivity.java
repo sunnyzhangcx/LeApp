@@ -30,9 +30,6 @@ import data4mooc.Data4Mooc;
 import data4mooc.MoocWriter;
 
 public class MainActivity extends AppCompatActivity {
-    private TabLayout mTabLayout;
-    private ViewPager mViewPager;
-    private final int REQUESTCODE = 101;
     private List<Fragment> mFragment;
     private String[] titles = {"知识目录","案例库","首页","测验题库","常见问题"};
     private int images[] = {R.drawable.icon_catalog,R.drawable.icon_example,R.drawable.icon_home,R.drawable.icon_test,R.drawable.icon_faq};
@@ -41,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTabLayout= findViewById(R.id.main_tablayout);
-        mViewPager = findViewById(R.id.main_viewpager);
+        TabLayout mTabLayout = findViewById(R.id.main_tablayout);
+        ViewPager mViewPager = findViewById(R.id.main_viewpager);
 
         mFragment =new ArrayList<>();
         mFragment.add(new TopicCataLog_Fragment());
@@ -56,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         //mViewPager.setCurrentItem(2);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        for(int i = 0;i < mTabLayout.getTabCount(); i++){
+        for(int i = 0; i < mTabLayout.getTabCount(); i++){
             TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            tab.setCustomView(ViewpagerAdapter.getTabView(i));
+            if (tab != null) {
+                tab.setCustomView(ViewpagerAdapter.getTabView(i));
+            }
         }
 
         Intent intent = getIntent();
@@ -69,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 添加案例库测试数据，后期可以去掉
          */
-       //MoocWriter.writeMoocData(true);
+       MoocWriter.writeMoocData(true);
 
     }
 
