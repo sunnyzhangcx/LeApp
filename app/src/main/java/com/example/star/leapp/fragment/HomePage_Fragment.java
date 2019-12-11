@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.example.star.leapp.R;
 import com.example.star.leapp.homepage.coretopic.Relv_Adapter_CoreTopicList;
 import com.example.star.leapp.homepage.progress.ProgressMainActivity;
-import com.example.star.leapp.topicshow.TopicShowActivity;
 
 public class HomePage_Fragment extends Fragment {
 
@@ -67,9 +66,7 @@ public class HomePage_Fragment extends Fragment {
                         @Override
                         public void onClick(int pos) {
                             mPopTopic.dismiss();
-                            Intent intent = new Intent(getActivity(),TopicShowActivity.class);
-                            startActivity(intent);
-                            //Toast.makeText(getActivity(),"click"+pos,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"click"+pos,Toast.LENGTH_SHORT).show();
                         }
                     }));
                     mPopTopic = new PopupWindow(view1,mBtnTopic.getWidth(),ViewGroup.LayoutParams.WRAP_CONTENT);

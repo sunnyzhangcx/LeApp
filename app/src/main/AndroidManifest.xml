@@ -18,8 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".topiccatalog.ThirdTopicActivity" />
-        <activity android:name=".topicshow.TopicShowActivity" />
         <activity android:name=".exampleshow.ExampleShowActivity" />
         <activity android:name=".questionshow.QuestionShowActivity" />
         <activity android:name=".examineshow.ExamineShowActivity1" />
@@ -34,7 +32,8 @@
         <activity android:name=".homepage.progress.ProgressMainActivity" />
         <activity android:name=".examineresult.ExamineResultActivity" />
         <activity android:name=".topicshow.FirstTopicShowActivity" />
-        <activity android:name=".topicshow.TopicShowActivity_Page"></activity>
+        <activity android:name=".topicshow.TopicShowActivity_Page" />
+        <activity android:name=".topiccatalog.ChildTopicCataLogActivity"></activity>
     </application>
 
 </manifest>

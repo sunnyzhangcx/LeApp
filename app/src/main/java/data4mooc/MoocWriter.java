@@ -175,12 +175,16 @@ public class MoocWriter {
 
     public static void writeMoocData(boolean append){
 
-        int[] child1 = {0,1,7,12};
+        int[] child1 = {0,1,7,19};
         int[] child2 = {2,3,4};
         int[] child3 = {8,9};
-        int[] child4 = {13};
+        int[] child4 = {20};
         int[] child5 = {5,6};
-        int[] child6 = {10,11};
+        int[] child6 = {10,18};
+        int[] child7 = {11,16,17};
+        int[] child8 = {12,13};
+        int[] child9 = {14,15};
+        int[] child10 = {21,22};
         int[] child0 = {};
 
         String fileName = FilePath;
@@ -273,10 +277,21 @@ public class MoocWriter {
         tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2","介绍",7,1,sectionArrayList,examples,weights),child3));
         tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.1","介绍",8,1,sectionArrayList,examples,weights),child0));
         tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2","介绍",9,1,sectionArrayList,examples,weights),child6));
-        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1","介绍",10,1,sectionArrayList,examples,weights),child0));
-        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.2","介绍",11,1,sectionArrayList,examples,weights),child0));
-        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic3","介绍",12,1,sectionArrayList,examples,weights),child4));
-        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic3.1","介绍",13,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1","介绍",10,1,sectionArrayList,examples,weights),child7));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1","介绍",11,1,sectionArrayList,examples,weights),child8));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.1","介绍",12,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.2","介绍",13,1,sectionArrayList,examples,weights),child9));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.2.1","介绍",14,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.2.2","介绍",15,1,sectionArrayList,examples,weights),child10));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.2","介绍",16,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.3","介绍",17,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.2","介绍",18,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic3","介绍",19,1,sectionArrayList,examples,weights),child4));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic3.1","介绍",20,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.2.2.1","介绍",21,1,sectionArrayList,examples,weights),child0));
+        tNodeArrayList.add(MoocCreator.createTNode(MoocCreator.createTopic("Topic2.2.1.1.2.2.2","介绍",22,1,sectionArrayList,examples,weights),child0));
+
+
 
         //先修案例索引
         int[] from0 = {};

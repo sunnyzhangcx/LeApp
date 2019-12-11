@@ -1,14 +1,18 @@
 package com.example.star.leapp.topicshow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.star.leapp.MainActivity;
 import com.example.star.leapp.R;
 
 import java.util.List;
@@ -20,13 +24,11 @@ public class Relv_Adapter_FirstTopicShow_FirstTopic extends RecyclerView.Adapter
     private Context mContext;
     private List<Data4Mooc.TNode> SecondTopicList;
     private OnItemClickListener mListener;
-    private OnItemClickListener nListener;
 
-    public Relv_Adapter_FirstTopicShow_FirstTopic(List<Data4Mooc.TNode> SecondTopicList, Context context, OnItemClickListener listener, OnItemClickListener listener1){
+    public Relv_Adapter_FirstTopicShow_FirstTopic(List<Data4Mooc.TNode> SecondTopicList, Context context, OnItemClickListener listener){
         this.mContext = context;
         this.SecondTopicList = SecondTopicList;
         this.mListener = listener;
-        this.nListener = listener1;
     }
     @NonNull
     @Override
@@ -37,44 +39,30 @@ public class Relv_Adapter_FirstTopicShow_FirstTopic extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder,final int i) {
         ((LinearViewHolder) viewHolder).textview.setText(SecondTopicList.get(i).getTopic().getTitle());
-        ((LinearViewHolder) viewHolder).textview.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.onClick(i);
             }
         });
-
-        ((LinearViewHolder) viewHolder).button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nListener.onClick(i);
-            }
-        });
-/*        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(mContext,"click..."+i,Toast.LENGTH_SHORT).show();
-                mListener.onClick(i);
-            }
-        });*/
 
 
     }
 
-
     @Override
     public int getItemCount() {
+        if(SecondTopicList == null)
+            return 0;
         return SecondTopicList.size();
     }
 
     class LinearViewHolder extends RecyclerView.ViewHolder{
         private TextView textview;
-        private Button button;
-
+        private ImageView imageView;
         public LinearViewHolder(@NonNull View itemView) {
             super(itemView);
             textview = itemView.findViewById(R.id.tv_title);
-            button = itemView.findViewById(R.id.topic_content);
+            imageView = itemView.findViewById(R.id.topic_content);
         }
     }
 

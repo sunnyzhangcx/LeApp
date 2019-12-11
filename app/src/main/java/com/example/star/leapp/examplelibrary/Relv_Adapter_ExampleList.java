@@ -45,7 +45,6 @@ public class Relv_Adapter_ExampleList extends RecyclerView.Adapter<RecyclerView.
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(mContext,"click..."+i,Toast.LENGTH_SHORT).show();
                 mListener.onClick(i);
             }
         });

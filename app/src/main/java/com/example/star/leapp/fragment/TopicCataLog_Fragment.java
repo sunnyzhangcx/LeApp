@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +12,15 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.example.star.leapp.R;
+import com.example.star.leapp.topiccatalog.ChildTopicCataLogActivity;
 import com.example.star.leapp.topiccatalog.Exlv_Adapter_TopicCataLogList;
-import com.example.star.leapp.topiccatalog.ThirdTopicActivity;
-import com.example.star.leapp.topicshow.TopicShowActivity;
+import com.example.star.leapp.topicshow.FirstTopicShowActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import data4mooc.Data4Mooc;
 
-import static android.view.ViewGroup.FOCUS_AFTER_DESCENDANTS;
 import static com.example.star.leapp.Application.LeappApplication.getFirstTopic;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
@@ -43,7 +41,7 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
         //更新案例库
         Data4Mooc.MoocData moocDataList = getMoocDataList();
         final List<Data4Mooc.TNode> Group = getFirstTopic(moocDataList);
-        final List<List<Data4Mooc.TNode>> Child = getSecondTopic(moocDataList);
+        final ArrayList<ArrayList<Data4Mooc.TNode>> Child = getSecondTopic(Group);
 
         ExpandableListView expandableListView = view.findViewById(R.id.myexlist);
 
@@ -61,17 +59,13 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
                 Intent intent = null;
                 if(clickItem.getChildCount()!=0)
                 {
-                    intent = new Intent(getActivity(),ThirdTopicActivity.class);
-                    int Bpos = 1;//临时数值
-                    intent.putExtra("BPos",Bpos);
-                    //Log.i("id-----",String.valueOf(v.getId()));
-                    intent.putExtra("groupPosition",groupPosition);
-                    intent.putExtra("childPosition",childPosition);
+                    intent = new Intent(getActivity(),ChildTopicCataLogActivity.class);
+                    intent.putExtra("childItem",clickItem);
                     startActivity(intent);
                 } else {
-                    Toast toast = Toast.makeText(getContext(),"此项无下级知识点~",Toast.LENGTH_SHORT);
-                    toast.show();
-                    //intent = new Intent(getActivity(),TopicShowActivity.class);
+                    intent = new Intent(getActivity(),FirstTopicShowActivity.class);
+                    intent.putExtra("topic",clickItem);
+                    startActivity(intent);
                 }
 
                 return true;

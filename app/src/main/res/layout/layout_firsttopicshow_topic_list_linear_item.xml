@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:descendantFocusability="blocksDescendants">
+    android:descendantFocusability="afterDescendants">
 
 
     <TextView
@@ -17,13 +17,13 @@
         android:layout_weight="10"
         android:layout_marginStart="8dp" />
 
-    <Button
+    <ImageView
         android:id="@+id/topic_content"
-        android:clickable="true"
-        android:focusable="true"
         android:layout_height="30dp"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:clickable="true"
+        android:focusable="true"
         android:background="@drawable/arrow_right"
         android:layout_marginRight="15dp"
         android:layout_marginEnd="15dp" />

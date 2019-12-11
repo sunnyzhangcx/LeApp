@@ -16,21 +16,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.star.leapp.R;
-import com.example.star.leapp.examineshow.ExamineShowActivity1;
-import com.example.star.leapp.topiccatalog.ThirdTopicActivity;
 
 import java.util.List;
 
 import data4mooc.Data4Mooc;
 
-import static com.example.star.leapp.Application.LeappApplication.getFirstTopic;
-import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
-import static com.example.star.leapp.Application.LeappApplication.getTNodeList;
+import static com.example.star.leapp.Application.LeappApplication.getTNodeChildList;
 
 public class FirstTopicShowActivity extends AppCompatActivity {
 
-    int APos = 1;
     private PopupWindow mPopFeedback;
     private FloatingActionButton mBtnFeedback;
 
@@ -51,47 +46,28 @@ public class FirstTopicShowActivity extends AppCompatActivity {
         mRvContent.addItemDecoration(new MyDecoration());
 
 
-        final int groupPosition = getIntent().getIntExtra("groupPos",0);
-        //System.out.print("-------------------------------------"+groupPosition);
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
-        final List<Data4Mooc.TNode> firstTopicList = getFirstTopic(moocDataList);
-        final List<Data4Mooc.TNode> secondTopicList = getSecondTopic(moocDataList).get(groupPosition);
-        final Data4Mooc.Topic firstTopic = firstTopicList.get(groupPosition).getTopic();
-        mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(firstTopic,FirstTopicShowActivity.this));
-        mTvTopicName.setText(firstTopic.getTitle());
-        if(firstTopicList.get(groupPosition).getChildCount()!=0){
-            mTvSecondTopic.setText("二级知识点：");
+        Data4Mooc.TNode currentTNode = (Data4Mooc.TNode) getIntent().getSerializableExtra("topic");
+
+        final List<Data4Mooc.TNode> currentTNodeChild = getTNodeChildList(currentTNode);
+        mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(currentTNode.getTopic(),FirstTopicShowActivity.this));
+
+        mTvTopicName.setText(currentTNode.getTopic().getTitle());
+        if(currentTNode.getChildCount() !=0){
+            mTvSecondTopic.setText("下级知识点：");
         }else {
             mTvSecondTopic.setVisibility(View.GONE);
         }
 
-        mRvChildTopic.setAdapter(new Relv_Adapter_FirstTopicShow_FirstTopic(secondTopicList, FirstTopicShowActivity.this, new Relv_Adapter_FirstTopicShow_FirstTopic.OnItemClickListener() {
+        mRvChildTopic.setAdapter(new Relv_Adapter_FirstTopicShow_FirstTopic(currentTNodeChild, FirstTopicShowActivity.this, new Relv_Adapter_FirstTopicShow_FirstTopic.OnItemClickListener() {
             @Override
             public void onClick(int pos) {
-                Data4Mooc.TNode clickItem = secondTopicList.get(pos);
-                if(clickItem.getChildCount()!= 0 ){
-                    Intent intent = new Intent(FirstTopicShowActivity.this,ThirdTopicActivity.class);
-                    intent.putExtra("groupPosition", groupPosition);
-                    intent.putExtra("childPosition", pos);
-                    startActivity(intent);
-                }else {
-                    Toast toast = Toast.makeText(FirstTopicShowActivity.this,"此项无下级知识点~",Toast.LENGTH_SHORT);
-                    toast.show();
-                    //intent = new Intent(getActivity(),TopicShowActivity.class);
-                }
+                Data4Mooc.TNode clickItem = currentTNodeChild.get(pos);
+                Intent intent = new Intent(FirstTopicShowActivity.this,FirstTopicShowActivity.class);
+                intent.putExtra("topic", clickItem);
 
-
-
-            }
-        }, new Relv_Adapter_FirstTopicShow_FirstTopic.OnItemClickListener() {
-            @Override
-            public void onClick(int pos) {
-                Intent intent = new Intent(FirstTopicShowActivity.this, TopicShowActivity.class);
-                intent.putExtra("APos", APos);
-                intent.putExtra("groupPosition", groupPosition);
-                intent.putExtra("childPosition", pos);
                 startActivity(intent);
+
+
             }
         }));
 

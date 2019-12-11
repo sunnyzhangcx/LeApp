@@ -84,6 +84,21 @@ public class LeappApplication extends Application {
         return moocDataList.getLayout();
     }
 
+    //获取知识点中的孩子列表
+    public static List<Integer> getTopicChildList(List<Data4Mooc.TNode> tNodeList, int i){
+        return tNodeList.get(i).getChildList();
+    }
+
+    //获取知识点中的孩子列表
+    public static List<Integer> getTopicChildList(List<List<Data4Mooc.TNode>> tNodeList, int i,int j){
+        return tNodeList.get(i).get(j).getChildList();
+    }
+
+    //获取知识点中的孩子列表
+    public static List<Integer> getTopicChildList(Data4Mooc.TNode tNode){
+        return tNode.getChildList();
+    }
+
     //获取一级知识点列表
     public static List<Data4Mooc.TNode> getFirstTopic(Data4Mooc.MoocData moocDataList) {
         if(null==moocDataList)
@@ -110,6 +125,33 @@ public class LeappApplication extends Application {
     }
 
     //获取二级知识点列表
+    public static ArrayList<ArrayList<Data4Mooc.TNode>> getSecondTopic(List<Data4Mooc.TNode> FirstTopic) {
+        if(null==moocDataList)
+            return null;
+        ArrayList<ArrayList<Data4Mooc.TNode>> SecondTopic = new ArrayList<>();
+        int FirstTopicLength = FirstTopic.size();//一级知识点的长度
+
+        for (int i = 0; i < FirstTopicLength; i++) {
+            //获取一级知识点列表里知识点的孩子列表的索引
+            List<Integer> childList = getTopicChildList(FirstTopic,i);
+            //List<Integer> childList = FirstTopic.get(i).getChildList();
+            //存当前知识点孩子列表的对应知识点
+            ArrayList<Data4Mooc.TNode> tempSecond = new ArrayList<>();
+            if (childList == null) {
+                tempSecond = null;
+            }
+            else{
+                for (int j = 0; j < childList.size(); j++) {
+                    tempSecond.add(moocDataList.getSetTNode(childList.get(j)));
+                }
+            }
+            SecondTopic.add(tempSecond);
+        }
+        return SecondTopic;
+    }
+
+
+    //获取二级知识点列表
     public static List<List<Data4Mooc.TNode>> getSecondTopic(Data4Mooc.MoocData moocDataList) {
         if(null==moocDataList)
             return null;
@@ -134,6 +176,21 @@ public class LeappApplication extends Application {
     }
 
     //获取三级知识点列表(当前的三级知识点列表 不是全部的)
+    public static List<Data4Mooc.TNode> getThirdTopic(List<List<Data4Mooc.TNode>> SecondTopic,int groupPosition,int childPosition) {
+        if(null==moocDataList)
+            return null;
+        List<Data4Mooc.TNode> ThirdTopic = new ArrayList<>();
+
+        List<Integer> childList = getTopicChildList(SecondTopic,groupPosition,childPosition);
+
+        for(int i = 0;i < childList.size();i ++){
+            ThirdTopic.add(moocDataList.getSetTNode(childList.get(i)));
+        }
+
+        return ThirdTopic;
+    }
+
+    //获取三级知识点列表(当前的三级知识点列表 不是全部的)
     public static List<Data4Mooc.TNode> getThirdTopic(Data4Mooc.MoocData moocDataList,int groupPosition,int childPosition) {
         if(null==moocDataList)
             return null;
@@ -147,6 +204,18 @@ public class LeappApplication extends Application {
         }
 
         return ThirdTopic;
+    }
+
+    public static ArrayList<Data4Mooc.TNode> getTNodeChildList(Data4Mooc.TNode tNode){
+        ArrayList<Data4Mooc.TNode> ChildList = new ArrayList<>();
+        if(tNode.getChildCount() == 0){
+            return null;
+        }else {
+            for (int i = 0; i < tNode.getChildCount(); i ++){
+                ChildList.add(moocDataList.getSetTNode(tNode.getChild(i)));
+            }
+        }
+        return ChildList;
     }
 
     //获取Q&A中相关知识点的列表

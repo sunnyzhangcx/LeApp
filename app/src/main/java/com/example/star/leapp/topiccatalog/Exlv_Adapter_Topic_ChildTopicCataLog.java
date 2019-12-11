@@ -17,13 +17,13 @@ import java.util.List;
 
 import data4mooc.Data4Mooc;
 
-public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
+public class Exlv_Adapter_Topic_ChildTopicCataLog extends BaseExpandableListAdapter {
 
     private Context context;
     private List<Data4Mooc.TNode> Group;
     private ArrayList<ArrayList<Data4Mooc.TNode>> Child;
 
-    public Exlv_Adapter_TopicCataLogList(List<Data4Mooc.TNode> group, ArrayList<ArrayList<Data4Mooc.TNode>> Child, Context context) {
+    public Exlv_Adapter_Topic_ChildTopicCataLog(List<Data4Mooc.TNode> group, ArrayList<ArrayList<Data4Mooc.TNode>> Child, Context context) {
         this.context = context;
         this.Group = group;
         this.Child = Child;
@@ -127,12 +127,12 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
 
 }
 
-class GroupHolder {
-    public TextView txt;
-    public Button btn;
+class GroupHolder1 {
+    TextView txt;
+    Button btn;
 }
 
-class ItemHolder {
-    public TextView txt;
-    public Button btn;
+class ItemHolder1 {
+    TextView txt;
+    Button btn;
 }
