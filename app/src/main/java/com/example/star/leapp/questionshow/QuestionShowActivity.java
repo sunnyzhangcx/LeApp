@@ -15,7 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.star.leapp.R;
-import com.example.star.leapp.topicshow.FirstTopicShowActivity;
+import com.example.star.leapp.topicshow.TopicShowActivity;
 
 import java.util.List;
 
@@ -64,7 +64,7 @@ public class QuestionShowActivity extends AppCompatActivity {
                         mPopTopic.dismiss();
                         int tNodepos = topicList.get(pos);//当前选择的知识点在tnodelist中的位置
                         Data4Mooc.TNode currentTopic = getTNodeList(moocDataList).get(tNodepos);
-                        Intent intent = new Intent(QuestionShowActivity.this,FirstTopicShowActivity.class);
+                        Intent intent = new Intent(QuestionShowActivity.this,TopicShowActivity.class);
                         intent.putExtra("topic",currentTopic);
                         startActivity(intent);
                         //Toast.makeText(QuestionShowActivity.this,"click"+pos,Toast.LENGTH_SHORT).show();

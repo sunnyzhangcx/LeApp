@@ -24,7 +24,7 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
 import static com.example.star.leapp.Application.LeappApplication.getTNodeChildList;
 
-public class FirstTopicShowActivity extends AppCompatActivity {
+public class TopicShowActivity extends AppCompatActivity {
 
     private PopupWindow mPopFeedback;
     private FloatingActionButton mBtnFeedback;
@@ -41,15 +41,15 @@ public class FirstTopicShowActivity extends AppCompatActivity {
         Button mBtnQuestion = findViewById(R.id.topic_question);
         mBtnFeedback = findViewById(R.id.topic_feedback);
         RecyclerView mRvContent = findViewById(R.id.topic_content);
-        mRvChildTopic.setLayoutManager(new LinearLayoutManager(FirstTopicShowActivity.this));
-        mRvContent.setLayoutManager(new LinearLayoutManager(FirstTopicShowActivity.this));
+        mRvChildTopic.setLayoutManager(new LinearLayoutManager(TopicShowActivity.this));
+        mRvContent.setLayoutManager(new LinearLayoutManager(TopicShowActivity.this));
         mRvContent.addItemDecoration(new MyDecoration());
 
 
         Data4Mooc.TNode currentTNode = (Data4Mooc.TNode) getIntent().getSerializableExtra("topic");
 
         final List<Data4Mooc.TNode> currentTNodeChild = getTNodeChildList(currentTNode);
-        mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(currentTNode.getTopic(),FirstTopicShowActivity.this));
+        mRvContent.setAdapter(new Relv_Adapter_TopicShow_TopicSection(currentTNode.getTopic(),TopicShowActivity.this));
 
         mTvTopicName.setText(currentTNode.getTopic().getTitle());
         if(currentTNode.getChildCount() !=0){
@@ -58,11 +58,11 @@ public class FirstTopicShowActivity extends AppCompatActivity {
             mTvSecondTopic.setVisibility(View.GONE);
         }
 
-        mRvChildTopic.setAdapter(new Relv_Adapter_FirstTopicShow_FirstTopic(currentTNodeChild, FirstTopicShowActivity.this, new Relv_Adapter_FirstTopicShow_FirstTopic.OnItemClickListener() {
+        mRvChildTopic.setAdapter(new Relv_Adapter_FirstTopicShow_FirstTopic(currentTNodeChild, TopicShowActivity.this, new Relv_Adapter_FirstTopicShow_FirstTopic.OnItemClickListener() {
             @Override
             public void onClick(int pos) {
                 Data4Mooc.TNode clickItem = currentTNodeChild.get(pos);
-                Intent intent = new Intent(FirstTopicShowActivity.this,FirstTopicShowActivity.class);
+                Intent intent = new Intent(TopicShowActivity.this,TopicShowActivity.class);
                 intent.putExtra("topic", clickItem);
 
                 startActivity(intent);
@@ -86,7 +86,7 @@ public class FirstTopicShowActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         mPopFeedback.dismiss();
                         //do something...
-                        Toast.makeText(FirstTopicShowActivity.this,"click",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TopicShowActivity.this,"click",Toast.LENGTH_SHORT).show();
                     }
                 });
                 mPopFeedback = new PopupWindow(view,180,ViewGroup.LayoutParams.WRAP_CONTENT);

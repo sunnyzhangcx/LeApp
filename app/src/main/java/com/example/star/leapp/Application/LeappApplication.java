@@ -1,12 +1,15 @@
 package com.example.star.leapp.Application;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -19,26 +22,29 @@ import data4mooc.MoocWriter;
 public class LeappApplication extends Application {
 
     private static String qaFilepath = MoocWriter.FilePath;
-    public static Data4Mooc.MoocData moocDataList = LeappApplication.getQueryMoocDataList(qaFilepath);
+    public static Data4Mooc.MoocData moocDataList;  // = LeappApplication.getQueryMoocDataList(qaFilepath);
 
-    public static Data4Mooc.MoocData getQueryMoocDataList(String fileName){
-        File qaFile = new File(fileName);
-        if(!qaFile.exists()||qaFile.length()==0){
-            Log.e("error","file not exist/no sample");
+    public static void getQueryMoocDataList(Context ctx, String fileName){
+        AssetManager am = ctx.getResources().getAssets();
+//        File qaFile = new File(fileName);
+//        if(!qaFile.exists()||qaFile.length()==0){
+//            Log.e("error","file not exist/no sample");
             //moocDataList = null;
-            return null;
-        }
-        FileInputStream input = null;
+//            return;
+//        }
+//        FileInputStream input = null;
         try {
-            input = new FileInputStream(fileName);
-                moocDataList = Data4Mooc.MoocData.parseFrom(input);
-            return moocDataList;
+//            input = new FileInputStream(fileName);
+
+            InputStream in  = am.open(fileName);
+            moocDataList = Data4Mooc.MoocData.parseFrom(in);
+            return;
         }catch  (FileNotFoundException e){
             System.out.println("file not exist!");
         } catch (IOException e) {
             System.out.println("write failed");
         }
-        return null;
+        return;
     }
 
     /**
@@ -112,7 +118,7 @@ public class LeappApplication extends Application {
                 return null;
             }
             //之前是int i = 0 因为我自己写的测试数据 root的childlist不包含自己
-            for (int i = 1;i<length;i++){
+            for (int i = 0;i<length;i++){
                 int tNodeChild=RootTNode.getChild(i);
                 FirstTopic.add(moocDataList.getSetTNode(tNodeChild));
             }

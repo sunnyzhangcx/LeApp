@@ -1,6 +1,5 @@
 package com.example.star.leapp.fragment;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.example.star.leapp.R;
 import com.example.star.leapp.topiccatalog.ChildTopicCataLogActivity;
 import com.example.star.leapp.topiccatalog.Exlv_Adapter_TopicCataLogList;
-import com.example.star.leapp.topicshow.FirstTopicShowActivity;
+import com.example.star.leapp.topicshow.TopicShowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +20,8 @@ import java.util.List;
 import data4mooc.Data4Mooc;
 
 import static com.example.star.leapp.Application.LeappApplication.getFirstTopic;
-import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
+import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
 
@@ -38,8 +36,8 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
+
+        //System.out.println("-----------"+moocDataList);
         final List<Data4Mooc.TNode> Group = getFirstTopic(moocDataList);
         final ArrayList<ArrayList<Data4Mooc.TNode>> Child = getSecondTopic(Group);
 
@@ -63,7 +61,7 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
                     intent.putExtra("childItem",clickItem);
                     startActivity(intent);
                 } else {
-                    intent = new Intent(getActivity(),FirstTopicShowActivity.class);
+                    intent = new Intent(getActivity(),TopicShowActivity.class);
                     intent.putExtra("topic",clickItem);
                     startActivity(intent);
                 }

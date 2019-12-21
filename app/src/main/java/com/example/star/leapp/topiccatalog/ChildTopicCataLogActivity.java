@@ -1,15 +1,13 @@
 package com.example.star.leapp.topiccatalog;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import com.example.star.leapp.R;
-import com.example.star.leapp.topicshow.FirstTopicShowActivity;
+import com.example.star.leapp.topicshow.TopicShowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +17,6 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
 import static com.example.star.leapp.Application.LeappApplication.getTNodeChildList;
 import static com.example.star.leapp.Application.LeappApplication.getThirdTopic;
-import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 public class ChildTopicCataLogActivity extends AppCompatActivity {
 
@@ -52,7 +49,7 @@ public class ChildTopicCataLogActivity extends AppCompatActivity {
                     intent.putExtra("childItem",clickItem);
                     startActivity(intent);
                 } else {
-                    intent = new Intent(ChildTopicCataLogActivity.this,FirstTopicShowActivity.class);
+                    intent = new Intent(ChildTopicCataLogActivity.this,TopicShowActivity.class);
                     intent.putExtra("topic",clickItem);
                     startActivity(intent);
                 }

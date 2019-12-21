@@ -26,6 +26,7 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getLayout;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getQandAList;
+import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 public class Question_Fragment extends Fragment {
 
@@ -43,17 +44,14 @@ public class Question_Fragment extends Fragment {
         EditText mEtSearch = view.findViewById(R.id.question_search);
         RecyclerView mRvMain = view.findViewById(R.id.rv_main);
 
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
+
         List<Data4Mooc.QandA> qandAList = getQandAList(moocDataList);
         Data4Mooc.Layout layout = getLayout(moocDataList);
-        if (layout.getQandaMode() == 1) {
-            mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }else if(layout.getQandaMode() == 2){
-            //int i= layout.getQandaMode();
+
+        mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(layout.getQandaMode() == 2){
             mRvMain.setLayoutManager(new GridLayoutManager(getActivity(),2));
         }
-
         mRvMain.addItemDecoration(new Question_Fragment.MyDecoration());
         mRvMain.setAdapter(new Relv_Adapter_QuestionList(qandAList,getActivity(), new Relv_Adapter_QuestionList.OnItemClickListener() {
             @Override

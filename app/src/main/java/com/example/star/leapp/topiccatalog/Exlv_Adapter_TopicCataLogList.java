@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.star.leapp.R;
-import com.example.star.leapp.topicshow.FirstTopicShowActivity;
+import com.example.star.leapp.topicshow.TopicShowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,7 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
             groupHolder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,FirstTopicShowActivity.class);
+                    Intent intent = new Intent(context,TopicShowActivity.class);
                     intent.putExtra("topic",Group.get(groupPosition));
                     context.startActivity(intent);
                 }
@@ -104,7 +104,7 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
             itemHolder.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,FirstTopicShowActivity.class);
+                    Intent intent = new Intent(context,TopicShowActivity.class);
                     intent.putExtra("topic",Child.get(groupPosition).get(childPosition));
                     context.startActivity(intent);
                 }

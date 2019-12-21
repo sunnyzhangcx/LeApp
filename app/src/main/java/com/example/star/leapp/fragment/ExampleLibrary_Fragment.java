@@ -25,6 +25,7 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getGNodeList;
 import static com.example.star.leapp.Application.LeappApplication.getLayout;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
+import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 public class ExampleLibrary_Fragment extends Fragment {
 
@@ -41,16 +42,14 @@ public class ExampleLibrary_Fragment extends Fragment {
         EditText mEtSearch = view.findViewById(R.id.example_search);
         RecyclerView mRvMain = view.findViewById(R.id.rv_main);
 
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
+
         List<Data4Mooc.GNode> gNodeList = getGNodeList(moocDataList);
         Data4Mooc.Layout layout = getLayout(moocDataList);
-        if(layout.getExampleMode() == 1){
-            mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }else if(layout.getExampleMode() == 2) {
+
+        mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(layout.getQandaMode() == 2){
             mRvMain.setLayoutManager(new GridLayoutManager(getActivity(),2));
         }
-
         mRvMain.addItemDecoration(new MyDecoration());
         if(null!=gNodeList){
             mRvMain.setAdapter(new Relv_Adapter_ExampleList(gNodeList,getActivity(), new Relv_Adapter_ExampleList.OnItemClickListener() {

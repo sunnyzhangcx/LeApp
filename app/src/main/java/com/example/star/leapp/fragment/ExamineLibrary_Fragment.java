@@ -28,11 +28,12 @@ import data4mooc.Data4Mooc;
 import static com.example.star.leapp.Application.LeappApplication.getLayout;
 import static com.example.star.leapp.Application.LeappApplication.getMoocDataList;
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
+import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 
 public class ExamineLibrary_Fragment extends Fragment {
 
     private int testType;
-    private List<Data4Mooc.Test> testList =null;
+    //private List<Data4Mooc.Test> testList =null;
 
     @Nullable
     @Override
@@ -47,18 +48,15 @@ public class ExamineLibrary_Fragment extends Fragment {
         EditText mEtSearch = view.findViewById(R.id.example_search);
         RecyclerView mRvMain = view.findViewById(R.id.rv_main);
 
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
-        testList = getTestList(moocDataList);
+
+        final List<Data4Mooc.Test> testList = getTestList(moocDataList);
         Data4Mooc.Layout layout = getLayout(moocDataList);
-        if (layout.getTestMode() == 1) {
-            mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
-        }else if(layout.getTestMode() == 2){
-            mRvMain.setLayoutManager(new GridLayoutManager(getContext(),2));
+
+        mRvMain.setLayoutManager(new LinearLayoutManager(getActivity()));
+        if(layout.getQandaMode() == 2){
+            mRvMain.setLayoutManager(new GridLayoutManager(getActivity(),2));
         }
-
         mRvMain.addItemDecoration(new MyDecoration());
-
 
         mRvMain.setAdapter(new Relv_Adapter_ExamineList(testList,getActivity(), new Relv_Adapter_ExamineList.OnItemClickListener() {
             Intent intent = null;

@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String fileName = "Readme.zxz";
+        LeappApplication.getQueryMoocDataList(getApplicationContext(), fileName);
         setContentView(R.layout.activity_main);
         TabLayout mTabLayout = findViewById(R.id.main_tablayout);
         ViewPager mViewPager = findViewById(R.id.main_viewpager);
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 添加案例库测试数据，后期可以去掉
          */
-       MoocWriter.writeMoocData(true);
+       //MoocWriter.writeMoocData(true);
 
     }
 
