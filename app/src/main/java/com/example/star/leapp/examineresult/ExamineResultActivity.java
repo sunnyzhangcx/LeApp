@@ -21,6 +21,7 @@ import static com.example.star.leapp.Application.LeappApplication.getMoocDataLis
 import static com.example.star.leapp.Application.LeappApplication.getMultipleChoiceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getSimpleChioceCurrentResult;
 import static com.example.star.leapp.Application.LeappApplication.getTestList;
+import static com.example.star.leapp.Application.LeappApplication.moocDataList;
 import static com.example.star.leapp.Application.LeappApplication.pirntComment;
 import static com.example.star.leapp.Application.LeappApplication.printFillBlankResult;
 import static com.example.star.leapp.Application.LeappApplication.printMultipleChoiceAlternative;
@@ -51,8 +52,6 @@ public class ExamineResultActivity extends AppCompatActivity {
         final ArrayList<String> fillBlankResultUser = getIntent().getStringArrayListExtra("fillblank");
         final ArrayList<String> shortAnswerResultUser = getIntent().getStringArrayListExtra("shortanswer");
 
-        //更新案例库
-        Data4Mooc.MoocData moocDataList = getMoocDataList();
         List<Data4Mooc.Test> testList = getTestList(moocDataList);
         Data4Mooc.Test test =testList.get(testPos);
 
@@ -61,12 +60,11 @@ public class ExamineResultActivity extends AppCompatActivity {
                 mTvJudge.setText("您没有进行选择！\n");
                 mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
             }else{
-                //int result = getSimpleChioceCurrentResult(test);
                 if(simpleChoiceResultPos == getSimpleChioceCurrentResult(test)){
                     mTvJudge.setText("恭喜你答对了！\n");
                     mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
                 }else{
-                    mTvJudge.setText("       答案错误，此选择题正确选项为第"+(getSimpleChioceCurrentResult(test)+1) +"个选项 \n");
+                    mTvJudge.setText("答案错误\n");
                     mTvUserAnswer.setText(test.getResults(simpleChoiceResultPos).getAltertive() + "\n");
                 }
                 if(test.getResults(getSimpleChioceCurrentResult(test)).getAltertive() == null){
@@ -88,7 +86,7 @@ public class ExamineResultActivity extends AppCompatActivity {
                 mTvJudge.setText("您的多选题没有进行选择！\n");
                 mTvUserAnswer.setText("您的答案：您没有进行选择！\n");
             }else {
-                mTvJudge.setText("答案错误，此多选题正确选项为第"+getMultipleChoiceCurrentResult(test) + "个选项 \n");
+                mTvJudge.setText("答案错误\n");
                 mTvUserAnswer.setText(printMultipleChoiceAlternative(multipleChoiceResult,test));
             }
             mTvStandardAnswer.setText(printMultipleChoiceAlternative(new ArrayList<Integer>(getMultipleChoiceCurrentResult(test)),test));

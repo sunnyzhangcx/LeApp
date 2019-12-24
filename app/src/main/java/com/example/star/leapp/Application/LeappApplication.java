@@ -240,7 +240,7 @@ public class LeappApplication extends Application {
         int result = -1;
         List<Data4Mooc.Result> resultList = test.getResultsList();
         for(int i = 0;i <resultList.size(); i ++){
-            if(resultList.get(i).getResult().equals("0")){
+            if(resultList.get(i).getResult().equals("1")){
                 result = i;
             }
         }
@@ -252,7 +252,7 @@ public class LeappApplication extends Application {
         Set<Integer> result = new HashSet<>();
         List<Data4Mooc.Result> resultList = test.getResultsList();
         for(int i = 0;i <resultList.size(); i ++){
-            if(resultList.get(i).getResult().equals("true")){
+            if(resultList.get(i).getResult().equals("1")){
                 result.add(i);
             }
         }

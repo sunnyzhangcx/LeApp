@@ -16,7 +16,6 @@ import data4mooc.Data4Mooc;
 
 import static com.example.star.leapp.Application.LeappApplication.getSecondTopic;
 import static com.example.star.leapp.Application.LeappApplication.getTNodeChildList;
-import static com.example.star.leapp.Application.LeappApplication.getThirdTopic;
 
 public class ChildTopicCataLogActivity extends AppCompatActivity {
 

@@ -69,52 +69,38 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(final int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        GroupHolder groupHolder = null;     //自己设定的一个简单类，用来存储控件的相关信息
+        GroupHolder groupHolder;     //自己设定的一个简单类，用来存储控件的相关信息
         if (convertView == null) {          //这里的convertView其实是一个起缓冲作用的，工具，因为当一个item从屏幕中滚出，我们把它放到convertView里，这样再滑回来的时候可以直接去取，不用重新创建
             convertView = LayoutInflater.from(context).inflate(R.layout.layout_topiccatalog_parentitem, null);//把界面放到缓冲区
-            groupHolder = new GroupHolder();          //实例化我们创建的这个类
+            groupHolder = new GroupHolder();
+            //实例化我们创建的这个类
             groupHolder.txt = convertView.findViewById(R.id.parentTv);  //实例化类里的TextView
             groupHolder.btn = convertView.findViewById(R.id.topic_content);
-            groupHolder.btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context,TopicShowActivity.class);
-                    intent.putExtra("topic",Group.get(groupPosition));
-                    context.startActivity(intent);
-                }
-            });
             convertView.setTag(groupHolder);                                 //给view对象一个标签，告诉计算机我们已经在缓冲区里放了一个view，下回直                                                                               //接来拿就行了
         } else {
             groupHolder = (GroupHolder) convertView.getTag();     //然后他就直接来拿
         }
-
+        groupHolder.btn.setOnClickListener(new myGroupListener(context,groupPosition,Group));
         groupHolder.txt.setText(Group.get(groupPosition).getTopic().getTitle());//最后在相应的group里设置他相应的Text
+
         return convertView;
     }
 
 
     @Override
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        ItemHolder itemHolder = null;
+        ItemHolder itemHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.layout_topiccatalog_childitem, null);
             itemHolder = new ItemHolder();
             itemHolder.txt = convertView.findViewById(R.id.childTv);
             itemHolder.btn = convertView.findViewById(R.id.topic_content);
-            itemHolder.btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context,TopicShowActivity.class);
-                    intent.putExtra("topic",Child.get(groupPosition).get(childPosition));
-                    context.startActivity(intent);
-                }
-            });
             convertView.setTag(itemHolder);
         } else {
             itemHolder = (ItemHolder) convertView.getTag();
         }
+        itemHolder.btn.setOnClickListener(new myChildListener(context,groupPosition,childPosition,Group,Child));
         itemHolder.txt.setText(Child.get(groupPosition).get(childPosition).getTopic().getTitle());
-
         return convertView;
     }
 
@@ -124,10 +110,49 @@ public class Exlv_Adapter_TopicCataLogList extends BaseExpandableListAdapter {
     }
 
 
-
 }
 
-class GroupHolder {
+class myGroupListener implements View.OnClickListener{
+    private int gPos = 0;
+    private Context context;
+    private List<Data4Mooc.TNode> Group;
+    public myGroupListener(Context mContext,int pos,List<Data4Mooc.TNode> Group){
+        context = mContext;
+        gPos = pos;
+        this.Group = Group;
+    }
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(context,TopicShowActivity.class);
+        intent.putExtra("topic",Group.get(gPos));
+        context.startActivity(intent);
+    }
+}
+
+class myChildListener implements View.OnClickListener{
+    private int gPos = 0;
+    private int chPos = 0;
+    private Context context;
+    private List<Data4Mooc.TNode> Group;
+    private ArrayList<ArrayList<Data4Mooc.TNode>> Child;
+
+    public myChildListener(Context mContext, int gPos, int chPos, List<Data4Mooc.TNode> Group,ArrayList<ArrayList<Data4Mooc.TNode>> Child){
+        context = mContext;
+        this.gPos = gPos;
+        this.chPos = chPos;
+        this.Group = Group;
+        this.Child = Child;
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(context,TopicShowActivity.class);
+        intent.putExtra("topic",Child.get(gPos).get(chPos));
+        context.startActivity(intent);
+    }
+}
+
+class GroupHolder{
     public TextView txt;
     public Button btn;
 }

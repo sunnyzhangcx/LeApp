@@ -66,7 +66,7 @@ public class ExamineLibrary_Fragment extends Fragment {
                 //testType = moocDataList.getSetTest(pos).getType();
                 switch (testType){
                     case 1:
-                        intent = new Intent(getActivity(),ExamineShowActivity1.class);
+                        intent = new Intent(getActivity(),ExamineShowActivity2.class);//数据中的多选题type为1，暂时改成这样
                         intent.putExtra("pos",pos);
                         break;
                     case 2:
