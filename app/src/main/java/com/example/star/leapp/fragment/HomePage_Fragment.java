@@ -23,7 +23,7 @@ import com.example.star.leapp.homepage.progress.ProgressMainActivity;
 public class HomePage_Fragment extends Fragment {
 
     private Button mBtnTopic;//核心知识点按钮
-    private Button mBtnIntelligent;//智能推荐按钮
+    private TextView mBtnIntelligent;//智能推荐
     private Button mBtnWay;//学习路线按钮
     private Button mBtnProgress;//学习进度按钮
     private PopupWindow mPopTopic;//核心知识点弹出框

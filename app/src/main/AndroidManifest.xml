@@ -33,7 +33,7 @@
         <activity android:name=".examineresult.ExamineResultActivity" />
         <activity android:name=".topicshow.TopicShowActivity" />
         <activity android:name=".topicshow.TopicShowActivity_Page" />
-        <activity android:name=".topiccatalog.ChildTopicCataLogActivity"></activity>
+        <activity android:name=".topiccatalog.ChildTopicCataLogActivity" />
     </application>
 
 </manifest>

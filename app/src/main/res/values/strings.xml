@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LEApp</string>
+    <string name="app_name">自学者</string>
     <string name="sentence">Today the weather was [fine], we are going to climb the [mountain].</string>
     <string name="question_prix">问题描述：</string>
     <string name="answer_prix">答案信息：</string>

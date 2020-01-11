@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/gainsboro">
+
+
+    <TextView
+        android:id="@+id/examine_result_explain_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="答案解析："
+        android:textSize="20dp"
+        android:layout_margin="5dp"/>
+
+   <TextView
+       android:layout_marginLeft="5dp"
+       android:id="@+id/result_explain"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="答案解析具体内容"
+       android:textSize="28sp"/>
+
+   <TextView
+       android:id="@+id/examine_result_topic_name"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="知识点："
+       android:textSize="20dp"
+       android:layout_margin="5dp"/>
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/result_topic1"
+       android:text="相关知识点"/>
+
+
+    
+    
+
+</LinearLayout>

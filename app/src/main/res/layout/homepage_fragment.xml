@@ -1,48 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:rowCount="5"
-    android:columnCount="2"
-    android:paddingTop="5dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:paddingBottom="5dp">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/core_topic_list"
-        android:layout_columnWeight="1"
-        android:layout_height="200dp"
-        android:text="核心知识点"
-        android:textSize="20dp"
-        android:background="@drawable/bg_button"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"/>
-    //列 权重为1
+    <LinearLayout
+        android:id="@+id/ll_home"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
 
-    <Button
+        <Button
+            android:id="@+id/core_topic_list"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="核心知识点"
+            android:textSize="20dp"
+            android:background="@drawable/bg_button"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:id="@+id/learning_progress"
+            android:text="学习进度"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:background="@drawable/bg_button"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:id="@+id/learning_way"
+            android:text="学习路线"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:background="@drawable/bg_button"
+            android:layout_marginRight="15dp"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/ll_home"
         android:id="@+id/intelligent_recommendation"
-        android:layout_columnWeight="1"
-        android:layout_height="200dp"
-        android:text="智能推荐"
-        android:textSize="20dp"
-        android:background="@drawable/bg_button"/>
-    //列 权重为1
-    <Button
-        android:id="@+id/learning_way"
-        android:text="学习路线"
-        android:layout_columnWeight="1"
-        android:layout_height="200dp"
-        android:textSize="20dp"
-        android:background="@drawable/bg_button"
-        android:layout_marginRight="5dp"/>
-    //列 权重为1
-    <Button
-        android:id="@+id/learning_progress"
-        android:text="学习进度"
-        android:layout_columnWeight="1"
-        android:layout_height="200dp"
-        android:textSize="20dp"
-        android:background="@drawable/bg_button"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="为你推荐"
+        android:textSize="20dp" />
 
-</GridLayout>
+
+    <ListView
+        android:id="@+id/lv_recommendation"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/intelligent_recommendation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</RelativeLayout>

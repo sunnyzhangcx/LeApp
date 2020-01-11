@@ -77,6 +77,13 @@ public class LeappApplication extends Application {
         return moocDataList.getSetTNodeList();
     }
 
+    //获取单个知识点
+    public static Data4Mooc.TNode getTNode(Data4Mooc.MoocData moocDataList,int index){
+        if(null == moocDataList)
+            return null;
+        return moocDataList.getSetTNode(index);
+    }
+
     //获取案例列表
     public static List<Data4Mooc.GNode> getGNodeList(Data4Mooc.MoocData moocDataList){
         if(null==moocDataList)

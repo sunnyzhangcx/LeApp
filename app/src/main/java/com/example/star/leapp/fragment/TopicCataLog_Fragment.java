@@ -37,7 +37,6 @@ public class TopicCataLog_Fragment extends android.support.v4.app.Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //System.out.println("-----------"+moocDataList);
         final List<Data4Mooc.TNode> Group = getFirstTopic(moocDataList);
         final ArrayList<ArrayList<Data4Mooc.TNode>> Child = getSecondTopic(Group);
 
